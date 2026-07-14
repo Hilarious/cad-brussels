@@ -110,12 +110,12 @@ export function AdmissionCTA({
       <div className="rounded-2xl bg-accent p-8 text-paper md:p-12">
         <div className="md:flex md:items-end md:justify-between md:gap-12">
           <div>
-            {/* `text-balance` keeps the headline visually balanced when
-                it wraps, and `whitespace-nowrap` on very-large screens
-                gives the brief lines (like "Open Day passé ? Vous
-                pouvez aussi venir hors agenda.") a chance to stay on
-                a single line when there's room. */}
-            <h2 className="text-balance font-display text-3xl md:text-4xl xl:whitespace-nowrap">
+            {/* `text-balance` équilibre les lignes quand le titre passe à la
+                ligne. Pas de `whitespace-nowrap` ici : le heading est
+                surchargeable (cf. prop `heading`), et un titre long comme
+                celui de la page Événements ne rentrait alors plus dans la
+                rangée flex à 1280px, poussant tout le bloc hors de l'écran. */}
+            <h2 className="text-balance font-display text-3xl md:text-4xl">
               {t.primaryHeading}
             </h2>
             <p className="mt-4 max-w-2xl text-paper/85">{t.primaryBody}</p>

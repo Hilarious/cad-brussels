@@ -8,9 +8,17 @@ const config: Config = {
     // padding. Inside the container, any 12-column grid uses gap-x-6
     // (24px gutters) by default — see the <Grid> component for the
     // declarative API.
+    //
+    // La gouttière responsive (1rem / 2rem md / 3rem xl) est déclarée en CSS
+    // dans globals.css, PAS ici. `container.screens` ne plafonne pas seulement
+    // la largeur : il remplace la liste des breakpoints que le plugin container
+    // connaît. Réduit au seul `2xl`, il n'émettait plus aucune règle de padding
+    // pour `md` et `xl` — le conteneur restait à 16px partout, et les sections
+    // full-bleed (qui compensent -2rem/-3rem) débordaient de l'écran.
+    // Lister tous les breakpoints ici rétablirait le padding, mais imposerait
+    // aussi une max-width par palier et casserait la fluidité voulue.
     container: {
       center: true,
-      padding: { DEFAULT: '1rem', md: '2rem', xl: '3rem' },
       screens: { '2xl': '1400px' },
     },
     extend: {

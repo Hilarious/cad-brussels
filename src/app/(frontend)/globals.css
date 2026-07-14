@@ -2,6 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Gouttière du conteneur ──────────────────────────────────────
+ * 1rem mobile · 2rem à partir de md · 3rem à partir de xl.
+ *
+ * Déclarée ici et non dans `theme.container.padding` : voir le commentaire
+ * dans tailwind.config.ts. Le plugin container n'émet ses paddings que pour
+ * les breakpoints listés dans `container.screens`, réduit ici au seul `2xl`
+ * pour garder un conteneur fluide plafonné à 1400px.
+ *
+ * Ces valeurs sont le pendant des sections full-bleed, qui s'en échappent via
+ * `-mx-4 md:-mx-8 xl:-mx-12`. Les deux doivent rester synchronisées, sinon la
+ * section déborde de l'écran et provoque un défilement horizontal.
+ * ─────────────────────────────────────────────────────────────── */
+@layer components {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+}
+
 /* ─── CAD Brussels — Palette officielle ───────────────────────────
  * Source : charte Thomas Durieux (juin 2024), conversion RGB → HEX.
  *
