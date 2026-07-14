@@ -399,8 +399,8 @@ export default async function WhyCadPage({
           déborde à droite vers l'extérieur du container pour casser
           la grille classique et marquer le changement de section. */}
       <section className="mt-24">
-        <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-5 lg:pt-8">
+        <Grid>
+          <Col span={5} spanMd={8} className="lg:pt-8">
             <h2 className="font-display text-3xl md:text-4xl">
               {L.compareTitle}
             </h2>
@@ -408,16 +408,16 @@ export default async function WhyCadPage({
             <p className="mt-4 text-sm italic text-ink/60">
               {L.compareAside}
             </p>
-          </div>
+          </Col>
           {/* Image qui sort du container à droite (effet asymétrique).
               Sur mobile, retombe en pleine largeur sans débordement. */}
-          <div className="lg:col-span-7 lg:-mr-8 xl:-mr-12">
+          <Col span={7} spanMd={8} className="lg:-mr-8 xl:-mr-12">
             <ImagePlaceholder
               ratio="3:2"
               caption={L.comparePhotoCaption}
             />
-          </div>
-        </div>
+          </Col>
+        </Grid>
 
         {/* Mobile: stacked · Desktop: 3-column table */}
         <div className="mt-16 hidden overflow-hidden rounded-2xl border border-ink/10 md:block">

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
+import { Grid, Col } from '@/components/grid'
 import { ImagePlaceholder } from '@/components/image-placeholder'
 
 export const metadata: Metadata = {
@@ -91,14 +92,14 @@ export default async function DesignSystemPage({
         when="Quand l'image et le texte ont un poids éditorial égal mais qu'on veut éviter le 50/50 banal. L'image prend 7 colonnes, le texte 5, et le texte démarre plus haut que l'image (effet d'imbrication)."
         ratio="3:4 ou 4:5 pour l'image (portrait)"
       >
-        <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-7">
+        <Grid>
+          <Col span={7} spanMd={8}>
             <ImagePlaceholder
               ratio="4:5"
               caption="Projet étudiant en cours · atelier"
             />
-          </div>
-          <div className="lg:col-span-5 lg:pt-12">
+          </Col>
+          <Col span={5} spanMd={8} className="lg:pt-12">
             <p className="text-sm uppercase tracking-widest text-accent">
               Atelier
             </p>
@@ -116,8 +117,8 @@ export default async function DesignSystemPage({
               Vous avez un portfolio de projets que vous pouvez défendre
               devant n'importe quel recruteur.
             </p>
-          </div>
-        </div>
+          </Col>
+        </Grid>
       </PatternSection>
 
       {/* Pattern C — Citation visuelle (texte sur fond image) */}
@@ -180,14 +181,14 @@ export default async function DesignSystemPage({
         when="Article éditorial type Domus, Wallpaper. Image verticale à gauche sur 4-5 colonnes, texte long à droite sur 6-7 colonnes avec offset. Pour les portraits de profs, alumni, ou articles longs."
         ratio="2:3 (portrait éditorial classique)"
       >
-        <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-5">
+        <Grid>
+          <Col span={5} spanMd={8}>
             <ImagePlaceholder
               ratio="2:3"
               caption="Portrait · Charlotte Lemoine, prof"
             />
-          </div>
-          <div className="lg:col-span-6 lg:col-start-7">
+          </Col>
+          <Col span={6} offset={6} spanMd={8}>
             <p className="text-sm uppercase tracking-widest text-accent">
               Portrait · Architecture d'intérieur
             </p>
@@ -216,8 +217,8 @@ export default async function DesignSystemPage({
                 haut de gamme et les flagship stores.
               </p>
             </div>
-          </div>
-        </div>
+          </Col>
+        </Grid>
       </PatternSection>
 
       {/* ─────────── Famille 2 : les audaces ─────────── */}
@@ -263,8 +264,8 @@ export default async function DesignSystemPage({
         when="Une image qui sort de la grille : démarre dans le container puis déborde vers l'extérieur sur un côté. Casse la régularité, crée du mouvement. Idéal pour une image emblématique en milieu de page programme."
         ratio="3:2 ou 4:3 (paysage)"
       >
-        <div className="grid gap-8 lg:grid-cols-12">
-          <div className="lg:col-span-5 lg:pt-12">
+        <Grid>
+          <Col span={5} spanMd={8} className="lg:pt-12">
             <p className="text-sm uppercase tracking-widest text-accent">
               Pédagogie
             </p>
@@ -280,15 +281,15 @@ export default async function DesignSystemPage({
               C'est la condition pour devenir designer, pas juste pour le
               dire sur un CV.
             </p>
-          </div>
+          </Col>
           {/* Image qui déborde à droite */}
-          <div className="lg:col-span-7 lg:-mr-8 xl:-mr-12">
+          <Col span={7} spanMd={8} className="lg:-mr-8 xl:-mr-12">
             <ImagePlaceholder
               ratio="3:2"
               caption="Atelier · vue large, étudiants en action"
             />
-          </div>
-        </div>
+          </Col>
+        </Grid>
       </PatternSection>
 
       {/* Pattern H — Citation typographique massive */}
@@ -503,13 +504,13 @@ function PatternSection({
 }) {
   return (
     <section className="mt-24 border-t border-ink/10 pt-12">
-      <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
+      <Grid>
         {/* Métadonnées du pattern à gauche sur desktop */}
-        <div className="lg:col-span-3">
+        <Col span={3} spanMd={8}>
           <p className="font-display text-4xl text-accent">{index}</p>
           <h2 className="mt-3 font-display text-xl">{name}</h2>
-        </div>
-        <div className="lg:col-span-8 lg:col-start-5">
+        </Col>
+        <Col span={8} offset={4} spanMd={8}>
           <p className="text-ink/80">{when}</p>
           <p className="mt-2 text-sm text-ink/50">
             <span className="font-medium uppercase tracking-widest">
@@ -517,8 +518,8 @@ function PatternSection({
             </span>{' '}
             · {ratio}
           </p>
-        </div>
-      </div>
+        </Col>
+      </Grid>
 
       {/* Démonstration du pattern */}
       <div className="mt-12">{children}</div>

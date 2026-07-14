@@ -2,6 +2,7 @@ import { setRequestLocale } from 'next-intl/server'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { ContactForm } from '@/components/contact-form'
+import { Grid, Col } from '@/components/grid'
 
 // Topics that can be pre-filled via /contact?topic=xxx — keep this list
 // in sync with the links emitted from /admissions and other CTAs.
@@ -264,8 +265,8 @@ export default async function ContactPage({
           à droite (5 col). Les infos vitales (adresse, email, tél) sont
           au-dessus de la ligne de flottaison sur desktop. */}
       <section className="container py-20 md:py-28">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-7">
+        <Grid>
+          <Col span={7} spanMd={8}>
             <p className="text-sm uppercase tracking-widest text-accent">
               {L.eyebrow}
             </p>
@@ -273,10 +274,13 @@ export default async function ContactPage({
               {L.title}
             </h1>
             <p className="mt-6 max-w-xl text-lg text-ink/70">{L.intro}</p>
-          </div>
+          </Col>
 
-          {/* Carte de contact rapide — visible immédiatement */}
-          <aside className="rounded-2xl border border-ink/10 bg-paper p-6 md:p-8 lg:col-span-5">
+          {/* Carte de contact rapide — visible immédiatement.
+              <aside> conservé à l'intérieur du <Col> : le <Col> porte la
+              colonne, l'<aside> porte la sémantique. */}
+          <Col span={5} spanMd={8}>
+            <aside className="h-full rounded-2xl border border-ink/10 bg-paper p-6 md:p-8">
             <p className="text-xs font-medium uppercase tracking-widest text-ink/50">
               {L.addressTitle}
             </p>
@@ -309,8 +313,9 @@ export default async function ContactPage({
             >
               {L.directionsLink} →
             </a>
-          </aside>
-        </div>
+            </aside>
+          </Col>
+        </Grid>
       </section>
 
       {/* Détails complémentaires : horaires + transports + social.

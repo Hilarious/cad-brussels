@@ -4,6 +4,7 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { EventCard } from '@/components/event-card'
 import { AdmissionCTA } from '@/components/admission-cta'
+import { Grid, Col } from '@/components/grid'
 import { ImagePlaceholder } from '@/components/image-placeholder'
 import { Marquee } from '@/components/marquee'
 import { JsonLd } from '@/components/json-ld'
@@ -267,16 +268,18 @@ export default async function HomePage({
           className={`${story.theme} relative bg-accent py-24 text-paper md:py-32`}
         >
           <div className="container">
-            <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
-              <div className="lg:col-span-7">
+            <Grid>
+              {/* spanMd={8} : sur tablette, les deux blocs restent empilés en
+                  pleine largeur. Un 7/5 dans 8 colonnes serait illisible. */}
+              <Col span={7} spanMd={8}>
                 <p className="text-sm uppercase tracking-widest text-paper/70">
                   {story.eyebrow}
                 </p>
                 <h2 className="mt-4 text-balance font-display text-4xl leading-[1.05] md:text-6xl">
                   {story.title}
                 </h2>
-              </div>
-              <div className="lg:col-span-5 lg:pt-4">
+              </Col>
+              <Col span={5} spanMd={8} className="lg:pt-4">
                 <p className="text-lg leading-relaxed text-paper/90">
                   {story.body}
                 </p>
@@ -286,8 +289,8 @@ export default async function HomePage({
                 >
                   {story.linkLabel} →
                 </Link>
-              </div>
-            </div>
+              </Col>
+            </Grid>
           </div>
         </section>
       ))}

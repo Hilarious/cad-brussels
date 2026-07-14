@@ -2,6 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
 import { PageCTA } from '@/components/page-cta'
+import { Grid, Col } from '@/components/grid'
 import { ImagePlaceholder } from '@/components/image-placeholder'
 import { JsonLd } from '@/components/json-ld'
 import { educationalOrganization } from '@/lib/schema'
@@ -202,20 +203,22 @@ export default async function AboutPage({
 
       {/* Section identité — Pattern B léger (intro + détail) */}
       <section className="mt-20">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-5">
+        <Grid>
+          <Col span={5} spanMd={8}>
             <h2 className="font-display text-3xl md:text-4xl">
               {L.identityTitle}
             </h2>
-          </div>
-          <div className="lg:col-span-6 lg:col-start-7">
+          </Col>
+          {/* offset={6} : le texte démarre colonne 7, laissant une colonne
+              vide après le titre. C'est le décalage éditorial voulu. */}
+          <Col span={6} offset={6} spanMd={8}>
             <div className="space-y-4 text-ink/80">
               {L.identityBody.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
             </div>
-          </div>
-        </div>
+          </Col>
+        </Grid>
       </section>
 
       {/* Stats officielles — 6 chiffres en grille 3 colonnes. Rassurance
@@ -242,8 +245,8 @@ export default async function AboutPage({
       {/* Pattern G — Pédagogie avec image décalée hors cadre.
           L'image sort à droite pour signifier "on sort des codes". */}
       <section className="mt-24">
-        <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-5 lg:pt-8">
+        <Grid>
+          <Col span={5} spanMd={8} className="lg:pt-8">
             <p className="text-sm uppercase tracking-widest text-accent">
               {L.pedagogyEyebrow}
             </p>
@@ -255,14 +258,17 @@ export default async function AboutPage({
                 <p key={i}>{p}</p>
               ))}
             </div>
-          </div>
-          <div className="lg:col-span-7 lg:-mr-8 xl:-mr-12">
+          </Col>
+          {/* Marge négative volontaire : l'image sort de la gouttière droite
+              du conteneur pour "sortir des codes". Les valeurs suivent le
+              padding du conteneur (2rem md, 3rem xl), cf. globals.css. */}
+          <Col span={7} spanMd={8} className="lg:-mr-8 xl:-mr-12">
             <ImagePlaceholder
               ratio="3:2"
               caption={L.pedagogyPhotoCaption}
             />
-          </div>
-        </div>
+          </Col>
+        </Grid>
       </section>
 
       {/* Pattern D — International : mosaïque 4 images
