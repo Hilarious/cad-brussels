@@ -2,6 +2,8 @@
 
 > Document destiné au développeur mainteneur reprenant le projet.
 > Version mai 2026 · Hilarious Agency × CAD Brussels
+>
+> **Voir aussi** : [`SEO-AUDIT-2026.md`](./SEO-AUDIT-2026.md) — audit complet du site actuel cad.be (rapport Digistage janvier 2026) et plan d'action pour la refonte.
 
 ---
 

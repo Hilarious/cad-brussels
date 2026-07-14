@@ -2,7 +2,8 @@
 
 Site officiel du **College of Art & Design Brussels** ([cad.be](https://cad.be)), reconstruit en 2026 sur une stack moderne.
 
-> **Pour les décisions design, la palette, les personas, les conventions éditoriales : voir [`HANDOVER.md`](./HANDOVER.md).**
+> **Décisions design, palette, personas, conventions éditoriales** → [`HANDOVER.md`](./HANDOVER.md)
+> **Audit SEO du site actuel et plan d'action refonte** → [`SEO-AUDIT-2026.md`](./SEO-AUDIT-2026.md)
 
 ---
 
