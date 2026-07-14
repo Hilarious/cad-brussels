@@ -294,6 +294,7 @@ Le site actuel `cad.be` est sur WordPress. La bascule doit préserver le SEO exi
 ### Hilarious Agency
 
 - **Audry Van Essche** — Creative Manager / pilote — joker@hilarious.be — +32 478 28 13 33
+- **Jerome Canon** — Technical Lead
 - **Yannick Chan** — Intégration / maintenance — yannick@hilarious.be — +32 478 31 00 35
 
 ### Charte print legacy (référence uniquement)
