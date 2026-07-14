@@ -253,7 +253,7 @@ Voir le fichier CI pour les détails.
 ## Contacts projet
 
 - **Audry Van Essche** — Creative Manager Hilarious Agency — joker@hilarious.be
-- **Jerome Canon** — Technical Lead Hilarious Agency
+- **Jerome Canon** — Technical Lead Hilarious Agency — freeze@hilarious.be
 - **Yannick Chan** — Intégration & maintenance Hilarious — yannick@hilarious.be
 
 Client :
