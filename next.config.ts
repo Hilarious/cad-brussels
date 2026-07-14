@@ -79,16 +79,25 @@ const nextConfig: NextConfig = {
     // Helper local : produit une paire de redirects (FR + EN) pour un couple
     // de slugs, avec préfixe locale sur le nouveau chemin. Sur l'ancien, le
     // slug anglais est sans préfixe et le slug français est préfixé /fr.
+    // Un ancien slug FR peut être identique au nouveau (ex. /fr/home-living-design) :
+    // le redirect pointerait alors sur lui-même et bouclerait en 308. On les écarte.
     const legacy = (
       oldEN: string,
       oldFR: string,
       newSlug: string,
-    ): Array<{ source: string; destination: string; permanent: true }> => [
-      { source: oldEN, destination: `/en/${newSlug}`, permanent: true },
-      { source: `${oldEN}/`, destination: `/en/${newSlug}`, permanent: true },
-      { source: oldFR, destination: `/fr/${newSlug}`, permanent: true },
-      { source: `${oldFR}/`, destination: `/fr/${newSlug}`, permanent: true },
-    ]
+    ): Array<{ source: string; destination: string; permanent: true }> => {
+      const pairs: Array<{
+        source: string
+        destination: string
+        permanent: true
+      }> = [
+        { source: oldEN, destination: `/en/${newSlug}`, permanent: true },
+        { source: `${oldEN}/`, destination: `/en/${newSlug}`, permanent: true },
+        { source: oldFR, destination: `/fr/${newSlug}`, permanent: true },
+        { source: `${oldFR}/`, destination: `/fr/${newSlug}`, permanent: true },
+      ]
+      return pairs.filter((r) => r.source !== r.destination)
+    }
 
     return [
       // ======================================================================
