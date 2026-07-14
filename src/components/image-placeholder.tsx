@@ -63,7 +63,7 @@ export function ImagePlaceholder({
       </div>
 
       {/* Métadonnées en bas : ratio + brief */}
-      <div className="relative z-10 flex w-full items-end justify-between gap-3 p-3 text-[11px] uppercase tracking-widest text-ink/50">
+      <div className="relative z-10 flex w-full items-end justify-between gap-3 p-3 text-xs uppercase tracking-widest text-ink/50">
         <span className="font-medium">{caption}</span>
         <span className="shrink-0 rounded border border-ink/15 px-1.5 py-0.5 font-mono normal-case text-ink/40">
           {ratio}

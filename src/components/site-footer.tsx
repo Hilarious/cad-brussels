@@ -71,7 +71,7 @@ export async function SiteFooter({ locale }: { locale: string }) {
               indépendamment des campagnes anniversaire. */}
           <Logo locale={locale} variant="wordmark" size="lg" noLink />
           <p className="mt-2 max-w-sm text-sm text-ink/60">{settings.tagline}</p>
-          <div className="mt-6 space-y-1 text-sm text-ink/70">
+          <div className="mt-6 text-sm text-ink/70">
             {settings.contact?.address && (
               <p className="whitespace-pre-line">{settings.contact.address}</p>
             )}
@@ -79,7 +79,7 @@ export async function SiteFooter({ locale }: { locale: string }) {
               <p>
                 <a
                   href={`mailto:${settings.contact.email}`}
-                  className="hover:text-accent"
+                  className="tap hover:text-accent"
                 >
                   {settings.contact.email}
                 </a>
@@ -89,7 +89,7 @@ export async function SiteFooter({ locale }: { locale: string }) {
               <p>
                 <a
                   href={`tel:${settings.contact.phone.replace(/\s/g, '')}`}
-                  className="hover:text-accent"
+                  className="tap hover:text-accent"
                 >
                   {settings.contact.phone}
                 </a>
@@ -103,12 +103,15 @@ export async function SiteFooter({ locale }: { locale: string }) {
             <p className="text-sm font-medium uppercase tracking-widest text-ink/50">
               {col.title}
             </p>
-            <ul className="mt-3 space-y-2 text-sm">
+            {/* `space-y-2` retiré : la hauteur de 44px de `.tap` fournit
+                désormais l'espacement entre les liens. Le cumul des deux
+                aurait donné des lignes de 52px, inutilement aérées. */}
+            <ul className="mt-1 text-sm">
               {(col.links ?? []).map((link, j) => (
                 <li key={`link-${j}`}>
                   <Link
                     href={localized(link.path, locale)}
-                    className="text-ink/80 hover:text-accent"
+                    className="tap text-ink/80 hover:text-accent"
                   >
                     {link.label}
                   </Link>
@@ -123,12 +126,12 @@ export async function SiteFooter({ locale }: { locale: string }) {
         <p>
           {footer.copyright ?? `© ${year} CAD Brussels`} · {year}
         </p>
-        <ul className="flex flex-wrap gap-4">
+        <ul className="flex flex-wrap gap-x-4">
           {legal.map((item, i) => (
             <li key={`legal-${i}`}>
               <Link
                 href={localized(item.path, locale)}
-                className="hover:text-accent"
+                className="tap hover:text-accent"
               >
                 {item.label}
               </Link>

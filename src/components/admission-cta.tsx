@@ -89,7 +89,7 @@ export function AdmissionCTA({
           </div>
           <Link
             href={`/${locale}/admissions`}
-            className="mt-6 inline-flex shrink-0 rounded-full border border-ink/20 px-6 py-3 text-sm hover:border-accent hover:text-accent md:mt-0"
+            className="mt-6 tap shrink-0 rounded-full border border-ink/20 px-6 text-sm hover:border-accent hover:text-accent md:mt-0"
           >
             {t.softCta}
           </Link>
@@ -123,13 +123,13 @@ export function AdmissionCTA({
           <div className="mt-6 flex flex-wrap items-center gap-3 md:mt-0 md:shrink-0">
             <Link
               href={`/${locale}/admissions`}
-              className="rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper hover:bg-paper hover:text-ink"
+              className="tap rounded-full bg-ink px-6 text-sm font-medium text-paper hover:bg-paper hover:text-ink"
             >
               {t.primaryCta}
             </Link>
             <Link
               href={`/${locale}/info-pack`}
-              className="text-sm text-paper/90 underline-offset-4 hover:underline"
+              className="tap text-sm text-paper/90 underline-offset-4 hover:underline"
             >
               {t.primarySecondary} →
             </Link>

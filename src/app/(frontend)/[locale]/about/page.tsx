@@ -326,7 +326,7 @@ export default async function AboutPage({
         <p className="mt-3 text-ink/70">{L.parentsBody}</p>
         <Link
           href={L.parentsCtaHref}
-          className="mt-4 inline-flex text-sm text-accent hover:underline"
+          className="mt-4 tap text-sm text-accent hover:underline"
         >
           {L.parentsCta} →
         </Link>

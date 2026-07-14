@@ -14,7 +14,27 @@
  * `-mx-4 md:-mx-8 xl:-mx-12`. Les deux doivent rester synchronisées, sinon la
  * section déborde de l'écran et provoque un défilement horizontal.
  * ─────────────────────────────────────────────────────────────── */
+/* ─── Cible tactile ───────────────────────────────────────────────
+ * `.tap` porte la hauteur minimale de 44px recommandée pour un doigt
+ * (Apple HIG, Material Design, WCAG 2.5.5 niveau AAA).
+ *
+ * À appliquer aux cibles AUTONOMES : liens de navigation, de pied de page,
+ * boutons, liens en fin de bloc, icônes sociales.
+ *
+ * À NE PAS appliquer aux liens noyés dans une phrase : la norme les exempte
+ * explicitement, et leur imposer 44px de haut casserait l'interlignage du
+ * paragraphe qui les contient.
+ *
+ * La hauteur est portée par la zone cliquable, pas par le texte : le lien
+ * garde sa taille de police, seule sa surface de contact grandit.
+ * ─────────────────────────────────────────────────────────────── */
 @layer components {
+  .tap {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem; /* 44px */
+  }
+
   .container {
     padding-left: 1rem;
     padding-right: 1rem;

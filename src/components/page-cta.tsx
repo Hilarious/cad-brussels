@@ -64,8 +64,8 @@ export function PageCTA({
 
   const buttonClasses =
     tone === 'accent'
-      ? 'rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper hover:bg-paper hover:text-ink'
-      : 'rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper hover:bg-accent'
+      ? 'tap rounded-full bg-ink px-6 text-sm font-medium text-paper hover:bg-paper hover:text-ink'
+      : 'tap rounded-full bg-ink px-6 text-sm font-medium text-paper hover:bg-accent'
 
   const bodyTone = tone === 'accent' ? 'text-paper/85' : 'text-ink/70'
 

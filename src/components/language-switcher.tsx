@@ -15,7 +15,7 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {
   return (
     <Link
       href={`/${other}${rest}`}
-      className="text-sm font-medium uppercase tracking-wide text-ink/70 hover:text-accent"
+      className="tap text-sm font-medium uppercase tracking-wide text-ink/70 hover:text-accent"
       aria-label={`Switch language to ${other.toUpperCase()}`}
     >
       {t('switchTo')}

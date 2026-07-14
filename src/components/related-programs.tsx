@@ -146,7 +146,7 @@ export function RelatedPrograms({
           <div className="hidden shrink-0 md:block">
             <Link
               href={`/${locale}/${current.level === 'master' ? 'masters' : 'programmes'}`}
-              className="text-sm text-ink/70 hover:text-accent"
+              className="tap text-sm text-ink/70 hover:text-accent"
             >
               {isFR ? 'Voir tous' : 'See all'} →
             </Link>
@@ -181,7 +181,7 @@ export function RelatedPrograms({
         <div className="mt-8 md:hidden">
           <Link
             href={`/${locale}/${current.level === 'master' ? 'masters' : 'programmes'}`}
-            className="text-sm text-ink/70 hover:text-accent"
+            className="tap text-sm text-ink/70 hover:text-accent"
           >
             {isFR
               ? current.level === 'master'

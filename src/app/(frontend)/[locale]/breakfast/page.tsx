@@ -259,7 +259,7 @@ export default async function BreakfastPage({
         <p className="mt-2 text-ink/70">{L.crossBody}</p>
         <Link
           href={`/${locale}/admissions`}
-          className="mt-4 inline-flex text-sm text-accent hover:underline"
+          className="mt-4 tap text-sm text-accent hover:underline"
         >
           {L.crossCta} →
         </Link>

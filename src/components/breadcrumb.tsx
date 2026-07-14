@@ -93,7 +93,7 @@ export function Breadcrumb({
               ) : item.href ? (
                 <Link
                   href={item.href}
-                  className="hover:text-accent hover:underline underline-offset-4"
+                  className="tap hover:text-accent hover:underline underline-offset-4"
                 >
                   {item.label}
                 </Link>

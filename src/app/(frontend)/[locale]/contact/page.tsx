@@ -294,13 +294,13 @@ export default async function ContactPage({
             <div className="mt-5 space-y-1.5">
               <a
                 href={`mailto:${email}`}
-                className="block text-ink/80 hover:text-accent"
+                className="tap text-ink/80 hover:text-accent"
               >
                 {email}
               </a>
               <a
                 href={`tel:${phone.replace(/\s/g, '')}`}
-                className="block text-ink/80 hover:text-accent"
+                className="tap text-ink/80 hover:text-accent"
               >
                 {phone}
               </a>
@@ -309,7 +309,7 @@ export default async function ContactPage({
               href={mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 inline-flex text-sm text-accent hover:underline"
+              className="mt-5 tap text-sm text-accent hover:underline"
             >
               {L.directionsLink} →
             </a>
@@ -336,13 +336,13 @@ export default async function ContactPage({
           <div className="mt-6 space-y-1 text-sm">
             <a
               href={`mailto:${email}`}
-              className="block text-ink/80 hover:text-accent"
+              className="tap text-ink/80 hover:text-accent"
             >
               {email}
             </a>
             <a
               href={`tel:${phone.replace(/\s/g, '')}`}
-              className="block text-ink/80 hover:text-accent"
+              className="tap text-ink/80 hover:text-accent"
             >
               {phone}
             </a>
@@ -351,7 +351,7 @@ export default async function ContactPage({
             href={mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex text-sm text-accent hover:underline"
+            className="mt-6 tap text-sm text-accent hover:underline"
           >
             {L.directionsLink} →
           </a>
@@ -396,7 +396,7 @@ export default async function ContactPage({
                       href={s.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="rounded-full border border-ink/20 px-3 py-1 capitalize hover:border-accent hover:text-accent"
+                      className="tap rounded-full border border-ink/20 px-4 capitalize hover:border-accent hover:text-accent"
                     >
                       {s.platform}
                     </a>
@@ -423,7 +423,7 @@ export default async function ContactPage({
               <p className="mt-2 text-sm text-ink/60">{svc.desc}</p>
               <a
                 href={`mailto:${svc.email}`}
-                className="mt-4 block text-sm text-accent hover:underline"
+                className="mt-4 tap text-sm text-accent hover:underline"
               >
                 {svc.email}
               </a>

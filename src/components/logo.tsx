@@ -101,7 +101,7 @@ export function Logo({
   return (
     <Link
       href={`/${locale}`}
-      className={`inline-flex shrink-0 hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${className}`}
+      className={`tap shrink-0 hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${className}`}
       aria-label={alt}
     >
       {content}

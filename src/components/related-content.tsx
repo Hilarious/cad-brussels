@@ -86,7 +86,7 @@ export async function RelatedContent({
               </h3>
               <Link
                 href={`/${locale}/events`}
-                className="text-sm text-ink/70 hover:text-accent"
+                className="tap text-sm text-ink/70 hover:text-accent"
               >
                 {isFR ? 'Tous les événements' : 'All events'} →
               </Link>
@@ -107,7 +107,7 @@ export async function RelatedContent({
               </h3>
               <Link
                 href={`/${locale}/news`}
-                className="text-sm text-ink/70 hover:text-accent"
+                className="tap text-sm text-ink/70 hover:text-accent"
               >
                 {isFR ? 'Toutes les actus' : 'All news'} →
               </Link>

@@ -388,7 +388,7 @@ export default async function AlumniPage({
 
                   <Link
                     href={`/${locale}/${a.programSlug}`}
-                    className="mt-6 inline-flex text-sm text-accent hover:underline"
+                    className="mt-6 tap text-sm text-accent hover:underline"
                   >
                     {L.seeProgram}
                   </Link>

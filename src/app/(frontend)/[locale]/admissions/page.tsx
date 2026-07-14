@@ -230,13 +230,13 @@ export default async function AdmissionsPage({
           </Link>
           <Link
             href={`/${locale}/admissions/frais`}
-            className="text-sm text-ink/70 hover:text-accent"
+            className="tap text-sm text-ink/70 hover:text-accent"
           >
             {isFR ? 'Voir les frais de scolarité →' : 'See tuition fees →'}
           </Link>
           <Link
             href={`/${locale}/info-pack`}
-            className="text-sm text-ink/70 hover:text-accent"
+            className="tap text-sm text-ink/70 hover:text-accent"
           >
             {isFR
               ? 'Ou recevez la brochure et réfléchissez →'

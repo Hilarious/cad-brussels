@@ -523,7 +523,7 @@ export default async function WhyCadPage({
       >
         <Link
           href={`/${locale}/info-pack`}
-          className="mt-4 inline-flex text-sm text-paper/90 underline-offset-4 hover:underline"
+          className="mt-4 tap text-sm text-paper/90 underline-offset-4 hover:underline"
         >
           {L.ctaSecondary} →
         </Link>

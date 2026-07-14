@@ -174,7 +174,7 @@ export default async function HomePage({
           </Link>
           <Link
             href={`/${locale}/events`}
-            className="text-sm text-ink/70 hover:text-accent"
+            className="tap text-sm text-ink/70 hover:text-accent"
           >
             {t('ctaOpenDay')} →
           </Link>
@@ -285,7 +285,7 @@ export default async function HomePage({
                 </p>
                 <Link
                   href={story.linkHref}
-                  className="mt-6 inline-flex text-sm font-medium text-paper underline-offset-4 hover:underline"
+                  className="mt-6 tap text-sm font-medium text-paper underline-offset-4 hover:underline"
                 >
                   {story.linkLabel} →
                 </Link>
@@ -323,7 +323,7 @@ export default async function HomePage({
           </h2>
           <Link
             href={`/${locale}/programmes`}
-            className="text-sm text-ink/70 hover:text-accent"
+            className="tap text-sm text-ink/70 hover:text-accent"
           >
             {locale === 'fr' ? 'Tout voir' : 'See all'} →
           </Link>
@@ -396,7 +396,7 @@ export default async function HomePage({
           </h2>
           <Link
             href={`/${locale}/events`}
-            className="text-sm text-ink/70 hover:text-accent"
+            className="tap text-sm text-ink/70 hover:text-accent"
           >
             {t('viewAllEvents')} →
           </Link>
@@ -421,7 +421,7 @@ export default async function HomePage({
             </h2>
             <Link
               href={`/${locale}/news`}
-              className="text-sm text-ink/70 hover:text-accent"
+              className="tap text-sm text-ink/70 hover:text-accent"
             >
               {locale === 'fr' ? 'Toutes les actus' : 'All news'} →
             </Link>
