@@ -3,6 +3,8 @@ import type { Metadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
 import { PageCTA } from '@/components/page-cta'
 import { ImagePlaceholder } from '@/components/image-placeholder'
+import { JsonLd } from '@/components/json-ld'
+import { educationalOrganization } from '@/lib/schema'
 
 export async function generateMetadata({
   params,
@@ -169,6 +171,13 @@ export default async function AboutPage({
 
   return (
     <article className="container py-16">
+      {/* JSON-LD EducationalOrganization — la fiche officielle du CAD.
+          Ce bloc est le plus important du site pour Google et les LLMs
+          (source de la Knowledge Graph, des sitelinks, et de tous les
+          rich snippets institutionnels). Doublonner avec la homepage
+          renforce le signal. */}
+      <JsonLd data={educationalOrganization()} />
+
       {/* Hero */}
       <header className="max-w-4xl">
         <p className="text-sm uppercase tracking-widest text-accent">

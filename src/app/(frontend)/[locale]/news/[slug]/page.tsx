@@ -7,6 +7,8 @@ import config from '@payload-config'
 import { AdmissionCTA } from '@/components/admission-cta'
 import { Breadcrumb } from '@/components/breadcrumb'
 import { RelatedContent } from '@/components/related-content'
+import { JsonLd } from '@/components/json-ld'
+import { article as articleSchema } from '@/lib/schema'
 
 export const revalidate = 60
 
@@ -69,8 +71,23 @@ export default async function NewsDetailPage({
   const paragraphs = renderRichText(post.content)
   const date = new Date(post.publishedAt ?? post.updatedAt)
 
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://cad.be'
+
   return (
     <article className="container py-16">
+      {/* JSON-LD Article — rich snippet Google (titre, date, image, éditeur)
+          + consommation directe par les LLMs. */}
+      <JsonLd
+        data={articleSchema({
+          headline: post.title,
+          description: post.excerpt ?? undefined,
+          url: `${siteUrl}/${locale}/news/${post.slug}`,
+          datePublished: post.publishedAt ?? post.updatedAt,
+          dateModified: post.updatedAt,
+          locale,
+        })}
+      />
       <Breadcrumb
         locale={locale}
         items={[

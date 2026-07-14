@@ -8,6 +8,9 @@ import { themeForSlug } from '@/lib/program-themes'
 import { ProgramProjects } from '@/components/program-projects'
 import { ProgramsHub } from '@/components/programs-hub'
 import { RelatedPrograms } from '@/components/related-programs'
+import { JsonLd } from '@/components/json-ld'
+import { course } from '@/lib/schema'
+import { programBySlug } from '@/lib/programs'
 
 export const revalidate = 60
 
@@ -53,8 +56,27 @@ export default async function CMSPage({
   // Around the World) — the page keeps the default Pink accent.
   const themeClass = themeForSlug(lastSlug)
 
+  // JSON-LD Schema.org Course — pour les pages programme uniquement.
+  // Renvoie null si le slug n'est pas dans le catalogue (hub, About, etc.).
+  const program = programBySlug(lastSlug)
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://cad.be'
+
   return (
     <div className={themeClass}>
+      {program && (
+        <JsonLd
+          data={course({
+            name: locale === 'fr' ? program.labelFR : program.labelEN,
+            description:
+              locale === 'fr' ? program.taglineFR : program.taglineEN,
+            url: `${siteUrl}/${locale}/${program.slug}`,
+            locale,
+            level: program.level,
+            duration: program.duration,
+          })}
+        />
+      )}
       <RenderBlocks blocks={page.layout ?? []} locale={locale} />
       {/* Cartes immersives plein écran — injectées seulement pour les
           hubs « programmes » (Tous les Bachelors) et « masters » (Tous

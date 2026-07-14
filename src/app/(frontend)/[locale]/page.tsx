@@ -6,6 +6,8 @@ import { EventCard } from '@/components/event-card'
 import { AdmissionCTA } from '@/components/admission-cta'
 import { ImagePlaceholder } from '@/components/image-placeholder'
 import { Marquee } from '@/components/marquee'
+import { JsonLd } from '@/components/json-ld'
+import { educationalOrganization } from '@/lib/schema'
 
 export const revalidate = 60
 
@@ -141,6 +143,11 @@ export default async function HomePage({
     // Home is themed with the 65-year anniversary accent (Pink) for
     // the 2026 campaign. Swap to another `theme-*` when the campaign ends.
     <div className="theme-65">
+      {/* JSON-LD — la fiche officielle du CAD pour Google et les LLMs.
+          Consommée par Google (Knowledge Graph, sitelinks), ChatGPT,
+          Perplexity, Google AI Overview. Impact direct sur le score IA
+          Digistage 48/100 → objectif 75+. */}
+      <JsonLd data={educationalOrganization()} />
       {/* Hero — primary CTA is "Apply", secondary is exploring programs.
           Mirrors the admissions-first strategy across the site. */}
       <section className="container py-20 md:py-32">
