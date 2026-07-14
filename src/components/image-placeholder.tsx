@@ -45,8 +45,12 @@ export function ImagePlaceholder({
   className?: string
 }) {
   return (
+    // `w-full` est indispensable : sans largeur définie, un appelant qui impose
+    // aussi la hauteur (h-full dans une cellule row-span-2) laisse l'aspect-ratio
+    // déduire la largeur, qui déborde alors de sa colonne et recouvre les voisines.
+    // Avec les deux dimensions définies, l'aspect-ratio est ignoré, comme voulu.
     <div
-      className={`relative flex items-end overflow-hidden rounded-lg border border-dashed border-ink/30 bg-ink/[0.03] ${ratioMap[ratio]} ${className}`}
+      className={`relative flex w-full items-end overflow-hidden rounded-lg border border-dashed border-ink/30 bg-ink/[0.03] ${ratioMap[ratio]} ${className}`}
       role="img"
       aria-label={`Emplacement d'image : ${caption}`}
     >
