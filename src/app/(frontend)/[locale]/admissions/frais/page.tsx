@@ -2,6 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
 import { PageCTA } from '@/components/page-cta'
+import { Breadcrumb } from '@/components/breadcrumb'
 
 export async function generateMetadata({
   params,
@@ -282,12 +283,13 @@ export default async function TuitionFeesPage({
 
   return (
     <article className="container py-16">
-      <Link
-        href={`/${locale}/admissions`}
-        className="text-sm text-ink/60 hover:text-accent"
-      >
-        ← {L.backLabel}
-      </Link>
+      <Breadcrumb
+        locale={locale}
+        items={[
+          { label: L.backLabel, href: `/${locale}/admissions` },
+          { label: L.eyebrow },
+        ]}
+      />
 
       {/* Hero */}
       <header className="mt-8 max-w-4xl">

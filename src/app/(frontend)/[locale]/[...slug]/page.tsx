@@ -7,6 +7,7 @@ import { RenderBlocks } from '@/components/render-blocks'
 import { themeForSlug } from '@/lib/program-themes'
 import { ProgramProjects } from '@/components/program-projects'
 import { ProgramsHub } from '@/components/programs-hub'
+import { RelatedPrograms } from '@/components/related-programs'
 
 export const revalidate = 60
 
@@ -65,6 +66,12 @@ export default async function CMSPage({
           Renvoie null pour les autres pages (About, Around the World,
           etc.), donc safe à mettre ici de manière inconditionnelle. */}
       <ProgramProjects slug={lastSlug} locale={locale} />
+      {/* Maillage interne — cartes "autres programmes" en bas de chaque
+          page programme (bachelor, master, spécialisation). Le composant
+          détecte automatiquement le niveau et injecte 3 programmes du
+          même niveau + 3 d'un niveau différent. Renvoie null pour les
+          slugs qui ne sont pas dans le catalogue (hubs, About, etc.). */}
+      <RelatedPrograms currentSlug={lastSlug} locale={locale} />
     </div>
   )
 }

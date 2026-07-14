@@ -5,6 +5,8 @@ import { setRequestLocale } from 'next-intl/server'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { AdmissionCTA } from '@/components/admission-cta'
+import { Breadcrumb } from '@/components/breadcrumb'
+import { RelatedContent } from '@/components/related-content'
 
 export const revalidate = 60
 
@@ -69,12 +71,16 @@ export default async function NewsDetailPage({
 
   return (
     <article className="container py-16">
-      <Link
-        href={`/${locale}/news`}
-        className="text-sm text-ink/60 hover:text-accent"
-      >
-        ← {locale === 'fr' ? 'Toutes les actualités' : 'All news'}
-      </Link>
+      <Breadcrumb
+        locale={locale}
+        items={[
+          {
+            label: locale === 'fr' ? 'Actualités' : 'News',
+            href: `/${locale}/news`,
+          },
+          { label: post.title },
+        ]}
+      />
 
       <header className="mx-auto mt-8 max-w-3xl">
         <time
@@ -109,6 +115,14 @@ export default async function NewsDetailPage({
             reading, visible enough to convert engaged readers. */}
         <AdmissionCTA locale={locale} variant="contextual" />
       </div>
+
+      {/* Maillage éditorial — événements à venir + autres actus. Fait
+          rebondir le lecteur vers d'autres contenus au lieu de le
+          laisser sortir du site. */}
+      <RelatedContent
+        locale={locale}
+        title={locale === 'fr' ? 'À lire aussi' : 'Read next'}
+      />
     </article>
   )
 }

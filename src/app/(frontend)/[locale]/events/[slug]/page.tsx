@@ -6,6 +6,8 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import type { Media } from '@/payload-types'
+import { Breadcrumb } from '@/components/breadcrumb'
+import { RelatedContent } from '@/components/related-content'
 
 export const revalidate = 60
 
@@ -52,12 +54,13 @@ export default async function EventDetailPage({
 
   return (
     <article className="container py-12">
-      <Link
-        href={`/${locale}/events`}
-        className="text-sm text-ink/60 hover:text-accent"
-      >
-        ← {t('back')}
-      </Link>
+      <Breadcrumb
+        locale={locale}
+        items={[
+          { label: t('back'), href: `/${locale}/events` },
+          { label: event.title },
+        ]}
+      />
 
       <h1 className="mt-6 max-w-4xl font-display text-4xl md:text-5xl">
         {event.title}
@@ -144,6 +147,13 @@ export default async function EventDetailPage({
             },
           }),
         }}
+      />
+
+      {/* Maillage — autres événements à venir + dernières actus.
+          Fait rebondir le visiteur au lieu de le laisser sortir. */}
+      <RelatedContent
+        locale={locale}
+        title={locale === 'fr' ? 'Autres événements' : 'Other events'}
       />
     </article>
   )

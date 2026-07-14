@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { setRequestLocale } from 'next-intl/server'
+import { Breadcrumb } from '@/components/breadcrumb'
 
 /**
  * /privacy — Politique de confidentialité RGPD.
@@ -153,7 +154,8 @@ export default async function PrivacyPage({
 
   return (
     <article className="container max-w-3xl py-20">
-      <h1 className="font-display text-4xl md:text-5xl">{L.title}</h1>
+      <Breadcrumb locale={locale} items={[{ label: L.title }]} />
+      <h1 className="mt-6 font-display text-4xl md:text-5xl">{L.title}</h1>
       <p className="mt-3 text-sm uppercase tracking-widest text-ink/50">
         {L.lastUpdate}
       </p>

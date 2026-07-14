@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
+import { Breadcrumb } from '@/components/breadcrumb'
 
 export async function generateMetadata({
   params,
@@ -32,12 +33,16 @@ export default async function VisaPage({
 
   return (
     <article className="container py-16">
-      <Link
-        href={`/${locale}/etudier-a-bruxelles`}
-        className="text-sm text-ink/60 hover:text-accent"
-      >
-        ← {isFR ? 'Étudier à Bruxelles' : 'Studying in Brussels'}
-      </Link>
+      <Breadcrumb
+        locale={locale}
+        items={[
+          {
+            label: isFR ? 'Étudier à Bruxelles' : 'Studying in Brussels',
+            href: `/${locale}/etudier-a-bruxelles`,
+          },
+          { label: isFR ? 'Visa & démarches' : 'Visa & paperwork' },
+        ]}
+      />
 
       <div className="mt-8 max-w-3xl">
         <p className="text-sm uppercase tracking-widest text-accent">

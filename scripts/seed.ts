@@ -794,22 +794,56 @@ async function seed() {
   console.log("   ✓ global: header (FR + EN)")
 
   // Footer: paths are locale-agnostic, labels are localized.
+  //
+  // Densité de maillage : l'audit SEO Digistage (janvier 2026) montre
+  // que les pages qui performent le mieux sur cad.be ont en moyenne
+  // 154 liens internes vs 33 sur la moyenne du site. Le footer est le
+  // levier universel — il apparaît sur TOUTES les pages du site. Chaque
+  // lien ajouté = +1 lien interne sur ~40 pages = gain massif de
+  // maillage sans effort éditorial par page. Passe de 11 → 27 liens.
   const footerFR = {
     columns: [
       {
-        title: "École",
+        title: "Bachelors",
         links: [
-          { label: "À propos", path: "/about" },
-          { label: "Programmes", path: "/programmes" },
-          { label: "Admissions", path: "/admissions" },
-          { label: "International", path: "/around-the-world" },
+          { label: "Architecture d’intérieur", path: "/interior-architecture-design" },
+          { label: "Communication & Digital", path: "/communication-digital-design" },
+          { label: "Mode & Accessoires", path: "/fashion-accessory-design" },
+          { label: "Voir tous les Bachelors", path: "/programmes" },
         ],
       },
       {
-        title: "Communauté",
+        title: "Masters & spécialisation",
         links: [
+          { label: "Interior Architecture 2 ans", path: "/interior-architecture-design-master" },
+          { label: "Home & Living Design", path: "/home-living-design" },
+          { label: "Digital Brand Content", path: "/digital-brand-content" },
+          { label: "Image 3D · Motion · AI", path: "/image-3d-motion-video-ai" },
+          { label: "Event Management", path: "/event-management" },
+          { label: "Fashion Management", path: "/fashion-management" },
+          { label: "Voir tous les Masters", path: "/masters" },
+        ],
+      },
+      {
+        title: "Admissions & vie d’école",
+        links: [
+          { label: "Postuler en ligne", path: "/apply" },
+          { label: "Frais de scolarité", path: "/admissions/frais" },
+          { label: "Info pack", path: "/info-pack" },
+          { label: "Summer Breakfast", path: "/breakfast" },
+          { label: "Pourquoi le CAD", path: "/pourquoi-le-cad" },
+          { label: "Étudier à Bruxelles", path: "/etudier-a-bruxelles" },
+        ],
+      },
+      {
+        title: "École & communauté",
+        links: [
+          { label: "À propos", path: "/about" },
+          { label: "Professeurs", path: "/professeurs" },
+          { label: "Alumni", path: "/alumni" },
           { label: "Événements", path: "/events" },
           { label: "Actualités", path: "/news" },
+          { label: "Ouverture & culture", path: "/openness-and-culture" },
           { label: "Lifelong Learning", path: "/lifelong-learning" },
           { label: "Contact", path: "/contact" },
         ],
@@ -834,19 +868,46 @@ async function seed() {
   const footerEN = {
     columns: [
       {
-        title: "School",
+        title: "Bachelors",
         links: [
-          { label: "About", path: "/about" },
-          { label: "Programs", path: "/programmes" },
-          { label: "Admissions", path: "/admissions" },
-          { label: "International", path: "/around-the-world" },
+          { label: "Interior Architecture", path: "/interior-architecture-design" },
+          { label: "Communication & Digital", path: "/communication-digital-design" },
+          { label: "Fashion & Accessory", path: "/fashion-accessory-design" },
+          { label: "See all Bachelors", path: "/programmes" },
         ],
       },
       {
-        title: "Community",
+        title: "Masters & Specialisation",
         links: [
+          { label: "Interior Architecture 2 years", path: "/interior-architecture-design-master" },
+          { label: "Home & Living Design", path: "/home-living-design" },
+          { label: "Digital Brand Content", path: "/digital-brand-content" },
+          { label: "Image 3D · Motion · AI", path: "/image-3d-motion-video-ai" },
+          { label: "Event Management", path: "/event-management" },
+          { label: "Fashion Management", path: "/fashion-management" },
+          { label: "See all Masters", path: "/masters" },
+        ],
+      },
+      {
+        title: "Admissions & School life",
+        links: [
+          { label: "Apply online", path: "/apply" },
+          { label: "Tuition fees", path: "/admissions/frais" },
+          { label: "Info pack", path: "/info-pack" },
+          { label: "Summer Breakfast", path: "/breakfast" },
+          { label: "Why CAD", path: "/pourquoi-le-cad" },
+          { label: "Living in Brussels", path: "/etudier-a-bruxelles" },
+        ],
+      },
+      {
+        title: "School & community",
+        links: [
+          { label: "About", path: "/about" },
+          { label: "Faculty", path: "/professeurs" },
+          { label: "Alumni", path: "/alumni" },
           { label: "Events", path: "/events" },
           { label: "News", path: "/news" },
+          { label: "Openness & culture", path: "/openness-and-culture" },
           { label: "Lifelong Learning", path: "/lifelong-learning" },
           { label: "Contact", path: "/contact" },
         ],

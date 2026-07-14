@@ -60,9 +60,13 @@ export async function SiteFooter({ locale }: { locale: string }) {
         </div>
       </div>
 
-      {/* Site map */}
-      <div className="container grid gap-12 py-16 md:grid-cols-5">
-        <div className="md:col-span-2">
+      {/* Site map — layout dense pour maximiser le maillage interne.
+          L'audit SEO Digistage 2026 a montré que les pages qui
+          performent ont 154 liens internes en moyenne. Le footer est
+          notre principal levier de densification (présent sur toutes
+          les pages), d'où le passage à 5 colonnes de liens. */}
+      <div className="container grid gap-12 py-16 md:grid-cols-3 lg:grid-cols-6">
+        <div className="md:col-span-3 lg:col-span-2">
           {/* Footer : wordmark complet, signature institutionnelle stable
               indépendamment des campagnes anniversaire. */}
           <Logo locale={locale} variant="wordmark" size="lg" noLink />

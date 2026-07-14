@@ -2,6 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
 import { PageCTA } from '@/components/page-cta'
+import { Breadcrumb } from '@/components/breadcrumb'
 
 export async function generateMetadata({
   params,
@@ -113,12 +114,13 @@ export default async function GenAICreative({
 
   return (
     <article className="theme-lifelong container py-16">
-      <Link
-        href={`/${locale}/lifelong-learning`}
-        className="text-sm text-ink/60 hover:text-accent"
-      >
-        ← {L.backLabel}
-      </Link>
+      <Breadcrumb
+        locale={locale}
+        items={[
+          { label: L.backLabel, href: `/${locale}/lifelong-learning` },
+          { label: L.eyebrow },
+        ]}
+      />
 
       {/* Hero */}
       <header className="mt-8 max-w-4xl">

@@ -4,6 +4,7 @@ import { setRequestLocale } from 'next-intl/server'
 import { Grid, Col } from '@/components/grid'
 import { PageCTA } from '@/components/page-cta'
 import { ImagePlaceholder } from '@/components/image-placeholder'
+import { RelatedContent } from '@/components/related-content'
 
 export async function generateMetadata({
   params,
@@ -505,6 +506,10 @@ export default async function WhyCadPage({
           ))}
         </ul>
       </section>
+
+      {/* Maillage éditorial — bloc "à découvrir aussi" pour maximiser
+          les liens internes contextuels (levier SEO #1 selon Digistage). */}
+      <RelatedContent locale={locale} />
 
       {/* Final CTA — standardized via <PageCTA>. Primary button is the
           built-in CTA; the secondary "Get the brochure" link is rendered

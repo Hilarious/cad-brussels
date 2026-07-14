@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
 import { PageCTA } from '@/components/page-cta'
 import { ImagePlaceholder } from '@/components/image-placeholder'
+import { RelatedContent } from '@/components/related-content'
 
 export async function generateMetadata({
   params,
@@ -393,6 +394,10 @@ export default async function FacultyPage({
           ))}
         </ul>
       </section>
+
+      {/* Maillage éditorial — bloc "à découvrir aussi" pour renforcer
+          le maillage interne contextuel. */}
+      <RelatedContent locale={locale} />
 
       {/* CTA */}
       <PageCTA

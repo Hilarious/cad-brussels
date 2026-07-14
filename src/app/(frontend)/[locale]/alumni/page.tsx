@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
 import { PageCTA } from '@/components/page-cta'
 import { ImagePlaceholder } from '@/components/image-placeholder'
+import { RelatedContent } from '@/components/related-content'
 
 export async function generateMetadata({
   params,
@@ -428,6 +429,11 @@ export default async function AlumniPage({
           ))}
         </ul>
       </section>
+
+      {/* Maillage éditorial — bloc "à découvrir aussi" avec événements
+          à venir + dernières actualités. Renforce le maillage interne
+          (facteur SEO #1 selon l'audit Digistage). */}
+      <RelatedContent locale={locale} />
 
       {/* CTA — request an alumni contact */}
       <PageCTA

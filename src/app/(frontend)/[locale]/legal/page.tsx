@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
+import { Breadcrumb } from '@/components/breadcrumb'
 
 /**
  * /legal — Mentions légales obligatoires.
@@ -122,7 +123,8 @@ export default async function LegalPage({
 
   return (
     <article className="container max-w-3xl py-20">
-      <h1 className="font-display text-4xl md:text-5xl">{L.title}</h1>
+      <Breadcrumb locale={locale} items={[{ label: L.title }]} />
+      <h1 className="mt-6 font-display text-4xl md:text-5xl">{L.title}</h1>
       <p className="mt-6 text-lg text-ink/70">{L.intro}</p>
       <div className="mt-12 space-y-10">
         {L.sections.map((section, i) => (
