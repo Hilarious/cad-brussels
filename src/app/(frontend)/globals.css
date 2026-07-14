@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CAD Brussels — Palette officielle ───────────────────────────
+ * Source : charte Thomas Durieux (juin 2024), conversion RGB → HEX.
+ *
+ * Les tokens sémantiques (`--ink`, `--paper`, `--accent`) sont déclarés
+ * en composantes RGB séparées (ex: "10 10 10") pour que Tailwind puisse
+ * appliquer des opacités via la syntaxe `bg-accent/10`. Le keyword
+ * <alpha-value> est résolu par Tailwind au moment du build.
+ *
+ * Toute modification ici doit rester en sync avec tailwind.config.ts.
+ * ─────────────────────────────────────────────────────────────── */
+:root {
+  /* Semantic tokens (RGB components, sans virgules — Tailwind 3.x syntax) */
+  --ink: 10 10 10;          /* #0A0A0A — softer black for screen */
+  --paper: 244 244 240;     /* #F4F4F0 — warm off-white */
+  --accent: 255 39 127;     /* #FF277F — CAD Pink (default, swappable) */
+  --accent-soft: 255 224 235; /* #FFE0EB — tinted background */
+
+  /* Palette CAD officielle, 14 couleurs (HEX direct, pas d'opacité) */
+  --cad-black: #000000;
+  --cad-white: #ffffff;
+  --cad-cyan: #00ffff;
+  --cad-navy: #2f346d;
+  --cad-orange: #ff8000;
+  --cad-violet: #8000ff;
+  --cad-pink: #ff277f;
+  --cad-magenta: #ff00ff;
+  --cad-azure: #0080ff;
+  --cad-red: #ff1f20;
+  --cad-lime: #80ff00;
+  --cad-yellow: #ffff00;
+  --cad-blue: #0000ff;
+  --cad-mint: #00ff80;
+}
+
+/* ─── Accent par programme (override local via classe sur un wrapper).
+ *
+ *     <section className="theme-fashion">…</section>
+ *
+ *     Les valeurs sont en composantes RGB pour rester compatibles
+ *     avec la syntaxe Tailwind `bg-accent/40`, etc.
+ *  ───────────────────────────────────────────────────────────── */
+.theme-fashion { --accent: 255 39 127; }       /* Pink */
+.theme-interior { --accent: 47 52 109; }       /* Navy */
+.theme-communication { --accent: 128 0 255; }  /* Violet */
+.theme-image-3d { --accent: 0 128 255; }       /* Azure */
+.theme-event { --accent: 255 128 0; }          /* Orange */
+.theme-home-living { --accent: 0 255 128; }    /* Mint */
+.theme-lifelong { --accent: 255 0 255; }       /* Magenta */
+.theme-jpo { --accent: 255 31 32; }            /* Red — Journées Portes Ouvertes */
+.theme-65 { --accent: 255 39 127; }            /* Pink — 65 ans */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-underline-offset: 4px;
+}
+
+::selection {
+  background: rgb(var(--accent));
+  color: var(--cad-white);
+}

@@ -1,0 +1,52 @@
+{
+  "site": {
+    "name": "CAD Brussels",
+    "tagline": "College of Art & Design Brussels"
+  },
+  "nav": {
+    "programs": "Programmes",
+    "events": "Événements",
+    "about": "À propos",
+    "contact": "Contact",
+    "apply": "Candidater"
+  },
+  "home": {
+    "heroEyebrow": "École de design depuis 1961",
+    "heroTitle": "Ici, vous éduquez votre œil, vous enrichissez votre esprit, vous développez votre culture.",
+    "heroSubtitle": "Architecture d'intérieur, communication & digital, mode, image. Du Bachelor au Master, à Bruxelles, encadré·e par des professionnels en activité.",
+    "ctaPrograms": "Découvrir les programmes",
+    "ctaOpenDay": "Journées portes ouvertes",
+    "upcomingEvents": "Prochains événements",
+    "viewAllEvents": "Voir tous les événements"
+  },
+  "events": {
+    "title": "Événements",
+    "subtitle": "Workshops, portes ouvertes, expositions et conférences.",
+    "noEvents": "Aucun événement à venir.",
+    "register": "S’inscrire",
+    "more": "En savoir plus",
+    "when": "Quand",
+    "where": "Où",
+    "back": "Retour aux événements"
+  },
+  "contact": {
+    "title": "Parlons",
+    "subtitle": "Une question, un doute, une intuition ? On vous répond sous 48 heures.",
+    "name": "Votre prénom",
+    "email": "Votre email",
+    "subject": "En quelques mots, c’est à propos de…",
+    "message": "Racontez-nous",
+    "send": "Envoyer",
+    "sending": "Envoi…",
+    "success": "Reçu, merci ! On vous répond très vite.",
+    "error": "Hmm, ça n’a pas marché. Réessayez dans un instant ?",
+    "address": "Adresse",
+    "phone": "Téléphone"
+  },
+  "footer": {
+    "rights": "Tous droits réservés."
+  },
+  "language": {
+    "switchTo": "English"
+  }
+}

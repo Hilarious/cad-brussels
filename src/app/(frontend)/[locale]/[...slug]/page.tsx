@@ -1,0 +1,70 @@
+import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
+import { setRequestLocale } from 'next-intl/server'
+import { getPayload } from 'payload'
+import config from '@payload-config'
+import { RenderBlocks } from '@/components/render-blocks'
+import { themeForSlug } from '@/lib/program-themes'
+import { ProgramProjects } from '@/components/program-projects'
+import { ProgramsHub } from '@/components/programs-hub'
+
+export const revalidate = 60
+
+async function fetchPage(locale: string, slug: string) {
+  const payload = await getPayload({ config })
+  const result = await payload.find({
+    collection: 'pages',
+    locale: locale as 'fr' | 'en',
+    where: { slug: { equals: slug }, status: { equals: 'published' } },
+    limit: 1,
+  })
+  return result.docs[0] ?? null
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string[] }>
+}): Promise<Metadata> {
+  const { locale, slug } = await params
+  const page = await fetchPage(locale, slug[slug.length - 1] ?? '')
+  if (!page) return {}
+  return {
+    title: page.seo?.metaTitle ?? page.title,
+    description: page.seo?.metaDescription ?? undefined,
+  }
+}
+
+export default async function CMSPage({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string[] }>
+}) {
+  const { locale, slug } = await params
+  setRequestLocale(locale)
+
+  const lastSlug = slug[slug.length - 1] ?? ''
+  const page = await fetchPage(locale, lastSlug)
+  if (!page) notFound()
+
+  // Apply the program's official accent color via a wrapper class.
+  // Empty string when the slug isn't in the program map (e.g. About,
+  // Around the World) — the page keeps the default Pink accent.
+  const themeClass = themeForSlug(lastSlug)
+
+  return (
+    <div className={themeClass}>
+      <RenderBlocks blocks={page.layout ?? []} locale={locale} />
+      {/* Cartes immersives plein écran — injectées seulement pour les
+          hubs « programmes » (Tous les Bachelors) et « masters » (Tous
+          les Masters). Renvoie null pour les autres slugs, donc safe
+          à mettre ici de manière inconditionnelle. */}
+      <ProgramsHub slug={lastSlug} locale={locale} />
+      {/* Section projets étudiants — injectée pour les pages programmes
+          qui ont des projets définis dans `program-projects.tsx`.
+          Renvoie null pour les autres pages (About, Around the World,
+          etc.), donc safe à mettre ici de manière inconditionnelle. */}
+      <ProgramProjects slug={lastSlug} locale={locale} />
+    </div>
+  )
+}

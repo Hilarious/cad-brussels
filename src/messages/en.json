@@ -1,0 +1,52 @@
+{
+  "site": {
+    "name": "CAD Brussels",
+    "tagline": "College of Art & Design Brussels"
+  },
+  "nav": {
+    "programs": "Programs",
+    "events": "Events",
+    "about": "About",
+    "contact": "Contact",
+    "apply": "Apply"
+  },
+  "home": {
+    "heroEyebrow": "Design school since 1961",
+    "heroTitle": "Here, you train your eye, you enrich your mind, you build your culture.",
+    "heroSubtitle": "Interior architecture, communication & digital, fashion, image. From Bachelor to Master, in Brussels, mentored by working professionals.",
+    "ctaPrograms": "Explore programs",
+    "ctaOpenDay": "Open days",
+    "upcomingEvents": "Upcoming events",
+    "viewAllEvents": "See all events"
+  },
+  "events": {
+    "title": "Events",
+    "subtitle": "Workshops, open days, exhibitions and talks.",
+    "noEvents": "No upcoming events.",
+    "register": "Register",
+    "more": "Learn more",
+    "when": "When",
+    "where": "Where",
+    "back": "Back to events"
+  },
+  "contact": {
+    "title": "Let’s talk",
+    "subtitle": "A question, a doubt, an instinct? We’ll reply within 2 working days.",
+    "name": "Your first name",
+    "email": "Your email",
+    "subject": "In a few words, this is about…",
+    "message": "Tell us",
+    "send": "Send",
+    "sending": "Sending…",
+    "success": "Got it, thanks! We’ll reply very soon.",
+    "error": "Hmm, that didn’t work. Try again in a moment?",
+    "address": "Address",
+    "phone": "Phone"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  },
+  "language": {
+    "switchTo": "Français"
+  }
+}
