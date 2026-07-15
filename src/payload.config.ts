@@ -59,6 +59,12 @@ export default buildConfig({
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
   db: postgresAdapter({
+    // En production, Payload désactive la synchro de schéma (« push ») et
+    // attend des migrations. Ce projet n'en a pas : sur une base vierge (le CI),
+    // les tables ne seraient jamais créées et le build échouerait sur
+    // « relation "header" does not exist ». PAYLOAD_DB_PUSH=true réactive la
+    // création du schéma, utilisé par l'étape de seed du CI avant le build.
+    push: process.env.PAYLOAD_DB_PUSH === 'true' ? true : undefined,
     pool: {
       connectionString: process.env.DATABASE_URI,
     },

@@ -89,6 +89,16 @@ jobs:
             sleep 1
           done
 
+      # Crée le schéma Payload sur la base vierge (PAYLOAD_DB_PUSH) et insère le
+      # contenu. Sans ça, le prerendering échoue sur « relation header does not
+      # exist ». Doit précéder le build, qui lui tourne sans push (schéma déjà là).
+      - name: Seed database
+        run: pnpm seed:all
+        env:
+          DATABASE_URI: postgres://cad:cad@localhost:5432/cad
+          PAYLOAD_SECRET: ci-secret-placeholder-32-bytes-long-enough
+          PAYLOAD_DB_PUSH: 'true'
+
       - name: Build (Next.js + Payload)
         run: pnpm build
         env:
@@ -161,9 +171,13 @@ jobs:
       - name: Install Playwright Chromium
         run: pnpm exec playwright install --with-deps chromium
 
-      - name: Seed content
+      # Crée le schéma (PAYLOAD_DB_PUSH) et insère le contenu. Sans contenu, le
+      # crawler ne verrait presque aucune page (le menu vient de la base). Cette
+      # étape DOIT réussir : plus de continue-on-error, un échec ici est réel.
+      - name: Seed database
         run: pnpm seed:all
-        continue-on-error: true # sans contenu, moins de pages, pas d'échec
+        env:
+          PAYLOAD_DB_PUSH: 'true'
 
       - name: Build
         run: pnpm build
