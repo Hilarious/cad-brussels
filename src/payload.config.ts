@@ -66,7 +66,13 @@ export default buildConfig({
     // création du schéma, utilisé par l'étape de seed du CI avant le build.
     push: process.env.PAYLOAD_DB_PUSH === 'true' ? true : undefined,
     pool: {
-      connectionString: process.env.DATABASE_URI,
+      // Accepte DATABASE_URI (config locale) ou les noms injectés
+      // automatiquement par une base Neon/Vercel connectée au projet
+      // (POSTGRES_URL en priorité, poolée pour le serverless, sinon DATABASE_URL).
+      connectionString:
+        process.env.DATABASE_URI ||
+        process.env.POSTGRES_URL ||
+        process.env.DATABASE_URL,
     },
   }),
   sharp,
