@@ -171,7 +171,7 @@ export default async function BreakfastPage({
     <article className="container py-16">
       <Link
         href={`/${locale}/admissions`}
-        className="text-sm text-ink/60 hover:text-accent"
+        className="tap text-sm text-ink/60 hover:text-accent"
       >
         ← {L.backLabel}
       </Link>

@@ -69,7 +69,7 @@ export function AdmissionCTA({
         </p>
         <Link
           href={`/${locale}/admissions`}
-          className="text-sm text-accent hover:underline"
+          className="tap text-sm text-accent hover:underline"
         >
           {t.contextualCta}
         </Link>

@@ -102,6 +102,86 @@ jobs:
           S3_REGION: auto
 
   # ============================================================
+  # UI verification — builds, starts the site and actually LOADS every
+  # page in a real browser at 4 widths (mobile → desktop). Catches the
+  # class of bugs the typecheck/build can't see: missing mobile menu,
+  # horizontal scroll on tablet, overlapping images, touch targets under
+  # 44px, text under 12px. See scripts/verify-ui.mjs.
+  # ============================================================
+  verify-ui:
+    name: Vérification interface
+    runs-on: ubuntu-latest
+    needs: quality
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: cad
+          POSTGRES_PASSWORD: cad
+          POSTGRES_DB: cad
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URI: postgres://cad:cad@localhost:5432/cad
+      PAYLOAD_SECRET: ci-secret-placeholder-32-bytes-long-enough
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
+      PAYLOAD_PUBLIC_SERVER_URL: http://localhost:3000
+      S3_ENDPOINT: ''
+      S3_BUCKET: ''
+      S3_ACCESS_KEY_ID: ''
+      S3_SECRET_ACCESS_KEY: ''
+      S3_REGION: auto
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Chromium bundlé par Playwright (le script bascule sur Chrome local
+      # seulement hors CI, cf. le `process.env.CI` dans verify-ui.mjs).
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Seed content
+        run: pnpm seed:all
+        continue-on-error: true # sans contenu, moins de pages, pas d'échec
+
+      - name: Build
+        run: pnpm build
+
+      - name: Start server
+        run: pnpm start &
+
+      - name: Wait for server
+        run: |
+          for i in {1..60}; do
+            if curl -sf http://localhost:3000/fr >/dev/null; then
+              echo "Serveur prêt"; exit 0
+            fi
+            sleep 2
+          done
+          echo "Le serveur n'a pas démarré"; exit 1
+
+      - name: Verify UI
+        run: pnpm verify:ui
+
+  # ============================================================
   # Tests — optional, runs only if tests exist. Non-blocking.
   # ============================================================
   test:
