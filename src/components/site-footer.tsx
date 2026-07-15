@@ -3,15 +3,7 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { NewsletterForm } from './newsletter-form'
 import { Logo } from './logo'
-
-const localized = (path: string | null | undefined, locale: string) => {
-  if (!path) return '#'
-  if (/^https?:\/\//i.test(path)) return path
-  const localePrefixMatch = path.match(/^\/(fr|en)(\/.*|$)/)
-  if (localePrefixMatch) return `/${locale}${localePrefixMatch[2] || ''}`
-  if (path.startsWith('/')) return `/${locale}${path}`
-  return path
-}
+import { localized } from '@/lib/localize'
 
 export async function SiteFooter({ locale }: { locale: string }) {
   const payload = await getPayload({ config })

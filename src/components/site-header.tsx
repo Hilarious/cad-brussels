@@ -5,19 +5,7 @@ import { LanguageSwitcher } from './language-switcher'
 import { NavItem } from './nav-item'
 import { MobileMenu } from './mobile-menu'
 import { Logo } from './logo'
-
-/** Prepend `/${locale}` to internal paths; leave external URLs intact.
- *  Also handles legacy data where the locale prefix was already saved
- *  ("/fr/contact" → "/fr/contact" instead of "/fr/fr/contact"). */
-const localized = (path: string | null | undefined, locale: string) => {
-  if (!path) return '#'
-  if (/^https?:\/\//i.test(path)) return path
-  // Already locale-prefixed? Use as-is, but swap to the current locale.
-  const localePrefixMatch = path.match(/^\/(fr|en)(\/.*|$)/)
-  if (localePrefixMatch) return `/${locale}${localePrefixMatch[2] || ''}`
-  if (path.startsWith('/')) return `/${locale}${path}`
-  return path
-}
+import { localized } from '@/lib/localize'
 
 export async function SiteHeader({ locale }: { locale: string }) {
   const payload = await getPayload({ config })
