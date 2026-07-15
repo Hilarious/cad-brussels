@@ -77,7 +77,6 @@ async function upsertBySlug<T extends Record<string, unknown>>(
   locale: "fr" | "en" = "fr",
 ) {
   const existing = await payload.find({
-    // @ts-expect-error — generic narrowing
     collection,
     where: { slug: { equals: slug } },
     limit: 1,
@@ -87,15 +86,17 @@ async function upsertBySlug<T extends Record<string, unknown>>(
 
   if (existing.docs.length > 0) {
     return payload.update({
-      // @ts-expect-error — generic narrowing
       collection,
       id: existing.docs[0]!.id,
       data,
       locale,
     })
   }
+  // Le `collection` en union et le `data` générique ne peuvent pas être
+  // rapprochés d'une des surcharges de payload.create. Suppression sur l'appel
+  // entier, seul endroit où l'erreur est réellement émise.
+  // @ts-expect-error — generic collection can't narrow Payload's create overload
   return payload.create({
-    // @ts-expect-error — generic narrowing
     collection,
     data,
     locale,

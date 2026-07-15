@@ -11,7 +11,10 @@ type NavChild = {
 type Props = {
   label: string | null | undefined
   href: string
-  children?: NavChild[]
+  // Renommé de `children` : passer une prop nommée `children` déclenche la règle
+  // ESLint react/no-children-prop. Ce sont les entrées du sous-menu, pas du
+  // contenu React imbriqué.
+  submenu?: NavChild[]
 }
 
 /**
@@ -20,11 +23,11 @@ type Props = {
  * delay so the user can travel to the dropdown without losing focus.
  * Keyboard accessible (Enter / Space toggles, Escape closes).
  */
-export function NavItem({ label, href, children }: Props) {
+export function NavItem({ label, href, submenu }: Props) {
   const [open, setOpen] = useState(false)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const containerRef = useRef<HTMLLIElement>(null)
-  const hasChildren = !!children && children.length > 0
+  const hasChildren = !!submenu && submenu.length > 0
 
   // Close on outside click
   useEffect(() => {
@@ -105,7 +108,7 @@ export function NavItem({ label, href, children }: Props) {
           }`}
         >
           <ul className="w-64 rounded-lg border border-ink/10 bg-paper p-2 shadow-lg">
-            {children!.map((child, i) => (
+            {submenu!.map((child, i) => (
               <li key={`${child.href}-${i}`}>
                 <Link
                   href={child.href}

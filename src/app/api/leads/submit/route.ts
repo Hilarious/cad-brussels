@@ -10,7 +10,21 @@ const Schema = z.object({
   email: z.string().email().max(200),
   phone: z.string().max(40).optional().nullable(),
   intents: z.array(z.enum(['brochure', 'visit', 'apply'])).min(1),
-  desiredSection: z.string().min(1).max(60),
+  // Liste alignée sur le champ select de la collection Leads (payload-types).
+  // z.string() acceptait n'importe quel texte, ce qui typait mal l'écriture en
+  // base et cassait le typecheck. Le formulaire n'envoie que ces valeurs.
+  desiredSection: z.enum([
+    'bachelor-interior',
+    'bachelor-communication',
+    'bachelor-fashion',
+    'master-interior',
+    'master-home-living',
+    'master-digital-brand',
+    'master-image',
+    'master-event',
+    'lifelong-genai',
+    'undecided',
+  ]),
   profile: z
     .enum(['student', 'parent', 'professional', 'other'])
     .default('student'),

@@ -54,7 +54,7 @@ export async function SiteHeader({ locale }: { locale: string }) {
                 key={`${item.path}-${i}`}
                 label={item.label}
                 href={localized(item.path, locale)}
-                children={(item.children ?? []).map((c) => ({
+                submenu={(item.children ?? []).map((c) => ({
                   label: c.label,
                   href: localized(c.path, locale),
                 }))}

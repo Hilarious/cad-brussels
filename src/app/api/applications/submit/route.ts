@@ -20,7 +20,18 @@ const Schema = z.object({
   country: z.string().max(80).optional().nullable(),
 
   // Program
-  desiredProgram: z.string().min(1).max(60),
+  // Liste alignée sur le champ select de la collection Applications
+  // (payload-types). Voir la même correction dans leads/submit.
+  desiredProgram: z.enum([
+    'bachelor-interior',
+    'bachelor-communication',
+    'bachelor-fashion',
+    'master-interior',
+    'master-home-living',
+    'master-digital-brand',
+    'master-image',
+    'master-event',
+  ]),
   startYear: z.enum(['2026', '2027']),
   startLevel: z.enum(['bac1', 'bac2', 'bac3', 'm1', 'm2']),
 

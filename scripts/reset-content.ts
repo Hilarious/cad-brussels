@@ -13,7 +13,6 @@ async function main() {
 
   for (const collection of ['pages', 'posts', 'events'] as const) {
     const all = await payload.find({
-      // @ts-expect-error generic narrowing
       collection,
       limit: 1000,
       depth: 0,
@@ -24,7 +23,6 @@ async function main() {
       const slug = (doc as { slug?: string | null }).slug
       if (!slug) {
         await payload.delete({
-          // @ts-expect-error generic narrowing
           collection,
           id: doc.id,
         })
