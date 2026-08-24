@@ -20,13 +20,23 @@ const H = 1350
 
 type Palette = { nom: string; fond: string; encre: string }
 
-// Impression une seule couleur sur fond teinté, comme les t-shirts.
-// Les encres viennent de la palette CAD, les fonds sont des textiles.
+// Impression une seule couleur sur fond textile, comme les t-shirts.
+// Les encres sont celles de la palette officielle du CAD. Les couleurs
+// trop claires de la palette (jaune, lime, cyan, mint) sont ecartees :
+// illisibles en encre sur un fond creme.
+const CREME = '#F1EDE3'
 const PALETTES: Palette[] = [
-  { nom: 'Crème et nuit', fond: '#F1EDE3', encre: '#2f346d' },
-  { nom: 'Crème et rose', fond: '#F1EDE3', encre: '#ff277f' },
-  { nom: 'Nuit et crème', fond: '#2f346d', encre: '#F1EDE3' },
-  { nom: 'Encre et crème', fond: '#14140F', encre: '#F1EDE3' },
+  { nom: 'Navy', fond: CREME, encre: '#2f346d' },
+  { nom: 'Rose', fond: CREME, encre: '#ff277f' },
+  { nom: 'Violet', fond: CREME, encre: '#8000ff' },
+  { nom: 'Azur', fond: CREME, encre: '#0080ff' },
+  { nom: 'Rouge', fond: CREME, encre: '#ff1f20' },
+  { nom: 'Orange', fond: CREME, encre: '#ff8000' },
+  { nom: 'Magenta', fond: CREME, encre: '#ff00ff' },
+  { nom: 'Noir', fond: CREME, encre: '#000000' },
+  // Les deux inversions, pour ceux qui veulent du sombre
+  { nom: 'Navy inversé', fond: '#2f346d', encre: CREME },
+  { nom: 'Noir inversé', fond: '#14140F', encre: CREME },
 ]
 
 const DESTINATAIRES = ['Papa, maman', 'Maman', 'Papa', 'Mamie'] as const
@@ -414,7 +424,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
           <legend className="mb-2 text-sm font-semibold uppercase tracking-[0.14em] text-ink/60">
             {L.labelCouleur}
           </legend>
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             {PALETTES.map((p, i) => (
               <button
                 key={p.nom}
@@ -422,13 +432,18 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
                 onClick={() => setPalette(i)}
                 aria-label={p.nom}
                 aria-pressed={palette === i}
-                className={`h-11 w-11 rounded-full border-2 transition ${
+                className={`flex h-11 w-11 items-center justify-center rounded-full border-2 transition ${
                   palette === i
                     ? 'border-ink scale-110'
                     : 'border-ink/15 hover:border-ink/40'
                 }`}
                 style={{ background: p.fond }}
-              />
+              >
+                <span
+                  className="block h-6 w-6 rounded-full"
+                  style={{ background: p.encre }}
+                />
+              </button>
             ))}
           </div>
         </fieldset>
