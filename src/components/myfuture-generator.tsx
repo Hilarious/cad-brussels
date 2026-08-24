@@ -18,25 +18,32 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 const W = 1080
 const H = 1350
 
-type Palette = { nom: string; fond: string; encre: string }
+type Palette = { nom: string; fond: string; encre: string; signature: string }
 
 // Impression une seule couleur sur fond textile, comme les t-shirts.
 // Les encres sont celles de la palette officielle du CAD. Les couleurs
 // trop claires de la palette (jaune, lime, cyan, mint) sont ecartees :
 // illisibles en encre sur un fond creme.
 const CREME = '#F1EDE3'
+
+// Deux encres par affiche, comme une impression deux plaques.
+//   encre     : la voix du jeune. La phrase, le metier, la signature.
+//   signature : la voix de l'ecole. CAD Brussels, la pastille de rentree
+//               et le post-scriptum sur l'IA.
+// Les deux couleurs sont choisies pour se distinguer au premier coup d'oeil,
+// c'est ce qui cree la hierarchie de lecture.
 const PALETTES: Palette[] = [
-  { nom: 'Navy', fond: CREME, encre: '#2f346d' },
-  { nom: 'Rose', fond: CREME, encre: '#ff277f' },
-  { nom: 'Violet', fond: CREME, encre: '#8000ff' },
-  { nom: 'Azur', fond: CREME, encre: '#0080ff' },
-  { nom: 'Rouge', fond: CREME, encre: '#ff1f20' },
-  { nom: 'Orange', fond: CREME, encre: '#ff8000' },
-  { nom: 'Magenta', fond: CREME, encre: '#ff00ff' },
-  { nom: 'Noir', fond: CREME, encre: '#000000' },
+  { nom: 'Navy et rose', fond: CREME, encre: '#2f346d', signature: '#ff277f' },
+  { nom: 'Rose et navy', fond: CREME, encre: '#ff277f', signature: '#2f346d' },
+  { nom: 'Violet et orange', fond: CREME, encre: '#8000ff', signature: '#ff8000' },
+  { nom: 'Azur et rouge', fond: CREME, encre: '#0080ff', signature: '#ff1f20' },
+  { nom: 'Rouge et navy', fond: CREME, encre: '#ff1f20', signature: '#2f346d' },
+  { nom: 'Orange et violet', fond: CREME, encre: '#ff8000', signature: '#8000ff' },
+  { nom: 'Magenta et navy', fond: CREME, encre: '#ff00ff', signature: '#2f346d' },
+  { nom: 'Noir et rose', fond: CREME, encre: '#000000', signature: '#ff277f' },
   // Les deux inversions, pour ceux qui veulent du sombre
-  { nom: 'Navy inversé', fond: '#2f346d', encre: CREME },
-  { nom: 'Noir inversé', fond: '#14140F', encre: CREME },
+  { nom: 'Navy inversé', fond: '#2f346d', encre: CREME, signature: '#ff277f' },
+  { nom: 'Noir inversé', fond: '#14140F', encre: CREME, signature: '#80ff00' },
 ]
 
 const DESTINATAIRES = ['Papa, maman', 'Maman', 'Papa', 'Mamie'] as const
@@ -87,6 +94,7 @@ const COPY = {
       'Ton image se télécharge, puis ta messagerie s\'ouvre. Il ne te reste qu\'à y glisser l\'image.',
     mailSujet: (prenom: string) => `L'avenir de ${prenom}`,
     pastille: 'Rentrée le 14/09',
+    souvenir: 'Cet email te sera renvoyé dans 10 ans, en souvenir.',
     baseline: 'Créer son avenir, ça s\'apprend.',
     thanks: 'Merci de croire en mon',
     punch: 'Moi !',
@@ -120,6 +128,7 @@ const COPY = {
       'Your image downloads, then your mail app opens. All you do is drop the image in.',
     mailSujet: (prenom: string) => `${prenom}'s future`,
     pastille: 'Term starts 14/09',
+    souvenir: "We'll send this email back to you in 10 years, as a keepsake.",
     baseline: 'Building a future is something you learn.',
     thanks: 'Thank you for believing in',
     punch: 'Me !',
@@ -194,7 +203,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    const { fond, encre } = PALETTES[palette]
+    const { fond, encre, signature } = PALETTES[palette]
 
     // next/font génère des noms de famille obfusqués : on lit les variables
     // CSS pour retrouver le nom réel, seul utilisable dans ctx.font. Elles
@@ -266,6 +275,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     // colle apres coup. Encre pleine et texte dans la couleur du fond :
     // c'est le seul element inverse de l'affiche, donc le plus voyant.
     ctx.save()
+    ctx.fillStyle = signature
     ctx.translate(W - 158, 166)
     ctx.rotate((-13 * Math.PI) / 180)
     espacer('4px')
@@ -289,7 +299,9 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     // Bandeau de tête, en micro-capitales espacées
     espacer('7px')
     ctx.font = F.capitales(27)
+    ctx.fillStyle = signature
     ctx.fillText('CAD BRUSSELS  ·  SINCE 1961', cx, y)
+    ctx.fillStyle = encre
     espacer('0px')
     y += 190
 
@@ -343,17 +355,19 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     ctx.fillText(`— ${prenomAffiche.toUpperCase()}`, cx, y)
     espacer('0px')
 
-    // La chute, en italique, calee sur le bas comme un post-scriptum
+    // La chute et le pied appartiennent a l'ecole : ils passent dans la
+    // seconde encre, ce qui les detache de la voix du jeune.
+    ctx.fillStyle = signature
     const [ps1, ps2] = L.ps(destinataire === 'Papa, maman')
     ctx.font = F.italique(34)
     ctx.fillText(ps1, cx, H - 172)
     ctx.fillText(ps2, cx, H - 130)
 
-    // Le pied, en micro-capitales
     espacer('3px')
     ctx.font = F.capitales(24)
     ctx.fillText('CREATED WITH PASSION IN BRUSSELS', cx, H - 68)
     espacer('0px')
+    ctx.fillStyle = encre
   }, [destinataire, metierAffiche, prenomAffiche, palette, L])
 
   useEffect(() => {
@@ -528,7 +542,9 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
               >
                 <span
                   className="block h-6 w-6 rounded-full"
-                  style={{ background: p.encre }}
+                  style={{
+                    background: `linear-gradient(90deg, ${p.encre} 0 50%, ${p.signature} 50% 100%)`,
+                  }}
                 />
               </button>
             ))}
@@ -570,6 +586,11 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
               {peutPartager ? L.hintMail : L.hintDesktop}
             </p>
           )}
+
+          {/* La promesse qui donne au jeune une raison de laisser son adresse. */}
+          <p className="mt-1 border-t-2 border-ink/10 pt-4 text-base font-semibold text-ink/80">
+            {L.souvenir}
+          </p>
         </div>
       </div>
 
