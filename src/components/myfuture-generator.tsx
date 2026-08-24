@@ -76,12 +76,17 @@ const COPY = {
     labelPrenom: 'Ton prénom',
     placeholderPrenom: 'Lina',
     labelCouleur: 'La couleur',
-    send: 'L\'envoyer à mes parents',
-    download: 'Télécharger l\'image',
+    send: 'L\'envoyer sur WhatsApp',
+    byMail: 'L\'envoyer par mail',
+    download: 'Télécharger le JPG',
     sending: 'Un instant...',
     shareText: 'Plus tard, je serai',
     hintDesktop:
-      'Sur ordinateur, l\'image se télécharge. Depuis un téléphone, elle part directement dans WhatsApp.',
+      'Sur ordinateur, l\'image se télécharge et tu la joins toi-même. Depuis un téléphone, elle part directement dans WhatsApp.',
+    hintMail:
+      'Ton image se télécharge, puis ta messagerie s\'ouvre. Il ne te reste qu\'à y glisser l\'image.',
+    mailSujet: (prenom: string) => `L'avenir de ${prenom}`,
+    pastille: 'Rentrée le 14/09',
     baseline: 'Créer son avenir, ça s\'apprend.',
     thanks: 'Merci de croire en mon',
     punch: 'Moi !',
@@ -104,12 +109,17 @@ const COPY = {
     labelPrenom: 'Your first name',
     placeholderPrenom: 'Lina',
     labelCouleur: 'Colour',
-    send: 'Send it to my parents',
-    download: 'Download the image',
+    send: 'Send it on WhatsApp',
+    byMail: 'Send it by email',
+    download: 'Download the JPG',
     sending: 'One moment...',
     shareText: 'Later, I will be',
     hintDesktop:
-      'On desktop the image downloads. From a phone it goes straight into WhatsApp.',
+      'On desktop the image downloads and you attach it yourself. From a phone it goes straight into WhatsApp.',
+    hintMail:
+      'Your image downloads, then your mail app opens. All you do is drop the image in.',
+    mailSujet: (prenom: string) => `${prenom}'s future`,
+    pastille: 'Term starts 14/09',
     baseline: 'Building a future is something you learn.',
     thanks: 'Thank you for believing in',
     punch: 'Me !',
@@ -252,14 +262,40 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
       ctx.fill()
     }
 
-    let y = 130
+    // La pastille d'urgence, en diagonale dans le coin, comme un tampon
+    // colle apres coup. Encre pleine et texte dans la couleur du fond :
+    // c'est le seul element inverse de l'affiche, donc le plus voyant.
+    ctx.save()
+    ctx.translate(W - 158, 166)
+    ctx.rotate((-13 * Math.PI) / 180)
+    espacer('4px')
+    ctx.font = F.gras(27)
+    const lp = ctx.measureText(L.pastille.toUpperCase()).width
+    const pw = lp + 54
+    const ph = 66
+    ctx.beginPath()
+    if ('roundRect' in ctx) {
+      ctx.roundRect(-pw / 2, -ph / 2, pw, ph, ph / 2)
+    } else {
+      ctx.rect(-pw / 2, -ph / 2, pw, ph)
+    }
+    ctx.fill()
+    ctx.fillStyle = fond
+    ctx.textBaseline = 'middle'
+    ctx.fillText(L.pastille.toUpperCase(), 0, 2)
+    ctx.restore()
+    ctx.fillStyle = encre
+    ctx.textBaseline = 'alphabetic'
+    espacer('0px')
+
+    let y = 92
 
     // Bandeau de tête, en micro-capitales espacées
     espacer('7px')
     ctx.font = F.capitales(27)
     ctx.fillText('CAD BRUSSELS  ·  SINCE 1961', cx, y)
     espacer('0px')
-    y += 150
+    y += 190
 
     // « Papa, maman, » à l'anglaise : la part d'enfance, décalée à gauche
     ctx.font = F.anglaise(126)
@@ -268,8 +304,8 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     const xPapa = Math.max(marge, cx - largPapa / 2 - 70)
     ctx.fillText(`${destinataire},`, xPapa, y)
     ctx.textAlign = 'center'
-    // L'étincelle se pose à côté, en haut, comme sur le t-shirt.
-    etincelle(Math.min(W - marge - 30, xPapa + largPapa + 52), y - 62, 27)
+    // L'étincelle passe à gauche : le coin droit est pris par la pastille.
+    etincelle(Math.max(marge - 20, xPapa - 58), y - 58, 25)
     y += 74
 
     // « plus tard je serai » en petit romain
@@ -328,15 +364,38 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     void dessiner()
   }, [dessiner])
 
+  // Un JPG plutot qu'un PNG : plus leger, mieux accepte par les messageries,
+  // et le fond etant plein aplat la compression ne se voit pas.
+  const nomFichier = useMemo(
+    () =>
+      `avenir-de-${prenomAffiche
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')}.jpg`,
+    [prenomAffiche],
+  )
+
   const fichier = useCallback(async (): Promise<File | null> => {
     const canvas = canvasRef.current
     if (!canvas) return null
     const blob = await new Promise<Blob | null>((resolve) =>
-      canvas.toBlob(resolve, 'image/png'),
+      canvas.toBlob(resolve, 'image/jpeg', 0.92),
     )
     if (!blob) return null
-    return new File([blob], 'plus-tard.png', { type: 'image/png' })
-  }, [])
+    return new File([blob], nomFichier, { type: 'image/jpeg' })
+  }, [nomFichier])
+
+  const telecharger = useCallback(async () => {
+    const f = await fichier()
+    if (!f) return
+    const url = URL.createObjectURL(f)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = nomFichier
+    a.click()
+    URL.revokeObjectURL(url)
+  }, [fichier, nomFichier])
 
   const envoyer = useCallback(async () => {
     setBusy(true)
@@ -349,19 +408,32 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
           text: `${L.shareText} ${metierAffiche.toLowerCase()}.`,
         })
       } else {
-        const url = URL.createObjectURL(f)
-        const a = document.createElement('a')
-        a.href = url
-        a.download = 'plus-tard.png'
-        a.click()
-        URL.revokeObjectURL(url)
+        await telecharger()
       }
     } catch {
       /* partage annulé par l'utilisateur : rien à signaler */
     } finally {
       setBusy(false)
     }
-  }, [fichier, metierAffiche, L.shareText])
+  }, [fichier, telecharger, metierAffiche, L.shareText])
+
+  // Le mail part de la messagerie du jeune, donc de sa propre adresse.
+  // Un lien mailto ne sait pas porter de piece jointe, c'est une limite des
+  // navigateurs : on telecharge donc l'image juste avant d'ouvrir le mail,
+  // et il ne reste qu'a la glisser dedans.
+  const parMail = useCallback(async () => {
+    setBusy(true)
+    try {
+      await telecharger()
+      const sujet = encodeURIComponent(L.mailSujet(prenomAffiche))
+      const corps = encodeURIComponent(
+        `${destinataire},\n\n${L.prefix} ${metierAffiche.toLowerCase()}.\n\n${L.thanks} ${L.punch}\n\n${prenomAffiche}`,
+      )
+      window.location.href = `mailto:?subject=${sujet}&body=${corps}`
+    } finally {
+      setBusy(false)
+    }
+  }, [telecharger, L, prenomAffiche, destinataire, metierAffiche])
 
   const champ =
     'w-full rounded-lg border-2 border-ink/15 bg-white px-4 py-3 text-lg text-ink outline-none transition focus:border-ink'
@@ -476,9 +548,31 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
           >
             {busy ? L.sending : peutPartager ? L.send : L.download}
           </button>
+
+          <div className="flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={parMail}
+              disabled={busy || !complet}
+              className="min-h-[48px] flex-1 rounded-full border-2 border-ink px-6 text-base font-semibold text-ink transition hover:bg-ink hover:text-paper disabled:opacity-40"
+            >
+              {L.byMail}
+            </button>
+            <button
+              type="button"
+              onClick={telecharger}
+              disabled={busy || !complet}
+              className="min-h-[48px] flex-1 rounded-full border-2 border-ink/20 px-6 text-base font-semibold text-ink transition hover:border-ink disabled:opacity-40"
+            >
+              {L.download}
+            </button>
+          </div>
+
           {!complet && <p className="text-sm text-ink/50">{L.manque}</p>}
-          {complet && !peutPartager && (
-            <p className="text-sm text-ink/50">{L.hintDesktop}</p>
+          {complet && (
+            <p className="text-sm text-ink/50">
+              {peutPartager ? L.hintMail : L.hintDesktop}
+            </p>
           )}
         </div>
       </div>
