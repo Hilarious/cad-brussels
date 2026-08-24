@@ -38,14 +38,19 @@ const DESTINATAIRES = ['Papa, maman', 'Maman', 'Papa', 'Mamie'] as const
 // secteur creatif belge, cela colle aux noms des programmes du CAD, et cela
 // evite les tournures bancales du type « je serai design d'objets ».
 const METIERS = [
+  // Les metiers du design
   'Fashion Designer',
   'Product Designer',
   'Interior Architect',
-  'Advertising Creative',
-  'Creative',
+  // Le digital et l'image
   'Digital Designer',
   '3D Designer',
   'Motion Designer',
+  // La communication
+  'Art Director',
+  'Creative Director',
+  'Advertising Creative',
+  'Creative',
 ]
 
 const COPY = {
