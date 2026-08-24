@@ -31,6 +31,23 @@ const PALETTES: Palette[] = [
 
 const DESTINATAIRES = ['Papa, maman', 'Maman', 'Papa', 'Mamie'] as const
 
+// Liste fermee : le jeune choisit, il ne tape pas. Cela simplifie le geste
+// et garantit que l'affiche ne porte que des intitules valides.
+//
+// Les intitules restent en anglais dans les deux langues : c'est l'usage du
+// secteur creatif belge, cela colle aux noms des programmes du CAD, et cela
+// evite les tournures bancales du type « je serai design d'objets ».
+const METIERS = [
+  'Fashion Designer',
+  'Product Designer',
+  'Interior Architect',
+  'Advertising Creative',
+  'Creative',
+  'Digital Designer',
+  '3D Designer',
+  'Motion Designer',
+]
+
 const COPY = {
   fr: {
     eyebrow: 'Plus tard',
@@ -39,7 +56,8 @@ const COPY = {
       "Complète la phrase, on en fait une image. Tu n'auras plus qu'à la leur envoyer.",
     labelDest: 'Tu l\'annonces à qui ?',
     labelMetier: 'Plus tard, tu seras...',
-    placeholderMetier: 'directeur artistique',
+    placeholderMetier: 'Fashion Designer',
+    manque: 'Choisis un métier et écris ton prénom.',
     labelPrenom: 'Ton prénom',
     placeholderPrenom: 'Lina',
     labelCouleur: 'La couleur',
@@ -60,7 +78,8 @@ const COPY = {
     intro: 'Fill in the blank, we turn it into an image. All you do is send it.',
     labelDest: 'Who are you telling?',
     labelMetier: 'Later, you will be...',
-    placeholderMetier: 'art director',
+    placeholderMetier: 'Fashion Designer',
+    manque: 'Pick a job and write your first name.',
     labelPrenom: 'Your first name',
     placeholderPrenom: 'Lina',
     labelCouleur: 'Colour',
@@ -101,7 +120,8 @@ function lignes(
 }
 
 export function MyFutureGenerator({ locale }: { locale: string }) {
-  const L = COPY[locale === 'fr' ? 'fr' : 'en']
+  const langue = locale === 'fr' ? 'fr' : 'en'
+  const L = COPY[langue]
 
   const [destinataire, setDestinataire] =
     useState<(typeof DESTINATAIRES)[number]>('Papa, maman')
@@ -112,6 +132,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
   const [peutPartager, setPeutPartager] = useState(false)
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const complet = metier !== '' && prenom.trim() !== ''
 
   const metierAffiche = useMemo(
     () => (metier.trim() || L.placeholderMetier).toUpperCase(),
@@ -348,18 +369,28 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
           </div>
         </fieldset>
 
-        <label className="flex flex-col gap-2">
-          <span className="text-sm font-semibold uppercase tracking-[0.14em] text-ink/60">
+        <fieldset className="flex flex-col gap-2">
+          <legend className="mb-2 text-sm font-semibold uppercase tracking-[0.14em] text-ink/60">
             {L.labelMetier}
-          </span>
-          <input
-            className={champ}
-            value={metier}
-            onChange={(e) => setMetier(e.target.value)}
-            placeholder={L.placeholderMetier}
-            maxLength={40}
-          />
-        </label>
+          </legend>
+          <div className="flex flex-wrap gap-2">
+            {METIERS.map((m) => (
+              <button
+                key={m}
+                type="button"
+                onClick={() => setMetier(m)}
+                aria-pressed={metier === m}
+                className={`min-h-[44px] rounded-full border-2 px-4 text-base font-semibold transition ${
+                  metier === m
+                    ? 'border-ink bg-ink text-paper'
+                    : 'border-ink/20 text-ink hover:border-ink/50'
+                }`}
+              >
+                {m}
+              </button>
+            ))}
+          </div>
+        </fieldset>
 
         <label className="flex flex-col gap-2">
           <span className="text-sm font-semibold uppercase tracking-[0.14em] text-ink/60">
@@ -401,12 +432,13 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
           <button
             type="button"
             onClick={envoyer}
-            disabled={busy}
+            disabled={busy || !complet}
             className="min-h-[56px] rounded-full bg-ink px-8 text-lg font-bold text-paper transition hover:opacity-90 disabled:opacity-60"
           >
             {busy ? L.sending : peutPartager ? L.send : L.download}
           </button>
-          {!peutPartager && (
+          {!complet && <p className="text-sm text-ink/50">{L.manque}</p>}
+          {complet && !peutPartager && (
             <p className="text-sm text-ink/50">{L.hintDesktop}</p>
           )}
         </div>
