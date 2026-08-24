@@ -86,6 +86,12 @@ const COPY = {
     thanks: 'Merci de croire en mon',
     punch: 'Moi !',
     prefix: 'plus tard je serai',
+    // La chute, accordee au destinataire : « ton » au singulier, « votre »
+    // quand la phrase s'adresse aux deux parents.
+    ps: (pluriel: boolean) =>
+      pluriel
+        ? ["P.S. L'IA est un outil.", 'Comme vos logiciels, à votre époque.']
+        : ["P.S. L'IA est un outil.", 'Comme tes logiciels, à ton époque.'],
   },
   en: {
     eyebrow: 'Later',
@@ -108,6 +114,10 @@ const COPY = {
     thanks: 'Thank you for believing in',
     punch: 'Me !',
     prefix: 'later I will be',
+    ps: (pluriel: boolean) =>
+      pluriel
+        ? ['P.S. AI is a tool.', 'So was your favourite software.']
+        : ['P.S. AI is a tool.', 'So was your favourite software.'],
   },
 }
 
@@ -294,14 +304,23 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     ctx.font = F.anglaise(200)
     ctx.fillText(L.punch, cx, y)
 
-    // La signature et le pied, en micro-capitales
+    // La signature
     y += 78
     espacer('5px')
     ctx.font = F.capitales(32)
     ctx.fillText(`— ${prenomAffiche.toUpperCase()}`, cx, y)
+    espacer('0px')
+
+    // La chute, en italique, calee sur le bas comme un post-scriptum
+    const [ps1, ps2] = L.ps(destinataire === 'Papa, maman')
+    ctx.font = F.italique(34)
+    ctx.fillText(ps1, cx, H - 172)
+    ctx.fillText(ps2, cx, H - 130)
+
+    // Le pied, en micro-capitales
     espacer('3px')
     ctx.font = F.capitales(24)
-    ctx.fillText('CREATED WITH PASSION IN BRUSSELS', cx, H - 88)
+    ctx.fillText('CREATED WITH PASSION IN BRUSSELS', cx, H - 68)
     espacer('0px')
   }, [destinataire, metierAffiche, prenomAffiche, palette, L])
 
