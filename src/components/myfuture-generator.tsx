@@ -274,11 +274,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     const pw = lp + 54
     const ph = 66
     ctx.beginPath()
-    if ('roundRect' in ctx) {
-      ctx.roundRect(-pw / 2, -ph / 2, pw, ph, ph / 2)
-    } else {
-      ctx.rect(-pw / 2, -ph / 2, pw, ph)
-    }
+    ctx.roundRect(-pw / 2, -ph / 2, pw, ph, ph / 2)
     ctx.fill()
     ctx.fillStyle = fond
     ctx.textBaseline = 'middle'
