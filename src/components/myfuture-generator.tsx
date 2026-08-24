@@ -112,6 +112,9 @@ const COPY = {
     teeTitre: 'Le t-shirt',
     teeIntro:
       "L'affiche existe aussi en t-shirt. Édition limitée, deux encres sur gris chiné.",
+    teeSansPrenom:
+      "Le t-shirt reprend ton métier et tes deux couleurs, mais pas ton prénom ni la pastille de rentrée. Ce qui est personnel reste dans l'image que tu envoies à tes parents.",
+    teeApercu: 'Aperçu du t-shirt, sans le prénom ni la pastille',
     teeTaille: 'Ta taille',
     teeCta: 'Précommander',
     teeBientot: 'Boutique en cours d\'ouverture.',
@@ -158,6 +161,9 @@ const COPY = {
     teeTitre: 'The t-shirt',
     teeIntro:
       'The poster also comes as a t-shirt. Limited edition, two inks on heather grey.',
+    teeSansPrenom:
+      'The t-shirt keeps your job title and your two inks, but not your first name and not the term-start sticker. What is personal stays in the image you send your parents.',
+    teeApercu: 'Preview of the t-shirt, without the first name or the sticker',
     teeTaille: 'Your size',
     teeCta: 'Pre-order',
     teeBientot: 'Shop opening soon.',
@@ -214,6 +220,9 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
   const [taille, setTaille] = useState<(typeof TAILLES)[number]>('M')
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  // Le t-shirt est un tirage, pas un envoi : il montre le meme dessin sans
+  // les deux elements qui ne valent que pour les parents.
+  const teeCanvasRef = useRef<HTMLCanvasElement>(null)
   const complet = metier !== '' && prenom.trim() !== ''
 
   const metierAffiche = useMemo(
@@ -235,8 +244,13 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     }
   }, [])
 
-  const dessiner = useCallback(async () => {
-    const canvas = canvasRef.current
+  const dessiner = useCallback(async (
+    canvas: HTMLCanvasElement | null,
+    // Sur le t-shirt : ni prenom ni pastille de rentree. Le prenom n'a de
+    // sens que dans le message aux parents, et une date de rentree imprimee
+    // perimerait le vetement des le 15 septembre.
+    tirage = false,
+  ) => {
     if (!canvas) return
     const ctx = canvas.getContext('2d')
     if (!ctx) return
@@ -312,6 +326,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     // La pastille d'urgence, en diagonale dans le coin, comme un tampon
     // colle apres coup. Encre pleine et texte dans la couleur du fond :
     // c'est le seul element inverse de l'affiche, donc le plus voyant.
+    if (!tirage) {
     ctx.save()
     ctx.fillStyle = signature
     ctx.translate(W - 158, 166)
@@ -331,6 +346,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     ctx.fillStyle = encre
     ctx.textBaseline = 'alphabetic'
     espacer('0px')
+    }
 
     let y = 92
 
@@ -386,12 +402,14 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     ctx.font = F.anglaise(200)
     ctx.fillText(L.punch, cx, y)
 
-    // La signature
-    y += 78
-    espacer('5px')
-    ctx.font = F.capitales(32)
-    ctx.fillText(`— ${prenomAffiche.toUpperCase()}`, cx, y)
-    espacer('0px')
+    // La signature du jeune, absente du tirage
+    if (!tirage) {
+      y += 78
+      espacer('5px')
+      ctx.font = F.capitales(32)
+      ctx.fillText(`— ${prenomAffiche.toUpperCase()}`, cx, y)
+      espacer('0px')
+    }
 
     // La chute et le pied appartiennent a l'ecole : ils passent dans la
     // seconde encre, ce qui les detache de la voix du jeune.
@@ -409,7 +427,8 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
   }, [destinataire, metierAffiche, prenomAffiche, palette, L])
 
   useEffect(() => {
-    void dessiner()
+    void dessiner(canvasRef.current)
+    void dessiner(teeCanvasRef.current, true)
   }, [dessiner])
 
   // Un JPG plutot qu'un PNG : plus leger, mieux accepte par les messageries,
@@ -674,11 +693,21 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     {/* La précommande du t-shirt */}
     <section className="rounded-2xl border-2 border-ink/15 p-6 sm:p-8">
       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-        <div className="max-w-md">
-          <h2 className="text-2xl font-extrabold text-ink sm:text-3xl">
-            {L.teeTitre}
-          </h2>
-          <p className="mt-2 text-lg text-ink/70">{L.teeIntro}</p>
+        <div className="flex max-w-xl flex-col gap-5 sm:flex-row sm:items-start">
+          <canvas
+            ref={teeCanvasRef}
+            width={W}
+            height={H}
+            className="w-36 shrink-0 rounded-lg shadow-md sm:w-44"
+            aria-label={L.teeApercu}
+          />
+          <div>
+            <h2 className="text-2xl font-extrabold text-ink sm:text-3xl">
+              {L.teeTitre}
+            </h2>
+            <p className="mt-2 text-lg text-ink/70">{L.teeIntro}</p>
+            <p className="mt-3 text-base text-ink/60">{L.teeSansPrenom}</p>
+          </div>
         </div>
 
         <div className="flex flex-col gap-4">
