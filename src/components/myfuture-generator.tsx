@@ -94,6 +94,9 @@ const COPY = {
       'Ton image se télécharge, puis ta messagerie s\'ouvre. Il ne te reste qu\'à y glisser l\'image.',
     mailSujet: (prenom: string) => `L'avenir de ${prenom}`,
     pastille: 'Rentrée le 14/09',
+    merci: 'We wish you a happy creative future.',
+    merciFait: 'Ton image est prête.',
+    recommencer: 'En créer une autre',
     souvenirLabel: 'Idée à valider',
     souvenir: 'Cet email pourrait t\'être renvoyé dans 10 ans, en souvenir.',
     baseline: 'Créer son avenir, ça s\'apprend.',
@@ -129,6 +132,9 @@ const COPY = {
       'Your image downloads, then your mail app opens. All you do is drop the image in.',
     mailSujet: (prenom: string) => `${prenom}'s future`,
     pastille: 'Term starts 14/09',
+    merci: 'We wish you a happy creative future.',
+    merciFait: 'Your image is ready.',
+    recommencer: 'Make another one',
     souvenirLabel: 'Idea to validate',
     souvenir: 'This email could be sent back to you in 10 years, as a keepsake.',
     baseline: 'Building a future is something you learn.',
@@ -176,6 +182,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
   const [palette, setPalette] = useState(0)
   const [busy, setBusy] = useState(false)
   const [peutPartager, setPeutPartager] = useState(false)
+  const [fait, setFait] = useState(false)
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const complet = metier !== '' && prenom.trim() !== ''
@@ -407,6 +414,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     a.download = nomFichier
     a.click()
     URL.revokeObjectURL(url)
+    setFait(true)
   }, [fichier, nomFichier])
 
   const envoyer = useCallback(async () => {
@@ -419,6 +427,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
           files: [f],
           text: `${L.shareText} ${metierAffiche.toLowerCase()}.`,
         })
+        setFait(true)
       } else {
         await telecharger()
       }
@@ -442,6 +451,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
         `${destinataire},\n\n${L.prefix} ${metierAffiche.toLowerCase()}.\n\n${L.thanks} ${L.punch}\n\n${prenomAffiche}`,
       )
       window.location.href = `mailto:?subject=${sujet}&body=${corps}`
+      setFait(true)
     } finally {
       setBusy(false)
     }
@@ -581,6 +591,22 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
               {L.download}
             </button>
           </div>
+
+          {fait && (
+            <div className="rounded-xl border-2 border-accent bg-accent/10 p-5">
+              <p className="text-xl font-extrabold leading-snug text-ink">
+                {L.merci}
+              </p>
+              <p className="mt-1 text-sm text-ink/60">{L.merciFait}</p>
+              <button
+                type="button"
+                onClick={() => setFait(false)}
+                className="mt-3 text-sm font-semibold text-ink underline underline-offset-4"
+              >
+                {L.recommencer}
+              </button>
+            </div>
+          )}
 
           {!complet && <p className="text-sm text-ink/50">{L.manque}</p>}
           {complet && (
