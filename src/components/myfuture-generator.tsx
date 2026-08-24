@@ -50,8 +50,9 @@ const COPY = {
     hintDesktop:
       'Sur ordinateur, l\'image se télécharge. Depuis un téléphone, elle part directement dans WhatsApp.',
     baseline: 'Créer son avenir, ça s\'apprend.',
-    thanks: 'Merci de croire en mon avenir.',
-    prefix: 'plus tard, je serai',
+    thanks: 'Merci de croire en mon',
+    punch: 'Moi !',
+    prefix: 'plus tard je serai',
   },
   en: {
     eyebrow: 'Later',
@@ -70,8 +71,9 @@ const COPY = {
     hintDesktop:
       'On desktop the image downloads. From a phone it goes straight into WhatsApp.',
     baseline: 'Building a future is something you learn.',
-    thanks: 'Thank you for believing in my future.',
-    prefix: 'later, I will be',
+    thanks: 'Thank you for believing in',
+    punch: 'Me !',
+    prefix: 'later I will be',
   },
 }
 
@@ -192,30 +194,46 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
       }
     }
 
-    let y = 190
+    // Une étincelle à quatre branches, comme sur les t-shirts.
+    const etincelle = (x: number, y: number, r: number) => {
+      const c = r * 0.16
+      ctx.beginPath()
+      ctx.moveTo(x, y - r)
+      ctx.quadraticCurveTo(x + c, y - c, x + r, y)
+      ctx.quadraticCurveTo(x + c, y + c, x, y + r)
+      ctx.quadraticCurveTo(x - c, y + c, x - r, y)
+      ctx.quadraticCurveTo(x - c, y - c, x, y - r)
+      ctx.fill()
+    }
 
-    // Bandeau de tête, en capitales espacées
-    espacer('6px')
-    ctx.font = F.capitales(34)
-    ctx.fillText('CAD BRUSSELS', cx, y)
-    y += 46
-    ctx.fillText('SINCE 1961', cx, y)
+    let y = 130
+
+    // Bandeau de tête, en micro-capitales espacées
+    espacer('7px')
+    ctx.font = F.capitales(27)
+    ctx.fillText('CAD BRUSSELS  ·  SINCE 1961', cx, y)
     espacer('0px')
     y += 150
 
-    // « Papa, maman, » à l'anglaise, la part d'enfance
-    ctx.font = F.anglaise(112)
-    ctx.fillText(`${destinataire},`, cx, y)
-    y += 92
+    // « Papa, maman, » à l'anglaise : la part d'enfance, décalée à gauche
+    ctx.font = F.anglaise(126)
+    const largPapa = ctx.measureText(`${destinataire},`).width
+    ctx.textAlign = 'left'
+    const xPapa = Math.max(marge, cx - largPapa / 2 - 70)
+    ctx.fillText(`${destinataire},`, xPapa, y)
+    ctx.textAlign = 'center'
+    // L'étincelle se pose à côté, en haut, comme sur le t-shirt.
+    etincelle(Math.min(W - marge - 30, xPapa + largPapa + 52), y - 62, 27)
+    y += 74
 
-    // « plus tard, je serai » en romain
-    ctx.font = F.roman(60)
+    // « plus tard je serai » en petit romain
+    ctx.font = F.roman(52)
     ctx.fillText(L.prefix, cx, y)
 
-    // Le métier, en capitales grasses, réduit jusqu'à tenir en trois lignes
-    // ET en largeur : un mot seul trop large ne peut pas être coupé, c'est
-    // donc la taille qui doit céder.
-    let taille = 152
+    // Le métier, en capitales grasses et interlignage serré. La taille cède
+    // jusqu'à tenir en trois lignes ET en largeur : un mot seul trop large
+    // ne peut pas être coupé.
+    let taille = 176
     let lgs: string[] = []
     for (; taille >= 40; taille -= 4) {
       ctx.font = F.gras(taille)
@@ -223,32 +241,31 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
       const plusLarge = Math.max(...lgs.map((l) => ctx.measureText(l).width))
       if (lgs.length <= 3 && plusLarge <= largeur) break
     }
-    const interligne = taille * 0.98
-    y += taille + 24
+    const interligne = taille * 0.88
+    y += taille + 10
     for (const ligne of lgs) {
       ctx.fillText(ligne, cx, y)
       y += interligne
     }
 
-    // Le filet court, centré
-    y += 46
-    ctx.fillRect(cx - 110, y, 220, 4)
-    y += 92
-
-    // La signature, en italique
-    ctx.font = F.italique(50)
+    // La chute : le petit romain, puis « Moi ! » en très grand à l'anglaise.
+    // C'est le même geste que « Little Big player Heart » sur le t-shirt :
+    // on change de registre au milieu de la phrase, là où ça compte.
+    y += 84
+    ctx.font = F.roman(50)
     ctx.fillText(L.thanks, cx, y)
-    y += 74
-    espacer('4px')
-    ctx.font = F.capitales(36)
-    ctx.fillText(`— ${prenomAffiche.toUpperCase()}`, cx, y)
-    espacer('0px')
+    y += 158
+    ctx.font = F.anglaise(200)
+    ctx.fillText(L.punch, cx, y)
 
-    // Le pied, en micro-capitales, comme sur les t-shirts
+    // La signature et le pied, en micro-capitales
+    y += 78
+    espacer('5px')
+    ctx.font = F.capitales(32)
+    ctx.fillText(`— ${prenomAffiche.toUpperCase()}`, cx, y)
     espacer('3px')
-    ctx.font = F.capitales(26)
-    ctx.fillText('CREATED WITH PASSION', cx, H - 116)
-    ctx.fillText('IN BRUSSELS', cx, H - 80)
+    ctx.font = F.capitales(24)
+    ctx.fillText('CREATED WITH PASSION IN BRUSSELS', cx, H - 88)
     espacer('0px')
   }, [destinataire, metierAffiche, prenomAffiche, palette, L])
 
