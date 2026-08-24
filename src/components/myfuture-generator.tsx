@@ -116,7 +116,7 @@ const COPY = {
     teeCta: 'Précommander',
     teeBientot: 'Boutique en cours d\'ouverture.',
     teeRaison:
-      'La production est lancée en fonction des précommandes, après le 30 septembre. On imprime ce qui est commandé, rien de plus.',
+      'La production est lancée en fonction des précommandes, après le 30 septembre. Livraison prévue le 30 octobre si le nombre de commandes est suffisant. On imprime ce qui est commandé, rien de plus.',
     souvenirLabel: 'Idée à valider',
     souvenir: 'Cet email pourrait t\'être renvoyé dans 10 ans, en souvenir.',
     baseline: 'Créer son avenir, ça s\'apprend.',
@@ -162,7 +162,7 @@ const COPY = {
     teeCta: 'Pre-order',
     teeBientot: 'Shop opening soon.',
     teeRaison:
-      'Production runs on pre-orders only, after 30 September. We print what is ordered, nothing more.',
+      'Production runs on pre-orders only, after 30 September. Delivery expected 30 October if enough orders come in. We print what is ordered, nothing more.',
     souvenirLabel: 'Idea to validate',
     souvenir: 'This email could be sent back to you in 10 years, as a keepsake.',
     baseline: 'Building a future is something you learn.',
