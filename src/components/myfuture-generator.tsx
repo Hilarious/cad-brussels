@@ -94,7 +94,8 @@ const COPY = {
       'Ton image se télécharge, puis ta messagerie s\'ouvre. Il ne te reste qu\'à y glisser l\'image.',
     mailSujet: (prenom: string) => `L'avenir de ${prenom}`,
     pastille: 'Rentrée le 14/09',
-    souvenir: 'Cet email te sera renvoyé dans 10 ans, en souvenir.',
+    souvenirLabel: 'Idée à valider',
+    souvenir: 'Cet email pourrait t\'être renvoyé dans 10 ans, en souvenir.',
     baseline: 'Créer son avenir, ça s\'apprend.',
     thanks: 'Merci de croire en mon',
     punch: 'Moi !',
@@ -128,7 +129,8 @@ const COPY = {
       'Your image downloads, then your mail app opens. All you do is drop the image in.',
     mailSujet: (prenom: string) => `${prenom}'s future`,
     pastille: 'Term starts 14/09',
-    souvenir: "We'll send this email back to you in 10 years, as a keepsake.",
+    souvenirLabel: 'Idea to validate',
+    souvenir: 'This email could be sent back to you in 10 years, as a keepsake.',
     baseline: 'Building a future is something you learn.',
     thanks: 'Thank you for believing in',
     punch: 'Me !',
@@ -587,10 +589,17 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
             </p>
           )}
 
-          {/* La promesse qui donne au jeune une raison de laisser son adresse. */}
-          <p className="mt-1 border-t-2 border-ink/10 pt-4 text-base font-semibold text-ink/80">
-            {L.souvenir}
-          </p>
+          {/* Piste, pas encore une fonctionnalite : rien ne stocke l'adresse
+              ni ne programme d'envoi. Le cadre en pointilles et le libelle
+              le disent, pour que personne ne la prenne pour une promesse. */}
+          <div className="mt-2 rounded-xl border-2 border-dashed border-ink/25 p-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink/45">
+              {L.souvenirLabel}
+            </p>
+            <p className="mt-1 text-base font-medium italic text-ink/70">
+              {L.souvenir}
+            </p>
+          </div>
         </div>
       </div>
 
