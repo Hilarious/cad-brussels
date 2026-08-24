@@ -48,6 +48,18 @@ const PALETTES: Palette[] = [
 
 const DESTINATAIRES = ['Papa, maman', 'Maman', 'Papa', 'Mamie'] as const
 
+const TAILLES = ['S', 'M', 'L', 'XL'] as const
+
+/**
+ * La boutique de precommande du t-shirt.
+ *
+ * A REMPLIR : l'adresse de la fiche produit Shopify. Tant qu'elle est vide,
+ * le bouton reste inactif et le dit, plutot que de mener nulle part.
+ * La taille choisie est passee en parametre, Shopify sait s'en servir pour
+ * preselectionner la variante.
+ */
+const SHOPIFY_PRODUIT = ''
+
 // Liste fermee : le jeune choisit, il ne tape pas. Cela simplifie le geste
 // et garantit que l'affiche ne porte que des intitules valides.
 //
@@ -97,6 +109,14 @@ const COPY = {
     merci: 'We wish you a happy creative future.',
     merciFait: 'Ton image est prête.',
     recommencer: 'En créer une autre',
+    teeTitre: 'Le t-shirt',
+    teeIntro:
+      "L'affiche existe aussi en t-shirt. Édition limitée, deux encres sur gris chiné.",
+    teeTaille: 'Ta taille',
+    teeCta: 'Précommander',
+    teeBientot: 'Boutique en cours d\'ouverture.',
+    teeRaison:
+      'La production est lancée en fonction des précommandes, après le 30 septembre. On imprime ce qui est commandé, rien de plus.',
     souvenirLabel: 'Idée à valider',
     souvenir: 'Cet email pourrait t\'être renvoyé dans 10 ans, en souvenir.',
     baseline: 'Créer son avenir, ça s\'apprend.',
@@ -135,6 +155,14 @@ const COPY = {
     merci: 'We wish you a happy creative future.',
     merciFait: 'Your image is ready.',
     recommencer: 'Make another one',
+    teeTitre: 'The t-shirt',
+    teeIntro:
+      'The poster also comes as a t-shirt. Limited edition, two inks on heather grey.',
+    teeTaille: 'Your size',
+    teeCta: 'Pre-order',
+    teeBientot: 'Shop opening soon.',
+    teeRaison:
+      'Production runs on pre-orders only, after 30 September. We print what is ordered, nothing more.',
     souvenirLabel: 'Idea to validate',
     souvenir: 'This email could be sent back to you in 10 years, as a keepsake.',
     baseline: 'Building a future is something you learn.',
@@ -183,6 +211,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
   const [busy, setBusy] = useState(false)
   const [peutPartager, setPeutPartager] = useState(false)
   const [fait, setFait] = useState(false)
+  const [taille, setTaille] = useState<(typeof TAILLES)[number]>('M')
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const complet = metier !== '' && prenom.trim() !== ''
@@ -461,6 +490,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     'w-full rounded-lg border-2 border-ink/15 bg-white px-4 py-3 text-lg text-ink outline-none transition focus:border-ink'
 
   return (
+    <div className="flex flex-col gap-16">
     <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-14">
       {/* Le formulaire */}
       <div className="flex flex-col gap-6">
@@ -639,6 +669,64 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
           aria-label="Aperçu de ton affiche"
         />
       </div>
+    </div>
+
+    {/* La précommande du t-shirt */}
+    <section className="rounded-2xl border-2 border-ink/15 p-6 sm:p-8">
+      <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <div className="max-w-md">
+          <h2 className="text-2xl font-extrabold text-ink sm:text-3xl">
+            {L.teeTitre}
+          </h2>
+          <p className="mt-2 text-lg text-ink/70">{L.teeIntro}</p>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <fieldset className="flex flex-col gap-2">
+            <legend className="mb-2 text-sm font-semibold uppercase tracking-[0.14em] text-ink/60">
+              {L.teeTaille}
+            </legend>
+            <div className="flex gap-2">
+              {TAILLES.map((t) => (
+                <button
+                  key={t}
+                  type="button"
+                  onClick={() => setTaille(t)}
+                  aria-pressed={taille === t}
+                  className={`h-12 w-14 rounded-lg border-2 text-base font-bold transition ${
+                    taille === t
+                      ? 'border-ink bg-ink text-paper'
+                      : 'border-ink/20 text-ink hover:border-ink/50'
+                  }`}
+                >
+                  {t}
+                </button>
+              ))}
+            </div>
+          </fieldset>
+
+          {SHOPIFY_PRODUIT ? (
+            <a
+              href={`${SHOPIFY_PRODUIT}?taille=${taille}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex min-h-[56px] items-center justify-center rounded-full bg-ink px-8 text-lg font-bold text-paper transition hover:opacity-90"
+            >
+              {L.teeCta}
+            </a>
+          ) : (
+            <div className="flex min-h-[56px] items-center justify-center rounded-full border-2 border-dashed border-ink/25 px-8 text-base font-semibold text-ink/45">
+              {L.teeBientot}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Le parti pris de production, dit franchement */}
+      <p className="mt-6 max-w-2xl border-t-2 border-ink/10 pt-5 text-base text-ink/70">
+        {L.teeRaison}
+      </p>
+    </section>
     </div>
   )
 }
