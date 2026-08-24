@@ -20,12 +20,13 @@ const H = 1350
 
 type Palette = { nom: string; fond: string; encre: string }
 
-// Quatre combinaisons issues de la palette CAD officielle.
+// Impression une seule couleur sur fond teinté, comme les t-shirts.
+// Les encres viennent de la palette CAD, les fonds sont des textiles.
 const PALETTES: Palette[] = [
-  { nom: 'Rose', fond: '#ff277f', encre: '#000000' },
-  { nom: 'Cyan', fond: '#00ffff', encre: '#000000' },
-  { nom: 'Lime', fond: '#80ff00', encre: '#000000' },
-  { nom: 'Nuit', fond: '#2f346d', encre: '#ffffff' },
+  { nom: 'Crème et nuit', fond: '#F1EDE3', encre: '#2f346d' },
+  { nom: 'Crème et rose', fond: '#F1EDE3', encre: '#ff277f' },
+  { nom: 'Nuit et crème', fond: '#2f346d', encre: '#F1EDE3' },
+  { nom: 'Encre et crème', fond: '#14140F', encre: '#F1EDE3' },
 ]
 
 const DESTINATAIRES = ['Papa, maman', 'Maman', 'Papa', 'Mamie'] as const
@@ -137,11 +138,37 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
 
     const { fond, encre } = PALETTES[palette]
 
-    // Les polices doivent être prêtes avant de mesurer quoi que ce soit.
+    // next/font génère des noms de famille obfusqués : on lit les variables
+    // CSS pour retrouver le nom réel, seul utilisable dans ctx.font. Elles
+    // sont portées par la page, pas par la racine : on interroge donc le
+    // canvas, qui en hérite.
+    const styles = getComputedStyle(canvas)
+    const serif =
+      styles.getPropertyValue('--font-affiche-serif').trim() || 'Georgia'
+    const script =
+      styles.getPropertyValue('--font-affiche-script').trim() || 'cursive'
+
+    // document.fonts.load() n'accepte qu'une seule famille : on isole la
+    // première de la liste. Lui passer la liste complète échoue en silence
+    // et le canvas dessinerait alors avec les polices de repli.
+    const premiere = (liste: string) => liste.split(',')[0].trim()
+    const fSerif = premiere(serif)
+    const fScript = premiere(script)
+
+    const F = {
+      capitales: (t: number) => `400 ${t}px ${fSerif}, Georgia, serif`,
+      roman: (t: number) => `400 ${t}px ${fSerif}, Georgia, serif`,
+      gras: (t: number) => `900 ${t}px ${fSerif}, Georgia, serif`,
+      italique: (t: number) => `italic 400 ${t}px ${fSerif}, Georgia, serif`,
+      anglaise: (t: number) => `400 ${t}px ${fScript}, cursive`,
+    }
+
     try {
       await Promise.all([
-        document.fonts.load('600 64px Outfit'),
-        document.fonts.load('800 150px Outfit'),
+        document.fonts.load(`400 60px ${fSerif}`),
+        document.fonts.load(`900 140px ${fSerif}`),
+        document.fonts.load(`italic 400 46px ${fSerif}`),
+        document.fonts.load(`400 110px ${fScript}`),
       ])
     } catch {
       /* si le chargement échoue, le fallback système fera l'affaire */
@@ -151,54 +178,78 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     ctx.fillRect(0, 0, W, H)
     ctx.fillStyle = encre
     ctx.textBaseline = 'alphabetic'
+    ctx.textAlign = 'center'
 
-    const marge = 90
+    const cx = W / 2
+    const marge = 110
     const largeur = W - marge * 2
-    let y = 220
 
-    // « Papa, maman, »
-    ctx.font = '600 62px Outfit, system-ui, sans-serif'
-    ctx.fillText(`${destinataire},`, marge, y)
-    y += 82
+    // L'interlettrage n'existe pas partout : on l'applique quand il existe.
+    const espacer = (v: string) => {
+      if ('letterSpacing' in ctx) {
+        ;(ctx as CanvasRenderingContext2D & { letterSpacing: string })
+          .letterSpacing = v
+      }
+    }
 
-    // « plus tard, je serai »
-    ctx.fillText(L.prefix, marge, y)
-    y += 60
+    let y = 190
 
-    // Le métier, en très grand, réduit jusqu'à tenir en trois lignes ET en
-    // largeur : un mot seul plus large que la colonne ne peut pas être coupé,
-    // c'est donc la taille qui doit céder.
-    let taille = 168
+    // Bandeau de tête, en capitales espacées
+    espacer('6px')
+    ctx.font = F.capitales(34)
+    ctx.fillText('CAD BRUSSELS', cx, y)
+    y += 46
+    ctx.fillText('SINCE 1961', cx, y)
+    espacer('0px')
+    y += 150
+
+    // « Papa, maman, » à l'anglaise, la part d'enfance
+    ctx.font = F.anglaise(112)
+    ctx.fillText(`${destinataire},`, cx, y)
+    y += 92
+
+    // « plus tard, je serai » en romain
+    ctx.font = F.roman(60)
+    ctx.fillText(L.prefix, cx, y)
+
+    // Le métier, en capitales grasses, réduit jusqu'à tenir en trois lignes
+    // ET en largeur : un mot seul trop large ne peut pas être coupé, c'est
+    // donc la taille qui doit céder.
+    let taille = 152
     let lgs: string[] = []
     for (; taille >= 40; taille -= 4) {
-      ctx.font = `800 ${taille}px Outfit, system-ui, sans-serif`
+      ctx.font = F.gras(taille)
       lgs = lignes(ctx, metierAffiche, largeur)
       const plusLarge = Math.max(...lgs.map((l) => ctx.measureText(l).width))
       if (lgs.length <= 3 && plusLarge <= largeur) break
     }
-    const interligne = taille * 1.02
-    y += taille
+    const interligne = taille * 0.98
+    y += taille + 24
     for (const ligne of lgs) {
-      ctx.fillText(ligne, marge, y)
+      ctx.fillText(ligne, cx, y)
       y += interligne
     }
 
-    // Le filet
-    y += 30
-    ctx.fillRect(marge, y, largeur, 6)
-    y += 90
+    // Le filet court, centré
+    y += 46
+    ctx.fillRect(cx - 110, y, 220, 4)
+    y += 92
 
-    // La signature
-    ctx.font = '600 54px Outfit, system-ui, sans-serif'
-    ctx.fillText(L.thanks, marge, y)
-    y += 76
-    ctx.fillText(`— ${prenomAffiche}`, marge, y)
+    // La signature, en italique
+    ctx.font = F.italique(50)
+    ctx.fillText(L.thanks, cx, y)
+    y += 74
+    espacer('4px')
+    ctx.font = F.capitales(36)
+    ctx.fillText(`— ${prenomAffiche.toUpperCase()}`, cx, y)
+    espacer('0px')
 
-    // Le pied de page
-    ctx.font = '800 58px Outfit, system-ui, sans-serif'
-    ctx.fillText('CAD', marge, H - 130)
-    ctx.font = '400 36px Outfit, system-ui, sans-serif'
-    ctx.fillText(L.baseline, marge, H - 78)
+    // Le pied, en micro-capitales, comme sur les t-shirts
+    espacer('3px')
+    ctx.font = F.capitales(26)
+    ctx.fillText('CREATED WITH PASSION', cx, H - 116)
+    ctx.fillText('IN BRUSSELS', cx, H - 80)
+    espacer('0px')
   }, [destinataire, metierAffiche, prenomAffiche, palette, L])
 
   useEffect(() => {
