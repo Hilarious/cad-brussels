@@ -434,7 +434,9 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
 
     espacer('3px')
     ctx.font = F.capitales(24)
-    ctx.fillText('CREATED WITH PASSION IN BRUSSELS', cx, H - 68)
+    // La chute de la campagne, la meme que sur l'affiche des outils : elle
+    // signe l'image au lieu de la localiser.
+    ctx.fillText('A GOOD IDEA RUNS ON BRAIN JUICE.', cx, H - 68)
     espacer('0px')
     ctx.fillStyle = encre
   }, [destinataire, metierAffiche, prenomAffiche, palette, L])
