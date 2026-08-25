@@ -158,7 +158,7 @@ const COPY = {
     hintMail:
       'Ton image se télécharge, puis ta messagerie s\'ouvre. Il ne te reste qu\'à y glisser l\'image.',
     mailSujet: (prenom: string) => `L'avenir de ${prenom}`,
-    pastille: 'Rentrée le 14/09',
+    pastille: 'Rentrée le 07/09',
     merci: 'We wish you a happy creative future.',
     merciFait: 'Ton image est prête.',
     recommencer: 'En créer une autre',
@@ -210,8 +210,8 @@ const COPY = {
     hintMail:
       'Your image downloads, then your mail app opens. All you do is drop the image in.',
     mailSujet: (prenom: string) => `${prenom}'s future`,
-    // « 14/09 » se lit 9 avril pour un anglophone : on ecrit le mois.
-    pastille: 'Term starts 14 Sept',
+    // « 07/09 » se lit 9 juillet pour un anglophone : on ecrit le mois.
+    pastille: 'Term starts 7 Sept',
     merci: 'We wish you a happy creative future.',
     merciFait: 'Your image is ready.',
     recommencer: 'Make another one',
