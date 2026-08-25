@@ -65,8 +65,8 @@ const CATALOG: ProgramLink[] = [
   },
   {
     slug: 'home-living-design',
-    labelFR: 'Home & Living Design',
-    labelEN: 'Home & Living Design',
+    labelFR: 'Furniture & Product Design',
+    labelEN: 'Furniture & Product Design',
     descFR: 'Postgraduate 2 ans',
     descEN: 'Postgraduate 2 years',
     level: 'master',

@@ -101,7 +101,7 @@ export const Applications: CollectionConfig = {
         { label: 'Undergraduate · Mode & Accessoires', value: 'bachelor-fashion' },
         // Master
         { label: 'Postgraduate · Architecture d’intérieur 2 ans', value: 'master-interior' },
-        { label: 'Postgraduate · Home & Living', value: 'master-home-living' },
+        { label: 'Postgraduate · Furniture & Product Design', value: 'master-home-living' },
         { label: 'Postgraduate · Digital Brand Content', value: 'master-digital-brand' },
         { label: 'Postgraduate · Image / 3D / Motion / IA', value: 'master-image' },
         { label: 'Postgraduate · Event Management', value: 'master-event' },

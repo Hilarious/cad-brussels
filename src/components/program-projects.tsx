@@ -338,7 +338,7 @@ const PROJECTS_BY_SLUG: Record<
   },
 
   // ============================================================
-  // MASTER · Home & Living Design
+  // MASTER · Furniture & Product Design
   // ============================================================
   'home-living-design': {
     fr: [
@@ -346,7 +346,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'Mini-collection de mobilier modulaire en bois local',
         studentName: 'Léa M.',
         year: 'Postgraduate · 2023',
-        pedagogyStep: 'Postgraduate Home & Living · Mémoire-projet final',
+        pedagogyStep: 'Postgraduate Furniture & Product Design · Mémoire-projet final',
         quote:
           "J'ai utilisé du chêne belge récupéré d'une grange démolie. Trois pièces qui se combinent, fabricables en série.",
         sketchCaption: 'Croquis · Léa M. · recherche silhouettes mobilier',
@@ -357,7 +357,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'Une ligne d’art de la table en verre soufflé',
         studentName: 'Anna S.',
         year: 'Postgraduate · 2024',
-        pedagogyStep: 'Postgraduate Home & Living · Atelier matières',
+        pedagogyStep: 'Postgraduate Furniture & Product Design · Atelier matières',
         quote:
           "J'ai passé 3 jours dans une verrerie à Mons pour comprendre le geste avant de dessiner. Pas l'inverse.",
         sketchCaption: 'Croquis · Anna S. · 8 formes de verres et carafes',
@@ -368,7 +368,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'Workshop Milan · briefs d’éditeurs italiens',
         studentName: 'Giulia F.',
         year: 'Postgraduate · 2024',
-        pedagogyStep: 'Postgraduate Home & Living · Workshop Salone del Mobile',
+        pedagogyStep: 'Postgraduate Furniture & Product Design · Workshop Salone del Mobile',
         quote:
           "Présenter ma chaise devant un éditeur Cassina, c'est ce que personne ne vous prépare à vivre. Sauf au CAD.",
         sketchCaption: 'Croquis · Giulia F. · chaise pour briefe Cassina',
@@ -381,7 +381,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'Modular furniture mini-collection in local wood',
         studentName: 'Léa M.',
         year: 'Postgraduate · 2023',
-        pedagogyStep: 'Home & Living postgraduate · Final thesis-project',
+        pedagogyStep: 'Furniture & Product postgraduate · Final thesis-project',
         quote:
           'I used Belgian oak recovered from a demolished barn. Three pieces that combine, manufacturable in series.',
         sketchCaption: 'Sketch · Léa M. · furniture silhouette research',
@@ -392,7 +392,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'A blown-glass tableware line',
         studentName: 'Anna S.',
         year: 'Postgraduate · 2024',
-        pedagogyStep: 'Home & Living postgraduate · Materials studio',
+        pedagogyStep: 'Furniture & Product postgraduate · Materials studio',
         quote:
           'I spent 3 days at a glassworks in Mons to understand the gesture before drawing. Not the other way around.',
         sketchCaption: 'Sketch · Anna S. · 8 glass and carafe forms',
@@ -403,7 +403,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'Milan workshop · briefs from Italian editors',
         studentName: 'Giulia F.',
         year: 'Postgraduate · 2024',
-        pedagogyStep: 'Home & Living postgraduate · Salone del Mobile workshop',
+        pedagogyStep: 'Furniture & Product postgraduate · Salone del Mobile workshop',
         quote:
           "Presenting my chair to a Cassina editor is what nobody prepares you for. Except at CAD.",
         sketchCaption: 'Sketch · Giulia F. · chair for Cassina brief',

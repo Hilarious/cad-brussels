@@ -7,6 +7,7 @@ import { AdmissionCTA } from '@/components/admission-cta'
 import { Grid, Col } from '@/components/grid'
 import { ImagePlaceholder } from '@/components/image-placeholder'
 import { Marquee } from '@/components/marquee'
+import { ProgramsPathway } from '@/components/programs-pathway'
 import { JsonLd } from '@/components/json-ld'
 import { educationalOrganization } from '@/lib/schema'
 
@@ -45,21 +46,6 @@ export default async function HomePage({
       depth: 0,
     }),
   ])
-
-  const programs =
-    locale === 'fr'
-      ? [
-          { slug: 'interior-architecture-design', label: 'Architecture d’intérieur', desc: 'Undergraduate 3 ans' },
-          { slug: 'communication-digital-design', label: 'Communication & Digital', desc: 'Undergraduate 3 ans' },
-          { slug: 'fashion-accessory-design', label: 'Mode & Accessoires', desc: 'Undergraduate 3 ans' },
-          { slug: 'postgraduate', label: 'Postgraduates', desc: '7 spécialisations' },
-        ]
-      : [
-          { slug: 'interior-architecture-design', label: 'Interior Architecture', desc: 'Undergraduate 3 years' },
-          { slug: 'communication-digital-design', label: 'Communication & Digital', desc: 'Undergraduate 3 years' },
-          { slug: 'fashion-accessory-design', label: 'Fashion & Accessory', desc: 'Undergraduate 3 years' },
-          { slug: 'postgraduate', label: 'Postgraduates', desc: '7 specializations' },
-        ]
 
   // Trust band — official figures from cad.be/fr/qui-sommes-nous and
   // the CUMULUS network partnership pages. These are the strongest
@@ -315,40 +301,9 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* Programs grid */}
-      <section className="container py-16">
-        <div className="mb-10 flex items-end justify-between">
-          <h2 className="font-display text-3xl md:text-4xl">
-            {locale === 'fr' ? 'Programmes' : 'Programs'}
-          </h2>
-          <Link
-            href={`/${locale}/programmes`}
-            className="tap text-sm text-ink/70 hover:text-accent"
-          >
-            {locale === 'fr' ? 'Tout voir' : 'See all'} →
-          </Link>
-        </div>
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {programs.map((p) => (
-            <li key={p.slug}>
-              <Link
-                href={`/${locale}/${p.slug}`}
-                className="block rounded-2xl border border-ink/10 p-6 transition hover:border-accent/40 hover:bg-paper"
-              >
-                <p className="text-xs uppercase tracking-widest text-ink/50">
-                  {p.desc}
-                </p>
-                <p className="mt-2 font-display text-xl leading-snug">
-                  {p.label}
-                </p>
-                <p className="mt-6 text-sm text-accent">
-                  {locale === 'fr' ? 'Découvrir' : 'Discover'} →
-                </p>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
+      {/* Parcours d'etudes — remplace la grille de cartes ET la roue
+          du site WordPress. Voir src/components/programs-pathway.tsx */}
+      <ProgramsPathway locale={locale} />
 
       {/* Marquee défilant — projets étudiants en flux continu.
           Vient juste après la grille des noms de programmes : "vous

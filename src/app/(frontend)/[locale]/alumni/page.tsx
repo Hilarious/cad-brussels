@@ -94,7 +94,7 @@ const alumniFR: Alumni[] = [
   {
     name: 'Léa Moreno',
     classOf: 'Promo 2021',
-    program: 'Home & Living Design',
+    program: 'Furniture & Product Design',
     programSlug: 'home-living-design',
     currentRole: 'Designer produit',
     currentEmployer: 'Vitra (équipe externe)',
@@ -193,7 +193,7 @@ const alumniEN: Alumni[] = [
   {
     name: 'Léa Moreno',
     classOf: 'Class of 2021',
-    program: 'Home & Living Design',
+    program: 'Furniture & Product Design',
     programSlug: 'home-living-design',
     currentRole: 'Product designer',
     currentEmployer: 'Vitra (external team)',

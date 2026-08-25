@@ -80,7 +80,7 @@ export default async function AboutPage({
           "Le CAD est membre de l'Association CUMULUS depuis juin 2013, qui réunit environ 200 écoles d'art publiques et privées à travers le monde. Workshops annuels à Milan, Shanghai, São Paulo, Lisbonne et Tokyo. 30+ nationalités sur le campus. Le design ne s'apprend pas en vase clos.",
         intlPhotos: [
           'Workshop Shanghai · étudiants en visite Tongji',
-          'Salone del Mobile Milan · Home & Living en immersion',
+          'Salone del Mobile Milan · Furniture & Product en immersion',
           'Workshop São Paulo · IED Sampa, collaboration mode',
           'Cours sur le campus · groupe multinational en discussion',
         ],
@@ -145,7 +145,7 @@ export default async function AboutPage({
           "CAD has been a member of the CUMULUS Association since June 2013, gathering around 200 public and private art colleges worldwide. Yearly workshops in Milan, Shanghai, São Paulo, Lisbon and Tokyo. 30+ nationalities on campus. Design isn't learned in a vacuum.",
         intlPhotos: [
           'Workshop Shanghai · students visiting Tongji',
-          'Salone del Mobile Milan · Home & Living immersion',
+          'Salone del Mobile Milan · Furniture & Product immersion',
           'Workshop São Paulo · IED Sampa, fashion collaboration',
           'On-campus class · multinational group in discussion',
         ],

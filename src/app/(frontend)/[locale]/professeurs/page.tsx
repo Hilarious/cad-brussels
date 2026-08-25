@@ -137,12 +137,12 @@ const facultyFR: FacultyMember[] = [
     city: 'Bruxelles',
   },
 
-  // Postgraduate Home & Living
+  // Postgraduate Furniture & Product Design
   {
     name: 'Giulia Ferrari',
     initials: 'GF',
     subject: 'Design produit · Mobilier',
-    programs: ['Postgraduate Home & Living'],
+    programs: ['Postgraduate Furniture & Product Design'],
     parallelRole: 'Designer produit',
     parallelEmployer: 'Cassina (collabore régulièrement)',
     city: 'Milan',
@@ -200,7 +200,7 @@ const facultyEN: FacultyMember[] = facultyFR.map((m) => {
     'Postgraduate Image 3D': 'Postgraduate Image 3D',
     'Postgraduate Digital Brand': 'Postgraduate Digital Brand',
     'Mode & Accessoires': 'Fashion & Accessory',
-    'Postgraduate Home & Living': 'Postgraduate Home & Living',
+    'Postgraduate Furniture & Product Design': 'Postgraduate Furniture & Product Design',
     'Postgraduate Event Management': 'Postgraduate Event Management',
     'Fashion Management': 'Fashion Management',
   }

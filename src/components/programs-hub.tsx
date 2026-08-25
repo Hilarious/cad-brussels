@@ -119,7 +119,7 @@ const MASTERS: Program[] = [
   {
     slug: 'home-living-design',
     index: '02',
-    title: { fr: 'Home & Living Design', en: 'Home & Living Design' },
+    title: { fr: 'Furniture & Product Design', en: 'Furniture & Product Design' },
     degree: { fr: 'Postgraduate · 2 ans', en: 'Postgraduate · 2 years' },
     tagline: {
       fr: "Penser l'habitat, le mobilier, l'objet domestique. Du brief industriel au prototype.",
@@ -131,7 +131,7 @@ const MASTERS: Program[] = [
     },
     bgClass: 'bg-cad-mint',
     textClass: 'text-ink',
-    imageCaption: 'Prototype mobilier · étudiant·e postgraduate Home & Living en atelier bois',
+    imageCaption: 'Prototype mobilier · étudiant·e postgraduate Furniture & Product Design en atelier bois',
   },
   {
     slug: 'digital-brand-content',

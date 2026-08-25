@@ -26,7 +26,7 @@ const headerFR = {
       children: [
         { label: 'Tous les postgraduates', path: '/fr/postgraduate' },
         { label: "Architecture d'intérieur · 2 ans", path: '/fr/interior-architecture-design-postgraduate' },
-        { label: 'Home & Living', path: '/fr/home-living-design' },
+        { label: 'Furniture & Product Design', path: '/fr/home-living-design' },
         { label: 'Digital Brand Content', path: '/fr/digital-brand-content' },
         { label: 'Image, 3D, Motion, IA', path: '/fr/image-3d-motion-video-ai' },
         { label: 'Event Management', path: '/fr/event-management' },
@@ -86,7 +86,7 @@ const headerEN = {
       children: [
         { label: 'All postgraduates', path: '/en/postgraduate' },
         { label: 'Interior Architecture · 2 years', path: '/en/interior-architecture-design-postgraduate' },
-        { label: 'Home & Living', path: '/en/home-living-design' },
+        { label: 'Furniture & Product Design', path: '/en/home-living-design' },
         { label: 'Digital Brand Content', path: '/en/digital-brand-content' },
         { label: 'Image, 3D, Motion, AI', path: '/en/image-3d-motion-video-ai' },
         { label: 'Event Management', path: '/en/event-management' },

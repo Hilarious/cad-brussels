@@ -14,7 +14,7 @@
  *   Undergraduate Communication & Digital     → Violet
  *   Undergraduate Fashion & Accessory         → Pink
  *   Master Interior Architecture 2 ans   → Navy
- *   Postgraduate Home & Living                 → Mint
+ *   Postgraduate Furniture & Product Design                 → Mint
  *   Postgraduate Digital Brand Content         → Violet
  *   Postgraduate Image 3D Motion Video AI      → Azure
  *   Postgraduate Event Management              → Orange

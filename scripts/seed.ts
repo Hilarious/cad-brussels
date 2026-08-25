@@ -171,7 +171,7 @@ async function seed() {
         },
         body: [
           "Vous avez le choix entre trois undergraduates de 3 ans (180 ECTS) qui couvrent tous les fondamentaux du métier : dessin technique, design, outils numériques (AutoCAD, SketchUp, Rhino), histoire du design, ateliers de pratique. Au programme : Architecture d'intérieur, Communication & Digital, Mode & Accessoires.",
-          "En postgraduate, vous trouverez 1 ou 2 ans selon la filière : Architecture d'intérieur (2 ans), Home & Living Design, Digital Brand Content, Image / 3D / Motion / IA, Event Management. Plus une Spécialisation Fashion Management à temps partiel.",
+          "En postgraduate, vous trouverez 1 ou 2 ans selon la filière : Architecture d'intérieur (2 ans), Furniture & Product Design, Digital Brand Content, Image / 3D / Motion / IA, Event Management. Plus une Spécialisation Fashion Management à temps partiel.",
           "Quel que soit votre cursus, vous aurez : des cours en anglais, des stages chaque année, des workshops internationaux (Shanghai, São Paulo, Milan), et un projet de fin d'études exposé publiquement.",
         ],
         cta: { heading: "Procédure d'admission", href: "/fr/admissions" },
@@ -186,7 +186,7 @@ async function seed() {
         },
         body: [
           "You can choose between three 3-year undergraduate programmes (180 ECTS) that cover every fundamental of the trade: technical drawing, design, digital tools (AutoCAD, SketchUp, Rhino), design history, hands-on studio practice. On offer: Interior Architecture, Communication & Digital, Fashion & Accessory.",
-          "At postgraduate level, you'll find 1 or 2 years depending on the track: Interior Architecture (2 years), Home & Living Design, Digital Brand Content, Image / 3D / Motion / AI, Event Management. Plus a part-time Fashion Management Specialization.",
+          "At postgraduate level, you'll find 1 or 2 years depending on the track: Interior Architecture (2 years), Furniture & Product Design, Digital Brand Content, Image / 3D / Motion / AI, Event Management. Plus a part-time Fashion Management Specialization.",
           "Whatever your program, you will have: classes in English, yearly internships, international workshops (Shanghai, São Paulo, Milan), and a graduation project shown publicly.",
         ],
         cta: { heading: "Admission procedure", href: "/en/admissions" },
@@ -653,7 +653,7 @@ async function seed() {
         location: "Salone del Mobile, Milan",
         description: [
           "Une semaine immersive au cœur du Salone del Mobile : visites guidées, rencontres avec des designers, brief de projet en équipe.",
-          "Réservé aux étudiants postgraduate Home & Living Design.",
+          "Réservé aux étudiants postgraduate Furniture & Product Design.",
         ],
       },
       en: {
@@ -661,7 +661,7 @@ async function seed() {
         location: "Salone del Mobile, Milan",
         description: [
           "An immersive week at the heart of Salone del Mobile: guided tours, designer meet-ups, team project brief.",
-          "Reserved for postgraduate Home & Living Design students.",
+          "Reserved for postgraduate Furniture & Product Design students.",
         ],
       },
     },
@@ -722,7 +722,7 @@ async function seed() {
         children: [
           { label: "Tous les postgraduates", path: "/postgraduate" },
           { label: "Architecture d'intérieur", path: "/interior-architecture-design-postgraduate" },
-          { label: "Home & Living", path: "/home-living-design" },
+          { label: "Furniture & Product Design", path: "/home-living-design" },
           { label: "Digital Brand Content", path: "/digital-brand-content" },
           { label: "Image, 3D, Motion, IA", path: "/image-3d-motion-video-ai" },
           { label: "Event Management", path: "/event-management" },
@@ -767,7 +767,7 @@ async function seed() {
         children: [
           { label: "All postgraduates", path: "/postgraduate" },
           { label: "Interior Architecture", path: "/interior-architecture-design-postgraduate" },
-          { label: "Home & Living", path: "/home-living-design" },
+          { label: "Furniture & Product Design", path: "/home-living-design" },
           { label: "Digital Brand Content", path: "/digital-brand-content" },
           { label: "Image, 3D, Motion, AI", path: "/image-3d-motion-video-ai" },
           { label: "Event Management", path: "/event-management" },
@@ -817,7 +817,7 @@ async function seed() {
         title: "Postgraduates & spécialisation",
         links: [
           { label: "Interior Architecture 2 ans", path: "/interior-architecture-design-postgraduate" },
-          { label: "Home & Living Design", path: "/home-living-design" },
+          { label: "Furniture & Product Design", path: "/home-living-design" },
           { label: "Digital Brand Content", path: "/digital-brand-content" },
           { label: "Image 3D · Motion · AI", path: "/image-3d-motion-video-ai" },
           { label: "Event Management", path: "/event-management" },
@@ -881,7 +881,7 @@ async function seed() {
         title: "Postgraduates & Specialisation",
         links: [
           { label: "Interior Architecture 2 years", path: "/interior-architecture-design-postgraduate" },
-          { label: "Home & Living Design", path: "/home-living-design" },
+          { label: "Furniture & Product Design", path: "/home-living-design" },
           { label: "Digital Brand Content", path: "/digital-brand-content" },
           { label: "Image 3D · Motion · AI", path: "/image-3d-motion-video-ai" },
           { label: "Event Management", path: "/event-management" },

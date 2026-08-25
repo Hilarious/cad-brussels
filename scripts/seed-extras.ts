@@ -117,7 +117,7 @@ const pageDefs: PageDef[] = [
         eyebrow: "Postgraduate · 1 ou 2 ans",
         heading: "Sept postgraduates spécialisés.",
         subheading:
-          "Architecture d'intérieur, Home & Living, Digital Brand Content, Image 3D-Motion-Vidéo-IA, Event Management, choisissez votre voie.",
+          "Architecture d'intérieur, Furniture & Product Design, Digital Brand Content, Image 3D-Motion-Vidéo-IA, Event Management, choisissez votre voie.",
       },
       body: [
         "Les postgraduates du CAD durent 1 ou 2 ans selon la filière (60 ou 120 ECTS). Ils sont ouverts aux titulaires d'un diplôme de premier cycle en discipline créative ou aux candidats démontrant un niveau équivalent par portfolio.",
@@ -130,7 +130,7 @@ const pageDefs: PageDef[] = [
         columns: "3",
         items: [
           { title: "Architecture d'intérieur · 2 ans", description: "Le postgraduate long, pour devenir architecte d'intérieur senior. 120 ECTS." },
-          { title: "Home & Living Design", description: "Mobilier, objet, scénographie domestique. Workshop Milan inclus." },
+          { title: "Furniture & Product Design", description: "Mobilier, objet, scénographie domestique. Workshop Milan inclus." },
           { title: "Digital Brand Content", description: "Stratégie de marque digitale, content design, social media." },
           { title: "Image, 3D, Motion & Video, AI", description: "CGI, motion design, vidéo, IA générative pour la création." },
           { title: "Event Management", description: "Conception et production d'événements. 12 places max." },
@@ -145,7 +145,7 @@ const pageDefs: PageDef[] = [
         eyebrow: "Postgraduate · 1 or 2 years",
         heading: "Seven specialised postgraduates.",
         subheading:
-          "Interior Architecture, Home & Living, Digital Brand Content, Image 3D-Motion-Video-AI, Event Management, pick your path.",
+          "Interior Architecture, Furniture & Product Design, Digital Brand Content, Image 3D-Motion-Video-AI, Event Management, pick your path.",
       },
       body: [
         "CAD postgraduates run for 1 or 2 years depending on the track (60 or 120 ECTS). They are open to first-cycle gradelor graduates in a creative field, or to candidates demonstrating an equivalent level via portfolio.",
@@ -158,7 +158,7 @@ const pageDefs: PageDef[] = [
         columns: "3",
         items: [
           { title: "Interior Architecture · 2 years", description: "The long postgraduate, to become a senior interior architect. 120 ECTS." },
-          { title: "Home & Living Design", description: "Furniture, object, domestic scenography. Milan workshop included." },
+          { title: "Furniture & Product Design", description: "Furniture, object, domestic scenography. Milan workshop included." },
           { title: "Digital Brand Content", description: "Digital brand strategy, content design, social media." },
           { title: "Image, 3D, Motion & Video, AI", description: "CGI, motion design, video, generative AI for creation." },
           { title: "Event Management", description: "Concept and production of events. 12 places max." },
@@ -172,10 +172,10 @@ const pageDefs: PageDef[] = [
   {
     slug: "home-living-design",
     fr: {
-      title: "Home & Living Design",
+      title: "Furniture & Product Design",
       hero: {
         eyebrow: "Postgraduate · 1 an · 60 ECTS",
-        heading: "Home & Living Design",
+        heading: "Furniture & Product Design",
         subheading:
           "Mobilier, luminaire, objet, scénographie d'intérieur, un postgraduate tourné vers l'art de vivre contemporain.",
       },
@@ -191,13 +191,13 @@ const pageDefs: PageDef[] = [
         { value: "5", label: "Éditeurs partenaires" },
         { value: "60", label: "ECTS en 1 an" },
       ],
-      cta: { heading: "Demander la brochure Home & Living", href: "/fr/contact", label: "Recevoir la brochure" },
+      cta: { heading: "Demander la brochure Furniture & Product Design", href: "/fr/contact", label: "Recevoir la brochure" },
     },
     en: {
-      title: "Home & Living Design",
+      title: "Furniture & Product Design",
       hero: {
         eyebrow: "Postgraduate · 1 year · 60 ECTS",
-        heading: "Home & Living Design",
+        heading: "Furniture & Product Design",
         subheading:
           "Furniture, lighting, object, interior scenography, a postgraduate focused on contemporary lifestyle.",
       },
@@ -213,7 +213,7 @@ const pageDefs: PageDef[] = [
         { value: "5", label: "Partner editors" },
         { value: "60", label: "ECTS in 1 year" },
       ],
-      cta: { heading: "Request the Home & Living brochure", href: "/en/contact", label: "Get the brochure" },
+      cta: { heading: "Request the Furniture & Product Design brochure", href: "/en/contact", label: "Get the brochure" },
     },
   },
   // ============================================================ DIGITAL BRAND CONTENT
@@ -562,7 +562,7 @@ const pageDefs: PageDef[] = [
       },
       body: [
         "Chaque année, le CAD organise plusieurs workshops intensifs à l'étranger : 1 à 3 semaines, sur invitation d'écoles partenaires ou dans le cadre d'événements professionnels majeurs.",
-        "Les workshops sont intégrés au cursus (ECTS validés) et co-financés par l'école. Ils sont obligatoires pour certains programmes (Home & Living à Milan, par exemple) et optionnels pour d'autres.",
+        "Les workshops sont intégrés au cursus (ECTS validés) et co-financés par l'école. Ils sont obligatoires pour certains programmes (Furniture & Product Design à Milan, par exemple) et optionnels pour d'autres.",
         "Au-delà des workshops, les étudiants peuvent partir en semestre d'échange via le réseau CUMULUS (200+ écoles) ou faire un stage à l'étranger validé pour leur cursus.",
       ],
       feature: {
@@ -589,7 +589,7 @@ const pageDefs: PageDef[] = [
       },
       body: [
         "Every year, CAD organises several intensive workshops abroad: 1 to 3 weeks, hosted by partner schools or as part of major professional events.",
-        "Workshops are integrated into the curriculum (ECTS-validated) and co-funded by the school. They are mandatory for some programs (Home & Living in Milan, for instance) and optional for others.",
+        "Workshops are integrated into the curriculum (ECTS-validated) and co-funded by the school. They are mandatory for some programs (Furniture & Product Design in Milan, for instance) and optional for others.",
         "Beyond workshops, students can spend an exchange semester abroad via the CUMULUS network (200+ schools) or do an internship abroad validated for their program.",
       ],
       feature: {
@@ -762,7 +762,7 @@ const eventDefs: EventDef[] = [
       location: "Musashino Art University, Tokyo",
       description: [
         "Deux semaines au Japon dans l'une des plus prestigieuses écoles d'art asiatiques. Brief partagé avec les étudiants japonais autour du design d'objet contemporain.",
-        "Réservé aux étudiants de postgraduate Home & Living Design et Image. 15 places.",
+        "Réservé aux étudiants de postgraduate Furniture & Product Design et Image. 15 places.",
       ],
     },
     en: {
@@ -770,7 +770,7 @@ const eventDefs: EventDef[] = [
       location: "Musashino Art University, Tokyo",
       description: [
         "Two weeks in Japan at one of Asia's most prestigious art schools. Brief shared with Japanese students around contemporary object design.",
-        "Reserved for Home & Living Design and Image postgraduate students. 15 seats.",
+        "Reserved for Furniture & Product Design and Image postgraduate students. 15 seats.",
       ],
     },
   },

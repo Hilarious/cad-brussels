@@ -9,7 +9,7 @@ const PROGRAM_LABELS: Record<string, string> = {
   'bachelor-communication': 'Undergraduate · Communication & Digital',
   'bachelor-fashion': 'Undergraduate · Mode & Accessoires',
   'master-interior': 'Postgraduate · Architecture d’intérieur 2 ans',
-  'master-home-living': 'Postgraduate · Home & Living',
+  'master-home-living': 'Postgraduate · Furniture & Product Design',
   'master-digital-brand': 'Postgraduate · Digital Brand Content',
   'master-image': 'Postgraduate · Image / 3D / Motion / IA',
   'master-event': 'Postgraduate · Event Management',

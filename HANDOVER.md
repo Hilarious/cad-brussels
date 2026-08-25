@@ -299,6 +299,12 @@ Le site actuel `cad.be` est sur WordPress. La bascule doit préserver le SEO exi
 - **Jerome Canon** — Technical Lead — freeze@hilarious.be
 - **Yannick Chan** — Intégration / maintenance — yannick@hilarious.be — +32 478 31 00 35
 
+### Infrastructure et domaine
+
+- **Bruno De Naeyer** — IT manager du CAD, Infinite-IT SRL — bruno@infinite-it.be — +32 2 897 62 50
+- ⚠️ **Le domaine et l'hébergement quittent Infinite-IT.** C'est **Eric** qui mène cet échange, pas Hilarious : c'est une fin de prestation, pas une demande technique. Nous fournissons les enregistrements et les redirections, quand il les demande.
+- Le domaine est chez le registrar **OVH** mais sa zone DNS est gérée dans **Cloudflare** : la bascule se joue là, pas chez OVH. **Ne modifier que les A et CNAME, les MX portent la messagerie Microsoft 365 de l'école.** Les six questions à poser à Bruno et l'ordre des opérations sont dans `projects/active/CAD/ressources/acces-domaine-cad-be.md`
+
 ### Charte print legacy (référence uniquement)
 
 - **Thomas Durieux** — Finlande Graphic Design — thomas@designbyfinlande.be — +32 477 43 83 67
