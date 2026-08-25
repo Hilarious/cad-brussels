@@ -148,7 +148,7 @@ export default async function HomePage({
         <div className="mt-10 flex flex-wrap items-center gap-4">
           <Link
             href={`/${locale}/admissions`}
-            className="rounded-full bg-ink px-7 py-3.5 text-sm font-medium text-paper hover:bg-accent"
+            className="cta-juice rounded-full bg-ink px-7 py-3.5 text-sm font-medium text-paper hover:bg-accent"
           >
             {locale === 'fr' ? 'Postuler au CAD' : 'Apply to CAD'}
           </Link>

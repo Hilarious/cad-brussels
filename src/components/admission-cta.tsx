@@ -123,7 +123,7 @@ export function AdmissionCTA({
           <div className="mt-6 flex flex-wrap items-center gap-3 md:mt-0 md:shrink-0">
             <Link
               href={`/${locale}/admissions`}
-              className="tap rounded-full bg-ink px-6 text-sm font-medium text-paper hover:bg-paper hover:text-ink"
+              className="cta-juice tap rounded-full bg-ink px-6 text-sm font-medium text-paper hover:bg-paper hover:text-ink"
             >
               {t.primaryCta}
             </Link>

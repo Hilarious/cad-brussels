@@ -140,3 +140,52 @@ a {
 @media (prefers-reduced-motion: reduce) {
   .cad-blink { animation: none; }
 }
+
+/* ─── CTA principaux (.cta-juice) ─────────────────────────────────
+ * Deux registres, demande d'Audry (25/08/2026) :
+ *  - au repos, un reflet balaie le bouton toutes les ~6 s : assez
+ *    rare pour ne pas lasser, assez vif pour accrocher l'œil
+ *    périphérique ;
+ *  - au survol, le bouton se soulève avec une ombre teintée accent,
+ *    et s'enfonce d'un cran au clic.
+ * Pur CSS, aucun JavaScript. Coupé par prefers-reduced-motion.
+ * À réserver à UN bouton par écran : le reflet perd son sens
+ * s'il clignote partout. */
+.cta-juice {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    background-color 0.25s ease, color 0.25s ease;
+}
+.cta-juice::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 42%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 58%
+  );
+  transform: translateX(-130%);
+  animation: cta-glint 5.8s ease-in-out infinite;
+}
+@keyframes cta-glint {
+  0%, 84%  { transform: translateX(-130%); }
+  92%, 100% { transform: translateX(130%); }
+}
+.cta-juice:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -8px rgb(var(--accent) / 0.55);
+}
+.cta-juice:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cta-juice::after { animation: none; }
+  .cta-juice,
+  .cta-juice:hover,
+  .cta-juice:active { transform: none; transition: none; }
+}

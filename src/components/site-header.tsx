@@ -59,7 +59,7 @@ export async function SiteHeader({ locale }: { locale: string }) {
           {cta?.label && cta?.path && (
             <Link
               href={localized(cta.path, locale)}
-              className="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper hover:bg-accent md:inline-flex"
+              className="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition duration-200 hover:-translate-y-0.5 hover:bg-accent hover:shadow-md hover:shadow-accent/30 motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:inline-flex"
             >
               {cta.label}
             </Link>
