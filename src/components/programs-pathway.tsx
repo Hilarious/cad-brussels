@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
+import { regardVers } from '@/lib/oeil'
 
 /**
  * <ProgramsPathway> — le parcours d'études en deux temps, sur l'accueil.
@@ -155,13 +156,12 @@ function Eye({ className }: { className?: string }) {
       const box = svg.getBoundingClientRect()
       const cx = box.left + box.width / 2
       const cy = box.top + box.height / 2
-      const dx = e.clientX - cx
-      const dy = e.clientY - cy
-      const dist = Math.hypot(dx, dy) || 1
-      // Amplitude max : 7 unités SVG. La pupille reste dans le globe.
-      const amp = Math.min(dist / 40, 7)
-      targetX = (dx / dist) * amp
-      targetY = (dy / dist) * amp
+      // La géométrie vit dans `@/lib/oeil` : la pupille vise depuis le
+      // CENTRE du globe et non depuis sa position dessinée, sans quoi
+      // le regard paraît asymétrique (voir le commentaire du module).
+      const cible = regardVers(e.clientX - cx, e.clientY - cy)
+      targetX = cible.x
+      targetY = cible.y
       if (!raf) raf = requestAnimationFrame(tick)
     }
 
