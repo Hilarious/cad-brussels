@@ -300,6 +300,24 @@ const nextConfig: NextConfig = {
   // ==========================================================================
   async headers() {
     return [
+      // ======================================================================
+      // Fermeture de l'adresse Vercel aux moteurs de recherche
+      // ----------------------------------------------------------------------
+      // Le site est publiquement joignable sur `cad-brussels.vercel.app` avant
+      // la bascule du domaine. Tant que `cad.be` sert l'ancien site, laisser
+      // indexer cette adresse créerait un doublon en concurrence avec le site
+      // officiel, et des URLs Vercel resteraient dans l'index bien après la
+      // mise en ligne.
+      //
+      // La condition porte sur l'hôte : `cad.be` n'y correspond pas et n'est
+      // donc jamais affecté. À RETIRER le jour de la bascule si l'adresse
+      // Vercel doit redevenir indexable, ce qui n'a a priori aucun intérêt.
+      // ======================================================================
+      {
+        source: '/(.*)',
+        has: [{ type: 'host', value: '.*\\.vercel\\.app' }],
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
       {
         source: '/(.*)',
         headers: [
