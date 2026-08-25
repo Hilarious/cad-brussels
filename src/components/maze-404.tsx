@@ -92,6 +92,13 @@ const T = {
       'Une seule des huit portes rejoint le centre. Si vous tournez en rond, c’est que ce n’était pas la bonne.',
     wonTitle: 'Vous y êtes.',
     wonLead: 'Le cœur du « d ». Sept portes sur huit ne menaient nulle part.',
+    prizeKicker: 'Et vous avez gagné quelque chose',
+    prizeTitle: 'Un café avec le directeur.',
+    prizeLead:
+      'Eric Vanden Broeck, directeur du CAD, vous offre un café dans le jardin de l’école. Une demi-heure pour parler de votre projet, sans dossier à préparer et sans engagement.',
+    prizeClaim: 'Réclamer mon café',
+    prizeNote:
+      'Écrivez-nous, votre message part déjà rempli avec votre score. Offre valable une fois par personne.',
     home: 'Retour à l’accueil',
     contact: 'Nous écrire',
     controls: 'Flèches du clavier, ZQSD, ou le pavé ci-dessous.',
@@ -116,6 +123,13 @@ const T = {
       'Only one of the eight doors reaches the centre. If you are going in circles, this was not the one.',
     wonTitle: 'You made it.',
     wonLead: 'The heart of the “d”. Seven doors out of eight led nowhere.',
+    prizeKicker: 'And you have won something',
+    prizeTitle: 'A coffee with the director.',
+    prizeLead:
+      'Eric Vanden Broeck, director of CAD, is buying you a coffee in the school garden. Half an hour to talk about your project, no portfolio to prepare, no strings attached.',
+    prizeClaim: 'Claim my coffee',
+    prizeNote:
+      'Write to us, your message comes pre-filled with your score. One coffee per person.',
     home: 'Back to home',
     contact: 'Get in touch',
     controls: 'Arrow keys, WASD, or the pad below.',
@@ -398,6 +412,40 @@ export function Maze404({ locale }: { locale: 'fr' | 'en' }) {
         {/* ─── Le reste du texte, et les portes de sortie ────────── */}
         <div className="lg:col-span-5 lg:col-start-1 lg:row-start-2 lg:self-start">
           <p className="max-w-md text-ink/70">{won ? t.wonLead : t.lead}</p>
+
+          {/* ── La récompense ────────────────────────────────────────
+              Un café avec le directeur. Le bouton ouvre un message déjà
+              rempli vers le secrétariat, avec le score en preuve : sans
+              ce lien, la récompense ne serait qu'une phrase que
+              personne ne saurait réclamer.
+              À valider avec Eric Vanden Broeck avant mise en ligne
+              publique : la page engage son agenda. */}
+          {won && (
+            <div className="mt-8 max-w-md rounded-2xl border-2 border-accent bg-accent/5 p-6">
+              <p className="text-xs uppercase tracking-widest text-accent">
+                {t.prizeKicker}
+              </p>
+              <p className="mt-2 font-display text-2xl leading-snug">
+                {t.prizeTitle}
+              </p>
+              <p className="mt-3 text-sm text-ink/70">{t.prizeLead}</p>
+              <a
+                href={`mailto:secretariat@cad.be?subject=${encodeURIComponent(
+                  locale === 'fr'
+                    ? 'Labyrinthe 404 : je réclame mon café'
+                    : 'Maze 404: claiming my coffee',
+                )}&body=${encodeURIComponent(
+                  locale === 'fr'
+                    ? `Bonjour,\n\nJ'ai trouvé le centre du « d » sur votre page 404, en ${steps} pas et ${tried} porte(s) essayée(s).\n\nJe viens réclamer le café avec Eric Vanden Broeck.\n\nMon prénom et nom :\nMon téléphone :\nCe qui m'intéresse au CAD :\n\nMerci !`
+                    : `Hello,\n\nI found the heart of the "d" on your 404 page, in ${steps} steps and ${tried} door(s) tried.\n\nI am here to claim the coffee with Eric Vanden Broeck.\n\nMy name:\nMy phone:\nWhat interests me at CAD:\n\nThank you!`,
+                )}`}
+                className="tap mt-5 inline-flex items-center rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper hover:bg-accent"
+              >
+                {t.prizeClaim}
+              </a>
+              <p className="mt-3 text-xs text-ink/55">{t.prizeNote}</p>
+            </div>
+          )}
 
           {!won && (
             <p className="mt-6 text-sm text-ink/60">
