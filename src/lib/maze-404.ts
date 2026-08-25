@@ -1,20 +1,17 @@
 /**
- * Le labyrinthe de la page 404.
+ * Le labyrinthe de la page 404. Fichier généré, ne pas modifier à la main.
  *
  * Huit portes sur le pourtour, une seule rejoint le centre du « d » du
  * monogramme CAD. Les sept autres ouvrent sur de vrais dédales, mais
  * fermés : aucun couloir ne les relie au cœur.
  *
- * Ces données sont générées, pas écrites à la main. Le script vit dans
- * `scripts/generate-maze.py` : il construit un labyrinthe parfait (un
- * arbre couvrant, donc un seul trajet possible entre deux cases), élit
- * comme bonne porte celle dont le trajet vers le centre est le plus long,
- * puis détache la branche de chacune des sept autres. Il vérifie enfin,
- * par un parcours depuis le centre, qu'une seule porte reste atteignable.
+ * Pour le régénérer : `python3 scripts/generate-maze.py`. Le script
+ * explique la construction et vérifie, avant d'écrire, qu'une seule
+ * porte reste atteignable depuis le centre.
  *
- * Volontairement, la solution n'est PAS publiée ici : le jeu déduit la
+ * La solution n'est volontairement pas publiée ici : le jeu déduit la
  * victoire de la position du pion, jamais d'un chemin pré-calculé. Rien
- * dans le code envoyé au navigateur ne révèle la bonne porte.
+ * de ce qui part au navigateur ne désigne la bonne porte.
  */
 
 /** Côté de la grille, en cases. */
@@ -23,15 +20,15 @@ export const MAZE_SIZE = 21
 /** Côté de la chambre centrale, où trône le monogramme. */
 export const MAZE_ROOM = 5
 
-/** Case d'arrivée : le contre-point du « d ». */
+/** Coordonnée du centre, en x comme en y : la case d'arrivée. */
 export const MAZE_CENTER = 10
 
 /** Bits de mur, dans le sens des aiguilles d'une montre. */
 export const WALL = { N: 1, E: 2, S: 4, W: 8 } as const
 
 /**
- * Une case par entrée, lue en lignes (index = y * MAZE_SIZE + x).
- * Chaque valeur est un masque des quatre murs présents.
+ * Une valeur par case, lue en lignes (index = y * MAZE_SIZE + x).
+ * Chaque valeur est le masque des murs encore debout autour de la case.
  */
 export const MAZE_CELLS: number[] = [
   13, 5, 3, 13, 1, 4, 5, 7, 9, 3, 9, 1, 5, 3, 9, 4, 3, 13, 1, 1, 7,
@@ -57,10 +54,10 @@ export const MAZE_CELLS: number[] = [
   12, 5, 4, 5, 7, 8, 6, 12, 5, 5, 7, 12, 6, 12, 6, 8, 4, 5, 6, 12, 6,
 ]
 
-export type MazeEntry = { x: number; y: number; side: 'N' | 'E' | 'S' | 'W' }
+export type MazeDoor = { x: number; y: number; side: 'N' | 'E' | 'S' | 'W' }
 
-/** Les huit portes, dans le sens horaire en partant du haut à gauche. */
-export const MAZE_ENTRIES: MazeEntry[] = [
+/** Les huit portes, dans le sens horaire en partant du nord. */
+export const MAZE_DOORS: MazeDoor[] = [
   { x: 5, y: 0, side: 'N' },
   { x: 15, y: 0, side: 'N' },
   { x: 20, y: 5, side: 'E' },
@@ -71,7 +68,7 @@ export const MAZE_ENTRIES: MazeEntry[] = [
   { x: 0, y: 15, side: 'W' },
 ]
 
-/** Y a-t-il un mur sur ce côté de cette case ? */
+/** Reste-t-il un mur sur ce côté de cette case ? */
 export function hasWall(x: number, y: number, dir: number): boolean {
   return (MAZE_CELLS[y * MAZE_SIZE + x] & dir) !== 0
 }
