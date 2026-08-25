@@ -6,6 +6,10 @@ import { RelatedContent } from '@/components/related-content'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 
+// Contenu venant du CMS (alumni/professeurs) : rafraichir sans exiger
+// de redeploiement, comme les autres pages qui lisent Payload.
+export const revalidate = 60
+
 export async function generateMetadata({
   params,
 }: {
