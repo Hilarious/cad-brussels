@@ -30,6 +30,14 @@ export function RenderBlocks({
             return <QuoteBlock key={i} block={block} />
           case 'faq':
             return <FAQBlock key={i} block={block} />
+          case 'compareTable':
+            return <CompareTableBlock key={i} block={block} />
+          case 'steps':
+            return <StepsBlock key={i} block={block} />
+          case 'priceGrid':
+            return <PriceGridBlock key={i} block={block} />
+          case 'accordion':
+            return <AccordionBlock key={i} block={block} />
           default:
             return null
         }
@@ -451,6 +459,272 @@ function CTABlock({
             </div>
           )}
         </div>
+      </div>
+    </section>
+  )
+}
+
+
+// ---- Tableau comparatif -------------------------------------------------
+//
+// Deux lectures du même contenu selon la largeur : un vrai tableau à partir
+// de `md`, et une pile de cartes en dessous. Un tableau à deux colonnes de
+// valeurs devient illisible sur un téléphone, où la colonne de droite se
+// réduit à deux caractères par ligne.
+
+function CompareTableBlock({
+  block,
+}: {
+  block: Extract<Block, { blockType: 'compareTable' }>
+}) {
+  const rows = block.rows ?? []
+  if (!rows.length) return null
+
+  return (
+    <section className="container py-16">
+      {block.eyebrow && (
+        <p className="text-sm uppercase tracking-widest text-accent">
+          {assainirLibelle(block.eyebrow)}
+        </p>
+      )}
+      {block.heading && (
+        <h2 className="mt-3 font-display text-3xl md:text-4xl">
+          {assainirLibelle(block.heading)}
+        </h2>
+      )}
+
+      {/* Tableau, à partir de md */}
+      <div className="mt-10 hidden overflow-x-auto md:block">
+        <table className="w-full border-collapse text-left">
+          <thead>
+            <tr className="border-b border-ink/15">
+              <th className="py-3 pr-6 text-xs font-medium uppercase tracking-widest text-ink/50">
+                &nbsp;
+              </th>
+              <th className="py-3 pr-6 font-display text-lg">
+                {assainirLibelle(block.columnA)}
+              </th>
+              <th className="py-3 font-display text-lg text-ink/60">
+                {assainirLibelle(block.columnB)}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r, i) => (
+              <tr key={i} className="border-b border-ink/10 align-top">
+                <td className="py-4 pr-6 text-sm font-medium">
+                  {assainirLibelle(r.criterion)}
+                </td>
+                <td className="py-4 pr-6 text-sm">{assainirLibelle(r.valueA)}</td>
+                <td className="py-4 text-sm text-ink/60">
+                  {assainirLibelle(r.valueB)}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Cartes empilées, en dessous de md */}
+      <ul className="mt-8 grid gap-4 md:hidden">
+        {rows.map((r, i) => (
+          <li key={i} className="rounded-2xl border border-ink/10 p-5">
+            <p className="text-xs uppercase tracking-widest text-ink/50">
+              {assainirLibelle(r.criterion)}
+            </p>
+            <p className="mt-3 text-sm">
+              <span className="font-medium">{assainirLibelle(block.columnA)}</span>
+              {' · '}
+              {assainirLibelle(r.valueA)}
+            </p>
+            <p className="mt-1 text-sm text-ink/60">
+              <span className="font-medium">{assainirLibelle(block.columnB)}</span>
+              {' · '}
+              {assainirLibelle(r.valueB)}
+            </p>
+          </li>
+        ))}
+      </ul>
+
+      {block.note && (
+        <p className="mt-6 max-w-2xl border-l-2 border-accent pl-4 text-sm text-ink/65">
+          {assainirLibelle(block.note)}
+        </p>
+      )}
+    </section>
+  )
+}
+
+// ---- Étapes numérotées --------------------------------------------------
+//
+// La numérotation vient de l'ordre d'affichage, jamais d'un champ saisi :
+// réordonner les étapes dans l'admin suffit, sans renuméroter à la main.
+
+function StepsBlock({
+  block,
+}: {
+  block: Extract<Block, { blockType: 'steps' }>
+}) {
+  const items = block.items ?? []
+  if (!items.length) return null
+
+  return (
+    <section className="container py-16">
+      {block.eyebrow && (
+        <p className="text-sm uppercase tracking-widest text-accent">
+          {assainirLibelle(block.eyebrow)}
+        </p>
+      )}
+      {block.heading && (
+        <h2 className="mt-3 font-display text-3xl md:text-4xl">
+          {assainirLibelle(block.heading)}
+        </h2>
+      )}
+      <ol className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {items.map((it, i) => (
+          <li key={i} className="border-t-2 border-ink pt-4">
+            <p className="font-display text-4xl text-accent">{i + 1}</p>
+            <p className="mt-2 font-display text-lg leading-snug">
+              {assainirLibelle(it.title)}
+            </p>
+            <p className="mt-2 text-sm text-ink/70">{assainirLibelle(it.body)}</p>
+            {it.meta && (
+              <p className="mt-3 text-xs uppercase tracking-widest text-ink/50">
+                {assainirLibelle(it.meta)}
+              </p>
+            )}
+          </li>
+        ))}
+      </ol>
+    </section>
+  )
+}
+
+// ---- Grille tarifaire ---------------------------------------------------
+
+function PriceGridBlock({
+  block,
+}: {
+  block: Extract<Block, { blockType: 'priceGrid' }>
+}) {
+  const items = block.items ?? []
+  if (!items.length) return null
+
+  return (
+    <section className="container py-16">
+      {block.eyebrow && (
+        <p className="text-sm uppercase tracking-widest text-accent">
+          {assainirLibelle(block.eyebrow)}
+        </p>
+      )}
+      {block.heading && (
+        <h2 className="mt-3 font-display text-3xl md:text-4xl">
+          {assainirLibelle(block.heading)}
+        </h2>
+      )}
+      <ul className="mt-10 grid gap-4 sm:grid-cols-2">
+        {items.map((it, i) => (
+          <li
+            key={i}
+            className={
+              it.highlight
+                ? 'rounded-2xl bg-ink p-6 text-paper'
+                : 'rounded-2xl border border-ink/10 p-6'
+            }
+          >
+            <p
+              className={
+                it.highlight
+                  ? 'text-xs uppercase tracking-widest text-paper/70'
+                  : 'text-xs uppercase tracking-widest text-ink/55'
+              }
+            >
+              {assainirLibelle(it.label)}
+            </p>
+            <p className="mt-3 font-display text-3xl">
+              {assainirLibelle(it.amount)}
+              {it.period && (
+                <span
+                  className={
+                    it.highlight
+                      ? 'ml-2 text-base font-normal text-paper/70'
+                      : 'ml-2 text-base font-normal text-ink/55'
+                  }
+                >
+                  {assainirLibelle(it.period)}
+                </span>
+              )}
+            </p>
+            {it.detail && (
+              <p
+                className={
+                  it.highlight
+                    ? 'mt-3 text-sm text-paper/80'
+                    : 'mt-3 text-sm text-ink/70'
+                }
+              >
+                {assainirLibelle(it.detail)}
+              </p>
+            )}
+          </li>
+        ))}
+      </ul>
+      {block.note && (
+        <p className="mt-6 max-w-2xl text-sm text-ink/60">
+          {assainirLibelle(block.note)}
+        </p>
+      )}
+    </section>
+  )
+}
+
+// ---- Accordéon ----------------------------------------------------------
+//
+// <details> natif plutôt qu'un composant client : le contenu reste dans la
+// page pour les moteurs et la recherche du navigateur, même replié, et le
+// bloc ne coûte aucun JavaScript.
+
+function AccordionBlock({
+  block,
+}: {
+  block: Extract<Block, { blockType: 'accordion' }>
+}) {
+  const items = block.items ?? []
+  if (!items.length) return null
+
+  return (
+    <section className="container py-16">
+      {block.eyebrow && (
+        <p className="text-sm uppercase tracking-widest text-accent">
+          {assainirLibelle(block.eyebrow)}
+        </p>
+      )}
+      {block.heading && (
+        <h2 className="mt-3 font-display text-3xl md:text-4xl">
+          {assainirLibelle(block.heading)}
+        </h2>
+      )}
+      <div className="mt-8 max-w-3xl">
+        {items.map((it, i) => (
+          <details
+            key={i}
+            open={it.openByDefault ?? false}
+            className="group border-b border-ink/10 py-4"
+          >
+            <summary className="tap flex cursor-pointer items-center justify-between gap-6 font-display text-lg leading-snug marker:content-none">
+              {assainirLibelle(it.title)}
+              <span
+                aria-hidden="true"
+                className="shrink-0 text-accent transition-transform duration-200 group-open:rotate-45"
+              >
+                +
+              </span>
+            </summary>
+            <p className="mt-3 max-w-2xl text-sm text-ink/70">
+              {assainirLibelle(it.body)}
+            </p>
+          </details>
+        ))}
       </div>
     </section>
   )

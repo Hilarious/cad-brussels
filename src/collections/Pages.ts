@@ -6,6 +6,10 @@ import { StatsBlock } from '../blocks/Stats/config'
 import { FeatureListBlock } from '../blocks/FeatureList/config'
 import { QuoteBlock } from '../blocks/Quote/config'
 import { FAQBlock } from '../blocks/FAQ/config'
+import { CompareTableBlock } from '../blocks/CompareTable/config'
+import { StepsBlock } from '../blocks/Steps/config'
+import { PriceGridBlock } from '../blocks/PriceGrid/config'
+import { AccordionBlock } from '../blocks/Accordion/config'
 import { seoField } from '../lib/fields/seo'
 import { slugField } from '../lib/fields/slug'
 
@@ -55,6 +59,10 @@ export const Pages: CollectionConfig = {
         StatsBlock,
         QuoteBlock,
         FAQBlock,
+        CompareTableBlock,
+        StepsBlock,
+        PriceGridBlock,
+        AccordionBlock,
         CTABlock,
       ],
     },

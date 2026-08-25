@@ -325,6 +325,93 @@ export interface Page {
         blockType: 'faq';
       }
     | {
+        eyebrow?: string | null;
+        heading?: string | null;
+        /**
+         * Nom de la première colonne. Ex : CAD
+         */
+        columnA: string;
+        /**
+         * Nom de la seconde colonne. Ex : École publique
+         */
+        columnB: string;
+        rows?:
+          | {
+              criterion: string;
+              valueA: string;
+              valueB: string;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Nuance affichée sous le tableau. Facultatif.
+         */
+        note?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'compareTable';
+      }
+    | {
+        eyebrow?: string | null;
+        heading?: string | null;
+        items?:
+          | {
+              title: string;
+              body: string;
+              /**
+               * Délai ou durée. Ex : sous 48h
+               */
+              meta?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'steps';
+      }
+    | {
+        eyebrow?: string | null;
+        heading?: string | null;
+        items?:
+          | {
+              label: string;
+              amount: string;
+              period?: string | null;
+              detail?: string | null;
+              /**
+               * Met ce tarif en avant visuellement.
+               */
+              highlight?: boolean | null;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Mentions et conditions, sous la grille.
+         */
+        note?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'priceGrid';
+      }
+    | {
+        eyebrow?: string | null;
+        heading?: string | null;
+        items?:
+          | {
+              title: string;
+              body: string;
+              /**
+               * Affiche cette entrée déjà dépliée.
+               */
+              openByDefault?: boolean | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'accordion';
+      }
+    | {
         heading: string;
         body?: string | null;
         buttons?:
@@ -911,6 +998,76 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     question?: T;
                     answer?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        compareTable?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              columnA?: T;
+              columnB?: T;
+              rows?:
+                | T
+                | {
+                    criterion?: T;
+                    valueA?: T;
+                    valueB?: T;
+                    id?: T;
+                  };
+              note?: T;
+              id?: T;
+              blockName?: T;
+            };
+        steps?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              items?:
+                | T
+                | {
+                    title?: T;
+                    body?: T;
+                    meta?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        priceGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              items?:
+                | T
+                | {
+                    label?: T;
+                    amount?: T;
+                    period?: T;
+                    detail?: T;
+                    highlight?: T;
+                    id?: T;
+                  };
+              note?: T;
+              id?: T;
+              blockName?: T;
+            };
+        accordion?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              items?:
+                | T
+                | {
+                    title?: T;
+                    body?: T;
+                    openByDefault?: T;
                     id?: T;
                   };
               id?: T;
