@@ -51,6 +51,22 @@ const PALETTES: Palette[] = [
 // modeles, choisis pour se distinguer de loin sur un vetement.
 const MODELES_TEE = [3, 5, 1]
 
+// L'interface emprunte l'encre du dessin en cours : choisir une couleur
+// se voit alors partout, pas seulement dans l'apercu. Sur les palettes
+// inversees c'est la seconde encre qui sert, la premiere etant claire.
+const teinte = (p: Palette) => (p.fond === CREME ? p.encre : p.signature)
+
+// De quoi ecrire par-dessus sans jamais tomber sur du clair sur clair.
+const lisible = (hex: string) => {
+  const n = parseInt(hex.slice(1), 16)
+  const l =
+    (0.299 * ((n >> 16) & 255) +
+      0.587 * ((n >> 8) & 255) +
+      0.114 * (n & 255)) /
+    255
+  return l > 0.62 ? '#14140F' : '#F5F2EC'
+}
+
 const DESTINATAIRES = ['Papa, maman', 'Maman', 'Papa', 'Mamie'] as const
 
 const TAILLES = ['S', 'M', 'L', 'XL'] as const
@@ -226,8 +242,13 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
   const [fait, setFait] = useState(false)
   const [taille, setTaille] = useState<(typeof TAILLES)[number]>('M')
   const [modele, setModele] = useState(MODELES_TEE[0])
+  const [etincelles, setEtincelles] = useState<
+    { id: number; x: number; y: number; t: number; d: number; c: string }[]
+  >([])
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  // La carte de l'apercu, qu'on retape a chaque changement de reponse.
+  const carteRef = useRef<HTMLDivElement>(null)
   // Le t-shirt est un tirage, pas un envoi : il montre le meme dessin sans
   // les deux elements qui ne valent que pour les parents. Un canvas par
   // modele propose, pour que le choix se fasse sur le dessin et non sur le
@@ -243,6 +264,18 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     () => prenom.trim() || L.placeholderPrenom,
     [prenom, L.placeholderPrenom],
   )
+  const couleurUI = useMemo(() => teinte(PALETTES[palette]), [palette])
+  const couleurTee = useMemo(() => teinte(PALETTES[modele]), [modele])
+
+  // Une pichenette au doigt a chaque choix. Ignoree sur iOS, sentie sur
+  // Android : c'est du bonus, jamais le seul retour d'une action.
+  const tap = useCallback(() => {
+    try {
+      navigator.vibrate?.(8)
+    } catch {
+      /* le telephone n'en veut pas, tant pis */
+    }
+  }, [])
 
   useEffect(() => {
     // navigator.canShare n'existe pas partout : on teste avec un fichier vide.
@@ -441,6 +474,38 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     ctx.fillStyle = encre
   }, [destinataire, metierAffiche, prenomAffiche, palette, L])
 
+  // L'apercu se retape comme un tampon quand la reponse change : sans ce
+  // battement, le dessin se substitue sans qu'on voie ce qui a bouge.
+  useEffect(() => {
+    const el = carteRef.current
+    if (!el) return
+    el.classList.remove('jf-tampon')
+    void el.offsetWidth
+    el.classList.add('jf-tampon')
+  }, [metier, destinataire, palette])
+
+  // Les etincelles du moment ou l'image part. Deux encres, celles du
+  // dessin, et rien qui reste a l'ecran plus de deux secondes.
+  useEffect(() => {
+    if (!fait) {
+      setEtincelles([])
+      return
+    }
+    const { encre, signature } = PALETTES[palette]
+    setEtincelles(
+      Array.from({ length: 14 }, (_, i) => ({
+        id: i,
+        x: 4 + Math.random() * 90,
+        y: 6 + Math.random() * 84,
+        t: 11 + Math.random() * 17,
+        d: Math.round(Math.random() * 420),
+        c: i % 2 ? signature : encre,
+      })),
+    )
+    const h = setTimeout(() => setEtincelles([]), 1900)
+    return () => clearTimeout(h)
+  }, [fait, palette])
+
   useEffect(() => {
     void dessiner(canvasRef.current)
     MODELES_TEE.forEach((idx, i) => {
@@ -527,6 +592,31 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
 
   return (
     <div className="flex flex-col gap-16">
+      {/* Tout ce qui bouge est enferme dans prefers-reduced-motion : ceux
+          qui ont demande le calme a leur systeme gardent l'outil entier,
+          simplement sans mouvement. */}
+      <style>{`
+        .jf-etincelle { position: absolute; opacity: 0; pointer-events: none }
+        @media (prefers-reduced-motion: no-preference) {
+          .jf-tampon { animation: jf-tampon .42s cubic-bezier(.22,1,.36,1) }
+          @keyframes jf-tampon {
+            0%   { transform: scale(.978) rotate(-.35deg); opacity: .6 }
+            58%  { transform: scale(1.008) rotate(.12deg); opacity: 1 }
+            100% { transform: none }
+          }
+          .jf-etincelle { animation: jf-etincelle 1s ease-out forwards }
+          @keyframes jf-etincelle {
+            0%   { opacity: 0; transform: scale(.15) rotate(0) }
+            32%  { opacity: 1; transform: scale(1) rotate(40deg) }
+            100% { opacity: 0; transform: scale(.35) rotate(90deg) translateY(-30px) }
+          }
+          .jf-prete { animation: jf-prete 2.6s ease-in-out infinite }
+          @keyframes jf-prete {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(20,20,15,.18) }
+            50%      { box-shadow: 0 0 0 12px rgba(20,20,15,0) }
+          }
+        }
+      `}</style>
     <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-14">
       {/* Le formulaire */}
       <div className="flex flex-col gap-6">
@@ -549,13 +639,25 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
               <button
                 key={d}
                 type="button"
-                onClick={() => setDestinataire(d)}
+                onClick={() => {
+                  tap()
+                  setDestinataire(d)
+                }}
                 aria-pressed={destinataire === d}
-                className={`min-h-[44px] rounded-full border-2 px-4 text-base font-semibold transition ${
+                className={`min-h-[44px] rounded-full border-2 px-4 text-base font-semibold transition active:scale-95 ${
                   destinataire === d
-                    ? 'border-ink bg-ink text-paper'
+                    ? 'text-paper'
                     : 'border-ink/20 text-ink hover:border-ink/50'
                 }`}
+                style={
+                  destinataire === d
+                    ? {
+                        background: couleurUI,
+                        borderColor: couleurUI,
+                        color: lisible(couleurUI),
+                      }
+                    : undefined
+                }
               >
                 {d}
               </button>
@@ -572,13 +674,25 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
               <button
                 key={m}
                 type="button"
-                onClick={() => setMetier(m)}
+                onClick={() => {
+                  tap()
+                  setMetier(m)
+                }}
                 aria-pressed={metier === m}
-                className={`min-h-[44px] rounded-full border-2 px-4 text-base font-semibold transition ${
+                className={`min-h-[44px] rounded-full border-2 px-4 text-base font-semibold transition active:scale-95 ${
                   metier === m
-                    ? 'border-ink bg-ink text-paper'
+                    ? 'text-paper'
                     : 'border-ink/20 text-ink hover:border-ink/50'
                 }`}
+                style={
+                  metier === m
+                    ? {
+                        background: couleurUI,
+                        borderColor: couleurUI,
+                        color: lisible(couleurUI),
+                      }
+                    : undefined
+                }
               >
                 {m}
               </button>
@@ -608,13 +722,16 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
               <button
                 key={p.nom}
                 type="button"
-                onClick={() => setPalette(i)}
+                onClick={() => {
+                  tap()
+                  setPalette(i)
+                }}
                 aria-label={p.nom}
                 aria-pressed={palette === i}
-                className={`flex h-11 w-11 items-center justify-center rounded-full border-2 transition ${
+                className={`flex h-11 w-11 items-center justify-center rounded-full border-2 transition duration-200 active:scale-95 ${
                   palette === i
                     ? 'border-ink scale-110'
-                    : 'border-ink/15 hover:border-ink/40'
+                    : 'border-ink/15 hover:scale-105 hover:border-ink/40'
                 }`}
                 style={{ background: p.fond }}
               >
@@ -634,7 +751,13 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
             type="button"
             onClick={envoyer}
             disabled={busy || !complet}
-            className="min-h-[56px] rounded-full bg-ink px-8 text-lg font-bold text-paper transition hover:opacity-90 disabled:opacity-60"
+            className={`min-h-[56px] rounded-full px-8 text-lg font-bold transition active:scale-[.98] hover:opacity-90 disabled:opacity-60 ${
+              complet && !fait && !busy ? 'jf-prete' : ''
+            }`}
+            style={{
+              background: complet ? couleurUI : undefined,
+              color: complet ? lisible(couleurUI) : undefined,
+            }}
           >
             {busy ? L.sending : peutPartager ? L.send : L.download}
           </button>
@@ -701,13 +824,38 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
           à pleine largeur il occuperait tout l'écran avant la première
           question, alors qu'il doit rester visible pendant qu'on répond. */}
       <div className="order-first lg:order-none lg:sticky lg:top-24">
-        <canvas
-          ref={canvasRef}
-          width={W}
-          height={H}
-          className="mx-auto max-h-[40vh] w-auto rounded-xl shadow-lg lg:max-h-none lg:w-full lg:max-w-[420px]"
-          aria-label="Aperçu de ton affiche"
-        />
+        <div
+          ref={carteRef}
+          className="relative mx-auto w-fit lg:w-full lg:max-w-[420px]"
+        >
+          <canvas
+            ref={canvasRef}
+            width={W}
+            height={H}
+            className="mx-auto max-h-[40vh] w-auto rounded-xl shadow-lg lg:max-h-none lg:w-full"
+            aria-label="Aperçu de ton affiche"
+          />
+          {etincelles.map((e) => (
+            <svg
+              key={e.id}
+              className="jf-etincelle"
+              style={{
+                left: `${e.x}%`,
+                top: `${e.y}%`,
+                width: e.t,
+                height: e.t,
+                animationDelay: `${e.d}ms`,
+              }}
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 0c1.1 8.9 3 10.9 12 12-9 1.1-10.9 3.1-12 12-1.1-8.9-3-10.9-12-12 9-1.1 10.9-3.1 12-12z"
+                fill={e.c}
+              />
+            </svg>
+          ))}
+        </div>
       </div>
     </div>
 
@@ -730,13 +878,21 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
             <button
               key={idx}
               type="button"
-              onClick={() => setModele(idx)}
+              onClick={() => {
+                tap()
+                setModele(idx)
+              }}
               aria-pressed={modele === idx}
-              className={`rounded-xl border-2 p-1.5 transition ${
+              className={`rounded-xl border-2 p-1.5 transition duration-200 active:scale-95 ${
                 modele === idx
-                  ? 'border-ink'
-                  : 'border-transparent hover:border-ink/25'
+                  ? '-translate-y-1'
+                  : 'border-transparent hover:-translate-y-0.5 hover:border-ink/25'
               }`}
+              style={
+                modele === idx
+                  ? { borderColor: teinte(PALETTES[idx]) }
+                  : undefined
+              }
             >
               <canvas
                 ref={(el) => {
@@ -764,13 +920,25 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
               <button
                 key={t}
                 type="button"
-                onClick={() => setTaille(t)}
+                onClick={() => {
+                  tap()
+                  setTaille(t)
+                }}
                 aria-pressed={taille === t}
-                className={`h-12 w-14 rounded-lg border-2 text-base font-bold transition ${
+                className={`h-12 w-14 rounded-lg border-2 text-base font-bold transition active:scale-95 ${
                   taille === t
-                    ? 'border-ink bg-ink text-paper'
+                    ? ''
                     : 'border-ink/20 text-ink hover:border-ink/50'
                 }`}
+                style={
+                  taille === t
+                    ? {
+                        background: couleurTee,
+                        borderColor: couleurTee,
+                        color: lisible(couleurTee),
+                      }
+                    : undefined
+                }
               >
                 {t}
               </button>
