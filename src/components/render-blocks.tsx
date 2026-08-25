@@ -259,10 +259,10 @@ function StatsBlock({
         {items.map((it, i) => (
           <div key={i} className="text-center">
             <dt className="font-display text-5xl text-ink md:text-6xl">
-              {it.value}
+              {assainirLibelle(it.value)}
             </dt>
             <dd className="mt-2 text-sm uppercase tracking-widest text-ink/60">
-              {it.label}
+              {assainirLibelle(it.label)}
             </dd>
           </div>
         ))}
@@ -304,10 +304,10 @@ function FeatureListBlock({
           >
             <p className="text-2xl font-display">
               <span className="text-accent/80">0{i + 1}</span>{' '}
-              <span className="ml-2">{it.title}</span>
+              <span className="ml-2">{assainirLibelle(it.title)}</span>
             </p>
             {it.description && (
-              <p className="mt-3 text-ink/70">{it.description}</p>
+              <p className="mt-3 text-ink/70">{assainirLibelle(it.description)}</p>
             )}
           </li>
         ))}

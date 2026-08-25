@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { EventCard } from './event-card'
+import { assainirLibelle } from '@/lib/appellations'
 
 /**
  * <RelatedContent> — bloc de maillage éditorial générique.
@@ -132,11 +133,11 @@ export async function RelatedContent({
                       })}
                     </time>
                     <h4 className="mt-2 font-display text-xl leading-snug group-hover:text-accent">
-                      {post.title}
+                      {assainirLibelle(post.title)}
                     </h4>
                     {post.excerpt && (
                       <p className="mt-2 line-clamp-3 text-sm text-ink/70">
-                        {post.excerpt}
+                        {assainirLibelle(post.excerpt)}
                       </p>
                     )}
                   </Link>

@@ -11,6 +11,7 @@ import { RelatedPrograms } from '@/components/related-programs'
 import { JsonLd } from '@/components/json-ld'
 import { course } from '@/lib/schema'
 import { programBySlug } from '@/lib/programs'
+import { assainirLibelle } from '@/lib/appellations'
 
 export const revalidate = 60
 
@@ -53,7 +54,7 @@ export async function generateMetadata({
   const page = await fetchPage(locale, slug[slug.length - 1] ?? '')
   if (!page) return {}
   return {
-    title: page.seo?.metaTitle ?? page.title,
+    title: assainirLibelle(page.seo?.metaTitle ?? page.title),
     description: page.seo?.metaDescription ?? undefined,
   }
 }
