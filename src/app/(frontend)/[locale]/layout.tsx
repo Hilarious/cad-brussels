@@ -24,16 +24,69 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
 }
 
-export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || 'https://cad.be',
-  ),
-  title: {
-    default: 'CAD Brussels, College of Art & Design',
-    template: '%s, CAD Brussels',
-  },
-  description:
-    'École supérieure de design à Bruxelles depuis 1961. Undergraduate, postgraduate et formations continues en architecture d’intérieur, design digital et mode.',
+/**
+ * Métadonnées racine, déclinées par langue.
+ *
+ * Était auparavant un `export const metadata` statique : la version
+ * anglaise du site héritait donc de la description française. Chaque
+ * langue a désormais la sienne, plus les balises `hreflang` qui
+ * signalent aux moteurs que /fr et /en sont deux versions d'un même
+ * site, et les balises Open Graph utilisées à l'aperçu d'un partage.
+ */
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const isFR = locale === 'fr'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://cad.be'
+
+  const title = isFR
+    ? 'CAD Brussels, école de design à Bruxelles'
+    : 'CAD Brussels, College of Art & Design'
+  const description = isFR
+    ? 'École de design à Bruxelles depuis 1961. Architecture d’intérieur, communication & digital, mode. Cursus en anglais, 160 étudiants, encadrement par des professionnels en activité.'
+    : 'Design school in Brussels since 1961. Interior architecture, communication & digital, fashion. Taught in English, 160 students, mentored by working professionals.'
+
+  return {
+    metadataBase: new URL(siteUrl),
+    title: {
+      default: title,
+      template: '%s, CAD Brussels',
+    },
+    description,
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        fr: '/fr',
+        en: '/en',
+        'x-default': '/en',
+      },
+    },
+    openGraph: {
+      type: 'website',
+      siteName: 'CAD Brussels',
+      locale: isFR ? 'fr_BE' : 'en_GB',
+      url: `${siteUrl}/${locale}`,
+      title,
+      description,
+      images: [
+        {
+          url: isFR ? '/og/cad-fr.png' : '/og/cad-en.png',
+          width: 1200,
+          height: 630,
+          alt: 'CAD Brussels, College of Art & Design',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [isFR ? '/og/cad-fr.png' : '/og/cad-en.png'],
+    },
+  }
 }
 
 export default async function LocaleLayout({

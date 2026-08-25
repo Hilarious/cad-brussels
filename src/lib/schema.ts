@@ -79,7 +79,7 @@ export function educationalOrganization() {
       },
       {
         '@type': 'EducationalOccupationalCredential',
-        credentialCategory: 'Master',
+        credentialCategory: 'Postgraduate',
       },
     ],
   }
@@ -107,7 +107,7 @@ export function course({
   const inLanguage = locale === 'fr' ? 'fr-BE' : 'en'
   const educationalLevel =
     level === 'master'
-      ? 'Master'
+      ? 'Postgraduate'
       : level === 'specialisation'
         ? 'Specialisation'
         : 'Undergraduate'
