@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { CtaTrace } from '@/components/cta-trace'
 
 /**
  * Reusable admission CTA block.
@@ -125,7 +126,7 @@ export function AdmissionCTA({
               href={`/${locale}/admissions`}
               className="cta-juice tap rounded-full bg-ink px-6 text-sm font-medium text-paper hover:bg-paper hover:text-ink"
             >
-              <span aria-hidden="true" className="cta-orbit-dot" />
+              <CtaTrace />
               {t.primaryCta}
             </Link>
             <Link

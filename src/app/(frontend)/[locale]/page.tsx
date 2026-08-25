@@ -7,6 +7,7 @@ import { AdmissionCTA } from '@/components/admission-cta'
 import { Grid, Col } from '@/components/grid'
 import { ImagePlaceholder } from '@/components/image-placeholder'
 import { Marquee } from '@/components/marquee'
+import { CtaTrace } from '@/components/cta-trace'
 import { ProgramsPathway } from '@/components/programs-pathway'
 import { JsonLd } from '@/components/json-ld'
 import { educationalOrganization } from '@/lib/schema'
@@ -150,7 +151,7 @@ export default async function HomePage({
             href={`/${locale}/admissions`}
             className="cta-juice rounded-full bg-ink px-7 py-3.5 text-sm font-medium text-paper hover:bg-accent"
           >
-            <span aria-hidden="true" className="cta-orbit-dot" />
+            <CtaTrace />
             {locale === 'fr' ? 'Postuler au CAD' : 'Apply to CAD'}
           </Link>
           <Link

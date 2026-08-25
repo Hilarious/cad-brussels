@@ -142,30 +142,47 @@ a {
 }
 
 /* ─── CTA principaux (.cta-juice) ─────────────────────────────────
- * Un petit cercle lumineux parcourt l'intérieur du contour du
- * bouton, en orbite continue : la pupille qui circule dans l'œil,
- * écho direct du pivot du parcours. (Premier essai : un reflet
- * balayant ; retiré à la demande d'Audry, trop gratuit.)
+ * Le bouton se DESSINE : un petit cercle parcourt le contour de la
+ * pilule et laisse un trait derrière lui, comme une mine de crayon.
+ * Le tracé se tient un instant, s'efface par l'autre bout, et le
+ * cycle reprend. Le cercle reprend le rôle de la pupille du parcours
+ * d'études : même famille de gestes dans toute la page.
  *
- * Le cercle est en currentColor : blanc sur le bouton noir, et il
- * suit tout seul les changements d'état (encre sur papier quand le
- * bouton du bloc admission s'inverse au survol).
+ * Le markup vient de <CtaTrace>, à poser en premier enfant du lien.
  *
- * `offset-path: inset(… round …)` trace le rail à l'intérieur de la
- * pilule. Navigateurs anciens : le cercle n'existe pas, le bouton
- * reste sobre. Coupé par prefers-reduced-motion.
+ * Deux contraintes de navigateur vérifiées en situation (25/08/2026),
+ * à ne pas « simplifier » :
+ *  - Chrome n'anime pas `offset-distance` sur un pseudo-élément : le
+ *    cercle DOIT être un élément réel (un ::after reste figé).
+ *  - Le `from` explicite en pourcentage est indispensable : sans lui
+ *    Chrome part de la valeur calculée 0px et refuse d'interpoler.
  *
- * Au survol, le bouton se soulève avec une ombre teintée accent et
- * l'orbite accélère, puis s'enfonce d'un cran au clic. */
+ * Tout est en currentColor : le trait et le cercle suivent seuls les
+ * inversions de couleur (le bouton du bloc admission passe en encre
+ * sur papier au survol). Coupé par prefers-reduced-motion. */
 .cta-juice {
   position: relative;
   transition: transform 0.25s ease, box-shadow 0.25s ease,
     background-color 0.25s ease, color 0.25s ease;
 }
-/* Le cercle est un vrai <span class="cta-orbit-dot"> dans le bouton :
- * Chrome n'anime pas offset-distance sur un pseudo-élément (vérifié
- * en situation le 25/08/2026, un élément réel orbite, ::after reste
- * figé). Sans support d'offset-path, le cercle est masqué. */
+
+/* Le trait. Encastré de 4px pour coïncider avec le rail du cercle. */
+.cta-juice .cta-trace {
+  position: absolute;
+  inset: 4px;
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  overflow: visible;
+  pointer-events: none;
+  opacity: 0.75;
+}
+.cta-juice .cta-trace rect {
+  stroke-dasharray: 1;
+  animation: cta-draw 6s ease-in-out infinite;
+}
+
+/* La mine : parcourt le contour pendant la phase de tracé, puis
+ * s'éclipse le temps que le trait se tienne et s'efface. */
 .cta-juice .cta-orbit-dot {
   position: absolute;
   top: 0;
@@ -174,22 +191,34 @@ a {
   height: 5px;
   border-radius: 50%;
   background: currentColor;
-  opacity: 0.85;
   pointer-events: none;
+  opacity: 0;
   offset-path: inset(4px round 999px);
-  animation: cta-orbit 5.2s linear infinite;
+  animation: cta-trace-dot 6s ease-in-out infinite;
 }
+
+@keyframes cta-draw {
+  0%   { stroke-dashoffset: 1; }   /* rien */
+  38%  { stroke-dashoffset: 0; }   /* contour complet */
+  66%  { stroke-dashoffset: 0; }   /* tenue */
+  100% { stroke-dashoffset: -1; }  /* effacé par l'autre bout */
+}
+
+@keyframes cta-trace-dot {
+  0%   { offset-distance: 0%;   opacity: 0; }
+  3%   { opacity: 0.95; }
+  35%  { offset-distance: 100%; opacity: 0.95; }
+  40%  { offset-distance: 100%; opacity: 0; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+
+/* Au survol : l'esquisse se fait d'un trait, et le bouton se soulève. */
+.cta-juice:hover .cta-trace rect,
 .cta-juice:hover .cta-orbit-dot {
-  animation-duration: 1.6s;
+  animation-duration: 2.2s;
 }
-@supports not (offset-path: inset(4px round 99px)) {
-  .cta-juice .cta-orbit-dot { display: none; }
-}
-@keyframes cta-orbit {
-  /* Le from explicite est indispensable : sans lui, Chrome part de
-   * la valeur calculée 0px et refuse d'interpoler vers 100 %. */
-  from { offset-distance: 0%; }
-  to   { offset-distance: 100%; }
+.cta-juice:hover .cta-trace {
+  opacity: 1;
 }
 .cta-juice:hover {
   transform: translateY(-2px);
@@ -199,8 +228,15 @@ a {
   transform: translateY(0) scale(0.98);
   box-shadow: none;
 }
+
+/* Navigateur sans offset-path : pas de mine, le trait se dessine seul. */
+@supports not (offset-path: inset(4px round 99px)) {
+  .cta-juice .cta-orbit-dot { display: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cta-juice .cta-orbit-dot { display: none; }
+  .cta-juice .cta-trace rect { animation: none; stroke-dashoffset: 0; }
   .cta-juice,
   .cta-juice:hover,
   .cta-juice:active { transform: none; transition: none; }
