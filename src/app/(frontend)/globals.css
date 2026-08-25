@@ -123,3 +123,20 @@ a {
   background: rgb(var(--accent));
   color: var(--cad-white);
 }
+
+/* ─── L'œil du parcours (ProgramsPathway) ─────────────────────────
+ * Clignement périodique : longue tenue, fermeture brève. La pupille
+ * qui suit le curseur est gérée en JS dans le composant ; ici on ne
+ * fait que le battement de paupière, coupé si l'utilisateur préfère
+ * réduire les animations. */
+@keyframes cad-blink {
+  0%, 91%, 100% { transform: scaleY(1); }
+  93.5%         { transform: scaleY(0.06); }
+}
+.cad-blink {
+  animation: cad-blink 5.4s ease-in-out infinite;
+  transform-origin: 50% 50%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cad-blink { animation: none; }
+}
