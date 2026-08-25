@@ -58,14 +58,14 @@ export function ContactForm({
     ? {
         name: 'Votre prénom',
         email: 'vous@exemple.com',
-        subject: 'Ex. « J’hésite entre deux Bachelor », « Question sur le portfolio »',
+        subject: 'Ex. « J’hésite entre deux undergraduates », « Question sur le portfolio »',
         message:
           'Pas besoin de tout structurer. Racontez-nous où vous en êtes, ce qui vous attire, ce qui vous bloque. On lit chaque message et on vous répond.',
       }
     : {
         name: 'Your first name',
         email: 'you@example.com',
-        subject: 'e.g. “I hesitate between two Bachelor programs”, “Portfolio question”',
+        subject: 'e.g. “I hesitate between two undergraduate programmes”, “Portfolio question”',
         message:
           'No need to overthink it. Tell us where you are, what attracts you, what holds you back. We read every message and reply.',
       }

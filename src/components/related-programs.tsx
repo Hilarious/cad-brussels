@@ -11,7 +11,7 @@ import { themeForSlug } from '@/lib/program-themes'
  * positive dans le rapport).
  *
  * Ce composant injecte 4-6 liens contextuels vers d'autres programmes
- * du même thème (Bachelor / Master) et vers les hubs, en bas de chaque
+ * du même thème (Undergraduate / Master) et vers les hubs, en bas de chaque
  * page programme. Renforce le maillage sans effort éditorial manuel.
  *
  * Chaque carte porte sa couleur de programme (theme-*) même à
@@ -29,70 +29,70 @@ type ProgramLink = {
 }
 
 // Source unique : ce catalogue est aligné sur les slugs Payload seed.
-// Ordre pédagogique (bachelors d'abord, puis masters, puis spécialisations).
+// Ordre pédagogique (undergraduates d'abord, puis postgraduates, puis spécialisations).
 const CATALOG: ProgramLink[] = [
   {
     slug: 'interior-architecture-design',
     labelFR: 'Architecture d’intérieur',
     labelEN: 'Interior Architecture & Design',
-    descFR: 'Bachelor 3 ans',
-    descEN: 'Bachelor 3 years',
+    descFR: 'Undergraduate 3 ans',
+    descEN: 'Undergraduate 3 years',
     level: 'bachelor',
   },
   {
     slug: 'communication-digital-design',
     labelFR: 'Communication & Digital',
     labelEN: 'Communication & Digital',
-    descFR: 'Bachelor 3 ans',
-    descEN: 'Bachelor 3 years',
+    descFR: 'Undergraduate 3 ans',
+    descEN: 'Undergraduate 3 years',
     level: 'bachelor',
   },
   {
     slug: 'fashion-accessory-design',
     labelFR: 'Mode & Accessoires',
     labelEN: 'Fashion & Accessory',
-    descFR: 'Bachelor 3 ans',
-    descEN: 'Bachelor 3 years',
+    descFR: 'Undergraduate 3 ans',
+    descEN: 'Undergraduate 3 years',
     level: 'bachelor',
   },
   {
-    slug: 'interior-architecture-design-master',
+    slug: 'interior-architecture-design-postgraduate',
     labelFR: 'Interior Architecture',
     labelEN: 'Interior Architecture',
-    descFR: 'Master 2 ans',
-    descEN: 'Master 2 years',
+    descFR: 'Postgraduate 2 ans',
+    descEN: 'Postgraduate 2 years',
     level: 'master',
   },
   {
     slug: 'home-living-design',
     labelFR: 'Home & Living Design',
     labelEN: 'Home & Living Design',
-    descFR: 'Master 2 ans',
-    descEN: 'Master 2 years',
+    descFR: 'Postgraduate 2 ans',
+    descEN: 'Postgraduate 2 years',
     level: 'master',
   },
   {
     slug: 'digital-brand-content',
     labelFR: 'Digital Brand Content',
     labelEN: 'Digital Brand Content',
-    descFR: 'Master 2 ans',
-    descEN: 'Master 2 years',
+    descFR: 'Postgraduate 2 ans',
+    descEN: 'Postgraduate 2 years',
     level: 'master',
   },
   {
     slug: 'image-3d-motion-video-ai',
     labelFR: 'Image 3D · Motion · AI',
     labelEN: 'Image 3D · Motion · AI',
-    descFR: 'Master 2 ans',
-    descEN: 'Master 2 years',
+    descFR: 'Postgraduate 2 ans',
+    descEN: 'Postgraduate 2 years',
     level: 'master',
   },
   {
     slug: 'event-management',
     labelFR: 'Event Management',
     labelEN: 'Event Management',
-    descFR: 'Master 2 ans',
-    descEN: 'Master 2 years',
+    descFR: 'Postgraduate 2 ans',
+    descEN: 'Postgraduate 2 years',
     level: 'master',
   },
   {
@@ -145,7 +145,7 @@ export function RelatedPrograms({
           </div>
           <div className="hidden shrink-0 md:block">
             <Link
-              href={`/${locale}/${current.level === 'master' ? 'masters' : 'programmes'}`}
+              href={`/${locale}/${current.level === 'master' ? 'postgraduate' : 'programmes'}`}
               className="tap text-sm text-ink/70 hover:text-accent"
             >
               {isFR ? 'Voir tous' : 'See all'} →
@@ -180,16 +180,16 @@ export function RelatedPrograms({
         {/* Mobile "See all" — mirror of the desktop link in header */}
         <div className="mt-8 md:hidden">
           <Link
-            href={`/${locale}/${current.level === 'master' ? 'masters' : 'programmes'}`}
+            href={`/${locale}/${current.level === 'master' ? 'postgraduate' : 'programmes'}`}
             className="tap text-sm text-ink/70 hover:text-accent"
           >
             {isFR
               ? current.level === 'master'
-                ? 'Voir tous les Masters'
-                : 'Voir tous les Bachelors'
+                ? 'Voir tous les postgraduates'
+                : 'Voir tous les undergraduates'
               : current.level === 'master'
-                ? 'See all Masters'
-                : 'See all Bachelors'}
+                ? 'See all postgraduates'
+                : 'See all undergraduates'}
             {' '}
             →
           </Link>

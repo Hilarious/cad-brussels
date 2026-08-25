@@ -50,7 +50,7 @@ export default async function EventsPage({
   })
 
   return (
-    // Events listing themed with Orange (Master Event Management accent),
+    // Events listing themed with Orange (Postgraduate Event Management accent),
     // makes the calendar feel energetic and event-y.
     <div className="theme-event">
       <section className="container py-20 md:py-28">

@@ -95,16 +95,16 @@ export const Applications: CollectionConfig = {
       type: 'select',
       required: true,
       options: [
-        // Bachelor
-        { label: 'Bachelor · Architecture d’intérieur', value: 'bachelor-interior' },
-        { label: 'Bachelor · Communication & Digital', value: 'bachelor-communication' },
-        { label: 'Bachelor · Mode & Accessoires', value: 'bachelor-fashion' },
+        // Undergraduate
+        { label: 'Undergraduate · Architecture d’intérieur', value: 'bachelor-interior' },
+        { label: 'Undergraduate · Communication & Digital', value: 'bachelor-communication' },
+        { label: 'Undergraduate · Mode & Accessoires', value: 'bachelor-fashion' },
         // Master
-        { label: 'Master · Architecture d’intérieur 2 ans', value: 'master-interior' },
-        { label: 'Master · Home & Living', value: 'master-home-living' },
-        { label: 'Master · Digital Brand Content', value: 'master-digital-brand' },
-        { label: 'Master · Image / 3D / Motion / IA', value: 'master-image' },
-        { label: 'Master · Event Management', value: 'master-event' },
+        { label: 'Postgraduate · Architecture d’intérieur 2 ans', value: 'master-interior' },
+        { label: 'Postgraduate · Home & Living', value: 'master-home-living' },
+        { label: 'Postgraduate · Digital Brand Content', value: 'master-digital-brand' },
+        { label: 'Postgraduate · Image / 3D / Motion / IA', value: 'master-image' },
+        { label: 'Postgraduate · Event Management', value: 'master-event' },
       ],
     },
     {
@@ -125,8 +125,8 @@ export const Applications: CollectionConfig = {
         { label: '1ère année (Bac1)', value: 'bac1' },
         { label: '2ème année (Bac2)', value: 'bac2' },
         { label: '3ème année (Bac3)', value: 'bac3' },
-        { label: 'Master 1', value: 'm1' },
-        { label: 'Master 2', value: 'm2' },
+        { label: 'Postgraduate 1', value: 'm1' },
+        { label: 'Postgraduate 2', value: 'm2' },
       ],
     },
 

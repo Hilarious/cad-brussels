@@ -21,7 +21,7 @@ type Project = {
   title: string
   studentName: string
   year: string
-  pedagogyStep: string // « Bachelor 2 · Atelier de projet »
+  pedagogyStep: string // « Undergraduate 2 · Atelier de projet »
   quote: string
   // 3 images : croquis, process, résultat
   sketchCaption: string
@@ -39,7 +39,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'Une silhouette qui revisite le tablier de cuisine',
         studentName: 'Maya T.',
         year: 'Bac 3 · 2023',
-        pedagogyStep: 'Bachelor 3 · Collection de fin d’études',
+        pedagogyStep: 'Undergraduate 3 · Collection de fin d’études',
         quote:
           "Mon point de départ, c'était un objet du quotidien que personne ne regarde. J'ai voulu en faire le sujet d'une silhouette de défilé.",
         sketchCaption:
@@ -51,7 +51,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'Une mini-collection en cuir végétal',
         studentName: 'Laure M.',
         year: 'Bac 2 · 2024',
-        pedagogyStep: 'Bachelor 2 · Atelier matières alternatives',
+        pedagogyStep: 'Undergraduate 2 · Atelier matières alternatives',
         quote:
           "Je cherchais une matière qu'on n'utilise pas en mode. Pas du cuir animal, pas du synthétique. Le cuir de pomme m'a permis 4 sacs cousus à la main.",
         sketchCaption: 'Croquis · Laure M. · 4 silhouettes de sacs',
@@ -62,7 +62,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'Une direction artistique pour un magazine émergent',
         studentName: 'Sofia R.',
         year: 'Bac 3 · 2024',
-        pedagogyStep: 'Bachelor 3 · DA mode · projet client réel',
+        pedagogyStep: 'Undergraduate 3 · DA mode · projet client réel',
         quote:
           'Le brief était simple : reconstruire l\'image d\'un magazine indé en perte de vitesse. J\'ai pris ça comme une preuve qu\'on m\'écoute à ce niveau.',
         sketchCaption:
@@ -77,7 +77,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'A silhouette revisiting the kitchen apron',
         studentName: 'Maya T.',
         year: 'Year 3 · 2023',
-        pedagogyStep: 'Bachelor 3 · Final-year collection',
+        pedagogyStep: 'Undergraduate 3 · Final-year collection',
         quote:
           "My starting point was an everyday object nobody really looks at. I wanted to make it the subject of a runway silhouette.",
         sketchCaption: 'Initial sketch · Maya T. · apron silhouette research',
@@ -88,7 +88,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'A mini-collection in plant-based leather',
         studentName: 'Laure M.',
         year: 'Year 2 · 2024',
-        pedagogyStep: 'Bachelor 2 · Alternative materials studio',
+        pedagogyStep: 'Undergraduate 2 · Alternative materials studio',
         quote:
           "I was looking for a material that fashion doesn't use. Not animal leather, not synthetic. Apple leather let me hand-stitch 4 bags.",
         sketchCaption: 'Sketches · Laure M. · 4 bag silhouettes',
@@ -99,7 +99,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'Art direction for an emerging magazine',
         studentName: 'Sofia R.',
         year: 'Year 3 · 2024',
-        pedagogyStep: 'Bachelor 3 · Fashion art direction · real client',
+        pedagogyStep: 'Undergraduate 3 · Fashion art direction · real client',
         quote:
           'The brief was simple: rebuild the visual identity of a fading indie magazine. I took it as proof I was being heard at that level.',
         sketchCaption: 'Moodboard · Sofia R. · visual and type references',
@@ -118,7 +118,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'Réhabilitation d’une maison de maître à Saint-Gilles',
         studentName: 'Lukas V.',
         year: 'Bac 3 · 2024',
-        pedagogyStep: 'Bachelor 3 · Projet de fin d’études',
+        pedagogyStep: 'Undergraduate 3 · Projet de fin d’études',
         quote:
           "L'enjeu, c'était de garder l'âme du bel-étage 1900 sans en faire un musée. Chaque moulure, chaque cage d'escalier, on a décidé quoi garder.",
         sketchCaption: 'Croquis main · Lukas V. · plans et coupes',
@@ -129,7 +129,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'Un flagship store pour une marque scandinave',
         studentName: 'Mira K.',
         year: 'Bac 2 · 2024',
-        pedagogyStep: 'Bachelor 2 · Atelier retail design',
+        pedagogyStep: 'Undergraduate 2 · Atelier retail design',
         quote:
           "80m² pour raconter une marque entière. La contrainte du sourcing local et de la modularité m'a forcée à imaginer chaque détail.",
         sketchCaption: 'Plan masse · Mira K. · parcours client',
@@ -140,7 +140,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'Scénographie pour BOZAR · projet client',
         studentName: 'Jules R.',
         year: 'Bac 3 · 2023',
-        pedagogyStep: 'Bachelor 3 · Workshop BOZAR · projet client réel',
+        pedagogyStep: 'Undergraduate 3 · Workshop BOZAR · projet client réel',
         quote:
           "Présenter sa scénographie devant l'équipe BOZAR en vrai, c'est ce moment où tu comprends que ton projet sert à quelqu'un.",
         sketchCaption: 'Schéma · Jules R. · parcours et signalétique',
@@ -153,7 +153,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'Rehabilitation of a 1900 townhouse in Saint-Gilles',
         studentName: 'Lukas V.',
         year: 'Year 3 · 2024',
-        pedagogyStep: 'Bachelor 3 · Final project',
+        pedagogyStep: 'Undergraduate 3 · Final project',
         quote:
           "The challenge was keeping the 1900 bel-étage's soul without turning it into a museum. Each moulding, each staircase, we decided what to keep.",
         sketchCaption: 'Hand sketch · Lukas V. · plans and sections',
@@ -164,7 +164,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'A flagship store for a Scandinavian brand',
         studentName: 'Mira K.',
         year: 'Year 2 · 2024',
-        pedagogyStep: 'Bachelor 2 · Retail design studio',
+        pedagogyStep: 'Undergraduate 2 · Retail design studio',
         quote:
           '80m² to tell a whole brand. The constraints of local sourcing and modularity forced me to design every single detail.',
         sketchCaption: 'Floor plan · Mira K. · customer journey',
@@ -175,7 +175,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'Scenography for BOZAR · real client project',
         studentName: 'Jules R.',
         year: 'Year 3 · 2023',
-        pedagogyStep: 'Bachelor 3 · BOZAR workshop · real client',
+        pedagogyStep: 'Undergraduate 3 · BOZAR workshop · real client',
         quote:
           'Presenting your scenography in person to the BOZAR team is the moment you realise your project serves someone.',
         sketchCaption: 'Diagram · Jules R. · path and signage',
@@ -194,7 +194,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'Identité visuelle complète pour un festival de musique',
         studentName: 'Sofia R.',
         year: 'Bac 3 · 2024',
-        pedagogyStep: 'Bachelor 3 · Brief client réel · festival bruxellois',
+        pedagogyStep: 'Undergraduate 3 · Brief client réel · festival bruxellois',
         quote:
           "Logo, affiches, motion, signalétique sur site. J'ai défendu chaque déclinaison devant le commanditaire. C'est là qu'on apprend.",
         sketchCaption: 'Recherche logo · Sofia R. · 20 esquisses sur papier',
@@ -205,7 +205,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'Refonte UX/UI d’une app de service public',
         studentName: 'Inès D.',
         year: 'Bac 3 · 2023',
-        pedagogyStep: 'Bachelor 3 · Atelier UX/UI · projet design system',
+        pedagogyStep: 'Undergraduate 3 · Atelier UX/UI · projet design system',
         quote:
           "On part d'une app que personne n'aime utiliser. On finit avec une présentation devant un jury de DA en agence. Le saut est énorme.",
         sketchCaption: 'Wireframe · Inès D. · papier et Post-it',
@@ -216,7 +216,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'Campagne sociale pour une ONG belge',
         studentName: 'Karim B.',
         year: 'Bac 2 · 2024',
-        pedagogyStep: 'Bachelor 2 · Workshop campagne sociale',
+        pedagogyStep: 'Undergraduate 2 · Workshop campagne sociale',
         quote:
           "Le sujet était lourd, mais la commande était claire : faire bouger. J'ai travaillé avec deux étudiants de Mode pour le shooting.",
         sketchCaption: 'Moodboard · Karim B. · références photo et typo',
@@ -229,7 +229,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'Complete visual identity for a music festival',
         studentName: 'Sofia R.',
         year: 'Year 3 · 2024',
-        pedagogyStep: 'Bachelor 3 · Real client brief · Brussels festival',
+        pedagogyStep: 'Undergraduate 3 · Real client brief · Brussels festival',
         quote:
           'Logo, posters, motion, on-site signage. I defended every variation in front of the client. That\'s where you learn.',
         sketchCaption: 'Logo research · Sofia R. · 20 sketches on paper',
@@ -240,7 +240,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'UX/UI redesign of a public service app',
         studentName: 'Inès D.',
         year: 'Year 3 · 2023',
-        pedagogyStep: 'Bachelor 3 · UX/UI studio · design system project',
+        pedagogyStep: 'Undergraduate 3 · UX/UI studio · design system project',
         quote:
           'You start from an app nobody likes using. You end up presenting to a jury of agency ADs. The leap is huge.',
         sketchCaption: 'Wireframe · Inès D. · paper and Post-its',
@@ -251,7 +251,7 @@ const PROJECTS_BY_SLUG: Record<
         title: 'Social campaign for a Belgian NGO',
         studentName: 'Karim B.',
         year: 'Year 2 · 2024',
-        pedagogyStep: 'Bachelor 2 · Social campaign workshop',
+        pedagogyStep: 'Undergraduate 2 · Social campaign workshop',
         quote:
           "The topic was heavy, but the brief was clear: move people. I worked with two Fashion students on the shoot.",
         sketchCaption: 'Moodboard · Karim B. · photo and type references',
@@ -264,13 +264,13 @@ const PROJECTS_BY_SLUG: Record<
   // ============================================================
   // MASTER · Interior Architecture (2 years)
   // ============================================================
-  'interior-architecture-design-master': {
+  'interior-architecture-design-postgraduate': {
     fr: [
       {
         title: 'Conversion d’un atelier industriel en hôtel boutique',
         studentName: 'Charlotte D.',
-        year: 'Master 2 · 2024',
-        pedagogyStep: 'Master 2 ans · Mémoire-projet final',
+        year: 'Postgraduate 2 · 2024',
+        pedagogyStep: 'Postgraduate 2 ans · Mémoire-projet final',
         quote:
           "Un projet sur deux semestres complets. De l'idée d'origine aux plans d'exécution professionnels. C'était la vraie échelle.",
         sketchCaption: 'Esquisse · Charlotte D. · concept et parti pris',
@@ -280,8 +280,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Scénographie d’exposition · workshop Milan',
         studentName: 'Pieter J.',
-        year: 'Master 1 · 2024',
-        pedagogyStep: 'Master 1 · Workshop Salone del Mobile · Milan',
+        year: 'Postgraduate 1 · 2024',
+        pedagogyStep: 'Postgraduate 1 · Workshop Salone del Mobile · Milan',
         quote:
           "Une semaine à Milan pour scénographier un stand pour un éditeur belge. Pression, deadline, présentation au commanditaire. Concret.",
         sketchCaption: 'Croquis sur place · Pieter J. · prises de notes du Salone',
@@ -291,8 +291,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Bureaux pour une agence créative bruxelloise',
         studentName: 'Sophie L.',
-        year: 'Master 1 · 2023',
-        pedagogyStep: 'Master 1 · Atelier projet · client réel',
+        year: 'Postgraduate 1 · 2023',
+        pedagogyStep: 'Postgraduate 1 · Atelier projet · client réel',
         quote:
           "300m² à repenser pour une agence qui doublait d'effectif. Tout le travail tient sur deux contraintes : la lumière et le silence.",
         sketchCaption: 'Plan actuel · Sophie L. · état des lieux annoté',
@@ -304,8 +304,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Converting an industrial workshop into a boutique hotel',
         studentName: 'Charlotte D.',
-        year: 'Master 2 · 2024',
-        pedagogyStep: '2-year Master · Final thesis-project',
+        year: 'Postgraduate 2 · 2024',
+        pedagogyStep: '2-year postgraduate · Final thesis-project',
         quote:
           'A project over two full semesters. From original idea to professional construction drawings. That was the real scale.',
         sketchCaption: 'Sketch · Charlotte D. · concept and parti',
@@ -315,8 +315,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Exhibition scenography · Milan workshop',
         studentName: 'Pieter J.',
-        year: 'Master 1 · 2024',
-        pedagogyStep: 'Master 1 · Salone del Mobile workshop · Milan',
+        year: 'Postgraduate 1 · 2024',
+        pedagogyStep: 'Postgraduate 1 · Salone del Mobile workshop · Milan',
         quote:
           'A week in Milan to design an exhibition stand for a Belgian editor. Pressure, deadline, client presentation. Concrete.',
         sketchCaption: 'On-site sketch · Pieter J. · notes from the Salone',
@@ -326,8 +326,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Offices for a Brussels creative agency',
         studentName: 'Sophie L.',
-        year: 'Master 1 · 2023',
-        pedagogyStep: 'Master 1 · Project studio · real client',
+        year: 'Postgraduate 1 · 2023',
+        pedagogyStep: 'Postgraduate 1 · Project studio · real client',
         quote:
           '300m² to rethink for an agency doubling in size. The whole project rests on two constraints: light and silence.',
         sketchCaption: 'Current plan · Sophie L. · annotated existing state',
@@ -345,8 +345,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Mini-collection de mobilier modulaire en bois local',
         studentName: 'Léa M.',
-        year: 'Master · 2023',
-        pedagogyStep: 'Master Home & Living · Mémoire-projet final',
+        year: 'Postgraduate · 2023',
+        pedagogyStep: 'Postgraduate Home & Living · Mémoire-projet final',
         quote:
           "J'ai utilisé du chêne belge récupéré d'une grange démolie. Trois pièces qui se combinent, fabricables en série.",
         sketchCaption: 'Croquis · Léa M. · recherche silhouettes mobilier',
@@ -356,8 +356,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Une ligne d’art de la table en verre soufflé',
         studentName: 'Anna S.',
-        year: 'Master · 2024',
-        pedagogyStep: 'Master Home & Living · Atelier matières',
+        year: 'Postgraduate · 2024',
+        pedagogyStep: 'Postgraduate Home & Living · Atelier matières',
         quote:
           "J'ai passé 3 jours dans une verrerie à Mons pour comprendre le geste avant de dessiner. Pas l'inverse.",
         sketchCaption: 'Croquis · Anna S. · 8 formes de verres et carafes',
@@ -367,8 +367,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Workshop Milan · briefs d’éditeurs italiens',
         studentName: 'Giulia F.',
-        year: 'Master · 2024',
-        pedagogyStep: 'Master Home & Living · Workshop Salone del Mobile',
+        year: 'Postgraduate · 2024',
+        pedagogyStep: 'Postgraduate Home & Living · Workshop Salone del Mobile',
         quote:
           "Présenter ma chaise devant un éditeur Cassina, c'est ce que personne ne vous prépare à vivre. Sauf au CAD.",
         sketchCaption: 'Croquis · Giulia F. · chaise pour briefe Cassina',
@@ -380,8 +380,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Modular furniture mini-collection in local wood',
         studentName: 'Léa M.',
-        year: 'Master · 2023',
-        pedagogyStep: 'Home & Living Master · Final thesis-project',
+        year: 'Postgraduate · 2023',
+        pedagogyStep: 'Home & Living postgraduate · Final thesis-project',
         quote:
           'I used Belgian oak recovered from a demolished barn. Three pieces that combine, manufacturable in series.',
         sketchCaption: 'Sketch · Léa M. · furniture silhouette research',
@@ -391,8 +391,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'A blown-glass tableware line',
         studentName: 'Anna S.',
-        year: 'Master · 2024',
-        pedagogyStep: 'Home & Living Master · Materials studio',
+        year: 'Postgraduate · 2024',
+        pedagogyStep: 'Home & Living postgraduate · Materials studio',
         quote:
           'I spent 3 days at a glassworks in Mons to understand the gesture before drawing. Not the other way around.',
         sketchCaption: 'Sketch · Anna S. · 8 glass and carafe forms',
@@ -402,8 +402,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Milan workshop · briefs from Italian editors',
         studentName: 'Giulia F.',
-        year: 'Master · 2024',
-        pedagogyStep: 'Home & Living Master · Salone del Mobile workshop',
+        year: 'Postgraduate · 2024',
+        pedagogyStep: 'Home & Living postgraduate · Salone del Mobile workshop',
         quote:
           "Presenting my chair to a Cassina editor is what nobody prepares you for. Except at CAD.",
         sketchCaption: 'Sketch · Giulia F. · chair for Cassina brief',
@@ -421,8 +421,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Écosystème digital pour une maison de luxe émergente',
         studentName: 'Romain L.',
-        year: 'Master · 2024',
-        pedagogyStep: 'Master Digital Brand · Projet global S2',
+        year: 'Postgraduate · 2024',
+        pedagogyStep: 'Postgraduate Digital Brand · Projet global S2',
         quote:
           "Site, newsletter, social, app. Tout devait porter la même promesse. C'est ce travail de cohérence qui m'a vraiment formé.",
         sketchCaption: 'Brand strategy · Romain L. · cartographie écosystème',
@@ -432,8 +432,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Refonte UX/UI d’un service e-commerce',
         studentName: 'Julie M.',
-        year: 'Master · 2023',
-        pedagogyStep: 'Master Digital Brand · S1 · atelier UX-UI',
+        year: 'Postgraduate · 2023',
+        pedagogyStep: 'Postgraduate Digital Brand · S1 · atelier UX-UI',
         quote:
           "Le brief venait d'une vraie marque. Conversion à améliorer, pas un exercice théorique. La pression était utile.",
         sketchCaption: 'Wireframe · Julie M. · parcours d’achat révisé',
@@ -443,8 +443,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Campagne IA générative pour une marque cosmétique',
         studentName: 'Yann B.',
-        year: 'Master · 2024',
-        pedagogyStep: 'Master Digital Brand · Module IA générative',
+        year: 'Postgraduate · 2024',
+        pedagogyStep: 'Postgraduate Digital Brand · Module IA générative',
         quote:
           "ComfyUI et Runway, j'ai appris à les diriger comme on dirige un designer junior. Pas comme un gadget.",
         sketchCaption: 'Moodboard · Yann B. · références esthétiques cosmétique',
@@ -456,8 +456,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Digital ecosystem for an emerging luxury house',
         studentName: 'Romain L.',
-        year: 'Master · 2024',
-        pedagogyStep: 'Digital Brand Master · S2 global project',
+        year: 'Postgraduate · 2024',
+        pedagogyStep: 'Digital Brand postgraduate · S2 global project',
         quote:
           "Website, newsletter, social, app. All had to carry the same promise. That coherence work is what really trained me.",
         sketchCaption: 'Brand strategy · Romain L. · ecosystem mapping',
@@ -467,8 +467,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'UX/UI redesign of an e-commerce service',
         studentName: 'Julie M.',
-        year: 'Master · 2023',
-        pedagogyStep: 'Digital Brand Master · S1 · UX-UI studio',
+        year: 'Postgraduate · 2023',
+        pedagogyStep: 'Digital Brand postgraduate · S1 · UX-UI studio',
         quote:
           "The brief came from a real brand. Conversion to improve, not a theoretical exercise. The pressure was useful.",
         sketchCaption: 'Wireframe · Julie M. · revised purchase path',
@@ -478,8 +478,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Generative AI campaign for a cosmetics brand',
         studentName: 'Yann B.',
-        year: 'Master · 2024',
-        pedagogyStep: 'Digital Brand Master · Generative AI module',
+        year: 'Postgraduate · 2024',
+        pedagogyStep: 'Digital Brand postgraduate · Generative AI module',
         quote:
           "ComfyUI and Runway, I learned to direct them like you direct a junior designer. Not as a gadget.",
         sketchCaption: 'Moodboard · Yann B. · cosmetics aesthetic references',
@@ -497,8 +497,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Court-métrage 3D temps réel en Unreal Engine',
         studentName: 'Tom V.',
-        year: 'Master · 2023',
-        pedagogyStep: 'Master Image 3D · Projet final · 3 pièces',
+        year: 'Postgraduate · 2023',
+        pedagogyStep: 'Postgraduate Image 3D · Projet final · 3 pièces',
         quote:
           "3 minutes entièrement produites en Unreal 5. Scénario, modélisation, animation, montage, son. Une équipe d'une personne.",
         sketchCaption: 'Storyboard · Tom V. · 8 plans dessinés à la main',
@@ -508,8 +508,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Campagne IA générative pour une marque de mode',
         studentName: 'Lucie A.',
-        year: 'Master · 2024',
-        pedagogyStep: 'Master Image 3D · Module IA · workflow documenté',
+        year: 'Postgraduate · 2024',
+        pedagogyStep: 'Postgraduate Image 3D · Module IA · workflow documenté',
         quote:
           "Workflow ComfyUI + Runway + montage After Effects. Le brief venait d'une vraie marque. La présentation, c'était au DA.",
         sketchCaption: 'Storyboard · Lucie A. · structure narrative campagne',
@@ -519,8 +519,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Motion broadcast · habillage TV',
         studentName: 'Hugo M.',
-        year: 'Master · 2024',
-        pedagogyStep: 'Master Image 3D · Atelier motion After Effects',
+        year: 'Postgraduate · 2024',
+        pedagogyStep: 'Postgraduate Image 3D · Atelier motion After Effects',
         quote:
           "Un habillage complet pour une chaîne fictive. Bumper, transitions, lower thirds. Penser système, pas juste un visuel.",
         sketchCaption: 'Style frames · Hugo M. · 4 frames clés du système',
@@ -532,8 +532,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Real-time 3D short film in Unreal Engine',
         studentName: 'Tom V.',
-        year: 'Master · 2023',
-        pedagogyStep: 'Image 3D Master · Final project · 3 pieces',
+        year: 'Postgraduate · 2023',
+        pedagogyStep: 'Image 3D postgraduate · Final project · 3 pieces',
         quote:
           '3 minutes entirely produced in Unreal 5. Scenario, modelling, animation, editing, sound. A team of one.',
         sketchCaption: 'Storyboard · Tom V. · 8 hand-drawn shots',
@@ -543,8 +543,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Generative AI campaign for a fashion brand',
         studentName: 'Lucie A.',
-        year: 'Master · 2024',
-        pedagogyStep: 'Image 3D Master · AI module · documented workflow',
+        year: 'Postgraduate · 2024',
+        pedagogyStep: 'Image 3D postgraduate · AI module · documented workflow',
         quote:
           "ComfyUI + Runway workflow + After Effects editing. The brief was from a real brand. The presentation was to the AD.",
         sketchCaption: 'Storyboard · Lucie A. · campaign narrative structure',
@@ -554,8 +554,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Motion broadcast · TV channel identity',
         studentName: 'Hugo M.',
-        year: 'Master · 2024',
-        pedagogyStep: 'Image 3D Master · After Effects motion studio',
+        year: 'Postgraduate · 2024',
+        pedagogyStep: 'Image 3D postgraduate · After Effects motion studio',
         quote:
           "A complete identity package for a fictional channel. Bumper, transitions, lower thirds. Think system, not just a visual.",
         sketchCaption: 'Style frames · Hugo M. · 4 key frames of the system',
@@ -573,8 +573,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Production d’une exposition collective à la Bibliothèque Solvay',
         studentName: 'Antoine L.',
-        year: 'Master · 2022',
-        pedagogyStep: 'Master Event · Production réelle · S1',
+        year: 'Postgraduate · 2022',
+        pedagogyStep: 'Postgraduate Event · Production réelle · S1',
         quote:
           "12 étudiants, un seul événement. Budget réel, public extérieur, vernissage avec 200 invités. Pas un exercice.",
         sketchCaption: 'Plan de salle · Antoine L. · scéno annotée',
@@ -584,8 +584,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Lancement d’une marque émergente',
         studentName: 'Élise V.',
-        year: 'Master · 2023',
-        pedagogyStep: 'Master Event · Brief client réel',
+        year: 'Postgraduate · 2023',
+        pedagogyStep: 'Postgraduate Event · Brief client réel',
         quote:
           "La marque sortait sa première collection. Un soir, un lieu, 150 invités, 0 droit à l'erreur. C'est ça la prod événementielle.",
         sketchCaption: 'Story · Élise V. · narration soirée minute par minute',
@@ -595,8 +595,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Conférence design avec invité international',
         studentName: 'Marc R.',
-        year: 'Master · 2024',
-        pedagogyStep: 'Master Event · Production conférence S2',
+        year: 'Postgraduate · 2024',
+        pedagogyStep: 'Postgraduate Event · Production conférence S2',
         quote:
           "On a fait venir un designer suisse. Voyage, hôtel, scéno, modération, captation vidéo. Toute la chaîne, en 6 semaines.",
         sketchCaption: 'Brief · Marc R. · scéno et parcours invité',
@@ -608,8 +608,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Producing a group exhibition at Bibliothèque Solvay',
         studentName: 'Antoine L.',
-        year: 'Master · 2022',
-        pedagogyStep: 'Event Master · Real production · S1',
+        year: 'Postgraduate · 2022',
+        pedagogyStep: 'Event postgraduate · Real production · S1',
         quote:
           "12 students, one single event. Real budget, external audience, opening night with 200 guests. Not an exercise.",
         sketchCaption: 'Floor plan · Antoine L. · annotated scenography',
@@ -619,8 +619,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Launch of an emerging brand',
         studentName: 'Élise V.',
-        year: 'Master · 2023',
-        pedagogyStep: 'Event Master · Real client brief',
+        year: 'Postgraduate · 2023',
+        pedagogyStep: 'Event postgraduate · Real client brief',
         quote:
           "The brand was launching its first collection. One night, one venue, 150 guests, zero margin for error. That's event production.",
         sketchCaption: 'Story · Élise V. · minute-by-minute narration',
@@ -630,8 +630,8 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Design lecture with international guest',
         studentName: 'Marc R.',
-        year: 'Master · 2024',
-        pedagogyStep: 'Event Master · S2 lecture production',
+        year: 'Postgraduate · 2024',
+        pedagogyStep: 'Event postgraduate · S2 lecture production',
         quote:
           "We brought in a Swiss designer. Travel, hotel, scenography, moderation, video capture. The whole chain, in 6 weeks.",
         sketchCaption: 'Brief · Marc R. · scenography and guest journey',

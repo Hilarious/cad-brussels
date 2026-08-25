@@ -29,13 +29,13 @@ export type Program = {
 }
 
 export const PROGRAMS: readonly Program[] = [
-  // --------------------------------------------------------------- Bachelors
+  // --------------------------------------------------------------- Undergraduates
   {
     slug: 'interior-architecture-design',
     labelFR: 'Architecture d’intérieur',
     labelEN: 'Interior Architecture & Design',
-    descFR: 'Bachelor 3 ans',
-    descEN: 'Bachelor 3 years',
+    descFR: 'Undergraduate 3 ans',
+    descEN: 'Undergraduate 3 years',
     taglineFR:
       'Concevez des espaces sensibles et durables : logement, retail, scénographie, mobilier.',
     taglineEN:
@@ -47,8 +47,8 @@ export const PROGRAMS: readonly Program[] = [
     slug: 'communication-digital-design',
     labelFR: 'Communication & Digital',
     labelEN: 'Communication & Digital Design',
-    descFR: 'Bachelor 3 ans',
-    descEN: 'Bachelor 3 years',
+    descFR: 'Undergraduate 3 ans',
+    descEN: 'Undergraduate 3 years',
     taglineFR:
       'Branding, direction artistique, UX/UI, motion — le langage visuel de la marque contemporaine.',
     taglineEN:
@@ -60,8 +60,8 @@ export const PROGRAMS: readonly Program[] = [
     slug: 'fashion-accessory-design',
     labelFR: 'Mode & Accessoires',
     labelEN: 'Fashion & Accessory Design',
-    descFR: 'Bachelor 3 ans',
-    descEN: 'Bachelor 3 years',
+    descFR: 'Undergraduate 3 ans',
+    descEN: 'Undergraduate 3 years',
     taglineFR:
       'Silhouette, matière, défilé. Une école de mode belge ancrée dans le métier et les jurys pros.',
     taglineEN:
@@ -72,15 +72,15 @@ export const PROGRAMS: readonly Program[] = [
 
   // ----------------------------------------------------------------- Masters
   {
-    slug: 'interior-architecture-design-master',
+    slug: 'interior-architecture-design-postgraduate',
     labelFR: 'Interior Architecture 2 ans',
     labelEN: 'Interior Architecture 2 years',
-    descFR: 'Master 2 ans',
-    descEN: 'Master 2 years',
+    descFR: 'Postgraduate 2 ans',
+    descEN: 'Postgraduate 2 years',
     taglineFR:
-      'Approfondissement du Bachelor : recherche, expertise, spécialisation matériaux et scénographie.',
+      'Approfondissement du cycle undergraduate : recherche, expertise, spécialisation matériaux et scénographie.',
     taglineEN:
-      'Deepening after the Bachelor: research, expertise, materials and scenography.',
+      'Deepening after the undergraduate cycle: research, expertise, materials and scenography.',
     level: 'master',
     duration: 'P2Y',
   },
@@ -88,8 +88,8 @@ export const PROGRAMS: readonly Program[] = [
     slug: 'home-living-design',
     labelFR: 'Home & Living Design',
     labelEN: 'Home & Living Design',
-    descFR: 'Master 2 ans',
-    descEN: 'Master 2 years',
+    descFR: 'Postgraduate 2 ans',
+    descEN: 'Postgraduate 2 years',
     taglineFR:
       'Design produit, mobilier et objet, en lien avec les éditeurs belges et européens.',
     taglineEN:
@@ -101,8 +101,8 @@ export const PROGRAMS: readonly Program[] = [
     slug: 'digital-brand-content',
     labelFR: 'Digital Brand Content',
     labelEN: 'Digital Brand Content',
-    descFR: 'Master 2 ans',
-    descEN: 'Master 2 years',
+    descFR: 'Postgraduate 2 ans',
+    descEN: 'Postgraduate 2 years',
     taglineFR:
       'Direction de contenu, stratégie de marque digitale, écosystème social et éditorial.',
     taglineEN:
@@ -114,8 +114,8 @@ export const PROGRAMS: readonly Program[] = [
     slug: 'image-3d-motion-video-ai',
     labelFR: 'Image 3D · Motion · AI',
     labelEN: 'Image 3D · Motion · AI',
-    descFR: 'Master 2 ans',
-    descEN: 'Master 2 years',
+    descFR: 'Postgraduate 2 ans',
+    descEN: 'Postgraduate 2 years',
     taglineFR:
       'Image de synthèse, motion design, IA générative, Unreal Engine — nouveaux métiers de l’image.',
     taglineEN:
@@ -127,8 +127,8 @@ export const PROGRAMS: readonly Program[] = [
     slug: 'event-management',
     labelFR: 'Event Management',
     labelEN: 'Event Management',
-    descFR: 'Master 2 ans',
-    descEN: 'Master 2 years',
+    descFR: 'Postgraduate 2 ans',
+    descEN: 'Postgraduate 2 years',
     taglineFR:
       'Concevoir, produire, opérer des événements culturels et corporate à Bruxelles et à l’international.',
     taglineEN:
@@ -155,7 +155,7 @@ export const PROGRAMS: readonly Program[] = [
 
 /**
  * Retrouve un programme par son slug. Renvoie undefined si le slug n'est
- * pas dans le catalogue (ex : hubs `/programmes`, `/masters`, ou pages
+ * pas dans le catalogue (ex : hubs `/programmes`, `/postgraduate`, ou pages
  * éditoriales comme `/about`).
  */
 export function programBySlug(slug: string | undefined | null): Program | undefined {

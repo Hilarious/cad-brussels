@@ -13,12 +13,12 @@ export async function generateMetadata({
     ? {
         title: 'Candidater au CAD Brussels, formulaire de pré-inscription',
         description:
-          "Pré-inscription en ligne pour les Bachelor et Master du CAD Brussels. Formulaire en 5 minutes, réponse de l'équipe Admissions sous 48h.",
+          "Pré-inscription en ligne pour les undergraduates et postgraduates du CAD Brussels. Formulaire en 5 minutes, réponse de l'équipe Admissions sous 48h.",
       }
     : {
         title: 'Apply to CAD Brussels, pre-registration form',
         description:
-          'Online pre-registration for CAD Brussels Bachelor and Master programs. Five-minute form, response from the Admissions team within 48h.',
+          'Online pre-registration for CAD Brussels undergraduate and postgraduate programmes. Five-minute form, response from the Admissions team within 48h.',
       }
 }
 

@@ -88,7 +88,7 @@ const alumniFR: Alumni[] = [
     currentEmployer: 'Buck Studios',
     city: 'Amsterdam',
     quote:
-      "Le Master m'a forcé à passer de l'esthétique au workflow industriel. C'est là que j'ai compris la différence entre faire de jolies images et livrer un projet qui tient en agence.",
+      "Le postgraduate m'a forcé à passer de l'esthétique au workflow industriel. C'est là que j'ai compris la différence entre faire de jolies images et livrer un projet qui tient en agence.",
     initials: 'TV',
   },
   {
@@ -187,7 +187,7 @@ const alumniEN: Alumni[] = [
     currentEmployer: 'Buck Studios',
     city: 'Amsterdam',
     quote:
-      "The Master forced me to move from aesthetics to industrial workflow. That’s when I understood the difference between making nice visuals and shipping a project that holds in agency.",
+      "The postgraduate forced me to move from aesthetics to industrial workflow. That’s when I understood the difference between making nice visuals and shipping a project that holds in agency.",
     initials: 'TV',
   },
   {

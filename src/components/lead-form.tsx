@@ -19,27 +19,27 @@ type FormValues = {
 }
 
 const SECTIONS_FR: Array<{ value: string; label: string; group: string }> = [
-  { group: 'Bachelor', value: 'bachelor-interior', label: 'Architecture d’intérieur' },
-  { group: 'Bachelor', value: 'bachelor-communication', label: 'Communication & Digital' },
-  { group: 'Bachelor', value: 'bachelor-fashion', label: 'Mode & Accessoires' },
-  { group: 'Master', value: 'master-interior', label: 'Architecture d’intérieur (2 ans)' },
-  { group: 'Master', value: 'master-home-living', label: 'Home & Living' },
-  { group: 'Master', value: 'master-digital-brand', label: 'Digital Brand Content' },
-  { group: 'Master', value: 'master-image', label: 'Image, 3D, Motion, IA' },
-  { group: 'Master', value: 'master-event', label: 'Event Management' },
+  { group: 'Undergraduate', value: 'bachelor-interior', label: 'Architecture d’intérieur' },
+  { group: 'Undergraduate', value: 'bachelor-communication', label: 'Communication & Digital' },
+  { group: 'Undergraduate', value: 'bachelor-fashion', label: 'Mode & Accessoires' },
+  { group: 'Postgraduate', value: 'master-interior', label: 'Architecture d’intérieur (2 ans)' },
+  { group: 'Postgraduate', value: 'master-home-living', label: 'Home & Living' },
+  { group: 'Postgraduate', value: 'master-digital-brand', label: 'Digital Brand Content' },
+  { group: 'Postgraduate', value: 'master-image', label: 'Image, 3D, Motion, IA' },
+  { group: 'Postgraduate', value: 'master-event', label: 'Event Management' },
   { group: 'Lifelong Learning', value: 'lifelong-genai', label: 'IA générative pour pros' },
   { group: 'Autre', value: 'undecided', label: 'Pas encore décidé·e' },
 ]
 
 const SECTIONS_EN: Array<{ value: string; label: string; group: string }> = [
-  { group: 'Bachelor', value: 'bachelor-interior', label: 'Interior Architecture' },
-  { group: 'Bachelor', value: 'bachelor-communication', label: 'Communication & Digital' },
-  { group: 'Bachelor', value: 'bachelor-fashion', label: 'Fashion & Accessory' },
-  { group: 'Master', value: 'master-interior', label: 'Interior Architecture (2 yrs)' },
-  { group: 'Master', value: 'master-home-living', label: 'Home & Living' },
-  { group: 'Master', value: 'master-digital-brand', label: 'Digital Brand Content' },
-  { group: 'Master', value: 'master-image', label: 'Image, 3D, Motion, AI' },
-  { group: 'Master', value: 'master-event', label: 'Event Management' },
+  { group: 'Undergraduate', value: 'bachelor-interior', label: 'Interior Architecture' },
+  { group: 'Undergraduate', value: 'bachelor-communication', label: 'Communication & Digital' },
+  { group: 'Undergraduate', value: 'bachelor-fashion', label: 'Fashion & Accessory' },
+  { group: 'Postgraduate', value: 'master-interior', label: 'Interior Architecture (2 yrs)' },
+  { group: 'Postgraduate', value: 'master-home-living', label: 'Home & Living' },
+  { group: 'Postgraduate', value: 'master-digital-brand', label: 'Digital Brand Content' },
+  { group: 'Postgraduate', value: 'master-image', label: 'Image, 3D, Motion, AI' },
+  { group: 'Postgraduate', value: 'master-event', label: 'Event Management' },
   { group: 'Lifelong Learning', value: 'lifelong-genai', label: 'Generative AI for pros' },
   { group: 'Other', value: 'undecided', label: 'Not decided yet' },
 ]

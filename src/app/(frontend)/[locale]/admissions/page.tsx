@@ -53,7 +53,7 @@ export default async function AdmissionsPage({
           },
           {
             title: 'Le parcours scolaire',
-            body: "Bachelor, baccalauréat européen, équivalence : on accepte beaucoup de formats. Si vous doutez, on en parle. Personne n'est recalé sur un dossier scolaire.",
+            body: "Secondaire, baccalauréat européen, équivalence : on accepte beaucoup de formats. Si vous doutez, on en parle. Personne n'est recalé sur un dossier scolaire.",
           },
           {
             title: 'L’hésitation',
@@ -139,7 +139,7 @@ export default async function AdmissionsPage({
           },
           {
             title: 'Academic background',
-            body: 'Bachelor, European Baccalaureate, equivalence: we accept many formats. If in doubt, let us discuss. No one is rejected on transcripts alone.',
+            body: 'Secondary school, European Baccalaureate, equivalence: we accept many formats. If in doubt, let us discuss. No one is rejected on transcripts alone.',
           },
           {
             title: 'Hesitation',
@@ -352,13 +352,13 @@ export default async function AdmissionsPage({
             </p>
             <p className="mt-3 font-display text-2xl md:text-3xl">
               {isFR
-                ? 'Bachelor & Master · 9 500 €/an UE, 11 000 €/an hors UE'
-                : 'Bachelor & Master · €9,500/yr EU, €11,000/yr non-EU'}
+                ? 'Undergraduate & postgraduate · 9 500 €/an UE, 11 000 €/an hors UE'
+                : 'Undergraduate & postgraduate · €9,500/yr EU, €11,000/yr non-EU'}
             </p>
             <p className="mt-3 text-sm text-ink/60">
               {isFR
-                ? "Tarif identique Bachelor et Master, garanti pour la durée du cursus. Échéancier en 3 fois pour les étudiants UE. Frais d'inscription 300 € inclus."
-                : 'Same fee for Bachelor and Master, locked for the program duration. Three-instalment schedule for EU students. €300 registration fee included.'}
+                ? "Tarif identique undergraduate et postgraduate, garanti pour la durée du cursus. Échéancier en 3 fois pour les étudiants UE. Frais d'inscription 300 € inclus."
+                : 'Same fee for undergraduate and postgraduate, locked for the program duration. Three-instalment schedule for EU students. €300 registration fee included.'}
             </p>
           </div>
           <Link

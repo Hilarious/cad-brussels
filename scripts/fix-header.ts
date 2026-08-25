@@ -11,21 +11,21 @@ import config from '../src/payload.config'
 const headerFR = {
   navItems: [
     {
-      label: 'Bachelor',
+      label: 'Undergraduate',
       path: '/fr/programmes',
       children: [
-        { label: 'Tous les Bachelors', path: '/fr/programmes' },
+        { label: 'Tous les undergraduates', path: '/fr/programmes' },
         { label: "Architecture d'intérieur", path: '/fr/interior-architecture-design' },
         { label: 'Communication & Digital', path: '/fr/communication-digital-design' },
         { label: 'Mode & Accessoires', path: '/fr/fashion-accessory-design' },
       ],
     },
     {
-      label: 'Master',
-      path: '/fr/masters',
+      label: 'Postgraduate',
+      path: '/fr/postgraduate',
       children: [
-        { label: 'Tous les Masters', path: '/fr/masters' },
-        { label: "Architecture d'intérieur · 2 ans", path: '/fr/interior-architecture-design-master' },
+        { label: 'Tous les postgraduates', path: '/fr/postgraduate' },
+        { label: "Architecture d'intérieur · 2 ans", path: '/fr/interior-architecture-design-postgraduate' },
         { label: 'Home & Living', path: '/fr/home-living-design' },
         { label: 'Digital Brand Content', path: '/fr/digital-brand-content' },
         { label: 'Image, 3D, Motion, IA', path: '/fr/image-3d-motion-video-ai' },
@@ -71,21 +71,21 @@ const headerFR = {
 const headerEN = {
   navItems: [
     {
-      label: 'Bachelor',
+      label: 'Undergraduate',
       path: '/en/programmes',
       children: [
-        { label: 'All Bachelors', path: '/en/programmes' },
+        { label: 'All undergraduates', path: '/en/programmes' },
         { label: 'Interior Architecture', path: '/en/interior-architecture-design' },
         { label: 'Communication & Digital', path: '/en/communication-digital-design' },
         { label: 'Fashion & Accessory', path: '/en/fashion-accessory-design' },
       ],
     },
     {
-      label: 'Master',
-      path: '/en/masters',
+      label: 'Postgraduate',
+      path: '/en/postgraduate',
       children: [
-        { label: 'All Masters', path: '/en/masters' },
-        { label: 'Interior Architecture · 2 years', path: '/en/interior-architecture-design-master' },
+        { label: 'All postgraduates', path: '/en/postgraduate' },
+        { label: 'Interior Architecture · 2 years', path: '/en/interior-architecture-design-postgraduate' },
         { label: 'Home & Living', path: '/en/home-living-design' },
         { label: 'Digital Brand Content', path: '/en/digital-brand-content' },
         { label: 'Image, 3D, Motion, AI', path: '/en/image-3d-motion-video-ai' },

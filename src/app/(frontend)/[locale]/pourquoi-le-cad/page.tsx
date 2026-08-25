@@ -141,7 +141,7 @@ export default async function WhyCadPage({
             destinations: 'Maisons partenaires : Maison Margiela, AF Vandevorst, MM6. Marques bruxelloises émergentes. Studios de tendance. Création de marque indépendante.',
           },
           {
-            program: 'Master Image 3D Motion AI',
+            program: 'Postgraduate Image 3D Motion AI',
             destinations: 'Studios CGI, productions audiovisuelles, agences de réalité augmentée, équipes motion en agence, freelance vidéo, structures spécialisées en IA générative.',
           },
         ],
@@ -274,7 +274,7 @@ export default async function WhyCadPage({
             destinations: 'Partner houses: Maison Margiela, AF Vandevorst, MM6. Emerging Brussels labels. Trend studios. Independent label creation.',
           },
           {
-            program: 'Master Image 3D Motion AI',
+            program: 'Postgraduate Image 3D Motion AI',
             destinations: 'CGI studios, audiovisual productions, augmented reality agencies, motion teams in agency, video freelance, generative-AI specialised structures.',
           },
         ],

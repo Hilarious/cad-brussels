@@ -39,7 +39,7 @@ const SCHOOL_BASE = {
   url: SITE_URL,
   logo: `${SITE_URL}/logo/cad-logo-full.png`,
   description:
-    'École supérieure de design à Bruxelles depuis 1961. Bachelor, Master et formations continues en architecture d’intérieur, communication digitale, image 3D, motion, IA et mode.',
+    'École supérieure de design à Bruxelles depuis 1961. Undergraduate, postgraduate et formations continues en architecture d’intérieur, communication digitale, image 3D, motion, IA et mode.',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '25 rue Roberts-Jones',
@@ -75,7 +75,7 @@ export function educationalOrganization() {
     hasCredential: [
       {
         '@type': 'EducationalOccupationalCredential',
-        credentialCategory: 'Bachelor',
+        credentialCategory: 'Undergraduate',
       },
       {
         '@type': 'EducationalOccupationalCredential',
@@ -110,7 +110,7 @@ export function course({
       ? 'Master'
       : level === 'specialisation'
         ? 'Specialisation'
-        : 'Bachelor'
+        : 'Undergraduate'
 
   return {
     '@context': 'https://schema.org',
@@ -140,7 +140,7 @@ export function course({
       '@type': 'Offer',
       category: educationalLevel,
       priceCurrency: 'EUR',
-      // Prix indicatifs — Bachelor et Master à 9 500 €/an EU
+      // Prix indicatifs — Undergraduate et Master à 9 500 €/an EU
       price: level === 'specialisation' ? '4500' : '9500',
       availability: 'https://schema.org/InStock',
     },
@@ -255,7 +255,7 @@ export function faqPage(
 }
 
 /**
- * ItemList — pour les pages listing (hub Bachelors, Masters, listing news).
+ * ItemList — pour les pages listing (hub Undergraduates, Masters, listing news).
  * Aide Google à comprendre la structure de listing.
  */
 export function itemList({

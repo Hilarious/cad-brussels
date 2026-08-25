@@ -41,7 +41,7 @@ type FacultyMember = {
 }
 
 const facultyFR: FacultyMember[] = [
-  // Bachelor Architecture d'intérieur
+  // Undergraduate Architecture d'intérieur
   {
     name: 'Charlotte Lemoine',
     initials: 'CL',
@@ -55,7 +55,7 @@ const facultyFR: FacultyMember[] = [
     name: 'Pieter Janssens',
     initials: 'PJ',
     subject: 'Logiciels professionnels · Rhino · V-Ray',
-    programs: ['Architecture d’intérieur', 'Master 2 ans'],
+    programs: ['Architecture d’intérieur', 'Postgraduate 2 ans'],
     parallelRole: 'Senior 3D artist',
     parallelEmployer: 'B+B Studio',
     city: 'Anvers',
@@ -70,7 +70,7 @@ const facultyFR: FacultyMember[] = [
     city: 'Bruxelles',
   },
 
-  // Bachelor Communication & Digital
+  // Undergraduate Communication & Digital
   {
     name: 'Sophie Vermeer',
     initials: 'SV',
@@ -84,7 +84,7 @@ const facultyFR: FacultyMember[] = [
     name: 'Thomas Renaud',
     initials: 'TR',
     subject: 'Motion design · After Effects',
-    programs: ['Communication & Digital', 'Master Image 3D'],
+    programs: ['Communication & Digital', 'Postgraduate Image 3D'],
     parallelRole: 'Motion designer freelance',
     parallelEmployer: 'Clients agences belges et NL',
     city: 'Amsterdam',
@@ -93,7 +93,7 @@ const facultyFR: FacultyMember[] = [
     name: 'Julie Marin',
     initials: 'JM',
     subject: 'UX/UI · Figma · Recherche utilisateur',
-    programs: ['Communication & Digital', 'Master Digital Brand'],
+    programs: ['Communication & Digital', 'Postgraduate Digital Brand'],
     parallelRole: 'Lead designer',
     parallelEmployer: 'Decathlon Digital',
     city: 'Lille',
@@ -102,13 +102,13 @@ const facultyFR: FacultyMember[] = [
     name: 'Yann Beaufils',
     initials: 'YB',
     subject: 'IA générative · Workflows créatifs',
-    programs: ['Communication & Digital', 'Master Image 3D'],
+    programs: ['Communication & Digital', 'Postgraduate Image 3D'],
     parallelRole: 'Creative AI Lead',
     parallelEmployer: 'Studio indépendant',
     city: 'Bruxelles',
   },
 
-  // Bachelor Mode & Accessoires
+  // Undergraduate Mode & Accessoires
   {
     name: 'Alessandra Conti',
     initials: 'AC',
@@ -137,34 +137,34 @@ const facultyFR: FacultyMember[] = [
     city: 'Bruxelles',
   },
 
-  // Master Home & Living
+  // Postgraduate Home & Living
   {
     name: 'Giulia Ferrari',
     initials: 'GF',
     subject: 'Design produit · Mobilier',
-    programs: ['Master Home & Living'],
+    programs: ['Postgraduate Home & Living'],
     parallelRole: 'Designer produit',
     parallelEmployer: 'Cassina (collabore régulièrement)',
     city: 'Milan',
   },
 
-  // Master Digital Brand Content
+  // Postgraduate Digital Brand Content
   {
     name: 'Romain Lefèvre',
     initials: 'RL',
     subject: 'Stratégie de contenu · Brand strategy',
-    programs: ['Master Digital Brand', 'Communication & Digital'],
+    programs: ['Postgraduate Digital Brand', 'Communication & Digital'],
     parallelRole: 'Stratégiste senior',
     parallelEmployer: 'Mortierbrigade',
     city: 'Bruxelles',
   },
 
-  // Master Event Management
+  // Postgraduate Event Management
   {
     name: 'Elise Vanderbeeck',
     initials: 'EV',
     subject: 'Scénographie événementielle · Production',
-    programs: ['Master Event Management'],
+    programs: ['Postgraduate Event Management'],
     parallelRole: 'Productrice exécutive',
     parallelEmployer: 'Indépendante (Brussels Design September)',
     city: 'Bruxelles',
@@ -195,13 +195,13 @@ const facultyEN: FacultyMember[] = facultyFR.map((m) => {
   // Translate program labels for EN. Keep names as-is (they are people).
   const labels: Record<string, string> = {
     "Architecture d’intérieur": 'Interior Architecture',
-    'Master 2 ans': 'Master 2 years',
+    'Postgraduate 2 ans': 'Postgraduate 2 years',
     'Communication & Digital': 'Communication & Digital',
-    'Master Image 3D': 'Master Image 3D',
-    'Master Digital Brand': 'Master Digital Brand',
+    'Postgraduate Image 3D': 'Postgraduate Image 3D',
+    'Postgraduate Digital Brand': 'Postgraduate Digital Brand',
     'Mode & Accessoires': 'Fashion & Accessory',
-    'Master Home & Living': 'Master Home & Living',
-    'Master Event Management': 'Master Event Management',
+    'Postgraduate Home & Living': 'Postgraduate Home & Living',
+    'Postgraduate Event Management': 'Postgraduate Event Management',
     'Fashion Management': 'Fashion Management',
   }
   // Translate subjects to English

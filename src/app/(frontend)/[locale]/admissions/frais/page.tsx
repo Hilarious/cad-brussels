@@ -12,14 +12,14 @@ export async function generateMetadata({
   const { locale } = await params
   return locale === 'fr'
     ? {
-        title: 'Frais de scolarité au CAD Brussels, Bachelor, Master, Spécialisation',
+        title: 'Frais de scolarité au CAD Brussels, Undergraduate, postgraduate, spécialisation',
         description:
-          "Tarifs 2026-2027 : Bachelor et Master 9 500 €/an pour les étudiants EU, 11 000 €/an hors EU. Spécialisation Fashion Business 4 500 €. Échéancier de paiement détaillé.",
+          "Tarifs 2026-2027 : Undergraduate et postgraduate 9 500 €/an pour les étudiants EU, 11 000 €/an hors EU. Spécialisation Fashion Business 4 500 €. Échéancier de paiement détaillé.",
       }
     : {
-        title: 'Tuition fees at CAD Brussels, Bachelor, Master, Specialization',
+        title: 'Tuition fees at CAD Brussels, Undergraduate, postgraduate, specialisation',
         description:
-          '2026-2027 fees: Bachelor and Master €9,500/year for EU students, €11,000/year non-EU. Fashion Business Specialization €4,500. Detailed payment schedule.',
+          '2026-2027 fees: Undergraduate and postgraduate €9,500/year for EU students, €11,000/year non-EU. Fashion Business Specialization €4,500. Detailed payment schedule.',
       }
 }
 
@@ -38,12 +38,12 @@ export default async function TuitionFeesPage({
         eyebrow: 'Frais de scolarité',
         title: 'Tout sur les frais de scolarité au CAD',
         intro:
-          "Les tarifs et l'échéancier sont publics. Tarif identique pour les Bachelor et les Master, garanti pour toute la durée du cursus, sauf indexation si l'inflation dépasse 5 % par an.",
+          "Les tarifs et l'échéancier sont publics. Tarif identique pour les undergraduates et les postgraduates, garanti pour toute la durée du cursus, sauf indexation si l'inflation dépasse 5 % par an.",
 
         // ============================================================
-        // EU students — Bachelor & Master
+        // EU students — Undergraduate & Master
         // ============================================================
-        euTitle: 'Bachelor et Master · Étudiants UE',
+        euTitle: 'Undergraduate et postgraduate · Étudiants UE',
         euAmount: '9 500 €',
         euAmountUnit: 'par an',
         euBreakdown: '9 200 € + 300 € de frais d’inscription',
@@ -71,7 +71,7 @@ export default async function TuitionFeesPage({
         // ============================================================
         // Non-EU students
         // ============================================================
-        nonEuTitle: 'Bachelor et Master · Étudiants hors UE',
+        nonEuTitle: 'Undergraduate et postgraduate · Étudiants hors UE',
         nonEuAmount: '11 000 €',
         nonEuAmountUnit: 'par an',
         nonEuBreakdown: '10 700 € + 300 € de frais d’inscription',
@@ -172,9 +172,9 @@ export default async function TuitionFeesPage({
         eyebrow: 'Tuition fees',
         title: 'Everything about tuition fees at CAD',
         intro:
-          'Fees and payment schedule are public. Same fee for Bachelor and Master, locked for the entire program duration, unless inflation exceeds 5% per year, in which case fees are indexed.',
+          'Fees and payment schedule are public. Same fee for undergraduate and postgraduate, locked for the entire program duration, unless inflation exceeds 5% per year, in which case fees are indexed.',
 
-        euTitle: 'Bachelor and Master · EU students',
+        euTitle: 'Undergraduate and postgraduate · EU students',
         euAmount: '€9,500',
         euAmountUnit: 'per year',
         euBreakdown: '€9,200 + €300 registration fee',
@@ -199,7 +199,7 @@ export default async function TuitionFeesPage({
         euInstalmentNote:
           'A staggered payment plan is possible for some residents, subject to acceptance and a €300 supplement.',
 
-        nonEuTitle: 'Bachelor and Master · Non-EU students',
+        nonEuTitle: 'Undergraduate and postgraduate · Non-EU students',
         nonEuAmount: '€11,000',
         nonEuAmountUnit: 'per year',
         nonEuBreakdown: '€10,700 + €300 registration fee',
@@ -302,7 +302,7 @@ export default async function TuitionFeesPage({
         <p className="mt-6 max-w-3xl text-lg text-ink/70">{L.intro}</p>
       </header>
 
-      {/* EU students — Bachelor & Master */}
+      {/* EU students — Undergraduate & Master */}
       <section className="mt-20 rounded-3xl border border-ink/10 bg-paper p-8 md:p-12">
         <p className="text-sm uppercase tracking-widest text-ink/50">
           {L.euTitle}
@@ -498,7 +498,7 @@ export default async function TuitionFeesPage({
             offers: [
               {
                 '@type': 'Offer',
-                category: 'Bachelor and Master · EU',
+                category: 'Undergraduate and postgraduate · EU',
                 price: '9500',
                 priceCurrency: 'EUR',
                 priceSpecification: {
@@ -511,7 +511,7 @@ export default async function TuitionFeesPage({
               },
               {
                 '@type': 'Offer',
-                category: 'Bachelor and Master · Non-EU',
+                category: 'Undergraduate and postgraduate · Non-EU',
                 price: '11000',
                 priceCurrency: 'EUR',
                 priceSpecification: {

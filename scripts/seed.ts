@@ -164,14 +164,14 @@ async function seed() {
       fr: {
         title: "Programmes",
         hero: {
-          eyebrow: "Bachelor • Master • Lifelong Learning",
+          eyebrow: "Undergraduate • Postgraduate • Lifelong Learning",
           heading: "Trois disciplines, une exigence : la maîtrise du métier.",
           subheading:
-            "Architecture d'intérieur, communication & design digital, mode et accessoires, du Bachelor au Master, en passant par la formation continue pour professionnels.",
+            "Architecture d'intérieur, communication & design digital, mode et accessoires, de l’undergraduate au postgraduate, en passant par la formation continue pour professionnels.",
         },
         body: [
-          "Vous avez le choix entre trois Bachelor de 3 ans (180 ECTS) qui couvrent tous les fondamentaux du métier : dessin technique, design, outils numériques (AutoCAD, SketchUp, Rhino), histoire du design, ateliers de pratique. Au programme : Architecture d'intérieur, Communication & Digital, Mode & Accessoires.",
-          "En Master, vous trouverez 1 ou 2 ans selon la filière : Architecture d'intérieur (2 ans), Home & Living Design, Digital Brand Content, Image / 3D / Motion / IA, Event Management. Plus une Spécialisation Fashion Management à temps partiel.",
+          "Vous avez le choix entre trois undergraduates de 3 ans (180 ECTS) qui couvrent tous les fondamentaux du métier : dessin technique, design, outils numériques (AutoCAD, SketchUp, Rhino), histoire du design, ateliers de pratique. Au programme : Architecture d'intérieur, Communication & Digital, Mode & Accessoires.",
+          "En postgraduate, vous trouverez 1 ou 2 ans selon la filière : Architecture d'intérieur (2 ans), Home & Living Design, Digital Brand Content, Image / 3D / Motion / IA, Event Management. Plus une Spécialisation Fashion Management à temps partiel.",
           "Quel que soit votre cursus, vous aurez : des cours en anglais, des stages chaque année, des workshops internationaux (Shanghai, São Paulo, Milan), et un projet de fin d'études exposé publiquement.",
         ],
         cta: { heading: "Procédure d'admission", href: "/fr/admissions" },
@@ -179,14 +179,14 @@ async function seed() {
       en: {
         title: "Programs",
         hero: {
-          eyebrow: "Bachelor • Master • Lifelong Learning",
+          eyebrow: "Undergraduate • Postgraduate • Lifelong Learning",
           heading: "Three disciplines, one demand: master your craft.",
           subheading:
-            "Interior architecture, communication & digital design, fashion and accessories, from Bachelor to Master, plus continuing education for professionals.",
+            "Interior architecture, communication & digital design, fashion and accessories, from undergraduate to postgraduate, plus continuing education for professionals.",
         },
         body: [
-          "You can choose between three 3-year Bachelor programs (180 ECTS) that cover every fundamental of the trade: technical drawing, design, digital tools (AutoCAD, SketchUp, Rhino), design history, hands-on studio practice. On offer: Interior Architecture, Communication & Digital, Fashion & Accessory.",
-          "At Master level, you'll find 1 or 2 years depending on the track: Interior Architecture (2 years), Home & Living Design, Digital Brand Content, Image / 3D / Motion / AI, Event Management. Plus a part-time Fashion Management Specialization.",
+          "You can choose between three 3-year undergraduate programmes (180 ECTS) that cover every fundamental of the trade: technical drawing, design, digital tools (AutoCAD, SketchUp, Rhino), design history, hands-on studio practice. On offer: Interior Architecture, Communication & Digital, Fashion & Accessory.",
+          "At postgraduate level, you'll find 1 or 2 years depending on the track: Interior Architecture (2 years), Home & Living Design, Digital Brand Content, Image / 3D / Motion / AI, Event Management. Plus a part-time Fashion Management Specialization.",
           "Whatever your program, you will have: classes in English, yearly internships, international workshops (Shanghai, São Paulo, Milan), and a graduation project shown publicly.",
         ],
         cta: { heading: "Admission procedure", href: "/en/admissions" },
@@ -197,7 +197,7 @@ async function seed() {
       fr: {
         title: "Architecture d'intérieur & Design",
         hero: {
-          eyebrow: "Bachelor · 3 ans · 180 ECTS",
+          eyebrow: "Undergraduate · 3 ans · 180 ECTS",
           heading: "Architecture d'intérieur & Design",
           subheading:
             "Concevez des espaces habités, durables et émotionnellement justes, de la maison particulière au flagship store.",
@@ -207,14 +207,14 @@ async function seed() {
           "Vous maîtriserez les logiciels professionnels du métier (AutoCAD, SketchUp, Rhino, V-Ray) et ferez un stage en agence chaque année. 1ère année : gros œuvre et menuiserie pendant les vacances de Pâques et d'été. 2ème année : 3 semaines en entreprise du bâtiment puis 4 semaines en agence d'architecture. 3ème année : stage long avant le projet de diplôme.",
           "Workshops internationaux intégrés à votre cursus : Milan Design Week en 2ème année, Shanghai ou São Paulo en 3ème année. ECTS validés, co-financement par l'école.",
           "En 3ème année, vous présentez votre projet de diplôme accompagné d'un book et d'une soutenance publique devant un jury de professionnels.",
-          "Tous les cours sont en anglais. Diplôme privé équivalent à un Bachelor (180 ECTS), non reconnu d'État.",
+          "Tous les cours sont en anglais. Diplôme privé de 180 ECTS, non reconnu d'État.",
         ],
         cta: { heading: "Demander la brochure", href: "/fr/contact" },
       },
       en: {
         title: "Interior Architecture & Design",
         hero: {
-          eyebrow: "Bachelor · 3 years · 180 ECTS",
+          eyebrow: "Undergraduate · 3 years · 180 ECTS",
           heading: "Interior Architecture & Design",
           subheading:
             "Design lived-in, sustainable and emotionally right spaces, from a private house to a flagship store.",
@@ -224,7 +224,7 @@ async function seed() {
           "You will master the professional software of the trade (AutoCAD, SketchUp, Rhino, V-Ray) and do an internship every year. Year 1: structural works and cabinetmaking during Easter and summer breaks. Year 2: 3 weeks in a building firm then 4 weeks in an architecture office. Year 3: a longer internship before the graduation project.",
           "International workshops integrated in your curriculum: Milan Design Week in year 2, Shanghai or São Paulo in year 3. ECTS validated, co-funded by the school.",
           "In year 3, you present your graduation project alongside a book and a public defense in front of a jury of professionals.",
-          "All classes taught in English. Private diploma equivalent to a Bachelor (180 ECTS), not state-approved.",
+          "All classes taught in English. Private diploma, 180 ECTS, not state-approved.",
         ],
         cta: { heading: "Request the brochure", href: "/en/contact" },
       },
@@ -234,7 +234,7 @@ async function seed() {
       fr: {
         title: "Communication & Design Digital",
         hero: {
-          eyebrow: "Bachelor · 3 ans · 180 ECTS",
+          eyebrow: "Undergraduate · 3 ans · 180 ECTS",
           heading: "Communication & Design Digital",
           subheading:
             "Direction artistique, identité de marque, motion design, UI/UX et création digitale assistée par IA.",
@@ -243,14 +243,14 @@ async function seed() {
           "Vous apprendrez à penser une marque de bout en bout : identité visuelle, déclinaison print, web, motion, social media, et désormais workflows IA. À la sortie, vous êtes opérationnel·le pour devenir directeur·rice artistique, designer de marque, motion designer, designer UX/UI ou créatif·ve IA.",
           "La pédagogie repose sur de vrais briefs apportés par des agences et des marques partenaires, en logique d'atelier-studio plutôt que de cours magistraux. L'année académique démarre début octobre avec un workshop multidisciplinaire international au 2ème trimestre.",
           "Stage de 3 semaines en agence intégrée publicité / graphique / digitale ou en service communication d'une marque pendant les vacances de Pâques. Vous gérerez un projet réel : brief, livrables, présentation au commanditaire.",
-          "Tous les cours sont en anglais. Diplôme privé équivalent à un Bachelor (180 ECTS), non reconnu d'État.",
+          "Tous les cours sont en anglais. Diplôme privé de 180 ECTS, non reconnu d'État.",
         ],
         cta: { heading: "Découvrir les workshops", href: "/fr/events" },
       },
       en: {
         title: "Communication & Digital Design",
         hero: {
-          eyebrow: "Bachelor · 3 years · 180 ECTS",
+          eyebrow: "Undergraduate · 3 years · 180 ECTS",
           heading: "Communication & Digital Design",
           subheading:
             "Art direction, brand identity, motion design, UI/UX and AI-assisted digital creation.",
@@ -259,7 +259,7 @@ async function seed() {
           "You will learn to think a brand end-to-end: visual identity, print, web, motion, social media, and now AI workflows. By graduation, you are operational to work as art director, brand designer, motion designer, UX/UI designer or AI creative.",
           "Teaching is based on real briefs from partner agencies and brands, in a studio-style atelier rather than lectures. The academic year starts in early October with an international multidisciplinary workshop in Q2.",
           "A 3-week internship in an integrated advertising / graphic / digital agency or in a brand's communication department during the Easter break. You will handle a real project: brief, deliverables, final presentation.",
-          "All classes taught in English. Private diploma equivalent to a Bachelor (180 ECTS), not state-approved.",
+          "All classes taught in English. Private diploma, 180 ECTS, not state-approved.",
         ],
         cta: { heading: "See upcoming workshops", href: "/en/events" },
       },
@@ -269,7 +269,7 @@ async function seed() {
       fr: {
         title: "Mode & Design d'accessoires",
         hero: {
-          eyebrow: "Bachelor · 3 ans · 180 ECTS",
+          eyebrow: "Undergraduate · 3 ans · 180 ECTS",
           heading: "Mode & Design d'accessoires",
           subheading:
             "De l'intuition créative au défilé : concevoir, prototyper et présenter une collection complète.",
@@ -279,14 +279,14 @@ async function seed() {
           "Vous couvrirez tous les fondamentaux du métier : dessin de mode, coupe à plat, moulage, couture, sérigraphie textile, et conception d'accessoires (sacs, chaussures, chapellerie). Encadrement par des professionnels en activité dans le secteur.",
           "En 3ème année, vous produirez une collection complète présentée lors d'un défilé public à Bruxelles, devant la presse spécialisée et les recruteurs des grandes maisons. Le défilé annuel est le moment phare du cursus.",
           "Le programme entretient des liens étroits avec l'industrie : Maison Margiela, AF Vandevorst, MM6, ainsi que de nombreuses jeunes marques bruxelloises. Tous les cours sont en anglais.",
-          "Diplôme privé équivalent à un Bachelor (180 ECTS), non reconnu d'État.",
+          "Diplôme privé de 180 ECTS, non reconnu d'État.",
         ],
         cta: { heading: "Voir les expositions", href: "/fr/events" },
       },
       en: {
         title: "Fashion & Accessory Design",
         hero: {
-          eyebrow: "Bachelor · 3 years · 180 ECTS",
+          eyebrow: "Undergraduate · 3 years · 180 ECTS",
           heading: "Fashion & Accessory Design",
           subheading:
             "From creative intuition to runway. Design, prototype and present a full collection.",
@@ -296,7 +296,7 @@ async function seed() {
           "You will cover every fundamental of the trade: fashion drawing, flat pattern cutting, draping, sewing, textile printing, and accessory design (bags, shoes, millinery). Mentored by working industry professionals.",
           "In year 3, you produce a full collection presented at a public runway show in Brussels, attended by specialised press and recruiters from major fashion houses. The annual show is the highlight of the program.",
           "The program maintains close ties with the industry: Maison Margiela, AF Vandevorst, MM6, and many emerging Brussels labels. All classes taught in English.",
-          "Private diploma equivalent to a Bachelor (180 ECTS), not state-approved.",
+          "Private diploma, 180 ECTS, not state-approved.",
         ],
         cta: { heading: "See exhibitions", href: "/en/events" },
       },
@@ -320,7 +320,7 @@ async function seed() {
     programmes: (loc) => [
       {
         blockType: "featureList",
-        eyebrow: loc === "fr" ? "Bachelor" : "Bachelor",
+        eyebrow: loc === "fr" ? "Undergraduate" : "Undergraduate",
         heading:
           loc === "fr"
             ? "Trois cursus de 3 ans, 180 ECTS chacun."
@@ -602,15 +602,15 @@ async function seed() {
         title: "Graduation Show 2026, Diplômes des trois filières",
         location: "CAD Brussels, Galerie d'exposition",
         description: [
-          "Découvrez les projets de fin d'études des promotions Bachelor : architecture d'intérieur, communication digitale, mode et accessoires.",
+          "Découvrez les projets de fin d'études des promotions undergraduate : architecture d'intérieur, communication digitale, mode et accessoires.",
           "Vernissage le premier soir de 18h à 22h. Exposition ouverte au public toute la semaine, 11h–19h.",
         ],
       },
       en: {
-        title: "Graduation Show 2026, Bachelor showcase",
+        title: "Graduation Show 2026, undergraduate showcase",
         location: "CAD Brussels, Gallery",
         description: [
-          "Discover the graduation projects of the Bachelor classes: interior architecture, digital communication, fashion and accessories.",
+          "Discover the graduation projects of the undergraduate classes: interior architecture, digital communication, fashion and accessories.",
           "Opening night on day 1 from 6pm to 10pm. Exhibition open to the public all week, 11am–7pm.",
         ],
       },
@@ -653,7 +653,7 @@ async function seed() {
         location: "Salone del Mobile, Milan",
         description: [
           "Une semaine immersive au cœur du Salone del Mobile : visites guidées, rencontres avec des designers, brief de projet en équipe.",
-          "Réservé aux étudiants Master Home & Living Design.",
+          "Réservé aux étudiants postgraduate Home & Living Design.",
         ],
       },
       en: {
@@ -661,7 +661,7 @@ async function seed() {
         location: "Salone del Mobile, Milan",
         description: [
           "An immersive week at the heart of Salone del Mobile: guided tours, designer meet-ups, team project brief.",
-          "Reserved for Master Home & Living Design students.",
+          "Reserved for postgraduate Home & Living Design students.",
         ],
       },
     },
@@ -708,7 +708,7 @@ async function seed() {
   const headerFR = {
     navItems: [
       {
-        label: "Bachelor",
+        label: "Undergraduate",
         path: "/programmes",
         children: [
           { label: "Architecture d'intérieur", path: "/interior-architecture-design" },
@@ -717,11 +717,11 @@ async function seed() {
         ],
       },
       {
-        label: "Master",
-        path: "/masters",
+        label: "Postgraduate",
+        path: "/postgraduate",
         children: [
-          { label: "Tous les Masters", path: "/masters" },
-          { label: "Architecture d'intérieur", path: "/interior-architecture-design-master" },
+          { label: "Tous les postgraduates", path: "/postgraduate" },
+          { label: "Architecture d'intérieur", path: "/interior-architecture-design-postgraduate" },
           { label: "Home & Living", path: "/home-living-design" },
           { label: "Digital Brand Content", path: "/digital-brand-content" },
           { label: "Image, 3D, Motion, IA", path: "/image-3d-motion-video-ai" },
@@ -753,7 +753,7 @@ async function seed() {
   const headerEN = {
     navItems: [
       {
-        label: "Bachelor",
+        label: "Undergraduate",
         path: "/programmes",
         children: [
           { label: "Interior Architecture", path: "/interior-architecture-design" },
@@ -762,11 +762,11 @@ async function seed() {
         ],
       },
       {
-        label: "Master",
-        path: "/masters",
+        label: "Postgraduate",
+        path: "/postgraduate",
         children: [
-          { label: "All Masters", path: "/masters" },
-          { label: "Interior Architecture", path: "/interior-architecture-design-master" },
+          { label: "All postgraduates", path: "/postgraduate" },
+          { label: "Interior Architecture", path: "/interior-architecture-design-postgraduate" },
           { label: "Home & Living", path: "/home-living-design" },
           { label: "Digital Brand Content", path: "/digital-brand-content" },
           { label: "Image, 3D, Motion, AI", path: "/image-3d-motion-video-ai" },
@@ -805,24 +805,24 @@ async function seed() {
   const footerFR = {
     columns: [
       {
-        title: "Bachelors",
+        title: "Undergraduates",
         links: [
           { label: "Architecture d’intérieur", path: "/interior-architecture-design" },
           { label: "Communication & Digital", path: "/communication-digital-design" },
           { label: "Mode & Accessoires", path: "/fashion-accessory-design" },
-          { label: "Voir tous les Bachelors", path: "/programmes" },
+          { label: "Voir tous les undergraduates", path: "/programmes" },
         ],
       },
       {
-        title: "Masters & spécialisation",
+        title: "Postgraduates & spécialisation",
         links: [
-          { label: "Interior Architecture 2 ans", path: "/interior-architecture-design-master" },
+          { label: "Interior Architecture 2 ans", path: "/interior-architecture-design-postgraduate" },
           { label: "Home & Living Design", path: "/home-living-design" },
           { label: "Digital Brand Content", path: "/digital-brand-content" },
           { label: "Image 3D · Motion · AI", path: "/image-3d-motion-video-ai" },
           { label: "Event Management", path: "/event-management" },
           { label: "Fashion Management", path: "/fashion-management" },
-          { label: "Voir tous les Masters", path: "/masters" },
+          { label: "Voir tous les postgraduates", path: "/postgraduate" },
         ],
       },
       {
@@ -869,24 +869,24 @@ async function seed() {
   const footerEN = {
     columns: [
       {
-        title: "Bachelors",
+        title: "Undergraduates",
         links: [
           { label: "Interior Architecture", path: "/interior-architecture-design" },
           { label: "Communication & Digital", path: "/communication-digital-design" },
           { label: "Fashion & Accessory", path: "/fashion-accessory-design" },
-          { label: "See all Bachelors", path: "/programmes" },
+          { label: "See all undergraduates", path: "/programmes" },
         ],
       },
       {
-        title: "Masters & Specialisation",
+        title: "Postgraduates & Specialisation",
         links: [
-          { label: "Interior Architecture 2 years", path: "/interior-architecture-design-master" },
+          { label: "Interior Architecture 2 years", path: "/interior-architecture-design-postgraduate" },
           { label: "Home & Living Design", path: "/home-living-design" },
           { label: "Digital Brand Content", path: "/digital-brand-content" },
           { label: "Image 3D · Motion · AI", path: "/image-3d-motion-video-ai" },
           { label: "Event Management", path: "/event-management" },
           { label: "Fashion Management", path: "/fashion-management" },
-          { label: "See all Masters", path: "/masters" },
+          { label: "See all postgraduates", path: "/postgraduate" },
         ],
       },
       {

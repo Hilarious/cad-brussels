@@ -10,26 +10,26 @@
  * Source of truth for color → program pairing: charte Thomas Durieux
  * (June 2024), validated by Eric Vanden Broeck (Dean).
  *
- *   Bachelor Interior Architecture       → Navy
- *   Bachelor Communication & Digital     → Violet
- *   Bachelor Fashion & Accessory         → Pink
+ *   Undergraduate Interior Architecture       → Navy
+ *   Undergraduate Communication & Digital     → Violet
+ *   Undergraduate Fashion & Accessory         → Pink
  *   Master Interior Architecture 2 ans   → Navy
- *   Master Home & Living                 → Mint
- *   Master Digital Brand Content         → Violet
- *   Master Image 3D Motion Video AI      → Azure
- *   Master Event Management              → Orange
+ *   Postgraduate Home & Living                 → Mint
+ *   Postgraduate Digital Brand Content         → Violet
+ *   Postgraduate Image 3D Motion Video AI      → Azure
+ *   Postgraduate Event Management              → Orange
  *   Spécialisation Fashion Management    → Pink
  *   Lifelong Learning (hub + modules)    → Magenta
  *   Édition 65 ans                       → Pink
  *   Journées Portes Ouvertes             → Red
  */
 const SLUG_TO_THEME: Record<string, string> = {
-  // Bachelors
+  // Undergraduates
   'interior-architecture-design': 'theme-interior',
   'communication-digital-design': 'theme-communication',
   'fashion-accessory-design': 'theme-fashion',
   // Masters
-  'interior-architecture-design-master': 'theme-interior',
+  'interior-architecture-design-postgraduate': 'theme-interior',
   'home-living-design': 'theme-home-living',
   'digital-brand-content': 'theme-communication',
   'image-3d-motion-video-ai': 'theme-image-3d',
@@ -38,7 +38,7 @@ const SLUG_TO_THEME: Record<string, string> = {
   'fashion-management': 'theme-fashion',
   // Hubs (use the dominant accent of the group)
   programmes: 'theme-fashion',
-  masters: 'theme-image-3d',
+  postgraduate: 'theme-image-3d',
 }
 
 /**

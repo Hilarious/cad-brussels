@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: '%s, CAD Brussels',
   },
   description:
-    'École supérieure de design à Bruxelles depuis 1961. Bachelor, Master et formations continues en architecture d’intérieur, design digital et mode.',
+    'École supérieure de design à Bruxelles depuis 1961. Undergraduate, postgraduate et formations continues en architecture d’intérieur, design digital et mode.',
 }
 
 export default async function LocaleLayout({

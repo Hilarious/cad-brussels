@@ -9,7 +9,7 @@ import type { CollectionConfig } from 'payload'
  *   - visit (open day / individual visit)
  *   - apply (express interest in applying)
  *
- * The form also captures the desired section (Bachelor / Master / Lifelong)
+ * The form also captures the desired section (Undergraduate / Master / Lifelong)
  * which is what makes the lead actionable for the admissions team.
  *
  * Visible to admins/editors only. RGPD: data retained 2 years max.
@@ -76,16 +76,16 @@ export const Leads: CollectionConfig = {
       type: 'select',
       required: true,
       options: [
-        // Bachelor
-        { label: "Bachelor, Architecture d’intérieur", value: 'bachelor-interior' },
-        { label: 'Bachelor, Communication & Digital', value: 'bachelor-communication' },
-        { label: 'Bachelor, Mode & Accessoires', value: 'bachelor-fashion' },
+        // Undergraduate
+        { label: "Undergraduate, Architecture d’intérieur", value: 'bachelor-interior' },
+        { label: 'Undergraduate, Communication & Digital', value: 'bachelor-communication' },
+        { label: 'Undergraduate, Mode & Accessoires', value: 'bachelor-fashion' },
         // Master
-        { label: "Master, Architecture d’intérieur 2 ans", value: 'master-interior' },
-        { label: 'Master, Home & Living', value: 'master-home-living' },
-        { label: 'Master, Digital Brand Content', value: 'master-digital-brand' },
-        { label: 'Master, Image / 3D / Motion / IA', value: 'master-image' },
-        { label: 'Master, Event Management', value: 'master-event' },
+        { label: "Postgraduate, Architecture d’intérieur 2 ans", value: 'master-interior' },
+        { label: 'Postgraduate, Home & Living', value: 'master-home-living' },
+        { label: 'Postgraduate, Digital Brand Content', value: 'master-digital-brand' },
+        { label: 'Postgraduate, Image / 3D / Motion / IA', value: 'master-image' },
+        { label: 'Postgraduate, Event Management', value: 'master-event' },
         // Lifelong
         { label: 'Lifelong Learning, IA générative', value: 'lifelong-genai' },
         // Other

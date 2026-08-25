@@ -49,16 +49,16 @@ export default async function HomePage({
   const programs =
     locale === 'fr'
       ? [
-          { slug: 'interior-architecture-design', label: 'Architecture d’intérieur', desc: 'Bachelor 3 ans' },
-          { slug: 'communication-digital-design', label: 'Communication & Digital', desc: 'Bachelor 3 ans' },
-          { slug: 'fashion-accessory-design', label: 'Mode & Accessoires', desc: 'Bachelor 3 ans' },
-          { slug: 'masters', label: 'Masters', desc: '7 spécialisations' },
+          { slug: 'interior-architecture-design', label: 'Architecture d’intérieur', desc: 'Undergraduate 3 ans' },
+          { slug: 'communication-digital-design', label: 'Communication & Digital', desc: 'Undergraduate 3 ans' },
+          { slug: 'fashion-accessory-design', label: 'Mode & Accessoires', desc: 'Undergraduate 3 ans' },
+          { slug: 'postgraduate', label: 'Postgraduates', desc: '7 spécialisations' },
         ]
       : [
-          { slug: 'interior-architecture-design', label: 'Interior Architecture', desc: 'Bachelor 3 years' },
-          { slug: 'communication-digital-design', label: 'Communication & Digital', desc: 'Bachelor 3 years' },
-          { slug: 'fashion-accessory-design', label: 'Fashion & Accessory', desc: 'Bachelor 3 years' },
-          { slug: 'masters', label: 'Masters', desc: '7 specializations' },
+          { slug: 'interior-architecture-design', label: 'Interior Architecture', desc: 'Undergraduate 3 years' },
+          { slug: 'communication-digital-design', label: 'Communication & Digital', desc: 'Undergraduate 3 years' },
+          { slug: 'fashion-accessory-design', label: 'Fashion & Accessory', desc: 'Undergraduate 3 years' },
+          { slug: 'postgraduate', label: 'Postgraduates', desc: '7 specializations' },
         ]
 
   // Trust band — official figures from cad.be/fr/qui-sommes-nous and

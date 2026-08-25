@@ -5,22 +5,22 @@ import { sendEmail } from '@/lib/email'
 import { applicationSchema as Schema } from '@/lib/validation/application'
 
 const PROGRAM_LABELS: Record<string, string> = {
-  'bachelor-interior': 'Bachelor · Architecture d’intérieur',
-  'bachelor-communication': 'Bachelor · Communication & Digital',
-  'bachelor-fashion': 'Bachelor · Mode & Accessoires',
-  'master-interior': 'Master · Architecture d’intérieur 2 ans',
-  'master-home-living': 'Master · Home & Living',
-  'master-digital-brand': 'Master · Digital Brand Content',
-  'master-image': 'Master · Image / 3D / Motion / IA',
-  'master-event': 'Master · Event Management',
+  'bachelor-interior': 'Undergraduate · Architecture d’intérieur',
+  'bachelor-communication': 'Undergraduate · Communication & Digital',
+  'bachelor-fashion': 'Undergraduate · Mode & Accessoires',
+  'master-interior': 'Postgraduate · Architecture d’intérieur 2 ans',
+  'master-home-living': 'Postgraduate · Home & Living',
+  'master-digital-brand': 'Postgraduate · Digital Brand Content',
+  'master-image': 'Postgraduate · Image / 3D / Motion / IA',
+  'master-event': 'Postgraduate · Event Management',
 }
 
 const LEVEL_LABELS: Record<string, string> = {
   bac1: '1ère année (Bac1)',
   bac2: '2ème année (Bac2)',
   bac3: '3ème année (Bac3)',
-  m1: 'Master 1',
-  m2: 'Master 2',
+  m1: 'Postgraduate 1',
+  m2: 'Postgraduate 2',
 }
 
 export async function POST(req: Request) {

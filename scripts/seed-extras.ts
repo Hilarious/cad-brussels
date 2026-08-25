@@ -110,26 +110,26 @@ type PageContent = {
 const pageDefs: PageDef[] = [
   // ============================================================ MASTERS
   {
-    slug: "masters",
+    slug: "postgraduate",
     fr: {
-      title: "Masters",
+      title: "Postgraduates",
       hero: {
-        eyebrow: "Master · 1 ou 2 ans",
-        heading: "Sept Masters spécialisés.",
+        eyebrow: "Postgraduate · 1 ou 2 ans",
+        heading: "Sept postgraduates spécialisés.",
         subheading:
           "Architecture d'intérieur, Home & Living, Digital Brand Content, Image 3D-Motion-Vidéo-IA, Event Management, choisissez votre voie.",
       },
       body: [
-        "Les Masters du CAD durent 1 ou 2 ans selon la filière (60 ou 120 ECTS). Ils sont ouverts aux titulaires d'un Bachelor en discipline créative ou aux candidats démontrant un niveau équivalent par portfolio.",
-        "Quel que soit votre Master, vous aurez : ateliers de création, suivi individuel par un mentor en activité, projets clients réels, mémoire-projet final présenté publiquement.",
+        "Les postgraduates du CAD durent 1 ou 2 ans selon la filière (60 ou 120 ECTS). Ils sont ouverts aux titulaires d'un diplôme de premier cycle en discipline créative ou aux candidats démontrant un niveau équivalent par portfolio.",
+        "Quel que soit votre postgraduate, vous aurez : ateliers de création, suivi individuel par un mentor en activité, projets clients réels, mémoire-projet final présenté publiquement.",
         "Tous les cours sont en anglais. Le CAD est membre du réseau international CUMULUS depuis 2013, qui réunit plus de 200 écoles d'art à travers le monde. Cela ouvre la porte à des échanges et workshops internationaux.",
       ],
       feature: {
-        eyebrow: "Six Masters + une spécialisation",
+        eyebrow: "Six postgraduates + une spécialisation",
         heading: "Choisissez votre spécialisation.",
         columns: "3",
         items: [
-          { title: "Architecture d'intérieur · 2 ans", description: "Le Master long, pour devenir architecte d'intérieur senior. 120 ECTS." },
+          { title: "Architecture d'intérieur · 2 ans", description: "Le postgraduate long, pour devenir architecte d'intérieur senior. 120 ECTS." },
           { title: "Home & Living Design", description: "Mobilier, objet, scénographie domestique. Workshop Milan inclus." },
           { title: "Digital Brand Content", description: "Stratégie de marque digitale, content design, social media." },
           { title: "Image, 3D, Motion & Video, AI", description: "CGI, motion design, vidéo, IA générative pour la création." },
@@ -140,24 +140,24 @@ const pageDefs: PageDef[] = [
       cta: { heading: "Quelle filière vous correspond ?", href: "/fr/admissions", label: "Discuter avec le secrétariat" },
     },
     en: {
-      title: "Masters",
+      title: "Postgraduates",
       hero: {
-        eyebrow: "Master · 1 or 2 years",
-        heading: "Seven specialized Masters.",
+        eyebrow: "Postgraduate · 1 or 2 years",
+        heading: "Seven specialised postgraduates.",
         subheading:
           "Interior Architecture, Home & Living, Digital Brand Content, Image 3D-Motion-Video-AI, Event Management, pick your path.",
       },
       body: [
-        "CAD Masters run for 1 or 2 years depending on the track (60 or 120 ECTS). They are open to Bachelor graduates in a creative field, or to candidates demonstrating an equivalent level via portfolio.",
-        "Whatever your Master, you'll get: studio creation, one-on-one mentoring by working professionals, real client projects, a final thesis-project shown publicly.",
+        "CAD postgraduates run for 1 or 2 years depending on the track (60 or 120 ECTS). They are open to first-cycle gradelor graduates in a creative field, or to candidates demonstrating an equivalent level via portfolio.",
+        "Whatever your postgraduate, you'll get: studio creation, one-on-one mentoring by working professionals, real client projects, a final thesis-project shown publicly.",
         "All classes are taught in English. CAD has been a member of the international CUMULUS network since 2013, gathering over 200 art schools worldwide. This opens the door to international exchanges and workshops.",
       ],
       feature: {
-        eyebrow: "Six Masters + one specialization",
+        eyebrow: "Six postgraduates + one specialisation",
         heading: "Choose your specialization.",
         columns: "3",
         items: [
-          { title: "Interior Architecture · 2 years", description: "The long Master, to become a senior interior architect. 120 ECTS." },
+          { title: "Interior Architecture · 2 years", description: "The long postgraduate, to become a senior interior architect. 120 ECTS." },
           { title: "Home & Living Design", description: "Furniture, object, domestic scenography. Milan workshop included." },
           { title: "Digital Brand Content", description: "Digital brand strategy, content design, social media." },
           { title: "Image, 3D, Motion & Video, AI", description: "CGI, motion design, video, generative AI for creation." },
@@ -174,17 +174,17 @@ const pageDefs: PageDef[] = [
     fr: {
       title: "Home & Living Design",
       hero: {
-        eyebrow: "Master · 1 an · 60 ECTS",
+        eyebrow: "Postgraduate · 1 an · 60 ECTS",
         heading: "Home & Living Design",
         subheading:
-          "Mobilier, luminaire, objet, scénographie d'intérieur, un Master tourné vers l'art de vivre contemporain.",
+          "Mobilier, luminaire, objet, scénographie d'intérieur, un postgraduate tourné vers l'art de vivre contemporain.",
       },
       body: [
         "Vous deviendrez designer spécialisé·e dans l'univers domestique : sièges, tables, rangements, luminaires, art de la table. La pédagogie alterne ateliers de prototypage, briefs industriels et veille esthétique.",
         "Pendant cette année intensive, vous concevrez votre propre collection : une ligne de mobilier (tables, chaises, fauteuils, etc.) ainsi qu'une ligne d'art de la table (verres, carafes, assiettes, couverts, accessoires).",
         "Workshop d'une semaine au Salone del Mobile de Milan chaque année, l'événement référence de la profession. Partenariat avec plusieurs éditeurs de mobilier belges qui apporteront des briefs réels.",
-        "Pour valider votre Master, vous finaliserez et exposerez publiquement votre collection à Bruxelles, devant un jury de directeurs créatifs et d'éditeurs.",
-        "Tous les cours sont en anglais. Diplôme privé équivalent à un Master (60 ECTS), non reconnu d'État.",
+        "Pour valider votre postgraduate, vous finaliserez et exposerez publiquement votre collection à Bruxelles, devant un jury de directeurs créatifs et d'éditeurs.",
+        "Tous les cours sont en anglais. Diplôme privé de 60 ECTS, non reconnu d'État.",
       ],
       stats: [
         { value: "1", label: "Semaine à Milan" },
@@ -196,17 +196,17 @@ const pageDefs: PageDef[] = [
     en: {
       title: "Home & Living Design",
       hero: {
-        eyebrow: "Master · 1 year · 60 ECTS",
+        eyebrow: "Postgraduate · 1 year · 60 ECTS",
         heading: "Home & Living Design",
         subheading:
-          "Furniture, lighting, object, interior scenography, a Master focused on contemporary lifestyle.",
+          "Furniture, lighting, object, interior scenography, a postgraduate focused on contemporary lifestyle.",
       },
       body: [
         "You will become a designer specialised in the domestic world: chairs, tables, storage, lighting, tableware. Teaching alternates prototyping studios, industrial briefs and aesthetic research.",
         "During this intensive year, you will design your own collection: a furniture line (tables, chairs, armchairs, etc.) plus a tableware line (glasses, carafes, plates, cutlery, accessories).",
         "One-week workshop at Salone del Mobile Milan every year, the profession's reference event. Partnerships with several Belgian furniture editors bringing real briefs.",
-        "To validate your Master, you will finalise and publicly exhibit your collection in Brussels, in front of a jury of creative directors and editors.",
-        "All classes taught in English. Private diploma equivalent to a Master (60 ECTS), not state-approved.",
+        "To validate your postgraduate, you will finalise and publicly exhibit your collection in Brussels, in front of a jury of creative directors and editors.",
+        "All classes taught in English. Private diploma, 60 ECTS, not state-approved.",
       ],
       stats: [
         { value: "1", label: "Week in Milan" },
@@ -222,7 +222,7 @@ const pageDefs: PageDef[] = [
     fr: {
       title: "Digital Brand Content",
       hero: {
-        eyebrow: "Master · 1 an · 60 ECTS",
+        eyebrow: "Postgraduate · 1 an · 60 ECTS",
         heading: "Digital Brand Content",
         subheading:
           "Stratégie de contenu, direction artistique digitale et social media pour les marques contemporaines.",
@@ -232,14 +232,14 @@ const pageDefs: PageDef[] = [
         "Comptez environ 25 heures de cours par semaine, structurées en deux semestres. Premier semestre : vous maîtriserez les techniques et les outils pour comprendre et créer un écosystème digital, à travers exercices pratiques et projets, incluant UX-UI, Brand Strategy, Figma et IA générative.",
         "Deuxième semestre : vous réaliserez un projet global, la création d'un écosystème digital complet pour une marque, un service, une institution ou un produit. Présentation finale devant un jury de directeurs marketing.",
         "Vous travaillerez aussi sur un module IA générative, l'analyse data des performances de contenu, et la production de campagnes vidéo courtes pour les plateformes sociales.",
-        "Tous les cours sont en anglais. Diplôme privé équivalent à un Master (60 ECTS), non reconnu d'État.",
+        "Tous les cours sont en anglais. Diplôme privé de 60 ECTS, non reconnu d'État.",
       ],
       cta: { heading: "Voir les briefs de l'an passé", href: "/fr/contact", label: "Demander un échantillon" },
     },
     en: {
       title: "Digital Brand Content",
       hero: {
-        eyebrow: "Master · 1 year · 60 ECTS",
+        eyebrow: "Postgraduate · 1 year · 60 ECTS",
         heading: "Digital Brand Content",
         subheading:
           "Content strategy, digital art direction and social media for contemporary brands.",
@@ -249,7 +249,7 @@ const pageDefs: PageDef[] = [
         "Expect around 25 hours of class per week, structured in two semesters. First semester: you will master the techniques and tools to understand and create a digital ecosystem, through practical exercises and projects, including UX-UI, Brand Strategy, Figma and generative AI.",
         "Second semester: you will deliver a global project, the creation of a complete digital ecosystem for a brand, service, institution or product. Final presentation to a jury of marketing directors.",
         "You will also work on a generative AI module, data analysis of content performance, and short video campaign production for social platforms.",
-        "All classes taught in English. Private diploma equivalent to a Master (60 ECTS), not state-approved.",
+        "All classes taught in English. Private diploma, 60 ECTS, not state-approved.",
       ],
       cta: { heading: "See last year's briefs", href: "/en/contact", label: "Request a sample" },
     },
@@ -260,16 +260,16 @@ const pageDefs: PageDef[] = [
     fr: {
       title: "Image, 3D, Motion & Video, AI",
       hero: {
-        eyebrow: "Master · 1 an · 60 ECTS",
+        eyebrow: "Postgraduate · 1 an · 60 ECTS",
         heading: "Image, 3D, Motion, Vidéo, IA",
         subheading:
-          "Le Master image à 360° : modélisation 3D, motion design, prise de vue, montage, et workflows IA générative.",
+          "Le postgraduate image à 360° : modélisation 3D, motion design, prise de vue, montage, et workflows IA générative.",
       },
       body: [
         "Vous couvrirez tout le spectre de la production d'image contemporaine : 3D temps réel et offline (Blender, Cinema 4D, Unreal Engine), motion design (After Effects), tournage, montage (Premiere, DaVinci), et IA générative (Midjourney, ComfyUI, Runway, Sora).",
         "Vous travaillerez sur des films courts, des publicités, des clips musicaux et des installations vidéo, encadré·e par des réalisateurs et motion designers en activité. En un an, vous maîtriserez les techniques de design 3D, animation et IA.",
-        "Pour valider votre Master, vous produirez une série de trois pièces démontrant la maîtrise de plusieurs techniques, présentées lors d'une projection publique.",
-        "Tous les cours sont en anglais. Diplôme privé équivalent à un Master (60 ECTS), non reconnu d'État.",
+        "Pour valider votre postgraduate, vous produirez une série de trois pièces démontrant la maîtrise de plusieurs techniques, présentées lors d'une projection publique.",
+        "Tous les cours sont en anglais. Diplôme privé de 60 ECTS, non reconnu d'État.",
       ],
       feature: {
         eyebrow: "Outils maîtrisés",
@@ -289,16 +289,16 @@ const pageDefs: PageDef[] = [
     en: {
       title: "Image, 3D, Motion & Video, AI",
       hero: {
-        eyebrow: "Master · 1 year · 60 ECTS",
+        eyebrow: "Postgraduate · 1 year · 60 ECTS",
         heading: "Image, 3D, Motion, Video, AI",
         subheading:
-          "A 360° image Master: 3D modelling, motion design, shooting, editing, and generative AI workflows.",
+          "A 360° image postgraduate: 3D modelling, motion design, shooting, editing, and generative AI workflows.",
       },
       body: [
         "You will cover the full spectrum of contemporary image production: real-time and offline 3D (Blender, Cinema 4D, Unreal Engine), motion design (After Effects), shooting, editing (Premiere, DaVinci), and generative AI (Midjourney, ComfyUI, Runway, Sora).",
         "You will work on short films, commercials, music videos and video installations, mentored by working directors and motion designers. In one year, you will master design techniques across 3D, animation and AI.",
-        "To validate your Master, you will produce a series of three pieces demonstrating mastery of several techniques, shown at a public screening.",
-        "All classes taught in English. Private diploma equivalent to a Master (60 ECTS), not state-approved.",
+        "To validate your postgraduate, you will produce a series of three pieces demonstrating mastery of several techniques, shown at a public screening.",
+        "All classes taught in English. Private diploma, 60 ECTS, not state-approved.",
       ],
       feature: {
         eyebrow: "Tools mastered",
@@ -322,7 +322,7 @@ const pageDefs: PageDef[] = [
     fr: {
       title: "Event Management",
       hero: {
-        eyebrow: "Master · 1 an · 60 ECTS",
+        eyebrow: "Postgraduate · 1 an · 60 ECTS",
         heading: "Event Management",
         subheading:
           "Concevoir, produire et diriger des événements culturels, corporate et de marque, du brief à la livraison.",
@@ -332,14 +332,14 @@ const pageDefs: PageDef[] = [
         "Promotion à effectif réduit : 12 places maximum chaque année, pour garantir un suivi individuel et une production de qualité. Cours intégralement en anglais.",
         "Premier semestre : vous maîtriserez les aspects techniques et opérationnels, et préparerez un cas où vous présenterez votre propre concept dans le cadre d'un projet final complet. Deuxième semestre : stage obligatoire de 6 mois en entreprise de production, agence événementielle, bureau de scénographie ou structure équivalente.",
         "Vous produirez en vrai au moins deux événements pendant l'année : exposition, défilé, conférence, lancement de marque, avec budget réel et public extérieur. Pas de simulation.",
-        "À la sortie, vous pouvez travailler comme chef·fe de projet événementiel, scénographe, producteur·rice exécutif·ve ou directeur·rice de création événementiel. Diplôme privé équivalent à un Master (60 ECTS), non reconnu d'État.",
+        "À la sortie, vous pouvez travailler comme chef·fe de projet événementiel, scénographe, producteur·rice exécutif·ve ou directeur·rice de création événementiel. Diplôme privé de 60 ECTS, non reconnu d'État.",
       ],
       cta: { heading: "Voir notre Graduation Show", href: "/fr/events", label: "Calendrier des événements" },
     },
     en: {
       title: "Event Management",
       hero: {
-        eyebrow: "Master · 1 year · 60 ECTS",
+        eyebrow: "Postgraduate · 1 year · 60 ECTS",
         heading: "Event Management",
         subheading:
           "Design, produce and direct cultural, corporate and brand events from brief to delivery.",
@@ -349,27 +349,27 @@ const pageDefs: PageDef[] = [
         "Small cohort: 12 places maximum every year, to guarantee individual mentoring and production quality. All classes taught in English.",
         "First semester: you will master the technical and operational aspects, and prepare a case where you present your own concept as part of a comprehensive final project. Second semester: mandatory 6-month internship in a production company, event agency, scenography office or equivalent.",
         "You will actually produce at least two events during the year: exhibition, runway, conference, brand launch, with real budget and external audience. No simulation.",
-        "By graduation, you can work as event project manager, scenographer, executive producer or event creative director. Private diploma equivalent to a Master (60 ECTS), not state-approved.",
+        "By graduation, you can work as event project manager, scenographer, executive producer or event creative director. Private diploma, 60 ECTS, not state-approved.",
       ],
       cta: { heading: "See our Graduation Show", href: "/en/events", label: "Event calendar" },
     },
   },
-  // ============================================================ INTERIOR ARCHITECTURE (Master 2 years)
+  // ============================================================ INTERIOR ARCHITECTURE (Postgraduate 2 years)
   {
-    slug: "interior-architecture-design-master",
+    slug: "interior-architecture-design-postgraduate",
     fr: {
-      title: "Architecture d'intérieur · Master 2 ans",
+      title: "Architecture d'intérieur · Postgraduate 2 ans",
       hero: {
-        eyebrow: "Master · 2 ans · 120 ECTS",
+        eyebrow: "Postgraduate · 2 ans · 120 ECTS",
         heading: "Architecture d'intérieur & Design",
         subheading:
-          "Le Master long, pour devenir architecte d'intérieur senior. Deux années d'approfondissement, un mémoire-projet d'envergure, ouverture internationale via le réseau CUMULUS.",
+          "Le postgraduate long, pour devenir architecte d'intérieur senior. Deux années d'approfondissement, un mémoire-projet d'envergure, ouverture internationale via le réseau CUMULUS.",
       },
       body: [
-        "Ce Master 2 ans est fait pour vous si vous avez un Bachelor en architecture, architecture d'intérieur ou design d'espace, et que vous voulez approfondir votre pratique avant d'entrer dans la profession à un niveau senior.",
+        "Ce Postgraduate 2 ans est fait pour vous si vous avez un diplôme de premier cycle en architecture, architecture d'intérieur ou design d'espace, et que vous voulez approfondir votre pratique avant d'entrer dans la profession à un niveau senior.",
         "La première année, vous développerez votre expertise technique et conceptuelle : grands formats résidentiels, retail haut de gamme, scénographie d'exposition, hôtellerie, projets de réhabilitation patrimoniale.",
         "La deuxième année est dédiée à votre mémoire-projet : un projet d'envergure mené sur deux semestres, depuis la recherche jusqu'à la livraison de plans d'exécution professionnels, avec soutenance publique devant un jury international.",
-        "Tous les cours sont en anglais. Diplôme privé équivalent à un Master (120 ECTS), non reconnu d'État.",
+        "Tous les cours sont en anglais. Diplôme privé de 120 ECTS, non reconnu d'État.",
       ],
       feature: {
         eyebrow: "Au programme",
@@ -389,21 +389,21 @@ const pageDefs: PageDef[] = [
         { value: "200+", label: "Écoles partenaires CUMULUS" },
         { value: "2", label: "Stages obligatoires" },
       ],
-      cta: { heading: "Demander la brochure Master 2 ans", href: "/fr/contact", label: "Recevoir la brochure" },
+      cta: { heading: "Demander la brochure Postgraduate 2 ans", href: "/fr/contact", label: "Recevoir la brochure" },
     },
     en: {
-      title: "Interior Architecture · Master 2 years",
+      title: "Interior Architecture · Postgraduate 2 years",
       hero: {
-        eyebrow: "Master · 2 years · 120 ECTS",
+        eyebrow: "Postgraduate · 2 years · 120 ECTS",
         heading: "Interior Architecture & Design",
         subheading:
-          "The long Master, to become a senior interior architect. Two years of deepening, a substantial thesis-project, international reach through the CUMULUS network.",
+          "The long postgraduate, to become a senior interior architect. Two years of deepening, a substantial thesis-project, international reach through the CUMULUS network.",
       },
       body: [
-        "This 2-year Master is for you if you hold a Bachelor in architecture, interior architecture or spatial design, and want to deepen your practice before entering the profession at a senior level.",
+        "This 2-year postgraduate is for you if you hold a first-cycle degree in architecture, interior architecture or spatial design, and want to deepen your practice before entering the profession at a senior level.",
         "Year 1, you will build your technical and conceptual expertise: large residential formats, high-end retail, exhibition scenography, hospitality, heritage rehabilitation projects.",
         "Year 2 is dedicated to your thesis-project: a substantial project run over two semesters, from research to professional construction drawings, with public defense before an international jury.",
-        "All classes are taught in English. Private diploma equivalent to a Master (120 ECTS), not state-approved.",
+        "All classes are taught in English. Private diploma, 120 ECTS, not state-approved.",
       ],
       feature: {
         eyebrow: "Curriculum",
@@ -423,7 +423,7 @@ const pageDefs: PageDef[] = [
         { value: "200+", label: "CUMULUS partner schools" },
         { value: "2", label: "Mandatory internships" },
       ],
-      cta: { heading: "Request the 2-year Master brochure", href: "/en/contact", label: "Get the brochure" },
+      cta: { heading: "Request the 2-year postgraduate brochure", href: "/en/contact", label: "Get the brochure" },
     },
   },
   // ============================================================ FASHION MANAGEMENT (Specialization)
@@ -441,7 +441,7 @@ const pageDefs: PageDef[] = [
         "Cette spécialisation est faite pour vous si vous voulez évoluer dans l'écosystème mode contemporain : maisons de luxe, marques de prêt-à-porter, retail, e-commerce, presse spécialisée. Que vous soyez passionné·e de mode, designer voulant comprendre le business, ou pro du marketing voulant vous spécialiser sur ce secteur.",
         "Le format à temps partiel vous permet de combiner la formation avec une activité professionnelle. Les cours sont concentrés sur certains jours et soirées, assurés par des intervenants en activité (directeurs de maisons, chefs de produit, acheteurs, retailers, journalistes mode).",
         "Vous concluerez votre cursus par un stage obligatoire de 6 mois dans une maison de mode, un groupe de marques ou une entreprise de prêt-à-porter, suivi d'un rapport de stage à remettre au CAD.",
-        "À l'issue du programme, vous obtenez un diplôme privé équivalent au niveau Master (60 ECTS), non reconnu d'État.",
+        "À l'issue du programme, vous obtenez un diplôme privé de 60 ECTS, non reconnu d'État.",
       ],
       feature: {
         eyebrow: "Au programme",
@@ -475,7 +475,7 @@ const pageDefs: PageDef[] = [
         "This specialization is for you if you want to grow in the contemporary fashion ecosystem: luxury houses, ready-to-wear brands, retail, e-commerce, specialised press. Whether you're a fashion enthusiast, a designer wanting to understand the business, or a marketing pro wanting to specialise in this sector.",
         "The part-time format lets you combine training with a professional activity. Classes are concentrated on selected days and evenings, taught by working professionals (house directors, product heads, buyers, retailers, fashion journalists).",
         "You will conclude your program with a mandatory 6-month internship in a fashion house, brand group or ready-to-wear company, followed by an internship report submitted to CAD.",
-        "Upon completion, you receive a private diploma equivalent to a Master level (60 ECTS), not state-approved.",
+        "Upon completion, you receive a private diploma of 60 ECTS, not state-approved.",
       ],
       feature: {
         eyebrow: "Curriculum",
@@ -646,7 +646,7 @@ const postDefs: PostDef[] = [
     publishedAtDays: -30,
     fr: {
       title: "Graduation Show 2025 : 60 projets, 1500 visiteurs",
-      excerpt: "Retour en images sur l'exposition annuelle des projets de fin d'études des trois Bachelors.",
+      excerpt: "Retour en images sur l'exposition annuelle des projets de fin d'études des trois undergraduates.",
       content: [
         "Le Graduation Show 2025 a accueilli plus de 1 500 visiteurs sur la semaine du vernissage. Soixante étudiants ont présenté leurs projets de fin d'études dans la grande galerie de l'école.",
         "À noter cette année : trois projets primés par le jury professionnel (Maison Margiela pour la mode, Studio Job pour le design, BBDO pour la communication).",
@@ -655,7 +655,7 @@ const postDefs: PostDef[] = [
     },
     en: {
       title: "Graduation Show 2025: 60 projects, 1500 visitors",
-      excerpt: "A look back at the annual graduation projects exhibition of the three Bachelor programs.",
+      excerpt: "A look back at the annual graduation projects exhibition of the three undergraduate programmes.",
       content: [
         "The 2025 Graduation Show welcomed over 1,500 visitors during the opening week. Sixty students presented their graduation projects in the school's main gallery.",
         "Notable this year: three projects awarded by the professional jury (Maison Margiela for fashion, Studio Job for design, BBDO for communication).",
@@ -689,19 +689,19 @@ const postDefs: PostDef[] = [
     slug: "rentree-2026-portes-ouvertes",
     publishedAtDays: -7,
     fr: {
-      title: "Rentrée 2026 : il reste des places en Bachelor",
-      excerpt: "Inscriptions ouvertes pour la rentrée de septembre 2026 dans les trois Bachelor.",
+      title: "Rentrée 2026 : il reste des places en undergraduate",
+      excerpt: "Inscriptions ouvertes pour la rentrée de septembre 2026 dans les trois undergraduates.",
       content: [
-        "Le secrétariat pédagogique a ouvert la session d'admission tardive pour la rentrée de septembre 2026. Quelques places restent disponibles dans les trois Bachelor (Architecture d'intérieur, Communication & Digital, Mode & Accessoires).",
+        "Le secrétariat pédagogique a ouvert la session d'admission tardive pour la rentrée de septembre 2026. Quelques places restent disponibles dans les trois Undergraduate (Architecture d'intérieur, Communication & Digital, Mode & Accessoires).",
         "Procédure : envoi du dossier de candidature avant le 30 juin, suivi d'un entretien avec présentation de portfolio.",
         "Une dernière journée portes ouvertes est organisée pour les indécis : voir le calendrier des événements.",
       ],
     },
     en: {
-      title: "2026 intake: spots still open in Bachelor programs",
-      excerpt: "Applications open for the September 2026 intake in all three Bachelor programs.",
+      title: "2026 intake: spots still open in undergraduate programmes",
+      excerpt: "Applications open for the September 2026 intake in all three undergraduate programmes.",
       content: [
-        "The academic secretariat has opened a late admission round for the September 2026 intake. A few spots remain in all three Bachelor programs (Interior Architecture, Communication & Digital, Fashion & Accessory).",
+        "The academic secretariat has opened a late admission round for the September 2026 intake. A few spots remain in all three undergraduate programmes (Interior Architecture, Communication & Digital, Fashion & Accessory).",
         "Procedure: send your application file before June 30, followed by an interview with portfolio presentation.",
         "A final open day is organised for those still hesitating: see the events calendar.",
       ],
@@ -762,7 +762,7 @@ const eventDefs: EventDef[] = [
       location: "Musashino Art University, Tokyo",
       description: [
         "Deux semaines au Japon dans l'une des plus prestigieuses écoles d'art asiatiques. Brief partagé avec les étudiants japonais autour du design d'objet contemporain.",
-        "Réservé aux étudiants de Master Home & Living Design et Image. 15 places.",
+        "Réservé aux étudiants de postgraduate Home & Living Design et Image. 15 places.",
       ],
     },
     en: {
@@ -770,7 +770,7 @@ const eventDefs: EventDef[] = [
       location: "Musashino Art University, Tokyo",
       description: [
         "Two weeks in Japan at one of Asia's most prestigious art schools. Brief shared with Japanese students around contemporary object design.",
-        "Reserved for Home & Living Design and Image Master students. 15 seats.",
+        "Reserved for Home & Living Design and Image postgraduate students. 15 seats.",
       ],
     },
   },
@@ -833,18 +833,18 @@ const eventDefs: EventDef[] = [
     startHour: 20,
     endHour: 23,
     fr: {
-      title: "Défilé Mode 2026, Bachelor 3e année",
+      title: "Défilé Mode 2026, Undergraduate 3e année",
       location: "Halles Saint-Géry, Bruxelles",
       description: [
-        "Le défilé annuel des étudiants Bachelor de 3e année en Mode & Accessoires. Trente collections complètes présentées sur scène.",
+        "Le défilé annuel des étudiants undergraduate de 3e année en Mode & Accessoires. Trente collections complètes présentées sur scène.",
         "Sur invitation et liste d'attente publique. Le secrétariat publie le formulaire deux semaines avant.",
       ],
     },
     en: {
-      title: "Fashion Show 2026, Bachelor year 3",
+      title: "Fashion Show 2026, Undergraduate year 3",
       location: "Halles Saint-Géry, Brussels",
       description: [
-        "The annual runway show by 3rd year Bachelor Fashion & Accessory students. Thirty full collections shown on stage.",
+        "The annual runway show by 3rd year undergraduate Fashion & Accessory students. Thirty full collections shown on stage.",
         "By invitation and public waitlist. The secretariat publishes the form two weeks before.",
       ],
     },
@@ -862,7 +862,7 @@ const eventDefs: EventDef[] = [
       location: "CAD, Studio digital",
       description: [
         "Trois jours d'atelier intensif pour maîtriser After Effects et le design d'animation publicitaire courte (10 à 30 secondes).",
-        "Encadré par un motion designer en activité chez BBDO. Ouvert aux étudiants Master Image et aux pros via Lifelong Learning.",
+        "Encadré par un motion designer en activité chez BBDO. Ouvert aux étudiants postgraduate Image et aux pros via Lifelong Learning.",
       ],
     },
     en: {
@@ -870,7 +870,7 @@ const eventDefs: EventDef[] = [
       location: "CAD, Digital studio",
       description: [
         "Three days of intensive workshop to master After Effects and short ad animation design (10 to 30 seconds).",
-        "Mentored by a working motion designer at BBDO. Open to Image Master students and professionals via Lifelong Learning.",
+        "Mentored by a working motion designer at BBDO. Open to Image postgraduate students and professionals via Lifelong Learning.",
       ],
     },
   },
@@ -880,7 +880,7 @@ const eventDefs: EventDef[] = [
 
 async function run() {
   const payload = await getPayload({ config })
-  console.log("▶ Seeding extras (Masters, news, more events, testimonials)…")
+  console.log("▶ Seeding extras (postgraduates, news, more events, testimonials)…")
 
   // -------- find news category for posts
   const newsCat = await payload.find({
@@ -1069,7 +1069,7 @@ async function run() {
           { question: "Quel niveau de portfolio attendez-vous ?", answer: "5 à 10 projets démontrant votre démarche créative. Croquis, projets scolaires, photos personnelles, objets, tout est recevable du moment que ça raconte votre processus." },
           { question: "Quels sont les frais de scolarité ?", answer: "Les frais varient selon le programme et l'année. Le secrétariat envoie une grille tarifaire détaillée sur demande à secretariat@cad.be." },
           { question: "Acceptez-vous les candidatures hors UE ?", answer: "Oui, et le secrétariat accompagne la procédure de visa étudiant (D) une fois l'admission confirmée. Comptez 2 à 3 mois de délai pour le visa." },
-          { question: "Y a-t-il des passerelles depuis d'autres écoles ?", answer: "Oui, des admissions directes en 2e ou 3e année Bachelor sont possibles avec un dossier équivalent. Les ECTS acquis ailleurs sont étudiés au cas par cas." },
+          { question: "Y a-t-il des passerelles depuis d'autres écoles ?", answer: "Oui, des admissions directes en 2e ou 3e année undergraduate sont possibles avec un dossier équivalent. Les ECTS acquis ailleurs sont étudiés au cas par cas." },
         ],
       },
     ],
@@ -1083,7 +1083,7 @@ async function run() {
           { question: "What portfolio level do you expect?", answer: "5 to 10 projects showing your creative approach. Sketches, school projects, personal photos, objects, anything goes as long as it tells your process." },
           { question: "What are the tuition fees?", answer: "Fees vary by program and year. The secretariat sends a detailed pricing grid on request at secretariat@cad.be." },
           { question: "Do you accept non-EU candidates?", answer: "Yes, and the secretariat assists with the student visa (D) procedure once admission is confirmed. Allow 2 to 3 months for the visa." },
-          { question: "Are transfers from other schools possible?", answer: "Yes, direct admissions to year 2 or 3 of Bachelor are possible with an equivalent file. ECTS earned elsewhere are reviewed case by case." },
+          { question: "Are transfers from other schools possible?", answer: "Yes, direct admissions to year 2 or 3 of the undergraduate cycle are possible with an equivalent file. ECTS earned elsewhere are reviewed case by case." },
         ],
       },
     ],

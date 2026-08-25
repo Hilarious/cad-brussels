@@ -15,7 +15,7 @@ describe('programBySlug', () => {
   it('renvoie undefined pour un hub ou une page éditoriale', () => {
     // Ces routes existent mais ne sont pas des programmes du catalogue.
     expect(programBySlug('programmes')).toBeUndefined()
-    expect(programBySlug('masters')).toBeUndefined()
+    expect(programBySlug('postgraduate')).toBeUndefined()
     expect(programBySlug('about')).toBeUndefined()
   })
 
@@ -38,7 +38,7 @@ describe('isProgramSlug', () => {
   })
 
   it('faux pour un hub, un slug inconnu ou une valeur vide', () => {
-    expect(isProgramSlug('masters')).toBe(false)
+    expect(isProgramSlug('postgraduate')).toBe(false)
     expect(isProgramSlug('ceci-nexiste-pas')).toBe(false)
     expect(isProgramSlug(null)).toBe(false)
     expect(isProgramSlug(undefined)).toBe(false)

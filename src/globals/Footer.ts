@@ -12,7 +12,7 @@ export const Footer: GlobalConfig = {
       type: 'array',
       localized: true,
       // 6 colonnes max pour densifier le maillage interne :
-      // Bachelors, Masters, Admissions, École, Follow us + marge.
+      // Undergraduates, Masters, Admissions, École, Follow us + marge.
       // Recommandation audit SEO Digistage 2026 (les pages "gagnantes"
       // ont 154 liens internes vs 33 en moyenne, le footer est
       // le levier universel).

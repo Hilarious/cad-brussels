@@ -10,7 +10,7 @@ describe('themeForSlug', () => {
 
   it('mappe les hubs sur l’accent dominant de leur groupe', () => {
     expect(themeForSlug('programmes')).toBe('theme-fashion')
-    expect(themeForSlug('masters')).toBe('theme-image-3d')
+    expect(themeForSlug('postgraduate')).toBe('theme-image-3d')
   })
 
   it('renvoie une chaîne vide pour un slug inconnu', () => {

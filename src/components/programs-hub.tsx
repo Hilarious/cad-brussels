@@ -10,7 +10,7 @@ import { ImagePlaceholder } from './image-placeholder'
  * entre chaque programme.
  *
  * Injecté via `[...slug]/page.tsx` quand le slug correspond à un hub
- * (`programmes` pour les Bachelors, `masters` pour les Masters). Renvoie
+ * (`programmes` pour les undergraduates, `postgraduate` pour les postgraduates). Renvoie
  * null pour les autres slugs.
  *
  * Décision Audry, mai 2026 : « cartes immersives plein écran », format
@@ -28,7 +28,7 @@ type Program = {
   slug: string
   /** Numéro d'ordre affiché en grande typo eyebrow */
   index: string
-  /** Titre du programme (court, sans "Bachelor en…") */
+  /** Titre du programme (court, sans "Undergraduate en…") */
   title: { fr: string; en: string }
   /** Diplôme + durée, affiché en sous-titre */
   degree: { fr: string; en: string }
@@ -49,7 +49,7 @@ const BACHELORS: Program[] = [
     slug: 'interior-architecture-design',
     index: '01',
     title: { fr: 'Architecture d’intérieur & Design', en: 'Interior Architecture & Design' },
-    degree: { fr: 'Bachelor · 3 ans', en: 'Bachelor · 3 years' },
+    degree: { fr: 'Undergraduate · 3 ans', en: 'Undergraduate · 3 years' },
     tagline: {
       fr: "Concevoir des lieux où la vie se passe. Pensée spatiale, matériaux, lumière, scénographie du quotidien.",
       en: 'Designing spaces where life happens. Spatial thinking, materials, light, choreography of the everyday.',
@@ -60,13 +60,13 @@ const BACHELORS: Program[] = [
     },
     bgClass: 'bg-cad-navy',
     textClass: 'text-paper',
-    imageCaption: 'Atelier maquette espace · étudiant·e Bachelor Architecture intérieure',
+    imageCaption: 'Atelier maquette espace · étudiant·e undergraduate Architecture intérieure',
   },
   {
     slug: 'communication-digital-design',
     index: '02',
     title: { fr: 'Communication & Digital Design', en: 'Communication & Digital Design' },
-    degree: { fr: 'Bachelor · 3 ans', en: 'Bachelor · 3 years' },
+    degree: { fr: 'Undergraduate · 3 ans', en: 'Undergraduate · 3 years' },
     tagline: {
       fr: "Raconter, signer, déployer une identité sur tous les supports. Direction artistique, branding, motion, expérience numérique.",
       en: 'Telling, signing, deploying an identity across all media. Art direction, branding, motion, digital experience.',
@@ -83,7 +83,7 @@ const BACHELORS: Program[] = [
     slug: 'fashion-accessory-design',
     index: '03',
     title: { fr: 'Mode & Accessoires', en: 'Fashion & Accessory Design' },
-    degree: { fr: 'Bachelor · 3 ans', en: 'Bachelor · 3 years' },
+    degree: { fr: 'Undergraduate · 3 ans', en: 'Undergraduate · 3 years' },
     tagline: {
       fr: "Dessiner, couper, monter, présenter une collection. De l'idée au défilé, du croquis au stylisme.",
       en: 'Drawing, cutting, assembling, presenting a collection. From the idea to the runway, from the sketch to styling.',
@@ -100,10 +100,10 @@ const BACHELORS: Program[] = [
 
 const MASTERS: Program[] = [
   {
-    slug: 'interior-architecture-design-master',
+    slug: 'interior-architecture-design-postgraduate',
     index: '01',
     title: { fr: 'Interior Architecture & Design', en: 'Interior Architecture & Design' },
-    degree: { fr: 'Master · 2 ans', en: 'Master · 2 years' },
+    degree: { fr: 'Postgraduate · 2 ans', en: 'Postgraduate · 2 years' },
     tagline: {
       fr: "Approfondissement de la pensée spatiale, projet d'auteur, transition vers la pratique professionnelle.",
       en: 'Deepening spatial thinking, authored project, transition into professional practice.',
@@ -114,13 +114,13 @@ const MASTERS: Program[] = [
     },
     bgClass: 'bg-cad-navy',
     textClass: 'text-paper',
-    imageCaption: 'Maquette finale Master · perspective intérieure travaillée à la lumière',
+    imageCaption: 'Maquette finale postgraduate · perspective intérieure travaillée à la lumière',
   },
   {
     slug: 'home-living-design',
     index: '02',
     title: { fr: 'Home & Living Design', en: 'Home & Living Design' },
-    degree: { fr: 'Master · 2 ans', en: 'Master · 2 years' },
+    degree: { fr: 'Postgraduate · 2 ans', en: 'Postgraduate · 2 years' },
     tagline: {
       fr: "Penser l'habitat, le mobilier, l'objet domestique. Du brief industriel au prototype.",
       en: 'Thinking the home, the furniture, the domestic object. From the industrial brief to the prototype.',
@@ -131,13 +131,13 @@ const MASTERS: Program[] = [
     },
     bgClass: 'bg-cad-mint',
     textClass: 'text-ink',
-    imageCaption: 'Prototype mobilier · étudiant·e Master Home & Living en atelier bois',
+    imageCaption: 'Prototype mobilier · étudiant·e postgraduate Home & Living en atelier bois',
   },
   {
     slug: 'digital-brand-content',
     index: '03',
     title: { fr: 'Digital Brand Content', en: 'Digital Brand Content' },
-    degree: { fr: 'Master · 2 ans', en: 'Master · 2 years' },
+    degree: { fr: 'Postgraduate · 2 ans', en: 'Postgraduate · 2 years' },
     tagline: {
       fr: "Stratégie de marque, contenu social, direction de campagne. Là où la création rencontre l'audience.",
       en: 'Brand strategy, social content, campaign direction. Where creation meets the audience.',
@@ -154,7 +154,7 @@ const MASTERS: Program[] = [
     slug: 'image-3d-motion-video-ai',
     index: '04',
     title: { fr: 'Image 3D, Motion, Vidéo & AI', en: 'Image 3D, Motion, Video & AI' },
-    degree: { fr: 'Master · 2 ans', en: 'Master · 2 years' },
+    degree: { fr: 'Postgraduate · 2 ans', en: 'Postgraduate · 2 years' },
     tagline: {
       fr: "L'image en mouvement, du shoot au rendu 3D, des outils génératifs à la post-production. L'œil avant l'outil.",
       en: 'The moving image, from shoot to 3D render, from generative tools to post-production. The eye before the tool.',
@@ -171,7 +171,7 @@ const MASTERS: Program[] = [
     slug: 'event-management',
     index: '05',
     title: { fr: 'Event Management', en: 'Event Management' },
-    degree: { fr: 'Master · 2 ans', en: 'Master · 2 years' },
+    degree: { fr: 'Postgraduate · 2 ans', en: 'Postgraduate · 2 years' },
     tagline: {
       fr: "Concevoir et produire des événements : scénographie, production, hospitality, communication.",
       en: 'Conceiving and producing events: scenography, production, hospitality, communication.',
@@ -182,7 +182,7 @@ const MASTERS: Program[] = [
     },
     bgClass: 'bg-cad-orange',
     textClass: 'text-paper',
-    imageCaption: 'Montage scénographie événementiel · étudiant·e Master Event en production',
+    imageCaption: 'Montage scénographie événementiel · étudiant·e postgraduate Event en production',
   },
   {
     slug: 'fashion-management',
@@ -325,10 +325,10 @@ export function ProgramsHub({
 
   if (slug === 'programmes') {
     programs = BACHELORS
-    label = isFR ? 'Les trois Bachelors du CAD' : 'The three CAD Bachelors'
-  } else if (slug === 'masters' || slug === 'master') {
+    label = isFR ? 'Les trois undergraduates du CAD' : 'The three CAD undergraduates'
+  } else if (slug === 'postgraduate' || slug === 'master') {
     programs = MASTERS
-    label = isFR ? 'Les six Masters du CAD' : 'The six CAD Masters'
+    label = isFR ? 'Les six postgraduates du CAD' : 'The six CAD postgraduates'
   }
 
   if (!programs) return null

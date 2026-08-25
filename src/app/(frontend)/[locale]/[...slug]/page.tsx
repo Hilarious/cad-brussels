@@ -79,7 +79,7 @@ export default async function CMSPage({
       )}
       <RenderBlocks blocks={page.layout ?? []} locale={locale} />
       {/* Cartes immersives plein écran — injectées seulement pour les
-          hubs « programmes » (Tous les Bachelors) et « masters » (Tous
+          hubs « programmes » (Tous les undergraduates) et « postgraduate » (Tous
           les Masters). Renvoie null pour les autres slugs, donc safe
           à mettre ici de manière inconditionnelle. */}
       <ProgramsHub slug={lastSlug} locale={locale} />
