@@ -132,7 +132,7 @@ const COPY = {
     recommencer: 'En créer une autre',
     teeTitre: 'Le t-shirt',
     teeIntro:
-      "L'affiche existe aussi en t-shirt. Édition limitée, deux encres sur gris chiné.",
+      "L'affiche existe aussi en t-shirt. Édition limitée, deux encres sur couleur crème.",
     teeModele: 'Ton modèle',
     teeSansPrenom:
       "Le t-shirt reprend ton métier, dans l'un des trois modèles ci-dessus. Sans ton prénom et sans la pastille de rentrée : ce qui est personnel reste dans l'image que tu envoies à tes parents.",
@@ -182,7 +182,7 @@ const COPY = {
     recommencer: 'Make another one',
     teeTitre: 'The t-shirt',
     teeIntro:
-      'The poster also comes as a t-shirt. Limited edition, two inks on heather grey.',
+      'The poster also comes as a t-shirt. Limited edition, two inks on cream.',
     teeModele: 'Your design',
     teeSansPrenom:
       'The t-shirt keeps your job title, in one of the three designs above. Without your first name and without the term-start sticker: what is personal stays in the image you send your parents.',
