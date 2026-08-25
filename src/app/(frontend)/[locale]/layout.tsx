@@ -46,8 +46,8 @@ export async function generateMetadata({
     ? 'CAD Brussels, école de design à Bruxelles'
     : 'CAD Brussels, College of Art & Design'
   const description = isFR
-    ? 'École de design à Bruxelles depuis 1961. Architecture d’intérieur, communication & digital, mode. Cursus en anglais, 160 étudiants, encadrement par des professionnels en activité.'
-    : 'Design school in Brussels since 1961. Interior architecture, communication & digital, fashion. Taught in English, 160 students, mentored by working professionals.'
+    ? 'École de design privée à Bruxelles depuis 1961. Architecture d’intérieur, communication & digital, mode. Cursus en anglais, 160 étudiants, encadrement par des professionnels en activité.'
+    : 'Private design school in Brussels since 1961. Interior architecture, communication & digital, fashion. Taught in English, 160 students, mentored by working professionals.'
 
   return {
     metadataBase: new URL(siteUrl),

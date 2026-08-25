@@ -39,7 +39,7 @@ const SCHOOL_BASE = {
   url: SITE_URL,
   logo: `${SITE_URL}/logo/cad-logo-full.png`,
   description:
-    'École supérieure de design à Bruxelles depuis 1961. Undergraduate, postgraduate et formations continues en architecture d’intérieur, communication digitale, image 3D, motion, IA et mode.',
+    'École de design privée à Bruxelles depuis 1961. Undergraduate, postgraduate et formations continues en architecture d’intérieur, communication digitale, image 3D, motion, IA et mode.',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '25 rue Roberts-Jones',

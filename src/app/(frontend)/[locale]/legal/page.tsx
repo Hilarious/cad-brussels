@@ -49,7 +49,7 @@ export default async function LegalPage({
     ? {
         title: 'Mentions légales',
         intro:
-          "Le site cad.be est édité par le CAD Brussels, école supérieure d'art et de design fondée en 1961.",
+          "Le site cad.be est édité par le College of Art & Design (CAD), école de design privée située à Bruxelles, fondée en 1961.",
         sections: [
           {
             heading: 'Éditeur',
@@ -86,7 +86,7 @@ export default async function LegalPage({
     : {
         title: 'Legal notice',
         intro:
-          'The website cad.be is published by CAD Brussels, a school of art and design founded in 1961.',
+          'The website cad.be is published by the College of Art & Design (CAD), a private design school based in Brussels, founded in 1961.',
         sections: [
           {
             heading: 'Publisher',
