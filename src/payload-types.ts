@@ -419,6 +419,22 @@ export interface Page {
         blockType: 'accordion';
       }
     | {
+        eyebrow?: string | null;
+        heading?: string | null;
+        /**
+         * Texte affiché au-dessus du formulaire.
+         */
+        intro?: string | null;
+        variant: 'contact' | 'application' | 'lead' | 'newsletter' | 'breakfast';
+        /**
+         * Mentions affichées sous le formulaire. Facultatif.
+         */
+        note?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'form';
+      }
+    | {
         heading: string;
         body?: string | null;
         buttons?:
@@ -1164,6 +1180,17 @@ export interface PagesSelect<T extends boolean = true> {
                     openByDefault?: T;
                     id?: T;
                   };
+              id?: T;
+              blockName?: T;
+            };
+        form?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              variant?: T;
+              note?: T;
               id?: T;
               blockName?: T;
             };

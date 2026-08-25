@@ -10,6 +10,7 @@ import { CompareTableBlock } from '../blocks/CompareTable/config'
 import { StepsBlock } from '../blocks/Steps/config'
 import { PriceGridBlock } from '../blocks/PriceGrid/config'
 import { AccordionBlock } from '../blocks/Accordion/config'
+import { FormBlock } from '../blocks/Form/config'
 import { seoField } from '../lib/fields/seo'
 import { slugField } from '../lib/fields/slug'
 
@@ -63,6 +64,7 @@ export const Pages: CollectionConfig = {
         StepsBlock,
         PriceGridBlock,
         AccordionBlock,
+        FormBlock,
         CTABlock,
       ],
     },

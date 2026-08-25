@@ -2,6 +2,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { Page, Media } from '@/payload-types'
 import { assainirLibelle } from '@/lib/appellations'
+import { ContactForm } from '@/components/contact-form'
+import { ApplicationForm } from '@/components/application-form'
+import { LeadForm } from '@/components/lead-form'
+import { NewsletterForm } from '@/components/newsletter-form'
+import { BreakfastForm } from '@/components/breakfast-form'
 
 type Block = NonNullable<Page['layout']>[number]
 
@@ -38,6 +43,8 @@ export function RenderBlocks({
             return <PriceGridBlock key={i} block={block} />
           case 'accordion':
             return <AccordionBlock key={i} block={block} />
+          case 'form':
+            return <FormBlock key={i} block={block} locale={locale} />
           default:
             return null
         }
@@ -725,6 +732,65 @@ function AccordionBlock({
             </p>
           </details>
         ))}
+      </div>
+    </section>
+  )
+}
+
+
+// ---- Formulaire ---------------------------------------------------------
+//
+// Le formulaire reste du code : sa logique, ses validations et son
+// anti-spam n'ont rien à faire dans un CMS. Seul ce qui l'entoure est
+// éditable. La liste des variantes est fermée : une valeur inconnue
+// n'affiche rien plutôt que de casser la page.
+
+function FormBlock({
+  block,
+  locale,
+}: {
+  block: Extract<Block, { blockType: 'form' }>
+  locale: string
+}) {
+  const formulaire = (() => {
+    switch (block.variant) {
+      case 'contact':
+        return <ContactForm locale={locale} />
+      case 'application':
+        return <ApplicationForm locale={locale} />
+      case 'lead':
+        return <LeadForm locale={locale} />
+      case 'newsletter':
+        return <NewsletterForm locale={locale} />
+      case 'breakfast':
+        return <BreakfastForm locale={locale} />
+      default:
+        return null
+    }
+  })()
+
+  if (!formulaire) return null
+
+  return (
+    <section className="container py-16">
+      <div className="max-w-2xl">
+        {block.eyebrow && (
+          <p className="text-sm uppercase tracking-widest text-accent">
+            {assainirLibelle(block.eyebrow)}
+          </p>
+        )}
+        {block.heading && (
+          <h2 className="mt-3 font-display text-3xl md:text-4xl">
+            {assainirLibelle(block.heading)}
+          </h2>
+        )}
+        {block.intro && (
+          <p className="mt-4 text-ink/70">{assainirLibelle(block.intro)}</p>
+        )}
+        <div className="mt-8">{formulaire}</div>
+        {block.note && (
+          <p className="mt-6 text-xs text-ink/55">{assainirLibelle(block.note)}</p>
+        )}
       </div>
     </section>
   )
