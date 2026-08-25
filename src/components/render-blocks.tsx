@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Page, Media } from '@/payload-types'
+import { assainirLibelle } from '@/lib/appellations'
 
 type Block = NonNullable<Page['layout']>[number]
 
@@ -59,15 +60,15 @@ function HeroBlock({
         <div className="max-w-4xl">
           {block.eyebrow && (
             <p className="text-sm uppercase tracking-widest text-accent">
-              {block.eyebrow}
+              {assainirLibelle(block.eyebrow)}
             </p>
           )}
           <h1 className="mt-4 font-display text-4xl leading-[1.05] md:text-6xl">
-            {block.heading}
+            {assainirLibelle(block.heading)}
           </h1>
           {block.subheading && (
             <p className="mt-6 max-w-2xl text-lg text-ink/70">
-              {block.subheading}
+              {assainirLibelle(block.subheading)}
             </p>
           )}
           {block.cta?.href && block.cta?.label && (
@@ -90,14 +91,14 @@ function HeroBlock({
         <div>
           {block.eyebrow && (
             <p className="text-sm uppercase tracking-widest text-accent">
-              {block.eyebrow}
+              {assainirLibelle(block.eyebrow)}
             </p>
           )}
           <h1 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
-            {block.heading}
+            {assainirLibelle(block.heading)}
           </h1>
           {block.subheading && (
-            <p className="mt-6 text-lg text-ink/70">{block.subheading}</p>
+            <p className="mt-6 text-lg text-ink/70">{assainirLibelle(block.subheading)}</p>
           )}
           {block.cta?.href && block.cta?.label && (
             <Link
@@ -141,7 +142,9 @@ function renderInline(nodes: LexicalNode[] | undefined): React.ReactNode {
   if (!nodes) return null
   return nodes.map((n, i) => {
     if (n.type === 'text' || typeof n.text === 'string') {
-      const text = n.text ?? ''
+      // Garde-fou appellations : le corps des pages vient du CMS, donc
+      // de la base, qui porte encore Bachelor et Master en production.
+      const text = assainirLibelle(n.text ?? '')
       const f = (n as LexicalTextNode).format ?? 0
       let el: React.ReactNode = text
       // Lexical bitmask: 1=bold, 2=italic, 4=strikethrough, 8=underline, 16=code, 32=subscript, 64=superscript
@@ -238,12 +241,12 @@ function StatsBlock({
         <div className="mx-auto mb-10 max-w-3xl text-center">
           {block.eyebrow && (
             <p className="text-sm uppercase tracking-widest text-accent">
-              {block.eyebrow}
+              {assainirLibelle(block.eyebrow)}
             </p>
           )}
           {block.heading && (
             <h2 className="mt-3 font-display text-3xl md:text-4xl">
-              {block.heading}
+              {assainirLibelle(block.heading)}
             </h2>
           )}
         </div>
@@ -283,12 +286,12 @@ function FeatureListBlock({
         <div className="mb-12 max-w-3xl">
           {block.eyebrow && (
             <p className="text-sm uppercase tracking-widest text-accent">
-              {block.eyebrow}
+              {assainirLibelle(block.eyebrow)}
             </p>
           )}
           {block.heading && (
             <h2 className="mt-3 font-display text-3xl md:text-4xl">
-              {block.heading}
+              {assainirLibelle(block.heading)}
             </h2>
           )}
         </div>
@@ -329,7 +332,7 @@ function QuoteBlock({
       <figure className="mx-auto max-w-3xl text-center">
         {block.eyebrow && (
           <p className="text-sm uppercase tracking-widest text-accent">
-            {block.eyebrow}
+            {assainirLibelle(block.eyebrow)}
           </p>
         )}
         <blockquote className="mt-6 font-display text-2xl leading-snug md:text-3xl">
@@ -373,12 +376,12 @@ function FAQBlock({
         <div className="mb-10 max-w-3xl">
           {block.eyebrow && (
             <p className="text-sm uppercase tracking-widest text-accent">
-              {block.eyebrow}
+              {assainirLibelle(block.eyebrow)}
             </p>
           )}
           {block.heading && (
             <h2 className="mt-3 font-display text-3xl md:text-4xl">
-              {block.heading}
+              {assainirLibelle(block.heading)}
             </h2>
           )}
         </div>
@@ -424,10 +427,10 @@ function CTABlock({
         <div className="md:flex md:items-end md:justify-between md:gap-12">
           <div className="md:flex-1">
             <h2 className="text-balance font-display text-2xl md:text-3xl">
-              {block.heading}
+              {assainirLibelle(block.heading)}
             </h2>
             {block.body && (
-              <p className="mt-4 max-w-2xl text-paper/85">{block.body}</p>
+              <p className="mt-4 max-w-2xl text-paper/85">{assainirLibelle(block.body)}</p>
             )}
           </div>
           {(block.buttons ?? []).length > 0 && (

@@ -14,15 +14,34 @@ import { programBySlug } from '@/lib/programs'
 
 export const revalidate = 60
 
+/**
+ * Anciens slugs encore présents en base tant qu'elle n'est pas migrée.
+ * Le code sert désormais les adresses sans appellation protégée, mais
+ * la base de production porte encore les anciennes : sans ce repli,
+ * /postgraduate renvoie un 404 alors que la page existe sous son
+ * ancien nom. Fonctionne avant ET après la migration, puisqu'on ne
+ * cherche l'ancien slug que si le nouveau est introuvable.
+ */
+const ANCIENS_SLUGS: Record<string, string> = {
+  postgraduate: 'masters',
+  'interior-architecture-design-postgraduate': 'interior-architecture-design-master',
+}
+
 async function fetchPage(locale: string, slug: string) {
   const payload = await getPayload({ config })
-  const result = await payload.find({
-    collection: 'pages',
-    locale: locale as 'fr' | 'en',
-    where: { slug: { equals: slug }, status: { equals: 'published' } },
-    limit: 1,
-  })
-  return result.docs[0] ?? null
+  const chercher = async (s: string) => {
+    const result = await payload.find({
+      collection: 'pages',
+      locale: locale as 'fr' | 'en',
+      where: { slug: { equals: s }, status: { equals: 'published' } },
+      limit: 1,
+    })
+    return result.docs[0] ?? null
+  }
+  const page = await chercher(slug)
+  if (page) return page
+  const ancien = ANCIENS_SLUGS[slug]
+  return ancien ? await chercher(ancien) : null
 }
 
 export async function generateMetadata({
