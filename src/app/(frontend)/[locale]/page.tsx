@@ -10,6 +10,7 @@ import { ImagePlaceholder } from '@/components/image-placeholder'
 import { Marquee } from '@/components/marquee'
 import { CtaTrace } from '@/components/cta-trace'
 import { ProgramsPathway } from '@/components/programs-pathway'
+import { assainirLibelle } from '@/lib/appellations'
 import { JsonLd } from '@/components/json-ld'
 import { educationalOrganization } from '@/lib/schema'
 import { locales } from '@/lib/i18n'
@@ -415,11 +416,11 @@ export default async function HomePage({
                     })}
                   </time>
                   <h3 className="mt-2 font-display text-xl leading-snug group-hover:text-accent">
-                    {post.title}
+                    {assainirLibelle(post.title)}
                   </h3>
                   {post.excerpt && (
                     <p className="mt-2 line-clamp-3 text-sm text-ink/70">
-                      {post.excerpt}
+                      {assainirLibelle(post.excerpt)}
                     </p>
                   )}
                 </Link>

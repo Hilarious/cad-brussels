@@ -9,6 +9,7 @@ import { Breadcrumb } from '@/components/breadcrumb'
 import { RelatedContent } from '@/components/related-content'
 import { JsonLd } from '@/components/json-ld'
 import { article as articleSchema } from '@/lib/schema'
+import { assainirLibelle } from '@/lib/appellations'
 
 export const revalidate = 60
 
@@ -111,7 +112,7 @@ export default async function NewsDetailPage({
           })}
         </time>
         <h1 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
-          {post.title}
+          {assainirLibelle(post.title)}
         </h1>
         {post.excerpt && (
           <p className="mt-6 text-lg text-ink/70">{post.excerpt}</p>

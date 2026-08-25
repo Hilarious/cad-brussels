@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Event, Media } from '@/payload-types'
+import { assainirLibelle } from '@/lib/appellations'
 
 export function EventCard({
   event,
@@ -40,7 +41,7 @@ export function EventCard({
             year: 'numeric',
           })}
         </time>
-        <h3 className="font-display text-xl leading-tight">{event.title}</h3>
+        <h3 className="font-display text-xl leading-tight">{assainirLibelle(event.title)}</h3>
         {event.location && (
           <p className="text-sm text-ink/60">{event.location}</p>
         )}

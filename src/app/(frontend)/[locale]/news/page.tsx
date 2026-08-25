@@ -4,6 +4,7 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { AdmissionCTA } from '@/components/admission-cta'
 import type { Metadata } from 'next'
+import { assainirLibelle } from '@/lib/appellations'
 
 export async function generateMetadata({
   params,
@@ -85,11 +86,11 @@ export default async function NewsListPage({
                   </time>
                   <div>
                     <h2 className="font-display text-2xl leading-snug md:text-3xl">
-                      {post.title}
+                      {assainirLibelle(post.title)}
                     </h2>
                     {post.excerpt && (
                       <p className="mt-2 max-w-2xl text-ink/70">
-                        {post.excerpt}
+                        {assainirLibelle(post.excerpt)}
                       </p>
                     )}
                   </div>

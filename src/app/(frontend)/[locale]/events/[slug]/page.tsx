@@ -8,6 +8,7 @@ import config from '@payload-config'
 import type { Media } from '@/payload-types'
 import { Breadcrumb } from '@/components/breadcrumb'
 import { RelatedContent } from '@/components/related-content'
+import { assainirLibelle } from '@/lib/appellations'
 
 export const revalidate = 60
 
@@ -31,7 +32,7 @@ export async function generateMetadata({
   const event = await fetchEvent(locale, slug)
   if (!event) return {}
   return {
-    title: event.seo?.metaTitle ?? event.title,
+    title: assainirLibelle(event.seo?.metaTitle ?? event.title),
     description: event.seo?.metaDescription ?? undefined,
   }
 }
@@ -58,12 +59,12 @@ export default async function EventDetailPage({
         locale={locale}
         items={[
           { label: t('back'), href: `/${locale}/events` },
-          { label: event.title },
+          { label: assainirLibelle(event.title) },
         ]}
       />
 
       <h1 className="mt-6 max-w-4xl font-display text-4xl md:text-5xl">
-        {event.title}
+        {assainirLibelle(event.title)}
       </h1>
 
       <dl className="mt-6 grid gap-4 text-sm md:grid-cols-2">
@@ -134,7 +135,7 @@ export default async function EventDetailPage({
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Event',
-            name: event.title,
+            name: assainirLibelle(event.title),
             startDate: event.startDate,
             endDate: event.endDate ?? event.startDate,
             location: event.location
