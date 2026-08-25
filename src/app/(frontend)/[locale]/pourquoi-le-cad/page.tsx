@@ -95,9 +95,9 @@ export default async function WhyCadPage({
             public: 'Concours sélectif · ratio admis/candidats ~10-15%',
           },
           {
-            criterion: 'Taille des promotions',
-            cad: '60-100 étudiants',
-            public: '200-400 selon l’école',
+            criterion: 'Taille de l’école',
+            cad: '160 étudiants au total',
+            public: '200-400 par promotion selon l’école',
           },
           {
             criterion: 'Profs',
@@ -229,9 +229,9 @@ export default async function WhyCadPage({
             public: 'Selective exam · ~10-15% acceptance rate',
           },
           {
-            criterion: 'Cohort size',
-            cad: '60-100 students',
-            public: '200-400 depending on school',
+            criterion: 'School size',
+            cad: '160 students in total',
+            public: '200-400 per cohort depending on school',
           },
           {
             criterion: 'Faculty',
