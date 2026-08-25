@@ -4,6 +4,7 @@ import config from '@payload-config'
 import { NewsletterForm } from './newsletter-form'
 import { Logo } from './logo'
 import { localized } from '@/lib/localize'
+import { assainirLibelle } from '@/lib/appellations'
 
 export async function SiteFooter({ locale }: { locale: string }) {
   const payload = await getPayload({ config })
@@ -93,7 +94,7 @@ export async function SiteFooter({ locale }: { locale: string }) {
         {columns.map((col, i) => (
           <div key={`col-${i}`}>
             <p className="text-sm font-medium uppercase tracking-widest text-ink/50">
-              {col.title}
+              {assainirLibelle(col.title)}
             </p>
             {/* `space-y-2` retiré : la hauteur de 44px de `.tap` fournit
                 désormais l'espacement entre les liens. Le cumul des deux
@@ -105,7 +106,7 @@ export async function SiteFooter({ locale }: { locale: string }) {
                     href={localized(link.path, locale)}
                     className="tap text-ink/80 hover:text-accent"
                   >
-                    {link.label}
+                    {assainirLibelle(link.label)}
                   </Link>
                 </li>
               ))}
@@ -125,7 +126,7 @@ export async function SiteFooter({ locale }: { locale: string }) {
                 href={localized(item.path, locale)}
                 className="tap hover:text-accent"
               >
-                {item.label}
+                {assainirLibelle(item.label)}
               </Link>
             </li>
           ))}

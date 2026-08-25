@@ -6,6 +6,7 @@ import { NavItem } from './nav-item'
 import { MobileMenu } from './mobile-menu'
 import { Logo } from './logo'
 import { localized } from '@/lib/localize'
+import { assainirLibelle } from '@/lib/appellations'
 
 export async function SiteHeader({ locale }: { locale: string }) {
   const payload = await getPayload({ config })
@@ -40,10 +41,10 @@ export async function SiteHeader({ locale }: { locale: string }) {
             {navItems.map((item, i) => (
               <NavItem
                 key={`${item.path}-${i}`}
-                label={item.label}
+                label={assainirLibelle(item.label)}
                 href={localized(item.path, locale)}
                 submenu={(item.children ?? []).map((c) => ({
-                  label: c.label,
+                  label: assainirLibelle(c.label),
                   href: localized(c.path, locale),
                 }))}
               />
@@ -61,22 +62,22 @@ export async function SiteHeader({ locale }: { locale: string }) {
               href={localized(cta.path, locale)}
               className="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition duration-200 hover:-translate-y-0.5 hover:bg-accent hover:shadow-md hover:shadow-accent/30 motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:inline-flex"
             >
-              {cta.label}
+              {assainirLibelle(cta.label)}
             </Link>
           )}
 
           <MobileMenu
             navItems={navItems.map((item) => ({
-              label: item.label,
+              label: assainirLibelle(item.label),
               href: localized(item.path, locale),
               children: (item.children ?? []).map((c) => ({
-                label: c.label,
+                label: assainirLibelle(c.label),
                 href: localized(c.path, locale),
               })),
             }))}
             cta={
               cta?.label && cta?.path
-                ? { label: cta.label, href: localized(cta.path, locale) }
+                ? { label: assainirLibelle(cta.label), href: localized(cta.path, locale) }
                 : null
             }
             labels={
