@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { getPayload } from 'payload'
 import config from '@payload-config'
@@ -11,6 +12,7 @@ import { CtaTrace } from '@/components/cta-trace'
 import { ProgramsPathway } from '@/components/programs-pathway'
 import { JsonLd } from '@/components/json-ld'
 import { educationalOrganization } from '@/lib/schema'
+import { locales } from '@/lib/i18n'
 
 export const revalidate = 60
 
@@ -20,6 +22,16 @@ export default async function HomePage({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
+
+  // Garde-fou local. Le layout appelle déjà notFound() sur une locale
+  // inconnue, mais en App Router page et layout s'exécutent en parallèle :
+  // la page part donc quand même avec la valeur brute de l'URL. Une requête
+  // comme /favicon.ico faisait ainsi planter toLocaleDateString plus bas
+  // ("Invalid language tag") et renvoyait une 500 au lieu d'une 404.
+  if (!(locales as readonly string[]).includes(locale)) {
+    notFound()
+  }
+
   setRequestLocale(locale)
   const t = await getTranslations({ locale, namespace: 'home' })
 
