@@ -90,7 +90,13 @@ const lisible = (hex: string) => {
   return l > 0.62 ? '#14140F' : '#F5F2EC'
 }
 
-const DESTINATAIRES = ['Papa, maman', 'Maman', 'Papa', 'Mamie'] as const
+// Le premier mot de l'affiche appartient a la langue du jeune : le laisser
+// en francais sur la page anglaise ferait de l'affiche une traduction a
+// moitie faite. Le pluriel se lit toujours a la premiere entree.
+const DESTINATAIRES = {
+  fr: ['Papa, maman', 'Maman', 'Papa', 'Mamie'],
+  en: ['Mum, dad', 'Mum', 'Dad', 'Grandma'],
+} as const
 
 const TAILLES = ['S', 'M', 'L', 'XL'] as const
 
@@ -201,7 +207,8 @@ const COPY = {
     hintMail:
       'Your image downloads, then your mail app opens. All you do is drop the image in.',
     mailSujet: (prenom: string) => `${prenom}'s future`,
-    pastille: 'Term starts 14/09',
+    // « 14/09 » se lit 9 avril pour un anglophone : on ecrit le mois.
+    pastille: 'Term starts 14 Sept',
     merci: 'We wish you a happy creative future.',
     merciFait: 'Your image is ready.',
     recommencer: 'Make another one',
@@ -258,9 +265,10 @@ function lignes(
 export function MyFutureGenerator({ locale }: { locale: string }) {
   const langue = locale === 'fr' ? 'fr' : 'en'
   const L = COPY[langue]
+  const qui = DESTINATAIRES[langue]
 
   const [destinataire, setDestinataire] =
-    useState<(typeof DESTINATAIRES)[number]>('Papa, maman')
+    useState<string>(DESTINATAIRES[locale === 'fr' ? 'fr' : 'en'][0])
   const [metier, setMetier] = useState('')
   const [prenom, setPrenom] = useState('')
   const [palette, setPalette] = useState(0)
@@ -330,7 +338,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     if (!canvas) return
     const indexPalette = tirage ? tirage.palette : palette
     const motMetier = tirage ? tirage.metier.toUpperCase() : metierAffiche
-    const aQui = tirage ? DESTINATAIRES[0] : destinataire
+    const aQui = tirage ? qui[0] : destinataire
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
@@ -408,13 +416,19 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     if (!tirage) {
     ctx.save()
     ctx.fillStyle = signature
-    ctx.translate(W - 158, 166)
-    ctx.rotate((-13 * Math.PI) / 180)
     espacer('4px')
     ctx.font = F.gras(27)
     const lp = ctx.measureText(L.pastille.toUpperCase()).width
     const pw = lp + 54
     const ph = 66
+    // La pastille est inclinee : c'est son cadre apres rotation qui doit
+    // tenir dans la page, pas sa largeur brute. Sans ce calcul, un libelle
+    // plus long qu'en francais sort du cadre.
+    const angle = (13 * Math.PI) / 180
+    const debord =
+      (pw / 2) * Math.cos(angle) + (ph / 2) * Math.sin(angle)
+    ctx.translate(W - 26 - debord, 166)
+    ctx.rotate(-angle)
     ctx.beginPath()
     ctx.roundRect(-pw / 2, -ph / 2, pw, ph, ph / 2)
     ctx.fill()
@@ -493,7 +507,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     // La chute et le pied appartiennent a l'ecole : ils passent dans la
     // seconde encre, ce qui les detache de la voix du jeune.
     ctx.fillStyle = signature
-    const [ps1, ps2] = L.ps(aQui === 'Papa, maman')
+    const [ps1, ps2] = L.ps(aQui === qui[0])
     ctx.font = F.italique(34)
     ctx.fillText(ps1, cx, H - 172)
     ctx.fillText(ps2, cx, H - 130)
@@ -668,7 +682,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
             {L.labelDest}
           </legend>
           <div className="flex flex-wrap gap-2">
-            {DESTINATAIRES.map((d) => (
+            {qui.map((d) => (
               <button
                 key={d}
                 type="button"
