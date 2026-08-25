@@ -33,8 +33,8 @@ export async function generateMetadata({
   const post = await fetchPost(locale, slug)
   if (!post) return {}
   return {
-    title: post.seo?.metaTitle ?? post.title,
-    description: post.seo?.metaDescription ?? post.excerpt ?? undefined,
+    title: assainirLibelle(post.seo?.metaTitle ?? post.title),
+    description: assainirLibelle(post.seo?.metaDescription ?? post.excerpt) ?? undefined,
   }
 }
 
@@ -53,7 +53,7 @@ function renderRichText(content: unknown) {
         .map((c) => c.text ?? '')
         .join('')
         .trim()
-      if (text) paragraphs.push(text)
+      if (text) paragraphs.push(assainirLibelle(text) ?? text)
     }
   }
   return paragraphs
@@ -81,8 +81,8 @@ export default async function NewsDetailPage({
           + consommation directe par les LLMs. */}
       <JsonLd
         data={articleSchema({
-          headline: post.title,
-          description: post.excerpt ?? undefined,
+          headline: assainirLibelle(post.title),
+          description: assainirLibelle(post.excerpt) ?? undefined,
           url: `${siteUrl}/${locale}/news/${post.slug}`,
           datePublished: post.publishedAt ?? post.updatedAt,
           dateModified: post.updatedAt,
@@ -96,7 +96,7 @@ export default async function NewsDetailPage({
             label: locale === 'fr' ? 'Actualités' : 'News',
             href: `/${locale}/news`,
           },
-          { label: post.title },
+          { label: assainirLibelle(post.title) },
         ]}
       />
 
@@ -115,7 +115,7 @@ export default async function NewsDetailPage({
           {assainirLibelle(post.title)}
         </h1>
         {post.excerpt && (
-          <p className="mt-6 text-lg text-ink/70">{post.excerpt}</p>
+          <p className="mt-6 text-lg text-ink/70">{assainirLibelle(post.excerpt)}</p>
         )}
       </header>
 
