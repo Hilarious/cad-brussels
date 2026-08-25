@@ -3,6 +3,26 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { EventCard } from '@/components/event-card'
 import { AdmissionCTA } from '@/components/admission-cta'
+import type { Metadata } from 'next'
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  return locale === 'fr'
+    ? {
+        title: 'Événements du CAD Brussels : portes ouvertes, workshops, expositions',
+        description:
+          'Journées portes ouvertes, workshops internationaux, expositions de fin d’année et conférences ouvertes au public. Les prochaines dates au CAD Brussels.',
+      }
+    : {
+        title: 'CAD Brussels events: open days, workshops, exhibitions',
+        description:
+          'Open days, international workshops, end-of-year exhibitions and public lectures. All upcoming dates at CAD Brussels.',
+      }
+}
 
 export const revalidate = 60 // ISR: refresh every minute
 

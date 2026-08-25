@@ -3,6 +3,26 @@ import { setRequestLocale } from 'next-intl/server'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { AdmissionCTA } from '@/components/admission-cta'
+import type { Metadata } from 'next'
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  return locale === 'fr'
+    ? {
+        title: 'Actualités du CAD Brussels, école de design',
+        description:
+          'La vie de l’école au jour le jour : projets d’étudiants, retours de workshops à l’étranger, ouvertures d’admission et rencontres avec les diplômés.',
+      }
+    : {
+        title: 'CAD Brussels news, design school in Brussels',
+        description:
+          'School life as it happens: student projects, reports from international workshops, admission openings and alumni encounters.',
+      }
+}
 
 export const revalidate = 60
 

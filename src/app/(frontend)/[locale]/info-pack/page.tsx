@@ -1,6 +1,26 @@
 import Link from 'next/link'
 import { setRequestLocale } from 'next-intl/server'
 import { LeadForm } from '@/components/lead-form'
+import type { Metadata } from 'next'
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  return locale === 'fr'
+    ? {
+        title: 'Recevoir la brochure du CAD Brussels',
+        description:
+          'Programmes, frais de scolarité, journée type et témoignages de diplômés, réunis dans un info-pack envoyé par email. Sans engagement.',
+      }
+    : {
+        title: 'Get the CAD Brussels info pack',
+        description:
+          'Programmes, tuition fees, a typical day and graduate stories, gathered in an info pack sent by email. No strings attached.',
+      }
+}
 
 export default async function InfoPackPage({
   params,

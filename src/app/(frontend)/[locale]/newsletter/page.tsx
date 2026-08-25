@@ -1,6 +1,26 @@
 import Link from 'next/link'
 import { setRequestLocale } from 'next-intl/server'
 import { NewsletterForm } from '@/components/newsletter-form'
+import type { Metadata } from 'next'
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  return locale === 'fr'
+    ? {
+        title: 'Newsletter du CAD Brussels, une fois par mois',
+        description:
+          'Les dates de portes ouvertes, les ouvertures d’admission et les nouveaux modules Lifelong Learning, une fois par mois, sans plus.',
+      }
+    : {
+        title: 'CAD Brussels newsletter, once a month',
+        description:
+          'Open day dates, admission openings and new Lifelong Learning modules, once a month, nothing more.',
+      }
+}
 
 export default async function NewsletterPage({
   params,

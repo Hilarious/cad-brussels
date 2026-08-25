@@ -3,6 +3,7 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { ContactForm } from '@/components/contact-form'
 import { Grid, Col } from '@/components/grid'
+import type { Metadata } from 'next'
 
 // Topics that can be pre-filled via /contact?topic=xxx — keep this list
 // in sync with the links emitted from /admissions and other CTAs.
@@ -102,6 +103,25 @@ function isValidTopic(t: string | undefined): t is ContactTopic {
     t === 'lifelong' ||
     t === 'partnership'
   )
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  return locale === 'fr'
+    ? {
+        title: 'Contacter le CAD Brussels, école de design à Uccle',
+        description:
+          'Une question sur un cursus, un dossier, une équivalence ? Le secrétariat du CAD répond sous 48 heures. Adresse, téléphone et formulaire de contact.',
+      }
+    : {
+        title: 'Contact CAD Brussels, design school in Uccle',
+        description:
+          'A question about a programme, an application, an equivalence? The CAD office answers within 48 hours. Address, phone and contact form.',
+      }
 }
 
 export const revalidate = 60
