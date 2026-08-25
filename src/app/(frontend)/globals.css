@@ -177,6 +177,11 @@ a {
   opacity: 0.75;
 }
 .cta-juice .cta-trace rect {
+  /* ry = moitié de la hauteur, rx reprend ry : le trait épouse la
+   * pilule. Un rx en valeur absolue serait ramené à la moitié de la
+   * LARGEUR et dessinerait une ellipse. */
+  rx: auto;
+  ry: 50%;
   stroke-dasharray: 1;
   animation: cta-draw 6s ease-in-out infinite;
 }

@@ -19,8 +19,11 @@
  *  - `pathLength="1"` normalise la longueur du contour, donc un seul
  *    jeu de keyframes vaut pour un bouton de n'importe quelle largeur
  *    (les libellés changent avec la langue).
- *  - `rx="999"` est ramené par SVG à la moitié de la hauteur : on
- *    obtient une pilule sans connaître les dimensions.
+ *  - L'arrondi vient du CSS (`rx: auto; ry: 50%`), pas d'un attribut :
+ *    en SVG, `rx="999"` est ramené à la moitié de la LARGEUR, ce qui
+ *    dessinait une ellipse débordant des extrémités au lieu d'épouser
+ *    la pilule. `ry: 50%` vaut la moitié de la hauteur, et `rx: auto`
+ *    reprend cette valeur : on obtient la pilule à toute largeur.
  * Le SVG est encastré de 4px pour que son bord coïncide exactement
  * avec le rail du cercle (`offset-path: inset(4px …)`).
  */
@@ -38,8 +41,6 @@ export function CtaTrace() {
           y="0"
           width="100%"
           height="100%"
-          rx="999"
-          ry="999"
           pathLength="1"
           fill="none"
           stroke="currentColor"
