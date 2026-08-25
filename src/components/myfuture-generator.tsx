@@ -46,10 +46,33 @@ const PALETTES: Palette[] = [
   { nom: 'Noir inversé', fond: '#14140F', encre: CREME, signature: '#80ff00' },
 ]
 
-// L'edition textile ne reprend pas les dix palettes de l'ecran : imprimer
-// dix references en deux encres n'a pas de sens sur une petite serie. Trois
-// modeles, choisis pour se distinguer de loin sur un vetement.
-const MODELES_TEE = [3, 5, 1]
+// L'edition textile est une serie fermee : trois t-shirts, chacun avec son
+// metier et son duo d'encres. Ce n'est pas le metier choisi a l'ecran qui
+// s'imprime, c'est l'un de ces trois modeles, decide a la production.
+const MODELES_TEE: { metier: string; palette: number; precommandes: number }[] =
+  [
+    { metier: 'Creative Director', palette: 3, precommandes: 63 }, // azur et rouge
+    { metier: 'Fashion Designer', palette: 5, precommandes: 78 }, // orange et violet
+    { metier: 'Interior Architect', palette: 1, precommandes: 51 }, // rose et navy
+  ]
+
+/**
+ * ATTENTION : les compteurs ci-dessus sont SIMULES pour la demonstration.
+ *
+ * Aucune de ces precommandes n'existe. Tant que ce drapeau est a true, la
+ * page affiche des chiffres inventes, ce qui est une pratique commerciale
+ * trompeuse si elle est mise en ligne pour de vrais visiteurs. A brancher
+ * sur le compteur reel de Shopify, et a repasser a false, avant toute
+ * ouverture au public.
+ */
+const COMPTEURS_SIMULES = true
+
+// Le nombre de precommandes qui declenche l'impression d'un modele.
+const SEUIL_PRODUCTION = 50
+
+// L'objectif affiche par la jauge, au-dela du seuil : une barre pleine des
+// le seuil ne dirait plus rien une fois celui-ci franchi.
+const OBJECTIF_TEE = 100
 
 // L'interface emprunte l'encre du dessin en cours : choisir une couleur
 // se voit alors partout, pas seulement dans l'apercu. Sur les palettes
@@ -132,11 +155,13 @@ const COPY = {
     recommencer: 'En créer une autre',
     teeTitre: 'Le t-shirt',
     teeIntro:
-      "L'affiche existe aussi en t-shirt. Édition limitée, deux encres sur couleur crème.",
+      "L'affiche existe aussi en t-shirt. Trois modèles, trois métiers, trois duos de couleurs. Édition limitée, deux encres sur couleur crème.",
     teeModele: 'Ton modèle',
     teeSansPrenom:
-      "Le t-shirt reprend ton métier, dans l'un des trois modèles ci-dessus. Sans ton prénom et sans la pastille de rentrée : ce qui est personnel reste dans l'image que tu envoies à tes parents.",
+      "Chaque t-shirt porte son propre métier, il ne reprend pas celui que tu viens de choisir. Sans prénom et sans pastille de rentrée non plus : ce qui est personnel reste dans l'image que tu envoies à tes parents.",
     teeApercu: 'Modèle de t-shirt',
+    teeCompteur: (n: number) => `${n} précommandes`,
+    teeSeuil: `Un modèle part en production à partir de ${SEUIL_PRODUCTION} précommandes.`,
     teeTaille: 'Ta taille',
     teeCta: 'Précommander',
     teeBientot: 'Boutique en cours d\'ouverture.',
@@ -182,11 +207,13 @@ const COPY = {
     recommencer: 'Make another one',
     teeTitre: 'The t-shirt',
     teeIntro:
-      'The poster also comes as a t-shirt. Limited edition, two inks on cream.',
+      'The poster also comes as a t-shirt. Three designs, three job titles, three colour pairs. Limited edition, two inks on cream.',
     teeModele: 'Your design',
     teeSansPrenom:
-      'The t-shirt keeps your job title, in one of the three designs above. Without your first name and without the term-start sticker: what is personal stays in the image you send your parents.',
+      'Each t-shirt carries its own job title, not the one you just picked. No first name and no term-start sticker either: what is personal stays in the image you send your parents.',
     teeApercu: 'T-shirt design',
+    teeCompteur: (n: number) => `${n} pre-orders`,
+    teeSeuil: `A design goes to print from ${SEUIL_PRODUCTION} pre-orders.`,
     teeTaille: 'Your size',
     teeCta: 'Pre-order',
     teeBientot: 'Shop opening soon.',
@@ -241,7 +268,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
   const [peutPartager, setPeutPartager] = useState(false)
   const [fait, setFait] = useState(false)
   const [taille, setTaille] = useState<(typeof TAILLES)[number]>('M')
-  const [modele, setModele] = useState(MODELES_TEE[0])
+  const [modele, setModele] = useState(0)
   const [etincelles, setEtincelles] = useState<
     { id: number; x: number; y: number; t: number; d: number; c: string }[]
   >([])
@@ -265,7 +292,10 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     [prenom, L.placeholderPrenom],
   )
   const couleurUI = useMemo(() => teinte(PALETTES[palette]), [palette])
-  const couleurTee = useMemo(() => teinte(PALETTES[modele]), [modele])
+  const couleurTee = useMemo(
+    () => teinte(PALETTES[MODELES_TEE[modele].palette]),
+    [modele],
+  )
 
   // Une pichenette au doigt a chaque choix. Ignoree sur iOS, sentie sur
   // Android : c'est du bonus, jamais le seul retour d'une action.
@@ -292,12 +322,15 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     // Sur le t-shirt : ni prenom ni pastille de rentree. Le prenom n'a de
     // sens que dans le message aux parents, et une date de rentree imprimee
     // perimerait le vetement des le 15 septembre.
-    tirage = false,
-    // Le tirage a ses propres couleurs : celles du modele choisi, qui ne
-    // sont pas forcement celles retenues pour l'image envoyee.
-    indexPalette = palette,
+    // Un tirage textile ne depend d'aucune reponse : il porte son propre
+    // metier et ses propres encres, et perd le prenom comme la pastille de
+    // rentree, qui ne valent que pour l'image envoyee aux parents.
+    tirage?: { metier: string; palette: number },
   ) => {
     if (!canvas) return
+    const indexPalette = tirage ? tirage.palette : palette
+    const motMetier = tirage ? tirage.metier.toUpperCase() : metierAffiche
+    const aQui = tirage ? DESTINATAIRES[0] : destinataire
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
@@ -407,10 +440,10 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
 
     // « Papa, maman, » à l'anglaise : la part d'enfance, décalée à gauche
     ctx.font = F.anglaise(126)
-    const largPapa = ctx.measureText(`${destinataire},`).width
+    const largPapa = ctx.measureText(`${aQui},`).width
     ctx.textAlign = 'left'
     const xPapa = Math.max(marge, cx - largPapa / 2 - 70)
-    ctx.fillText(`${destinataire},`, xPapa, y)
+    ctx.fillText(`${aQui},`, xPapa, y)
     ctx.textAlign = 'center'
     // L'étincelle passe à gauche : le coin droit est pris par la pastille.
     etincelle(Math.max(marge - 20, xPapa - 58), y - 58, 25)
@@ -427,7 +460,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     let lgs: string[] = []
     for (; taille >= 40; taille -= 4) {
       ctx.font = F.gras(taille)
-      lgs = lignes(ctx, metierAffiche, largeur)
+      lgs = lignes(ctx, motMetier, largeur)
       const plusLarge = Math.max(...lgs.map((l) => ctx.measureText(l).width))
       if (lgs.length <= 3 && plusLarge <= largeur) break
     }
@@ -460,7 +493,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     // La chute et le pied appartiennent a l'ecole : ils passent dans la
     // seconde encre, ce qui les detache de la voix du jeune.
     ctx.fillStyle = signature
-    const [ps1, ps2] = L.ps(destinataire === 'Papa, maman')
+    const [ps1, ps2] = L.ps(aQui === 'Papa, maman')
     ctx.font = F.italique(34)
     ctx.fillText(ps1, cx, H - 172)
     ctx.fillText(ps2, cx, H - 130)
@@ -508,8 +541,8 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
 
   useEffect(() => {
     void dessiner(canvasRef.current)
-    MODELES_TEE.forEach((idx, i) => {
-      void dessiner(teeRefs.current[i], true, idx)
+    MODELES_TEE.forEach((m, i) => {
+      void dessiner(teeRefs.current[i], m)
     })
   }, [dessiner])
 
@@ -874,23 +907,23 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
           {L.teeModele}
         </legend>
         <div className="mt-4 grid grid-cols-3 gap-3 sm:flex sm:flex-wrap sm:gap-4">
-          {MODELES_TEE.map((idx, i) => (
+          {MODELES_TEE.map((m, i) => (
             <button
-              key={idx}
+              key={m.metier}
               type="button"
               onClick={() => {
                 tap()
-                setModele(idx)
+                setModele(i)
               }}
-              aria-pressed={modele === idx}
+              aria-pressed={modele === i}
               className={`rounded-xl border-2 p-1.5 transition duration-200 active:scale-95 ${
-                modele === idx
+                modele === i
                   ? '-translate-y-1'
                   : 'border-transparent hover:-translate-y-0.5 hover:border-ink/25'
               }`}
               style={
-                modele === idx
-                  ? { borderColor: teinte(PALETTES[idx]) }
+                modele === i
+                  ? { borderColor: teinte(PALETTES[m.palette]) }
                   : undefined
               }
             >
@@ -901,12 +934,42 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
                 width={W}
                 height={H}
                 className="block w-full rounded-lg shadow-md sm:w-40"
-                aria-label={`${L.teeApercu} ${PALETTES[idx].nom}`}
+                aria-label={`${L.teeApercu} ${m.metier}`}
               />
+
+              {/* Le compteur de précommandes du modèle, avec sa jauge. Il
+                  n'apparaît que tant que les chiffres sont simulés : remis
+                  à false, ils disparaissent au lieu de mentir en silence. */}
+              {COMPTEURS_SIMULES && (
+                <span className="mt-2 block px-0.5">
+                  <span
+                    className="block text-center text-[11px] font-bold leading-tight sm:text-xs"
+                    style={{ color: teinte(PALETTES[m.palette]) }}
+                  >
+                    {L.teeCompteur(m.precommandes)}
+                  </span>
+                  <span className="mt-1.5 block h-1 w-full overflow-hidden rounded-full bg-ink/10">
+                    <span
+                      className="block h-full rounded-full"
+                      style={{
+                        width: `${Math.min(
+                          100,
+                          (m.precommandes / OBJECTIF_TEE) * 100,
+                        )}%`,
+                        background: teinte(PALETTES[m.palette]),
+                      }}
+                    />
+                  </span>
+                </span>
+              )}
             </button>
           ))}
         </div>
       </fieldset>
+
+      {COMPTEURS_SIMULES && (
+        <p className="mt-4 text-sm font-semibold text-ink/50">{L.teeSeuil}</p>
+      )}
 
       <p className="mt-5 max-w-2xl text-base text-ink/60">{L.teeSansPrenom}</p>
 
@@ -949,7 +1012,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
         {SHOPIFY_PRODUIT ? (
           <a
             href={`${SHOPIFY_PRODUIT}?modele=${encodeURIComponent(
-              PALETTES[modele].nom,
+              MODELES_TEE[modele].metier,
             )}&taille=${taille}`}
             target="_blank"
             rel="noopener noreferrer"
