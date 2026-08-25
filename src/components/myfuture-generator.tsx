@@ -648,14 +648,16 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
             >
               {L.byMail}
             </button>
-            <button
-              type="button"
-              onClick={telecharger}
-              disabled={busy || !complet}
-              className="min-h-[48px] flex-1 rounded-full border-2 border-ink/20 px-6 text-base font-semibold text-ink transition hover:border-ink disabled:opacity-40"
-            >
-              {L.download}
-            </button>
+            {peutPartager && (
+              <button
+                type="button"
+                onClick={telecharger}
+                disabled={busy || !complet}
+                className="min-h-[48px] flex-1 rounded-full border-2 border-ink/20 px-6 text-base font-semibold text-ink transition hover:border-ink disabled:opacity-40"
+              >
+                {L.download}
+              </button>
+            )}
           </div>
 
           {fait && (
@@ -695,13 +697,15 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
         </div>
       </div>
 
-      {/* L'aperçu */}
-      <div className="lg:sticky lg:top-24">
+      {/* L'aperçu. Sur téléphone il passe en tête et sa hauteur est bridée :
+          à pleine largeur il occuperait tout l'écran avant la première
+          question, alors qu'il doit rester visible pendant qu'on répond. */}
+      <div className="order-first lg:order-none lg:sticky lg:top-24">
         <canvas
           ref={canvasRef}
           width={W}
           height={H}
-          className="w-full max-w-[420px] rounded-xl shadow-lg"
+          className="mx-auto max-h-[40vh] w-auto rounded-xl shadow-lg lg:max-h-none lg:w-full lg:max-w-[420px]"
           aria-label="Aperçu de ton affiche"
         />
       </div>
@@ -721,7 +725,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
         <legend className="text-sm font-semibold uppercase tracking-[0.14em] text-ink/60">
           {L.teeModele}
         </legend>
-        <div className="mt-4 flex flex-wrap gap-4">
+        <div className="mt-4 grid grid-cols-3 gap-3 sm:flex sm:flex-wrap sm:gap-4">
           {MODELES_TEE.map((idx, i) => (
             <button
               key={idx}
@@ -740,7 +744,7 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
                 }}
                 width={W}
                 height={H}
-                className="block w-32 rounded-lg shadow-md sm:w-40"
+                className="block w-full rounded-lg shadow-md sm:w-40"
                 aria-label={`${L.teeApercu} ${PALETTES[idx].nom}`}
               />
             </button>
