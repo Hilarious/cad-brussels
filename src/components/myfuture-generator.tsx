@@ -46,6 +46,11 @@ const PALETTES: Palette[] = [
   { nom: 'Noir inversé', fond: '#14140F', encre: CREME, signature: '#80ff00' },
 ]
 
+// L'edition textile ne reprend pas les dix palettes de l'ecran : imprimer
+// dix references en deux encres n'a pas de sens sur une petite serie. Trois
+// modeles, choisis pour se distinguer de loin sur un vetement.
+const MODELES_TEE = [3, 5, 1]
+
 const DESTINATAIRES = ['Papa, maman', 'Maman', 'Papa', 'Mamie'] as const
 
 const TAILLES = ['S', 'M', 'L', 'XL'] as const
@@ -112,9 +117,10 @@ const COPY = {
     teeTitre: 'Le t-shirt',
     teeIntro:
       "L'affiche existe aussi en t-shirt. Édition limitée, deux encres sur gris chiné.",
+    teeModele: 'Ton modèle',
     teeSansPrenom:
-      "Le t-shirt reprend ton métier et tes deux couleurs, mais pas ton prénom ni la pastille de rentrée. Ce qui est personnel reste dans l'image que tu envoies à tes parents.",
-    teeApercu: 'Aperçu du t-shirt, sans le prénom ni la pastille',
+      "Le t-shirt reprend ton métier, dans l'un des trois modèles ci-dessus. Sans ton prénom et sans la pastille de rentrée : ce qui est personnel reste dans l'image que tu envoies à tes parents.",
+    teeApercu: 'Modèle de t-shirt',
     teeTaille: 'Ta taille',
     teeCta: 'Précommander',
     teeBientot: 'Boutique en cours d\'ouverture.',
@@ -161,9 +167,10 @@ const COPY = {
     teeTitre: 'The t-shirt',
     teeIntro:
       'The poster also comes as a t-shirt. Limited edition, two inks on heather grey.',
+    teeModele: 'Your design',
     teeSansPrenom:
-      'The t-shirt keeps your job title and your two inks, but not your first name and not the term-start sticker. What is personal stays in the image you send your parents.',
-    teeApercu: 'Preview of the t-shirt, without the first name or the sticker',
+      'The t-shirt keeps your job title, in one of the three designs above. Without your first name and without the term-start sticker: what is personal stays in the image you send your parents.',
+    teeApercu: 'T-shirt design',
     teeTaille: 'Your size',
     teeCta: 'Pre-order',
     teeBientot: 'Shop opening soon.',
@@ -218,11 +225,14 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
   const [peutPartager, setPeutPartager] = useState(false)
   const [fait, setFait] = useState(false)
   const [taille, setTaille] = useState<(typeof TAILLES)[number]>('M')
+  const [modele, setModele] = useState(MODELES_TEE[0])
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
   // Le t-shirt est un tirage, pas un envoi : il montre le meme dessin sans
-  // les deux elements qui ne valent que pour les parents.
-  const teeCanvasRef = useRef<HTMLCanvasElement>(null)
+  // les deux elements qui ne valent que pour les parents. Un canvas par
+  // modele propose, pour que le choix se fasse sur le dessin et non sur le
+  // nom d'une couleur.
+  const teeRefs = useRef<(HTMLCanvasElement | null)[]>([])
   const complet = metier !== '' && prenom.trim() !== ''
 
   const metierAffiche = useMemo(
@@ -250,12 +260,15 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
     // sens que dans le message aux parents, et une date de rentree imprimee
     // perimerait le vetement des le 15 septembre.
     tirage = false,
+    // Le tirage a ses propres couleurs : celles du modele choisi, qui ne
+    // sont pas forcement celles retenues pour l'image envoyee.
+    indexPalette = palette,
   ) => {
     if (!canvas) return
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    const { fond, encre, signature } = PALETTES[palette]
+    const { fond, encre, signature } = PALETTES[indexPalette]
 
     // next/font génère des noms de famille obfusqués : on lit les variables
     // CSS pour retrouver le nom réel, seul utilisable dans ctx.font. Elles
@@ -428,7 +441,9 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
 
   useEffect(() => {
     void dessiner(canvasRef.current)
-    void dessiner(teeCanvasRef.current, true)
+    MODELES_TEE.forEach((idx, i) => {
+      void dessiner(teeRefs.current[i], true, idx)
+    })
   }, [dessiner])
 
   // Un JPG plutot qu'un PNG : plus leger, mieux accepte par les messageries,
@@ -692,63 +707,87 @@ export function MyFutureGenerator({ locale }: { locale: string }) {
 
     {/* La précommande du t-shirt */}
     <section className="rounded-2xl border-2 border-ink/15 p-6 sm:p-8">
-      <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-        <div className="flex max-w-xl flex-col gap-5 sm:flex-row sm:items-start">
-          <canvas
-            ref={teeCanvasRef}
-            width={W}
-            height={H}
-            className="w-36 shrink-0 rounded-lg shadow-md sm:w-44"
-            aria-label={L.teeApercu}
-          />
-          <div>
-            <h2 className="text-2xl font-extrabold text-ink sm:text-3xl">
-              {L.teeTitre}
-            </h2>
-            <p className="mt-2 text-lg text-ink/70">{L.teeIntro}</p>
-            <p className="mt-3 text-base text-ink/60">{L.teeSansPrenom}</p>
-          </div>
-        </div>
+      <div className="max-w-2xl">
+        <h2 className="text-2xl font-extrabold text-ink sm:text-3xl">
+          {L.teeTitre}
+        </h2>
+        <p className="mt-2 text-lg text-ink/70">{L.teeIntro}</p>
+      </div>
 
-        <div className="flex flex-col gap-4">
-          <fieldset className="flex flex-col gap-2">
-            <legend className="mb-2 text-sm font-semibold uppercase tracking-[0.14em] text-ink/60">
-              {L.teeTaille}
-            </legend>
-            <div className="flex gap-2">
-              {TAILLES.map((t) => (
-                <button
-                  key={t}
-                  type="button"
-                  onClick={() => setTaille(t)}
-                  aria-pressed={taille === t}
-                  className={`h-12 w-14 rounded-lg border-2 text-base font-bold transition ${
-                    taille === t
-                      ? 'border-ink bg-ink text-paper'
-                      : 'border-ink/20 text-ink hover:border-ink/50'
-                  }`}
-                >
-                  {t}
-                </button>
-              ))}
-            </div>
-          </fieldset>
-
-          {SHOPIFY_PRODUIT ? (
-            <a
-              href={`${SHOPIFY_PRODUIT}?taille=${taille}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex min-h-[56px] items-center justify-center rounded-full bg-ink px-8 text-lg font-bold text-paper transition hover:opacity-90"
+      {/* Le choix se fait sur le dessin, pas sur un nom de couleur */}
+      <fieldset className="mt-7">
+        <legend className="text-sm font-semibold uppercase tracking-[0.14em] text-ink/60">
+          {L.teeModele}
+        </legend>
+        <div className="mt-4 flex flex-wrap gap-4">
+          {MODELES_TEE.map((idx, i) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={() => setModele(idx)}
+              aria-pressed={modele === idx}
+              className={`rounded-xl border-2 p-1.5 transition ${
+                modele === idx
+                  ? 'border-ink'
+                  : 'border-transparent hover:border-ink/25'
+              }`}
             >
-              {L.teeCta}
-            </a>
-          ) : (
-            <div className="flex min-h-[56px] items-center justify-center rounded-full border-2 border-dashed border-ink/25 px-8 text-base font-semibold text-ink/45">
-              {L.teeBientot}
-            </div>
-          )}
+              <canvas
+                ref={(el) => {
+                  teeRefs.current[i] = el
+                }}
+                width={W}
+                height={H}
+                className="block w-32 rounded-lg shadow-md sm:w-40"
+                aria-label={`${L.teeApercu} ${PALETTES[idx].nom}`}
+              />
+            </button>
+          ))}
         </div>
+      </fieldset>
+
+      <p className="mt-5 max-w-2xl text-base text-ink/60">{L.teeSansPrenom}</p>
+
+      <div className="mt-7 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <fieldset>
+          <legend className="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-ink/60">
+            {L.teeTaille}
+          </legend>
+          <div className="flex gap-2">
+            {TAILLES.map((t) => (
+              <button
+                key={t}
+                type="button"
+                onClick={() => setTaille(t)}
+                aria-pressed={taille === t}
+                className={`h-12 w-14 rounded-lg border-2 text-base font-bold transition ${
+                  taille === t
+                    ? 'border-ink bg-ink text-paper'
+                    : 'border-ink/20 text-ink hover:border-ink/50'
+                }`}
+              >
+                {t}
+              </button>
+            ))}
+          </div>
+        </fieldset>
+
+        {SHOPIFY_PRODUIT ? (
+          <a
+            href={`${SHOPIFY_PRODUIT}?modele=${encodeURIComponent(
+              PALETTES[modele].nom,
+            )}&taille=${taille}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex min-h-[56px] items-center justify-center rounded-full bg-ink px-8 text-lg font-bold text-paper transition hover:opacity-90"
+          >
+            {L.teeCta}
+          </a>
+        ) : (
+          <div className="flex min-h-[56px] items-center justify-center rounded-full border-2 border-dashed border-ink/25 px-8 text-base font-semibold text-ink/45">
+            {L.teeBientot}
+          </div>
+        )}
       </div>
 
       {/* Le parti pris de production, dit franchement */}
