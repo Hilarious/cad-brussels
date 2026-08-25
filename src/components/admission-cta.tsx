@@ -125,6 +125,7 @@ export function AdmissionCTA({
               href={`/${locale}/admissions`}
               className="cta-juice tap rounded-full bg-ink px-6 text-sm font-medium text-paper hover:bg-paper hover:text-ink"
             >
+              <span aria-hidden="true" className="cta-orbit-dot" />
               {t.primaryCta}
             </Link>
             <Link

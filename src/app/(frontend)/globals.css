@@ -142,38 +142,54 @@ a {
 }
 
 /* ─── CTA principaux (.cta-juice) ─────────────────────────────────
- * Deux registres, demande d'Audry (25/08/2026) :
- *  - au repos, un reflet balaie le bouton toutes les ~6 s : assez
- *    rare pour ne pas lasser, assez vif pour accrocher l'œil
- *    périphérique ;
- *  - au survol, le bouton se soulève avec une ombre teintée accent,
- *    et s'enfonce d'un cran au clic.
- * Pur CSS, aucun JavaScript. Coupé par prefers-reduced-motion.
- * À réserver à UN bouton par écran : le reflet perd son sens
- * s'il clignote partout. */
+ * Un petit cercle lumineux parcourt l'intérieur du contour du
+ * bouton, en orbite continue : la pupille qui circule dans l'œil,
+ * écho direct du pivot du parcours. (Premier essai : un reflet
+ * balayant ; retiré à la demande d'Audry, trop gratuit.)
+ *
+ * Le cercle est en currentColor : blanc sur le bouton noir, et il
+ * suit tout seul les changements d'état (encre sur papier quand le
+ * bouton du bloc admission s'inverse au survol).
+ *
+ * `offset-path: inset(… round …)` trace le rail à l'intérieur de la
+ * pilule. Navigateurs anciens : le cercle n'existe pas, le bouton
+ * reste sobre. Coupé par prefers-reduced-motion.
+ *
+ * Au survol, le bouton se soulève avec une ombre teintée accent et
+ * l'orbite accélère, puis s'enfonce d'un cran au clic. */
 .cta-juice {
   position: relative;
-  overflow: hidden;
   transition: transform 0.25s ease, box-shadow 0.25s ease,
     background-color 0.25s ease, color 0.25s ease;
 }
-.cta-juice::after {
-  content: '';
+/* Le cercle est un vrai <span class="cta-orbit-dot"> dans le bouton :
+ * Chrome n'anime pas offset-distance sur un pseudo-élément (vérifié
+ * en situation le 25/08/2026, un élément réel orbite, ::after reste
+ * figé). Sans support d'offset-path, le cercle est masqué. */
+.cta-juice .cta-orbit-dot {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.85;
   pointer-events: none;
-  background: linear-gradient(
-    115deg,
-    transparent 42%,
-    rgba(255, 255, 255, 0.45) 50%,
-    transparent 58%
-  );
-  transform: translateX(-130%);
-  animation: cta-glint 5.8s ease-in-out infinite;
+  offset-path: inset(4px round 999px);
+  animation: cta-orbit 5.2s linear infinite;
 }
-@keyframes cta-glint {
-  0%, 84%  { transform: translateX(-130%); }
-  92%, 100% { transform: translateX(130%); }
+.cta-juice:hover .cta-orbit-dot {
+  animation-duration: 1.6s;
+}
+@supports not (offset-path: inset(4px round 99px)) {
+  .cta-juice .cta-orbit-dot { display: none; }
+}
+@keyframes cta-orbit {
+  /* Le from explicite est indispensable : sans lui, Chrome part de
+   * la valeur calculée 0px et refuse d'interpoler vers 100 %. */
+  from { offset-distance: 0%; }
+  to   { offset-distance: 100%; }
 }
 .cta-juice:hover {
   transform: translateY(-2px);
@@ -184,7 +200,7 @@ a {
   box-shadow: none;
 }
 @media (prefers-reduced-motion: reduce) {
-  .cta-juice::after { animation: none; }
+  .cta-juice .cta-orbit-dot { display: none; }
   .cta-juice,
   .cta-juice:hover,
   .cta-juice:active { transform: none; transition: none; }
