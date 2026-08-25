@@ -274,14 +274,21 @@ export default async function FacultyPage({
   // Même principe que pour les alumni : le CMS d'abord, les données en
   // dur en repli tant que la collection n'est pas alimentée.
   const payload = await getPayload({ config })
-  const enBase = await payload.find({
-    collection: 'faculty',
-    locale: locale as 'fr' | 'en',
-    where: { status: { equals: 'published' } },
-    sort: 'order',
-    limit: 200,
-    depth: 1,
-  })
+  // La requête est protégée : tant que la migration de schéma n'est pas
+  // passée en production, la table n'existe pas et Postgres renvoie une
+  // erreur 42P01 qui faisait échouer le build entier. On retombe alors
+  // sur les données écrites en dur, exactement comme si la collection
+  // était vide.
+  const enBase = await payload
+    .find({
+      collection: 'faculty',
+      locale: locale as 'fr' | 'en',
+      where: { status: { equals: 'published' } },
+      sort: 'order',
+      limit: 200,
+      depth: 1,
+    })
+    .catch(() => ({ docs: [] as never[] }))
 
   const faculty: FacultyMember[] = enBase.docs.length
     ? enBase.docs.map((m) => ({

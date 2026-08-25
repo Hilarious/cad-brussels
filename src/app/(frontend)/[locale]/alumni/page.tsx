@@ -255,14 +255,21 @@ export default async function AlumniPage({
   // vide (base pas encore alimentée), on retombe sur les données écrites
   // en dur, pour que la page ne se vide jamais en cours de migration.
   const payload = await getPayload({ config })
-  const enBase = await payload.find({
-    collection: 'alumni',
-    locale: locale as 'fr' | 'en',
-    where: { status: { equals: 'published' } },
-    sort: 'order',
-    limit: 100,
-    depth: 1,
-  })
+  // La requête est protégée : tant que la migration de schéma n'est pas
+  // passée en production, la table n'existe pas et Postgres renvoie une
+  // erreur 42P01 qui faisait échouer le build entier. On retombe alors
+  // sur les données écrites en dur, exactement comme si la collection
+  // était vide.
+  const enBase = await payload
+    .find({
+      collection: 'alumni',
+      locale: locale as 'fr' | 'en',
+      where: { status: { equals: 'published' } },
+      sort: 'order',
+      limit: 100,
+      depth: 1,
+    })
+    .catch(() => ({ docs: [] as never[] }))
 
   const alumni: Alumni[] = enBase.docs.length
     ? enBase.docs.map((d) => ({
