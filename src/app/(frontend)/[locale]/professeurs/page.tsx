@@ -3,6 +3,8 @@ import { setRequestLocale } from 'next-intl/server'
 import { PageCTA } from '@/components/page-cta'
 import { ImagePlaceholder } from '@/components/image-placeholder'
 import { RelatedContent } from '@/components/related-content'
+import { getPayload } from 'payload'
+import config from '@payload-config'
 
 export async function generateMetadata({
   params,
@@ -269,7 +271,36 @@ export default async function FacultyPage({
   const { locale } = await params
   setRequestLocale(locale)
   const isFR = locale === 'fr'
-  const faculty = isFR ? facultyFR : facultyEN
+  // Même principe que pour les alumni : le CMS d'abord, les données en
+  // dur en repli tant que la collection n'est pas alimentée.
+  const payload = await getPayload({ config })
+  const enBase = await payload.find({
+    collection: 'faculty',
+    locale: locale as 'fr' | 'en',
+    where: { status: { equals: 'published' } },
+    sort: 'order',
+    limit: 200,
+    depth: 1,
+  })
+
+  const faculty: FacultyMember[] = enBase.docs.length
+    ? enBase.docs.map((m) => ({
+        name: m.name,
+        initials: m.name
+          .split(' ')
+          .map((mot) => mot[0] ?? '')
+          .slice(0, 2)
+          .join('')
+          .toUpperCase(),
+        subject: m.subject,
+        programs: (m.programs ?? []).map((pr) => pr.label),
+        parallelRole: m.parallelRole,
+        parallelEmployer: m.parallelEmployer,
+        city: m.city ?? '',
+      }))
+    : isFR
+      ? facultyFR
+      : facultyEN
 
   const L = isFR
     ? {

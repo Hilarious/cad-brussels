@@ -15,6 +15,8 @@ import { Categories } from './collections/Categories'
 import { Subscribers } from './collections/Subscribers'
 import { Leads } from './collections/Leads'
 import { Applications } from './collections/Applications'
+import { Alumni } from './collections/Alumni'
+import { Faculty } from './collections/Faculty'
 
 import { Header } from './globals/Header'
 import { Footer } from './globals/Footer'
@@ -44,6 +46,8 @@ export default buildConfig({
     Subscribers,
     Leads,
     Applications,
+    Alumni,
+    Faculty,
   ],
   globals: [Header, Footer, SiteSettings],
   localization: {

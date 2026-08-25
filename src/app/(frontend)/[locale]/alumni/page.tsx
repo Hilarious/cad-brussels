@@ -5,6 +5,8 @@ import { setRequestLocale } from 'next-intl/server'
 import { PageCTA } from '@/components/page-cta'
 import { ImagePlaceholder } from '@/components/image-placeholder'
 import { RelatedContent } from '@/components/related-content'
+import { getPayload } from 'payload'
+import config from '@payload-config'
 
 export async function generateMetadata({
   params,
@@ -248,7 +250,40 @@ export default async function AlumniPage({
   const { locale } = await params
   setRequestLocale(locale)
   const isFR = locale === 'fr'
-  const alumni = isFR ? alumniFR : alumniEN
+
+  // Les portraits viennent désormais du CMS. Tant que la collection est
+  // vide (base pas encore alimentée), on retombe sur les données écrites
+  // en dur, pour que la page ne se vide jamais en cours de migration.
+  const payload = await getPayload({ config })
+  const enBase = await payload.find({
+    collection: 'alumni',
+    locale: locale as 'fr' | 'en',
+    where: { status: { equals: 'published' } },
+    sort: 'order',
+    limit: 100,
+    depth: 1,
+  })
+
+  const alumni: Alumni[] = enBase.docs.length
+    ? enBase.docs.map((d) => ({
+        name: d.name,
+        classOf: d.classOf,
+        program: d.program,
+        programSlug: d.programSlug ?? '',
+        currentRole: d.currentRole,
+        currentEmployer: d.currentEmployer,
+        city: d.city ?? '',
+        quote: d.quote,
+        initials: d.name
+          .split(' ')
+          .map((mot) => mot[0] ?? '')
+          .slice(0, 2)
+          .join('')
+          .toUpperCase(),
+      }))
+    : isFR
+      ? alumniFR
+      : alumniEN
 
   const L = isFR
     ? {
@@ -281,7 +316,15 @@ export default async function AlumniPage({
   // Featured alumni for the hero mosaic (Pattern I — mosaïque irrégulière).
   // 5 portraits emblématiques, mix de programmes et de villes, pour
   // donner immédiatement le ton "international" et "diversité créative".
-  const featuredAlumni = alumni.slice(0, 5)
+  // La mosaïque du haut réclame cinq portraits. Le contenu venant
+  // désormais du CMS, l'école peut très bien n'en publier que deux :
+  // sans ce garde-fou, la page plante en production dès qu'il en manque.
+  // On complète en rebouclant sur la liste plutôt que de casser la grille.
+  const base = alumni.length ? alumni : []
+  const featuredAlumni = Array.from(
+    { length: 5 },
+    (_, i) => base[i % Math.max(base.length, 1)],
+  ).filter(Boolean)
 
   // Position de la citation visuelle (Pattern C) : entre la 4ème et la
   // 5ème carte alumni, comme un point de respiration éditorial.
@@ -310,7 +353,7 @@ export default async function AlumniPage({
           <div className="col-span-6 md:col-span-3 md:row-span-2">
             <ImagePlaceholder
               ratio="4:5"
-              caption={`Portrait · ${featuredAlumni[0].name} · ${featuredAlumni[0].currentEmployer}`}
+              caption={`Portrait · ${featuredAlumni[0]?.name ?? ''} · ${featuredAlumni[0]?.currentEmployer ?? ''}`}
               className="h-full"
             />
           </div>
@@ -318,25 +361,25 @@ export default async function AlumniPage({
           <div className="col-span-3 md:col-span-3">
             <ImagePlaceholder
               ratio="1:1"
-              caption={`Portrait · ${featuredAlumni[1].name}`}
+              caption={`Portrait · ${featuredAlumni[1]?.name ?? ''}`}
             />
           </div>
           <div className="col-span-3 md:col-span-3">
             <ImagePlaceholder
               ratio="1:1"
-              caption={`Portrait · ${featuredAlumni[2].name}`}
+              caption={`Portrait · ${featuredAlumni[2]?.name ?? ''}`}
             />
           </div>
           <div className="col-span-3 md:col-span-2">
             <ImagePlaceholder
               ratio="1:1"
-              caption={`Portrait · ${featuredAlumni[3].name}`}
+              caption={`Portrait · ${featuredAlumni[3]?.name ?? ''}`}
             />
           </div>
           <div className="col-span-3 md:col-span-4">
             <ImagePlaceholder
               ratio="16:9"
-              caption={`Scène · ${featuredAlumni[4].name} dans son contexte pro`}
+              caption={`Scène · ${featuredAlumni[4]?.name ?? ''} dans son contexte pro`}
             />
           </div>
         </div>

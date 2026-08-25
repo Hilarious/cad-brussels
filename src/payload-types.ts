@@ -76,6 +76,8 @@ export interface Config {
     subscribers: Subscriber;
     leads: Lead;
     applications: Application;
+    alumni: Alumnus;
+    faculty: Faculty;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -92,6 +94,8 @@ export interface Config {
     subscribers: SubscribersSelect<false> | SubscribersSelect<true>;
     leads: LeadsSelect<false> | LeadsSelect<true>;
     applications: ApplicationsSelect<false> | ApplicationsSelect<true>;
+    alumni: AlumniSelect<false> | AlumniSelect<true>;
+    faculty: FacultySelect<false> | FacultySelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -149,6 +153,9 @@ export interface User {
   role: 'admin' | 'editor';
   updatedAt: string;
   createdAt: string;
+  enableAPIKey?: boolean | null;
+  apiKey?: string | null;
+  apiKeyIndex?: string | null;
   email: string;
   resetPasswordToken?: string | null;
   resetPasswordExpiration?: string | null;
@@ -731,6 +738,82 @@ export interface Application {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "alumni".
+ */
+export interface Alumnus {
+  id: number;
+  name: string;
+  /**
+   * Ex : Promo 2022
+   */
+  classOf: string;
+  /**
+   * Nom du programme suivi, tel qu’affiché.
+   */
+  program: string;
+  /**
+   * Adresse de la page programme, pour créer le lien. Ex : communication-digital-design
+   */
+  programSlug?: string | null;
+  currentRole: string;
+  currentEmployer: string;
+  city?: string | null;
+  /**
+   * Le témoignage, à la première personne.
+   */
+  quote: string;
+  /**
+   * Facultatif. Sans photo, les initiales s’affichent.
+   */
+  photo?: (number | null) | Media;
+  /**
+   * Ordre d’affichage. Le plus petit vient en premier.
+   */
+  order?: number | null;
+  status: 'published' | 'draft';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faculty".
+ */
+export interface Faculty {
+  id: number;
+  name: string;
+  /**
+   * Ce qu’il ou elle enseigne. Ex : Atelier de projet
+   */
+  subject: string;
+  /**
+   * Les programmes où intervient cette personne.
+   */
+  programs?:
+    | {
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Son métier en dehors de l’école.
+   */
+  parallelRole: string;
+  parallelEmployer: string;
+  city?: string | null;
+  /**
+   * Facultatif. Sans photo, les initiales s’affichent.
+   */
+  photo?: (number | null) | Media;
+  /**
+   * Ordre d’affichage. Le plus petit vient en premier.
+   */
+  order?: number | null;
+  status: 'published' | 'draft';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -788,6 +871,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'applications';
         value: number | Application;
+      } | null)
+    | ({
+        relationTo: 'alumni';
+        value: number | Alumnus;
+      } | null)
+    | ({
+        relationTo: 'faculty';
+        value: number | Faculty;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -840,6 +931,9 @@ export interface UsersSelect<T extends boolean = true> {
   role?: T;
   updatedAt?: T;
   createdAt?: T;
+  enableAPIKey?: T;
+  apiKey?: T;
+  apiKeyIndex?: T;
   email?: T;
   resetPasswordToken?: T;
   resetPasswordExpiration?: T;
@@ -1261,6 +1355,47 @@ export interface ApplicationsSelect<T extends boolean = true> {
         referrer?: T;
       };
   internalNotes?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "alumni_select".
+ */
+export interface AlumniSelect<T extends boolean = true> {
+  name?: T;
+  classOf?: T;
+  program?: T;
+  programSlug?: T;
+  currentRole?: T;
+  currentEmployer?: T;
+  city?: T;
+  quote?: T;
+  photo?: T;
+  order?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faculty_select".
+ */
+export interface FacultySelect<T extends boolean = true> {
+  name?: T;
+  subject?: T;
+  programs?:
+    | T
+    | {
+        label?: T;
+        id?: T;
+      };
+  parallelRole?: T;
+  parallelEmployer?: T;
+  city?: T;
+  photo?: T;
+  order?: T;
+  status?: T;
   updatedAt?: T;
   createdAt?: T;
 }
