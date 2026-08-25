@@ -21,9 +21,10 @@ const H = 1350
 type Palette = { nom: string; fond: string; encre: string; signature: string }
 
 // Impression une seule couleur sur fond textile, comme les t-shirts.
-// Les encres sont celles de la palette officielle du CAD. Les couleurs
-// trop claires de la palette (jaune, lime, cyan, mint) sont ecartees :
-// illisibles en encre sur un fond creme.
+// Toutes les encres viennent de la charte officielle du CAD, sans exception.
+// Les couleurs claires de la charte (cyan, jaune, mint) ne servent jamais
+// d'encre sur creme, ou elles plafonnent a 1,1 de contraste. Le lime
+// n'apparait que sur un fond sombre, ou il passe a 14.
 const CREME = '#F1EDE3'
 
 // Deux encres par affiche, comme une impression deux plaques.
@@ -40,10 +41,12 @@ const PALETTES: Palette[] = [
   { nom: 'Rouge et navy', fond: CREME, encre: '#ff1f20', signature: '#2f346d' },
   { nom: 'Orange et violet', fond: CREME, encre: '#ff8000', signature: '#8000ff' },
   { nom: 'Magenta et navy', fond: CREME, encre: '#ff00ff', signature: '#2f346d' },
-  { nom: 'Noir et rose', fond: CREME, encre: '#000000', signature: '#ff277f' },
-  // Les deux inversions, pour ceux qui veulent du sombre
+  { nom: 'Bleu et rose', fond: CREME, encre: '#0000ff', signature: '#ff277f' },
+  // Les deux inversions, pour ceux qui veulent du sombre. Le noir a ete
+  // retire : il ne figure pas dans la charte, alors que le bleu y est et
+  // tient aussi bien le fond que l'encre.
   { nom: 'Navy inversé', fond: '#2f346d', encre: CREME, signature: '#ff277f' },
-  { nom: 'Noir inversé', fond: '#14140F', encre: CREME, signature: '#80ff00' },
+  { nom: 'Bleu inversé', fond: '#0000ff', encre: CREME, signature: '#80ff00' },
 ]
 
 // L'edition textile est une serie fermee : trois t-shirts, chacun avec son
@@ -52,7 +55,7 @@ const PALETTES: Palette[] = [
 const MODELES_TEE: { metier: string; palette: number; precommandes: number }[] =
   [
     { metier: 'Creative Director', palette: 3, precommandes: 63 }, // azur et rouge
-    { metier: 'Fashion Designer', palette: 5, precommandes: 78 }, // orange et violet
+    { metier: 'Fashion Designer', palette: 2, precommandes: 78 }, // violet et orange
     { metier: 'Interior Architect', palette: 1, precommandes: 51 }, // rose et navy
   ]
 
