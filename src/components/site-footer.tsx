@@ -27,7 +27,7 @@ export async function SiteFooter({ locale }: { locale: string }) {
   const isFR = locale === 'fr'
 
   return (
-    <footer className="mt-24 bg-paper">
+    <footer className="mt-12 bg-paper">
       {/* Newsletter band — compact, single line on desktop */}
       <div>
         <div className="container flex flex-col gap-4 py-8 md:flex-row md:items-center md:justify-between md:gap-8">
