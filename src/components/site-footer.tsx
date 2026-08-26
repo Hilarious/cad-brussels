@@ -51,7 +51,7 @@ export async function SiteFooter({ locale }: { locale: string }) {
                   {isFR ? 'En savoir plus →' : 'Learn more →'}
                 </Link>
               </p>
-              <div className="mt-3">
+              <div className="mt-3 max-w-xs">
                 <NewsletterForm locale={locale} variant="compact" />
               </div>
             </div>
