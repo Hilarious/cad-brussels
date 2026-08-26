@@ -25,6 +25,22 @@ export function generateStaticParams() {
 }
 
 /**
+ * Rafraîchissement posé ICI, sur le gabarit commun, et pas page par page.
+ *
+ * L'en-tête et le pied de page sont rendus par ce gabarit et viennent du
+ * CMS. Or 21 des 30 pages du site ne déclaraient aucun rafraîchissement :
+ * elles étaient figées à la date du dernier déploiement, donc une
+ * modification du menu faite dans l'admin n'y apparaissait jamais. C'est
+ * ce qui donnait deux navigations différentes selon la page, l'accueil à
+ * jour et /myfuture restée à l'ancienne (constaté le 26/08/2026).
+ *
+ * Le réglage posé sur le gabarit vaut pour toutes les pages qui n'en
+ * déclarent pas, ce qui règle les 21 d'un coup. Les pages qui déclarent
+ * déjà 60 secondes gardent la même valeur, rien ne change pour elles.
+ */
+export const revalidate = 60
+
+/**
  * Métadonnées racine, déclinées par langue.
  *
  * Était auparavant un `export const metadata` statique : la version
