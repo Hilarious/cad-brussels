@@ -29,7 +29,7 @@ export async function SiteFooter({ locale }: { locale: string }) {
   return (
     <footer className="mt-24 bg-paper">
       {/* Newsletter band — compact, single line on desktop */}
-      <div className="border-b border-ink/10">
+      <div>
         <div className="container flex flex-col gap-4 py-8 md:flex-row md:items-center md:justify-between md:gap-8">
           <div className="md:max-w-sm">
             <p className="font-display text-lg text-ink">
