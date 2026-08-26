@@ -53,11 +53,14 @@ export async function SiteFooter({ locale }: { locale: string }) {
         </div>
       </div>
 
-      {/* Frise décorative — charte graphique Thomas Durieux. */}
+      {/* Frise décorative — charte graphique Thomas Durieux.
+          Motif carré (662×75) répété en bg-repeat-x : s'adapte à toute
+          largeur d'écran sans jamais couper le motif, contrairement à
+          une longue bande pré-assemblée. */}
       <div
         aria-hidden="true"
-        className="h-[18px] w-full bg-repeat-x sm:h-6"
-        style={{ backgroundImage: "url('/decor/frise-cad-75.png')", backgroundSize: 'auto 100%' }}
+        className="h-6 w-full bg-repeat-x sm:h-9 lg:h-12"
+        style={{ backgroundImage: "url('/decor/frise-cad-tile.png')", backgroundSize: 'auto 100%' }}
       />
 
       {/* Site map — layout dense pour maximiser le maillage interne.
