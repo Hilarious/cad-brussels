@@ -70,7 +70,11 @@ export function NavItem({ label, href, submenu }: Props) {
     >
       <Link
         href={href}
-        className="inline-flex items-center gap-1 py-5 hover:text-accent"
+        // `whitespace-nowrap` : un intitule de navigation ne se coupe
+        // jamais en deux lignes. Si l'ensemble ne tient pas, c'est le
+        // menu replie qui doit prendre le relais, pas l'intitule qui
+        // se casse au milieu.
+        className="inline-flex items-center gap-1 whitespace-nowrap py-5 hover:text-accent"
         onFocus={handleEnter}
         aria-haspopup={hasChildren || undefined}
         aria-expanded={hasChildren ? open : undefined}

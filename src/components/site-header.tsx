@@ -25,16 +25,22 @@ export async function SiteHeader({ locale }: { locale: string }) {
         <Logo locale={locale} variant="header" size="lg" />
 
         {/* Nav at `text-base` (17px) for readability — used to be too
-            small at `text-sm`. Gap-8 keeps comfortable spacing between
-            the 7 menu items + dropdowns.
+            small at `text-sm`.
 
-            Le seuil est `lg` (1024px) et non `md` (768px) : les 7 entrées
-            plus le CTA et le sélecteur de langue ne tiennent pas dans 768px.
-            Sous `md`, la barre débordait de ~283px et forçait un défilement
-            horizontal sur toutes les pages en tablette. En dessous de 1024px,
-            c'est <MobileMenu> qui prend le relais. */}
-        <nav aria-label="Primary" className="hidden lg:block">
-          <ul className="flex items-center gap-8 text-base">
+            Le seuil est `xl` (1280px). Il a d'abord été `md` (768px) puis
+            `lg` (1024px), mais 1024px ne suffisait pas non plus : mesuré
+            sur la production, la barre réclame environ 1245px (logo 169,
+            navigation 718, langue et CTA 198, gouttières 64, marges du
+            conteneur 96). En dessous, les intitulés se coupaient en deux
+            lignes. En dessous de 1280px, c'est <MobileMenu> qui prend le
+            relais.
+
+            `gap-6` et non `gap-8` : les 24px suffisent à séparer les
+            entrées et rendent les 40px qui manquaient pour tenir à 1280.
+            Ce calcul suppose 6 entrées ; en ajouter une dans le CMS peut
+            faire repasser la barre au-dessus du seuil. */}
+        <nav aria-label="Primary" className="hidden xl:block">
+          <ul className="flex items-center gap-6 text-base">
             {navItems.map((item, i) => (
               <NavItem
                 key={`${item.path}-${i}`}

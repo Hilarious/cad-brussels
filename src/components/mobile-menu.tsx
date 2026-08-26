@@ -60,8 +60,10 @@ export function MobileMenu({ navItems, cta, labels }: Props) {
     }
   }, [open])
 
+  // Miroir du seuil de <SiteHeader> : la navigation bureau apparaît à
+  // `xl` (1280px), le menu replié couvre donc tout en dessous.
   return (
-    <div className="lg:hidden">
+    <div className="xl:hidden">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
