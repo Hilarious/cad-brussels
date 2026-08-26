@@ -36,33 +36,44 @@ export async function SiteFooter({ locale }: { locale: string }) {
           l'un a la place de l'autre. Choix assume : pas d'apercu visuel
           du contenu social ici, seulement l'invitation a s'abonner. */}
       <div>
-        <div className="container py-8">
-          <p className="font-display text-lg text-ink">
+        <div className="container py-12">
+          <h2 className="font-display text-2xl text-ink md:text-3xl">
             {isFR ? 'Découvrez l’intérieur du CAD.' : 'See what happens inside the CAD.'}
-          </p>
-          <div className="mt-5 flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-            <div className="md:max-w-sm">
-              <p className="text-sm text-ink/60">
-                {isFR ? 'Événements, admissions, modules. ' : 'Events, admissions, modules. '}
-                <Link
-                  href={`/${locale}/newsletter`}
-                  className="text-accent hover:underline"
-                >
+          </h2>
+
+          {/* Deux colonnes de meme rang : meme intitule en capitales (la
+              trame du footer), meme phrase de description, puis l'action.
+              La difference de rythme editorial, mensuel contre quotidien,
+              est ce qui distingue les deux canaux, pas leur mise en forme. */}
+          <div className="mt-8 grid gap-10 md:grid-cols-2 md:gap-16">
+            <div>
+              <p className="text-sm font-medium uppercase tracking-widest text-ink/50">
+                {isFR ? 'La newsletter' : 'The newsletter'}
+              </p>
+              <p className="mt-2 text-sm text-ink/70">
+                {isFR
+                  ? 'Une fois par mois : événements, admissions, modules. '
+                  : 'Once a month: events, admissions, modules. '}
+                <Link href={`/${locale}/newsletter`} className="text-accent hover:underline">
                   {isFR ? 'En savoir plus →' : 'Learn more →'}
                 </Link>
               </p>
-              <div className="mt-3 max-w-xs">
+              <div className="mt-4 max-w-xs">
                 <NewsletterForm locale={locale} variant="compact" />
               </div>
             </div>
+
             {social.length > 0 && (
               <div>
                 <p className="text-sm font-medium uppercase tracking-widest text-ink/50">
-                  {isFR
-                    ? 'Suivez les créations, les briefs, les coulisses'
-                    : 'Follow the projects, briefs, behind the scenes'}
+                  {isFR ? 'Les réseaux' : 'Social'}
                 </p>
-                <div className="mt-3">
+                <p className="mt-2 text-sm text-ink/70">
+                  {isFR
+                    ? 'Au quotidien : les créations, les briefs, les coulisses.'
+                    : 'Every day: the projects, the briefs, behind the scenes.'}
+                </p>
+                <div className="mt-4">
                   <SocialIcons links={social} />
                 </div>
               </div>
