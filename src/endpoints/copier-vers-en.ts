@@ -30,8 +30,20 @@ export const copierVersEn: Endpoint = {
       // ── Cas d'un global (en-tête, pied de page, réglages) ──────────
       if (global) {
         const [fr, en] = await Promise.all([
-          req.payload.findGlobal({ slug: global as never, locale: 'fr', depth: 0 }),
-          req.payload.findGlobal({ slug: global as never, locale: 'en', depth: 0 }),
+          req.payload.findGlobal({
+            slug: global as never,
+            locale: 'fr',
+            depth: 0,
+            overrideAccess: false,
+            user: req.user,
+          }),
+          req.payload.findGlobal({
+            slug: global as never,
+            locale: 'en',
+            depth: 0,
+            overrideAccess: false,
+            user: req.user,
+          }),
         ])
 
         const { correctif, remplis, chemins } = fusionnerVersAnglais(
@@ -45,6 +57,8 @@ export const copierVersEn: Endpoint = {
           locale: 'en',
           data: correctif as never,
           depth: 0,
+          overrideAccess: false,
+          user: req.user,
         })
         return Response.json({ remplis, chemins })
       }
@@ -57,9 +71,27 @@ export const copierVersEn: Endpoint = {
         )
       }
 
+      // `overrideAccess: false` fait appliquer les règles d'accès de la
+      // collection à l'utilisateur connecté. Sans cela, n'importe quel
+      // compte de l'admin pourrait copier n'importe quel document, y
+      // compris ceux qu'il n'a pas le droit de lire ou de modifier.
       const [fr, en] = await Promise.all([
-        req.payload.findByID({ collection: collection as never, id, locale: 'fr', depth: 0 }),
-        req.payload.findByID({ collection: collection as never, id, locale: 'en', depth: 0 }),
+        req.payload.findByID({
+          collection: collection as never,
+          id,
+          locale: 'fr',
+          depth: 0,
+          overrideAccess: false,
+          user: req.user,
+        }),
+        req.payload.findByID({
+          collection: collection as never,
+          id,
+          locale: 'en',
+          depth: 0,
+          overrideAccess: false,
+          user: req.user,
+        }),
       ])
 
       const { correctif, remplis, chemins } = fusionnerVersAnglais(
@@ -80,6 +112,8 @@ export const copierVersEn: Endpoint = {
         data: correctif as never,
         depth: 0,
         draft: enBrouillon,
+        overrideAccess: false,
+        user: req.user,
       })
 
       return Response.json({ remplis, chemins })

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useDocumentInfo, useLocale } from '@payloadcms/ui'
+import { useDocumentInfo, useFormModified, useLocale } from '@payloadcms/ui'
 
 /**
  * Bouton « Copier le français vers l'anglais », posé en tête des
@@ -18,6 +18,7 @@ import { useDocumentInfo, useLocale } from '@payloadcms/ui'
 export function BoutonCopierVersEn() {
   const { id, collectionSlug, globalSlug } = useDocumentInfo()
   const locale = useLocale()
+  const modifie = useFormModified()
   const [etat, setEtat] = useState<'repos' | 'encours' | 'fini' | 'erreur'>('repos')
   const [message, setMessage] = useState<string>('')
 
@@ -29,6 +30,17 @@ export function BoutonCopierVersEn() {
   if (!globalSlug && !id) return null
 
   async function copier() {
+    // La copie écrit côté serveur puis recharge la page. Des
+    // modifications non enregistrées seraient donc perdues sans que
+    // personne ne comprenne pourquoi. On refuse plutôt que d'effacer.
+    if (modifie) {
+      setEtat('erreur')
+      setMessage(
+        'Enregistrez d’abord vos modifications en cours : la copie recharge la page et elles seraient perdues.',
+      )
+      return
+    }
+
     setEtat('encours')
     setMessage('')
     try {

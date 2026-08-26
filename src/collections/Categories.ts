@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { champCopierVersEn } from '../lib/fields/copier-vers-en'
 
 export const Categories: CollectionConfig = {
   slug: 'categories',
@@ -8,6 +9,7 @@ export const Categories: CollectionConfig = {
   },
   access: { read: () => true },
   fields: [
+    champCopierVersEn(),
     { name: 'name', type: 'text', required: true, localized: true },
     {
       name: 'slug',

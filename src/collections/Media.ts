@@ -1,4 +1,5 @@
 import type { CollectionConfig, CollectionBeforeChangeHook } from 'payload'
+import { champCopierVersEn } from '../lib/fields/copier-vers-en'
 import sharp from 'sharp'
 
 // =============================================================================
@@ -125,6 +126,7 @@ export const Media: CollectionConfig = {
     formatOptions: { format: 'webp', options: { quality: 82 } },
   },
   fields: [
+    champCopierVersEn(),
     {
       name: 'alt',
       type: 'text',
