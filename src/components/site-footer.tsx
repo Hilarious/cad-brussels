@@ -53,6 +53,13 @@ export async function SiteFooter({ locale }: { locale: string }) {
         </div>
       </div>
 
+      {/* Frise décorative — charte graphique Thomas Durieux. */}
+      <div
+        aria-hidden="true"
+        className="h-[18px] w-full bg-repeat-x sm:h-6"
+        style={{ backgroundImage: "url('/decor/frise-cad-75.png')", backgroundSize: 'auto 100%' }}
+      />
+
       {/* Site map — layout dense pour maximiser le maillage interne.
           L'audit SEO Digistage 2026 a montré que les pages qui
           performent ont 154 liens internes en moyenne. Le footer est

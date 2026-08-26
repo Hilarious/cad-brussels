@@ -14,13 +14,16 @@ import Image from 'next/image'
  *   - cad-logo-65.png     → édition anniversaire 65 ans (« d65 » rose/bleu).
  *                            Éphémère, à utiliser sur le header pendant
  *                            la campagne anniversaire 2026.
+ *   - cad-logo-header.png → wordmark noir, sans mention d'anniversaire.
+ *                            Remplace "65" sur le header en fin de campagne.
  *
  * La sélection se fait par la prop `variant` :
- *   - "65"        (par défaut header) → cad-logo-65.png
+ *   - "65"        (édition anniversaire, temporaire) → cad-logo-65.png
+ *   - "header"    (header, par défaut) → cad-logo-header.png
  *   - "wordmark"  (footer, institutionnel) → cad-logo-full.png
  *   - "monogram"  (espaces compacts, mobile, favicon) → cad-monogram.png
  */
-type Variant = '65' | 'wordmark' | 'monogram'
+type Variant = '65' | 'header' | 'wordmark' | 'monogram'
 
 type Size = 'sm' | 'md' | 'lg'
 
@@ -38,6 +41,15 @@ const assetMap: Record<
     },
     // 2600 × 1462 → ratio 1.78
     ratio: 1.78,
+  },
+  header: {
+    src: '/logo/cad-logo-header.png',
+    alt: {
+      fr: 'CAD Brussels',
+      en: 'CAD Brussels',
+    },
+    // 225 × 84 → ratio 2.68
+    ratio: 2.68,
   },
   wordmark: {
     src: '/logo/cad-logo-full.png',
@@ -68,7 +80,7 @@ const heightMap: Record<Size, number> = {
 
 export function Logo({
   locale,
-  variant = '65',
+  variant = 'header',
   size = 'md',
   noLink = false,
   className = '',

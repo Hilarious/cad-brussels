@@ -22,10 +22,7 @@ export async function SiteHeader({ locale }: { locale: string }) {
   return (
     <header className="sticky top-0 z-40 border-b border-ink/10 bg-paper/85 backdrop-blur">
       <div className="container flex h-20 items-center justify-between gap-8">
-        {/* Logo 65 ans : édition anniversaire 2026, visible sur le
-            header pendant la campagne. Bascule vers variant="monogram"
-            ou "wordmark" en fin de campagne. */}
-        <Logo locale={locale} variant="65" size="md" />
+        <Logo locale={locale} variant="header" size="lg" />
 
         {/* Nav at `text-base` (17px) for readability — used to be too
             small at `text-sm`. Gap-8 keeps comfortable spacing between
