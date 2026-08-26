@@ -2,6 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
 import { PageCTA } from '@/components/page-cta'
+import { SessionSelector } from '@/components/session-selector'
 
 // Pre-registration is now an in-site form at /apply. Path is locale-aware.
 const applyPath = (locale: string) => `/${locale}/apply`
@@ -14,14 +15,14 @@ export async function generateMetadata({
   const { locale } = await params
   return locale === 'fr'
     ? {
-        title: 'Admissions au CAD Brussels, 4 façons de nous rejoindre',
+        title: 'Admissions au CAD Brussels, venir nous rencontrer',
         description:
-          "Postuler, prendre un entretien, venir à un Open Day ou à un Breakfast. Le parcours d'admission au CAD, expliqué simplement.",
+          "Choisissez votre rendez-vous : journée portes ouvertes, petit-déjeuner ou entretien individuel avec le directeur. Le parcours d'admission au CAD, expliqué simplement.",
       }
     : {
-        title: 'Admissions at CAD Brussels, 4 ways to join us',
+        title: 'Admissions at CAD Brussels, come and meet us',
         description:
-          'Apply, book a meeting with the director, come to an Open Day or to a Wednesday Breakfast. The CAD admission process, explained simply.',
+          'Choose your visit: open day, breakfast or a one-to-one meeting with the director. The CAD admission process, explained simply.',
       }
 }
 
@@ -41,7 +42,7 @@ export default async function AdmissionsPage({
         eyebrow: 'Admissions',
         title: 'Vous voulez nous rejoindre ? Voilà comment.',
         intro:
-          "Pas besoin d'un dossier parfait ni d'un portfolio finalisé pour commencer. On a quatre façons d'entrer en contact, choisissez celle qui vous correspond aujourd'hui.",
+          "Pas besoin d'un dossier parfait ni d'un portfolio finalisé pour commencer. Le plus simple reste de venir nous voir : choisissez la date qui vous arrange, ou demandez un rendez-vous individuel.",
         // Reassurance section — the #1 blocker for 18–22yo
         reassureTitle: 'D’abord, une chose à savoir',
         reassureBody:
@@ -128,7 +129,7 @@ export default async function AdmissionsPage({
         eyebrow: 'Admissions',
         title: 'Want to join us? Here is how.',
         intro:
-          "You don't need a perfect file or a polished portfolio to start. We have four ways to get in touch, pick the one that fits you today.",
+          "You don't need a perfect file or a polished portfolio to start. The simplest way is to come and see us: pick the date that suits you, or ask for a one-to-one meeting.",
         reassureTitle: 'First, one thing to know',
         reassureBody:
           "You don't need to have proven everything to apply. At CAD, we look at a trajectory, a curiosity, a desire to make things. Portfolios can be in progress. Files can have gaps. What we look for is a person who wants to become a designer, not a profile that's already finished.",
@@ -266,60 +267,14 @@ export default async function AdmissionsPage({
         </ul>
       </section>
 
-      {/* Four routes — ranked by commitment level */}
+      {/* Sélecteur de séances.
+          Remplace le panneau des quatre façons d'entrer en contact, qui
+          renvoyait vers trois pages différentes : comparer trois dates
+          demandait d'ouvrir trois onglets. Les libellés `routes*` restent
+          dans le dictionnaire, ils décrivent l'échelle d'engagement et
+          serviront si l'on veut la remettre en récit ailleurs. */}
       <section className="container py-16">
-        <div className="max-w-3xl">
-          <h2 className="font-display text-3xl md:text-4xl">
-            {L.routesTitle}
-          </h2>
-          <p className="mt-6 text-ink/80">{L.routesIntro}</p>
-        </div>
-        <ul className="mt-12 space-y-4">
-          {L.routes.map((r) => (
-            <li
-              key={r.level}
-              className="grid gap-6 rounded-2xl border border-ink/10 bg-paper p-6 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-10 md:p-8"
-            >
-              <div className="flex items-center gap-4 md:flex-col md:items-start md:gap-2">
-                <p className="font-display text-3xl text-accent">{r.level}</p>
-                <p className="text-xs uppercase tracking-widest text-ink/50">
-                  {r.tag}
-                </p>
-              </div>
-              <div>
-                <h3 className="font-display text-xl md:text-2xl">{r.title}</h3>
-                <p className="mt-2 text-ink/70">{r.body}</p>
-              </div>
-              <div>
-                {r.cta.external ? (
-                  <a
-                    href={r.cta.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={
-                      r.cta.primary
-                        ? 'inline-flex rounded-full bg-ink px-5 py-2.5 text-sm text-paper hover:bg-accent'
-                        : 'inline-flex rounded-full border border-ink/20 px-5 py-2.5 text-sm hover:border-accent hover:text-accent'
-                    }
-                  >
-                    {r.cta.label}
-                  </a>
-                ) : (
-                  <Link
-                    href={r.cta.href}
-                    className={
-                      r.cta.primary
-                        ? 'inline-flex rounded-full bg-ink px-5 py-2.5 text-sm text-paper hover:bg-accent'
-                        : 'inline-flex rounded-full border border-ink/20 px-5 py-2.5 text-sm hover:border-accent hover:text-accent'
-                    }
-                  >
-                    {r.cta.label}
-                  </Link>
-                )}
-              </div>
-            </li>
-          ))}
-        </ul>
+        <SessionSelector locale={locale} />
       </section>
 
       {/* Process timeline */}
