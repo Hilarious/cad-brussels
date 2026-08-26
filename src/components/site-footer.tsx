@@ -30,41 +30,44 @@ export async function SiteFooter({ locale }: { locale: string }) {
 
   return (
     <footer className="mt-12 bg-paper">
-      {/* Restons connectés — newsletter (fond de tunnel, audience deja
-          engagee) et reseaux sociaux (decouverte, jeune public) cote a
-          cote : deux canaux complementaires, pas l'un a la place de
-          l'autre. */}
+      {/* Découvrez l'intérieur du CAD — titre commun aux deux volets :
+          newsletter (audience deja engagee) et reseaux sociaux
+          (decouverte, jeune public). Deux canaux complementaires, pas
+          l'un a la place de l'autre. Choix assume : pas d'apercu visuel
+          du contenu social ici, seulement l'invitation a s'abonner. */}
       <div>
-        <div className="container flex flex-col gap-8 py-8 md:flex-row md:items-center md:justify-between">
-          <div className="md:max-w-sm">
-            <p className="font-display text-lg text-ink">
-              {isFR
-                ? 'Une fois par mois, l’essentiel.'
-                : 'Once a month, what matters.'}
-            </p>
-            <p className="mt-1 text-sm text-ink/60">
-              {isFR ? 'Événements, admissions, modules. ' : 'Events, admissions, modules. '}
-              <Link
-                href={`/${locale}/newsletter`}
-                className="text-accent hover:underline"
-              >
-                {isFR ? 'En savoir plus →' : 'Learn more →'}
-              </Link>
-            </p>
-          </div>
-          <div className="md:flex-1 md:max-w-md">
-            <NewsletterForm locale={locale} variant="compact" />
-          </div>
-          {social.length > 0 && (
-            <div>
-              <p className="text-sm font-medium uppercase tracking-widest text-ink/50">
-                {isFR ? 'Suivez-nous' : 'Follow us'}
+        <div className="container py-8">
+          <p className="font-display text-lg text-ink">
+            {isFR ? 'Découvrez l’intérieur du CAD.' : 'See what happens inside the CAD.'}
+          </p>
+          <div className="mt-5 flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+            <div className="md:max-w-sm">
+              <p className="text-sm text-ink/60">
+                {isFR ? 'Événements, admissions, modules. ' : 'Events, admissions, modules. '}
+                <Link
+                  href={`/${locale}/newsletter`}
+                  className="text-accent hover:underline"
+                >
+                  {isFR ? 'En savoir plus →' : 'Learn more →'}
+                </Link>
               </p>
               <div className="mt-3">
-                <SocialIcons links={social} />
+                <NewsletterForm locale={locale} variant="compact" />
               </div>
             </div>
-          )}
+            {social.length > 0 && (
+              <div>
+                <p className="text-sm font-medium uppercase tracking-widest text-ink/50">
+                  {isFR
+                    ? 'Suivez les créations, les briefs, les coulisses'
+                    : 'Follow the projects, briefs, behind the scenes'}
+                </p>
+                <div className="mt-3">
+                  <SocialIcons links={social} />
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
