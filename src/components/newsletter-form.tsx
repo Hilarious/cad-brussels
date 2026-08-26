@@ -108,7 +108,18 @@ export function NewsletterForm({
       />
 
       <label className="block">
-        <span className="mb-1 block text-sm font-medium">{L.emailLabel}</span>
+        {/* En variante compacte (pied de page), le libellé passe en
+            `sr-only` : le texte d'exemple du champ suffit à l'œil et
+            l'alignement des deux colonnes y gagne. Il reste dans le DOM
+            pour les lecteurs d'écran, qui n'annoncent pas le placeholder
+            de façon fiable et le perdent dès la saisie. */}
+        <span
+          className={
+            variant === 'compact' ? 'sr-only' : 'mb-1 block text-sm font-medium'
+          }
+        >
+          {L.emailLabel}
+        </span>
         <input
           type="email"
           required
