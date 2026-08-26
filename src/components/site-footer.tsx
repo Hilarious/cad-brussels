@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { NewsletterForm } from './newsletter-form'
+import { SocialIcons } from './social-icons'
 import { Logo } from './logo'
 import { localized } from '@/lib/localize'
 import { assainirLibelle } from '@/lib/appellations'
@@ -23,14 +24,18 @@ export async function SiteFooter({ locale }: { locale: string }) {
 
   const columns = footer.columns ?? []
   const legal = footer.legal ?? []
+  const social = settings.social ?? []
   const year = new Date().getFullYear()
   const isFR = locale === 'fr'
 
   return (
     <footer className="mt-12 bg-paper">
-      {/* Newsletter band — compact, single line on desktop */}
+      {/* Restons connectés — newsletter (fond de tunnel, audience deja
+          engagee) et reseaux sociaux (decouverte, jeune public) cote a
+          cote : deux canaux complementaires, pas l'un a la place de
+          l'autre. */}
       <div>
-        <div className="container flex flex-col gap-4 py-8 md:flex-row md:items-center md:justify-between md:gap-8">
+        <div className="container flex flex-col gap-8 py-8 md:flex-row md:items-center md:justify-between">
           <div className="md:max-w-sm">
             <p className="font-display text-lg text-ink">
               {isFR
@@ -50,6 +55,16 @@ export async function SiteFooter({ locale }: { locale: string }) {
           <div className="md:flex-1 md:max-w-md">
             <NewsletterForm locale={locale} variant="compact" />
           </div>
+          {social.length > 0 && (
+            <div>
+              <p className="text-sm font-medium uppercase tracking-widest text-ink/50">
+                {isFR ? 'Suivez-nous' : 'Follow us'}
+              </p>
+              <div className="mt-3">
+                <SocialIcons links={social} />
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
