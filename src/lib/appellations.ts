@@ -26,10 +26,39 @@
  * du hub a encore le slug `masters` ; réécrire le chemin ici enverrait
  * les visiteurs sur une page inexistante. Les URL se règleront avec la
  * migration de la base.
+ *
+ * À TENIR SYNCHRONISÉ : la migration qui corrige ces mêmes appellations
+ * directement en base rejoue les règles ci-dessous, dans le même ordre,
+ * en SQL. Toute règle ajoutée ici doit l'être là aussi, sinon la base
+ * corrigée et l'affichage divergeraient. La migration attend un banc
+ * d'essai, sur la branche `migration-appellations`.
  */
 
 /** Du plus spécifique au plus général : l'ordre compte. */
 const REGLES: ReadonlyArray<readonly [RegExp, string]> = [
+  // ── Élisions ────────────────────────────────────────────────────
+  // « Undergraduate » commence par une voyelle, « Bachelor » non : le
+  // remplacement mot à mot produit « du Undergraduate » là où le
+  // français demande « de l'Undergraduate ». Ces règles passent AVANT
+  // les générales, sinon « Bachelor » serait déjà remplacé quand on
+  // arriverait ici.
+  //
+  // « Postgraduate » commence par une consonne et n'appelle donc aucune
+  // élision : « du Master » devient « du Postgraduate », qui est juste.
+  //
+  // Relevé sur les 94 textes de production le 26/08/2026 : seul « du
+  // Bachelor » apparaît réellement. Les trois autres tournures sont
+  // ajoutées parce qu'un éditeur les écrira tôt ou tard.
+  [/\bdu Bachelor\b/g, "de l'Undergraduate"],
+  [/\bDu Bachelor\b/g, "De l'Undergraduate"],
+  [/\ble Bachelor\b/g, "l'Undergraduate"],
+  [/\bLe Bachelor\b/g, "L'Undergraduate"],
+  [/\bau Bachelor\b/g, "à l'Undergraduate"],
+  [/\bAu Bachelor\b/g, "À l'Undergraduate"],
+  [/\bce Bachelor\b/g, 'cet Undergraduate'],
+  [/\bCe Bachelor\b/g, 'Cet Undergraduate'],
+
+  // ── Tournures complètes ─────────────────────────────────────────
   [/\bTous les Masters\b/g, 'Tous les postgraduates'],
   [/\bTous les Bachelors\b/g, 'Tous les undergraduates'],
   [/\bVoir tous les Masters\b/g, 'Voir tous les postgraduates'],

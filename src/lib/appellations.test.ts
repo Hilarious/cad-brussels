@@ -15,6 +15,30 @@ describe('assainirLibelle', () => {
     expect(assainirLibelle('See all Masters')).toBe('See all postgraduates')
   })
 
+  it('élide devant Undergraduate, qui commence par une voyelle', () => {
+    // Le remplacement mot à mot donnerait « du Undergraduate ». Relevé
+    // sur la production : c'est le seul cas de mauvais français que
+    // produisaient les règles.
+    expect(assainirLibelle('du Bachelor au Master')).toBe(
+      "de l'Undergraduate au Postgraduate",
+    )
+    expect(assainirLibelle('Le Bachelor du CAD')).toBe("L'Undergraduate du CAD")
+    expect(assainirLibelle('inscrit au Bachelor')).toBe("inscrit à l'Undergraduate")
+    expect(assainirLibelle('Ce Bachelor dure 3 ans')).toBe('Cet Undergraduate dure 3 ans')
+  })
+
+  it('n’élide pas devant Postgraduate, qui commence par une consonne', () => {
+    expect(assainirLibelle('du Master')).toBe('du Postgraduate')
+    expect(assainirLibelle('Le Master long')).toBe('Le Postgraduate long')
+    expect(assainirLibelle('Ce Master 2 ans')).toBe('Ce Postgraduate 2 ans')
+  })
+
+  it('laisse intactes les tournures qui n’appellent pas d’élision', () => {
+    expect(assainirLibelle('un Bachelor en design')).toBe('un Undergraduate en design')
+    expect(assainirLibelle("d'un Bachelor")).toBe("d'un Undergraduate")
+    expect(assainirLibelle('les Bachelors')).toBe('les Undergraduates')
+  })
+
   it('applique le renommage du programme mobilier', () => {
     expect(assainirLibelle('Home & Living')).toBe('Furniture & Product Design')
     expect(assainirLibelle('Home & Living Design')).toBe('Furniture & Product Design')
