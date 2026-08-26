@@ -4,23 +4,24 @@ import Image from 'next/image'
 /**
  * Logo CAD Brussels — composant centralisé pour toutes les surfaces.
  *
- * Trois assets officiels (charte Thomas Durieux 2024) sont disponibles
- * dans /public/logo/ :
+ * Assets officiels (charte Thomas Durieux 2024) dans /public/logo/ :
  *
+ *   - cad-logo.svg        → wordmark « traits fins » (icône en contour,
+ *                            pas en noir plein), version vectorielle
+ *                            officielle. Utilisé sur header et footer.
  *   - cad-monogram.png    → monogramme « d » avec 3 cercles concentriques.
  *                            Compact, signature visuelle. Idéal mobile.
- *   - cad-logo-full.png   → wordmark complet « cad » + zone noire latérale.
- *                            Institutionnel. Footer et pages signatures.
+ *   - cad-logo-full.png   → wordmark plein « noir », gardé uniquement pour
+ *                            les données structurées (schema.ts), qui
+ *                            attendent un raster, pas un SVG.
  *   - cad-logo-65.png     → édition anniversaire 65 ans (« d65 » rose/bleu).
  *                            Éphémère, à utiliser sur le header pendant
  *                            la campagne anniversaire 2026.
- *   - cad-logo-header.png → wordmark noir, sans mention d'anniversaire.
- *                            Remplace "65" sur le header en fin de campagne.
  *
  * La sélection se fait par la prop `variant` :
  *   - "65"        (édition anniversaire, temporaire) → cad-logo-65.png
- *   - "header"    (header, par défaut) → cad-logo-header.png
- *   - "wordmark"  (footer, institutionnel) → cad-logo-full.png
+ *   - "header"    (header, par défaut) → cad-logo.svg
+ *   - "wordmark"  (footer, institutionnel) → cad-logo.svg
  *   - "monogram"  (espaces compacts, mobile, favicon) → cad-monogram.png
  */
 type Variant = '65' | 'header' | 'wordmark' | 'monogram'
@@ -43,22 +44,22 @@ const assetMap: Record<
     ratio: 1.78,
   },
   header: {
-    src: '/logo/cad-logo-header.png',
+    src: '/logo/cad-logo.svg',
     alt: {
       fr: 'CAD Brussels',
       en: 'CAD Brussels',
     },
-    // 225 × 84 → ratio 2.68
-    ratio: 2.68,
+    // viewBox recadré 349.3 × 132.7 → ratio 2.63
+    ratio: 2.63,
   },
   wordmark: {
-    src: '/logo/cad-logo-full.png',
+    src: '/logo/cad-logo.svg',
     alt: {
       fr: 'CAD Brussels',
       en: 'CAD Brussels',
     },
-    // 2600 × 959 → ratio 2.71
-    ratio: 2.71,
+    // viewBox recadré 349.3 × 132.7 → ratio 2.63
+    ratio: 2.63,
   },
   monogram: {
     src: '/logo/cad-monogram.png',
