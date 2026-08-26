@@ -59,7 +59,7 @@ export async function SiteFooter({ locale }: { locale: string }) {
           une longue bande pré-assemblée. */}
       <div
         aria-hidden="true"
-        className="h-6 w-full bg-repeat-x sm:h-9 lg:h-12"
+        className="mt-10 h-6 w-full bg-repeat-x sm:mt-14 sm:h-9 lg:h-12"
         style={{ backgroundImage: "url('/decor/frise-cad-tile.png')", backgroundSize: 'auto 100%' }}
       />
 
