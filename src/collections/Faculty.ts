@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { champCopierVersEn } from '../lib/fields/copier-vers-en'
 
 /**
  * Professeurs — les fiches de l'équipe pédagogique.
@@ -26,6 +27,7 @@ export const Faculty: CollectionConfig = {
   },
   defaultSort: 'order',
   fields: [
+    champCopierVersEn(),
     { name: 'name', type: 'text', required: true },
     {
       name: 'subject',

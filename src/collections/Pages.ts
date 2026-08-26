@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { champCopierVersEn } from '../lib/fields/copier-vers-en'
 import { HeroBlock } from '../blocks/Hero/config'
 import { RichTextBlock } from '../blocks/RichText/config'
 import { CTABlock } from '../blocks/CTA/config'
@@ -34,6 +35,7 @@ export const Pages: CollectionConfig = {
   },
   versions: { drafts: true },
   fields: [
+    champCopierVersEn(),
     { name: 'title', type: 'text', required: true, localized: true },
     slugField(),
     {

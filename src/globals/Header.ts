@@ -1,4 +1,5 @@
 import type { GlobalConfig } from 'payload'
+import { champCopierVersEn } from '../lib/fields/copier-vers-en'
 
 /**
  * Header navigation.
@@ -23,6 +24,7 @@ export const Header: GlobalConfig = {
   slug: 'header',
   access: { read: () => true },
   fields: [
+    champCopierVersEn(),
     {
       name: 'navItems',
       type: 'array',

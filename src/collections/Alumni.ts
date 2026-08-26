@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { champCopierVersEn } from '../lib/fields/copier-vers-en'
 
 /**
  * Alumni — les portraits de diplômés.
@@ -32,6 +33,7 @@ export const Alumni: CollectionConfig = {
   },
   defaultSort: 'order',
   fields: [
+    champCopierVersEn(),
     { name: 'name', type: 'text', required: true },
     {
       name: 'classOf',

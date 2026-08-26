@@ -1,9 +1,11 @@
 import type { GlobalConfig } from 'payload'
+import { champCopierVersEn } from '../lib/fields/copier-vers-en'
 
 export const SiteSettings: GlobalConfig = {
   slug: 'site-settings',
   access: { read: () => true },
   fields: [
+    champCopierVersEn(),
     { name: 'siteName', type: 'text', defaultValue: 'CAD Brussels' },
     { name: 'tagline', type: 'text', localized: true },
     {

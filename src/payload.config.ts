@@ -22,6 +22,8 @@ import { Header } from './globals/Header'
 import { Footer } from './globals/Footer'
 import { SiteSettings } from './globals/SiteSettings'
 
+import { copierVersEn } from './endpoints/copier-vers-en'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -50,6 +52,7 @@ export default buildConfig({
     Faculty,
   ],
   globals: [Header, Footer, SiteSettings],
+  endpoints: [copierVersEn],
   localization: {
     locales: [
       { label: 'Français', code: 'fr' },

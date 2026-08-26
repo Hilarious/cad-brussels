@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { champCopierVersEn } from '../lib/fields/copier-vers-en'
 import { seoField } from '../lib/fields/seo'
 import { slugField } from '../lib/fields/slug'
 
@@ -16,6 +17,7 @@ export const Posts: CollectionConfig = {
   },
   versions: { drafts: true },
   fields: [
+    champCopierVersEn(),
     { name: 'title', type: 'text', required: true, localized: true },
     slugField(),
     {

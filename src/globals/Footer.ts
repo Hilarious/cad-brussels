@@ -1,4 +1,5 @@
 import type { GlobalConfig } from 'payload'
+import { champCopierVersEn } from '../lib/fields/copier-vers-en'
 
 /** Same design as Header: arrays are fully localized to avoid the
  *  Payload v3 quirk where updating one locale can silently empty
@@ -7,6 +8,7 @@ export const Footer: GlobalConfig = {
   slug: 'footer',
   access: { read: () => true },
   fields: [
+    champCopierVersEn(),
     {
       name: 'columns',
       type: 'array',
