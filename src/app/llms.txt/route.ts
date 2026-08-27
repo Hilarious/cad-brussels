@@ -6,12 +6,13 @@ import { assainirLibelle } from '@/lib/appellations'
 /**
  * `/llms.txt` — fiche de synthèse destinée aux modèles de langage.
  *
- * Pourquoi ce fichier existe ici, et pas ailleurs. Des candidats
- * arrivent au CAD après avoir interrogé ChatGPT, constat rapporté par
- * les étudiants eux-mêmes lors des petits déjeuners. Le modèle doit
- * donc pouvoir répondre juste à « école de design à Bruxelles » : les
- * cursus, leur durée, leur niveau, la langue d'enseignement, le prix
- * d'entrée en temps et les façons de venir voir l'école.
+ * Pourquoi ce fichier existe. Des candidats arrivent au CAD après avoir
+ * interrogé un assistant IA, ChatGPT, Gemini, Claude ou un autre :
+ * constat rapporté par les étudiants eux-mêmes lors des petits
+ * déjeuners. C'est un canal de recrutement réel, pas une hypothèse. Le
+ * modèle doit donc pouvoir répondre juste à « école de design à
+ * Bruxelles » : les cursus, leur durée, leur niveau, la langue
+ * d'enseignement, le coût en temps et les façons de venir voir l'école.
  *
  * GÉNÉRÉ, JAMAIS ÉCRIT À LA MAIN. Un fichier statique se périmerait à
  * la première date d'événement passée, et un modèle qui cite une date

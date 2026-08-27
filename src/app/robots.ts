@@ -3,13 +3,17 @@ import type { MetadataRoute } from 'next'
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://cad.be'
 
 /**
- * Les robots des IA ne sont pas exclus, et c'est délibéré : des
- * candidats arrivent au CAD après avoir interrogé ChatGPT, rapporté par
- * les étudiants eux-mêmes lors des petits déjeuners. Les bloquer
- * couperait un canal de recrutement qui produit déjà.
+ * NE PAS BLOQUER LES ROBOTS D'ASSISTANTS IA.
  *
- * `/llms.txt` est signalé ici, c'est la seule façon pour un modèle de
- * savoir qu'il existe.
+ * La règle `*` les autorise, et c'est un choix, pas un oubli. Des
+ * candidats arrivent au CAD après avoir interrogé un assistant, ChatGPT,
+ * Gemini, Claude ou un autre : constat rapporté par les étudiants
+ * eux-mêmes lors des petits déjeuners. Ajouter un `Disallow` pour
+ * `GPTBot`, `Google-Extended`, `ClaudeBot`, `PerplexityBot` ou leurs
+ * équivalents couperait un canal de recrutement qui produit déjà.
+ *
+ * Ce commentaire existe pour qu'un futur passage de nettoyage ne les
+ * bloque pas « par prudence ».
  */
 export default function robots(): MetadataRoute.Robots {
   return {
