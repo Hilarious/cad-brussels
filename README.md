@@ -94,6 +94,27 @@ pnpm dev
 - **Front public EN** : http://localhost:3000/en
 - **Back-office CMS** : http://localhost:3000/admin (à la première visite, créer un compte admin)
 
+### ⚠️ Votre site local n'est pas le site réel
+
+Le code que vous venez de lancer est le même qu'en production. **Le contenu, non.**
+
+`pnpm seed:all` remplit votre base locale avec un instantané figé du contenu, celui écrit
+en dur dans `scripts/seed.ts`. Tout ce que le CAD a modifié depuis dans l'admin de
+production est absent de chez vous, et le restera : rien ne synchronise les deux bases.
+
+Exemple réel rencontré le 28/08/2026 : l'icône YouTube du pied de page était visible en
+production mais pas en local. Le code était pourtant identique au commit près. La liste des
+réseaux sociaux vit dans la base (`site-settings`), et YouTube y avait été ajouté depuis
+l'admin de production le 26/08, après le dernier remplissage de la base locale.
+
+**Ce qui est fiable en local** : la mise en page, le comportement des pages, les
+composants, tout ce qui vient du code.
+**Ce qui ne l'est pas** : les textes des pages pilotées par le CMS, les événements, les
+réseaux sociaux, les images, bref tout ce qui vit en base.
+
+Ne concluez jamais « ma version est en retard » depuis un écart de contenu. Vérifiez
+d'abord avec `git log` si le code diffère vraiment.
+
 ---
 
 ## Scripts disponibles
@@ -223,18 +244,51 @@ Mapping complet dans `HANDOVER.md` et `src/lib/program-themes.ts`.
 
 ## Déploiement
 
-**À trancher avec le client** (Eric, mai 2026 : décision non prise) :
+> Cette section disait jusqu'au 28/08/2026 que l'hébergement restait « à trancher ». Il est
+> tranché et en service depuis le 25/08. Le reste de la liste, lui, est toujours d'actualité.
 
-- **Vercel** — le plus simple, ~50 €/mois, Postgres via Vercel Postgres ou Neon
-- **Scaleway** — RGPD natif, ~20 €/mois, container/serverless
-- **Self-hosted** — VPS Hetzner + Coolify, ~10 €/mois, plus de contrôle
+**L'infrastructure en service** :
 
-Prérequis pour la mise en prod :
-1. Configurer un bucket S3-compatible pour les médias (R2 ou Scaleway)
-2. Configurer Resend (ou SMTP alternatif) pour les emails
-3. Configurer Cloudflare Turnstile pour l'anti-spam des formulaires
-4. Activer HTTPS + HSTS (headers déjà configurés dans `next.config.ts`)
-5. Configurer un monitoring (Sentry + Plausible recommandés)
+| Brique | Fournisseur | État |
+|---|---|---|
+| Site, admin `/admin` et API `/api` | **Vercel**, projet `cad-brussels` | ✅ en service |
+| Base de données | **Neon** (PostgreSQL), via l'intégration Vercel | ✅ en service |
+| Adresse publique | `cad-brussels.vercel.app` | ✅ en service, `noindex` volontaire |
+
+Payload n'est pas hébergé séparément : c'est une bibliothèque qui tourne dans le même
+programme que le site. Déployer le site déploie Payload.
+
+Le code accepte trois noms pour l'adresse de la base, dans l'ordre `DATABASE_URI` (local),
+`POSTGRES_URL` puis `DATABASE_URL` (injectés par Vercel). C'est pourquoi la production
+fonctionne sans qu'aucun `DATABASE_URI` n'y soit défini.
+
+### ⚠️ Ce qui reste à configurer, et que le site attend vraiment
+
+Vérifié dans le projet Vercel le 28/08/2026 : seules la base et `PAYLOAD_SECRET` y sont
+définies. Toutes les variables ci-dessous sont **absentes en production**, avec des
+conséquences visibles :
+
+1. **Resend, pour les emails.** Sans `RESEND_API_KEY`, le code se rabat silencieusement sur
+   l'écriture dans le journal. Conséquence : `admissions@cad.be` n'est prévenu d'aucune
+   candidature, le candidat ne reçoit aucun accusé de réception, et **la newsletter est
+   cassée de bout en bout** puisque son lien de confirmation ne part jamais.
+   *Les données ne sont pas perdues pour autant : les formulaires écrivent en base avant de
+   tenter l'envoi, tout est dans `Applications` et `Leads`.*
+2. **Un bucket S3-compatible pour les médias** (R2 ou Scaleway). Le module de stockage est
+   activé sans condition avec des identifiants vides : tout envoi d'image depuis l'admin
+   échoue.
+3. **Cloudflare Turnstile pour l'anti-spam.** Il figure dans `.env.example` mais **n'est
+   écrit nulle part dans le code**. Les formulaires publics, dont celui de candidature,
+   sont aujourd'hui sans protection anti-robot.
+4. **`NEXT_PUBLIC_SITE_URL`**, utilisée par le plan du site et les balises de partage.
+5. HTTPS et HSTS : déjà en place, les en-têtes sont dans `next.config.ts`.
+6. Monitoring (Sentry, Plausible) : toujours à faire.
+
+### Sauvegarde du contenu
+
+Neon conserve un historique permettant de revenir en arrière, ce qui couvre la fausse
+manipulation. Il n'a jamais été vérifié, sa profondeur dépend du plan souscrit, et il ne
+protège pas de la perte du compte. **Il n'existe aucune copie du contenu hors de Neon.**
 
 ---
 
@@ -253,7 +307,7 @@ Voir le fichier CI pour les détails.
 
 ## Contacts projet
 
-- **Audry Van Essche** — Creative Manager Hilarious Agency — joker@hilarious.be
+- **Audry Van Essche** — CEO et cofondateur, Hilarious Agency — joker@hilarious.be
 - **Jerome Canon** — Technical Lead Hilarious Agency — freeze@hilarious.be
 - **Yannick Chan** — Intégration & maintenance Hilarious — yannick@hilarious.be
 
