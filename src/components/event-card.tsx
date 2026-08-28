@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { Event, Media } from '@/payload-types'
 import { assainirLibelle } from '@/lib/appellations'
+import { FUSEAU_ECOLE } from '@/lib/fuseau'
 
 export function EventCard({
   event,
@@ -39,6 +40,7 @@ export function EventCard({
             day: '2-digit',
             month: 'short',
             year: 'numeric',
+            timeZone: FUSEAU_ECOLE,
           })}
         </time>
         <h3 className="font-display text-xl leading-tight">{assainirLibelle(event.title)}</h3>

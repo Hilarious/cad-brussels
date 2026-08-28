@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { assainirLibelle } from '@/lib/appellations'
+import { FUSEAU_ECOLE } from '@/lib/fuseau'
 
 /**
  * Sélecteur de séances — « Choisissez votre rendez-vous ».
@@ -49,7 +50,7 @@ function formaterDate(iso: string, locale: string) {
   return new Intl.DateTimeFormat(locale === 'fr' ? 'fr-BE' : 'en-GB', {
     day: 'numeric',
     month: 'long',
-    timeZone: 'Europe/Brussels',
+    timeZone: FUSEAU_ECOLE,
   }).format(new Date(iso))
 }
 
@@ -58,7 +59,7 @@ function formaterCreneau(debut: string, fin: string | null, locale: string) {
     new Intl.DateTimeFormat(locale === 'fr' ? 'fr-BE' : 'en-GB', {
       hour: '2-digit',
       minute: '2-digit',
-      timeZone: 'Europe/Brussels',
+      timeZone: FUSEAU_ECOLE,
     }).format(new Date(iso))
 
   if (!fin) return heure(debut)

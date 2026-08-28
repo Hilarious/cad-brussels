@@ -2,6 +2,7 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { PROGRAMS } from '@/lib/programs'
 import { assainirLibelle } from '@/lib/appellations'
+import { FUSEAU_ECOLE } from '@/lib/fuseau'
 
 /**
  * `/llms.txt` — fiche de synthèse destinée aux modèles de langage.
@@ -44,7 +45,7 @@ function dateLisible(iso: string) {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
-    timeZone: 'Europe/Brussels',
+    timeZone: FUSEAU_ECOLE,
   }).format(new Date(iso))
 }
 

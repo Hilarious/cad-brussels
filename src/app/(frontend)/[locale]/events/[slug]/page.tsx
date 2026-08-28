@@ -9,6 +9,7 @@ import type { Media } from '@/payload-types'
 import { Breadcrumb } from '@/components/breadcrumb'
 import { RelatedContent } from '@/components/related-content'
 import { assainirLibelle } from '@/lib/appellations'
+import { FUSEAU_ECOLE } from '@/lib/fuseau'
 
 export const revalidate = 60
 
@@ -79,6 +80,7 @@ export default async function EventDetailPage({
                 year: 'numeric',
                 hour: '2-digit',
                 minute: '2-digit',
+                timeZone: FUSEAU_ECOLE,
               })}
             </time>
             {end && (
@@ -88,6 +90,7 @@ export default async function EventDetailPage({
                   {end.toLocaleTimeString(locale, {
                     hour: '2-digit',
                     minute: '2-digit',
+                    timeZone: FUSEAU_ECOLE,
                   })}
                 </time>
               </>
