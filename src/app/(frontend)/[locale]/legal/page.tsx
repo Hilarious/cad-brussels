@@ -54,17 +54,17 @@ export default async function LegalPage({
           {
             heading: 'Éditeur',
             body:
-              "CAD Brussels (College of Art & Design Brussels) · 25 rue Roberts-Jones, 1180 Uccle, Belgique · Numéro d'entreprise BCE : à compléter · Directeur de la publication : Eric Vanden Broeck, Dean.",
+              "CAD Brussels (College of Art & Design Brussels) · 25 rue Roberts-Jones, 1180 Uccle, Belgique · Numéro d'entreprise BCE : 1002.116.106 · Directeur de la publication : Eric Vanden Broeck, Directeur.",
           },
           {
             heading: 'Contact',
             body:
-              "Téléphone : +32 2 640 40 32 · Email : secretariat@cad.be · Pour toute question légale : direction@cad.be",
+              "Téléphone : +32 2 640 40 32 · Email : secretariat@cad.be, y compris pour toute question légale.",
           },
           {
             heading: 'Hébergement',
             body:
-              "Site hébergé par : à confirmer (Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA, ou Scaleway SAS, 8 rue de la Ville l'Évêque, 75008 Paris).",
+              "Site hébergé par Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA. Base de données hébergée par Neon Inc. dans l'Union européenne.",
           },
           {
             heading: 'Propriété intellectuelle',
@@ -91,17 +91,17 @@ export default async function LegalPage({
           {
             heading: 'Publisher',
             body:
-              'CAD Brussels (College of Art & Design Brussels) · 25 rue Roberts-Jones, 1180 Uccle, Belgium · Business registration number: to be completed · Director of publication: Eric Vanden Broeck, Dean.',
+              'CAD Brussels (College of Art & Design Brussels) · 25 rue Roberts-Jones, 1180 Uccle, Belgium · Business registration number (BCE): 1002.116.106 · Director of publication: Eric Vanden Broeck, Dean.',
           },
           {
             heading: 'Contact',
             body:
-              'Phone: +32 2 640 40 32 · Email: secretariat@cad.be · For any legal request: direction@cad.be',
+              'Phone: +32 2 640 40 32 · Email: secretariat@cad.be, including for any legal request.',
           },
           {
             heading: 'Hosting',
             body:
-              "Site hosted by: to be confirmed (Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA, or Scaleway SAS, 8 rue de la Ville l'Évêque, 75008 Paris).",
+              'Site hosted by Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA. Database hosted by Neon Inc. in the European Union.',
           },
           {
             heading: 'Intellectual property',

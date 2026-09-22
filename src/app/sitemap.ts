@@ -22,6 +22,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/etudier-a-bruxelles/se-loger',
     '/etudier-a-bruxelles/visa',
     '/etudier-a-bruxelles/vie-pratique',
+    // Pages écrites en dur dans le code, absentes du plan de site jusqu'au
+    // 22/09/2026 : elles n'étaient donc pas proposées aux moteurs.
+    '/admissions',
+    '/admissions/frais',
+    '/apply',
+    '/professeurs',
+    '/alumni',
+    '/pourquoi-le-cad',
+    '/lifelong-learning',
+    '/lifelong-learning/applied-ai-spatial-design',
+    '/lifelong-learning/generative-ai-creative',
+    '/breakfast',
   ]
   for (const locale of locales) {
     for (const route of staticRoutes) {

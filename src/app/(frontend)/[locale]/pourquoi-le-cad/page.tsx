@@ -3,7 +3,6 @@ import type { Metadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
 import { Grid, Col } from '@/components/grid'
 import { PageCTA } from '@/components/page-cta'
-import { ImagePlaceholder } from '@/components/image-placeholder'
 import { RelatedContent } from '@/components/related-content'
 
 export async function generateMetadata({
@@ -79,49 +78,6 @@ export default async function WhyCadPage({
         pivotTitleLine2: 'le regard.',
         pivotKicker:
           'Avant la technique. Avant les outils. Avant les logiciels. Le regard d\'abord.',
-
-        // Section 2 — what about state-funded alternatives?
-        // Pattern G — image décalée hors cadre en intro de la comparaison.
-        compareTitle: 'Et les écoles publiques alors ?',
-        compareIntro:
-          "Question légitime. Les écoles publiques belges (La Cambre, ENSAV, ARBA) sont excellentes, et certains profils s'y épanouiront mieux. Voici comment on se positionne honnêtement.",
-        comparePhotoCaption: 'Vue · campus CAD vs école subventionnée',
-        compareAside:
-          "On ne joue pas contre les écoles publiques. On joue à côté. Le bon choix dépend de votre profil, pas de notre marketing.",
-        compareTable: [
-          {
-            criterion: 'Sélection à l’entrée',
-            cad: 'Sur dossier + entretien · pas de concours éliminatoire',
-            public: 'Concours sélectif · ratio admis/candidats ~10-15%',
-          },
-          {
-            criterion: 'Taille de l’école',
-            cad: '160 étudiants au total',
-            public: '200-400 par promotion selon l’école',
-          },
-          {
-            criterion: 'Profs',
-            cad: 'Professionnels en activité, statut intervenant',
-            public: 'Mix académiques + intervenants',
-          },
-          {
-            criterion: 'Cours',
-            cad: 'En anglais',
-            public: 'En français',
-          },
-          {
-            criterion: 'Reconnaissance',
-            cad: "Privé · membre CUMULUS (200+ écoles d'art)",
-            public: 'Reconnu d’État Belgique + Europe',
-          },
-          {
-            criterion: 'Frais 2026-2027',
-            cad: '9 500 €/an UE · 11 000 €/an hors UE',
-            public: '~835 €/an (selon revenus)',
-          },
-        ],
-        compareNote:
-          "On ne prétend pas être supérieur aux écoles publiques. On est différent. Si vous cherchez une formation en français, gratuite ou presque, et que vous êtes prêt·e à passer un concours sélectif : visez les écoles publiques. Si vous voulez un cursus en anglais, en petit groupe, encadré par des professionnels du secteur, avec une reconnaissance internationale : le CAD est fait pour vous.",
 
         // Section 3 — outcomes
         outcomesTitle: 'Et après le CAD ?',
@@ -215,47 +171,6 @@ export default async function WhyCadPage({
         pivotTitleLine2: 'the eye.',
         pivotKicker:
           'Before technique. Before tools. Before software. The eye first.',
-
-        compareTitle: 'What about public schools?',
-        compareIntro:
-          'Fair question. Belgian public schools (La Cambre, ENSAV, ARBA) are excellent, and some profiles will thrive there. Here’s how we honestly position ourselves.',
-        comparePhotoCaption: 'View · CAD campus vs subsidised school',
-        compareAside:
-          "We don't play against public schools. We play alongside. The right choice depends on your profile, not our marketing.",
-        compareTable: [
-          {
-            criterion: 'Entry selection',
-            cad: 'File + interview · no eliminatory exam',
-            public: 'Selective exam · ~10-15% acceptance rate',
-          },
-          {
-            criterion: 'School size',
-            cad: '160 students in total',
-            public: '200-400 per cohort depending on school',
-          },
-          {
-            criterion: 'Faculty',
-            cad: 'Working professionals, intervenant status',
-            public: 'Mix of academics + working professionals',
-          },
-          {
-            criterion: 'Teaching language',
-            cad: 'In English',
-            public: 'In French',
-          },
-          {
-            criterion: 'Recognition',
-            cad: "Private · CUMULUS member (200+ art schools)",
-            public: 'State-approved Belgium + EU',
-          },
-          {
-            criterion: '2026-2027 fees',
-            cad: '€9,500/yr EU · €11,000/yr non-EU',
-            public: '~€835/yr (income-based)',
-          },
-        ],
-        compareNote:
-          'We don’t claim to be better than public schools. We are different. If you want training in French, free or near-free, and are ready to pass a selective exam: aim for public schools. If you want an English-taught program, in small groups, mentored by working professionals from the field, with international recognition: CAD is built for you.',
 
         outcomesTitle: 'And after CAD?',
         outcomesIntro:
@@ -392,85 +307,6 @@ export default async function WhyCadPage({
             </li>
           ))}
         </ol>
-      </section>
-
-      {/* Honest comparison with public schools.
-          Pattern G — Image décalée hors cadre en intro : l'image
-          déborde à droite vers l'extérieur du container pour casser
-          la grille classique et marquer le changement de section. */}
-      <section className="mt-24">
-        <Grid>
-          <Col span={5} spanMd={8} className="lg:pt-8">
-            <h2 className="font-display text-3xl md:text-4xl">
-              {L.compareTitle}
-            </h2>
-            <p className="mt-6 text-ink/70">{L.compareIntro}</p>
-            <p className="mt-4 text-sm italic text-ink/60">
-              {L.compareAside}
-            </p>
-          </Col>
-          {/* Image qui sort du container à droite (effet asymétrique).
-              Sur mobile, retombe en pleine largeur sans débordement. */}
-          <Col span={7} spanMd={8} className="lg:-mr-8 xl:-mr-12">
-            <ImagePlaceholder
-              ratio="3:2"
-              caption={L.comparePhotoCaption}
-            />
-          </Col>
-        </Grid>
-
-        {/* Mobile: stacked · Desktop: 3-column table */}
-        <div className="mt-16 hidden overflow-hidden rounded-2xl border border-ink/10 md:block">
-          <table className="w-full text-left">
-            <thead className="bg-ink/5 text-xs uppercase tracking-widest text-ink/60">
-              <tr>
-                <th className="px-6 py-4 font-medium">
-                  {isFR ? 'Critère' : 'Criterion'}
-                </th>
-                <th className="px-6 py-4 font-medium text-accent">CAD</th>
-                <th className="px-6 py-4 font-medium">
-                  {isFR ? 'École publique' : 'Public school'}
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-ink/10">
-              {L.compareTable.map((row, i) => (
-                <tr key={i}>
-                  <td className="px-6 py-5 font-medium text-ink">
-                    {row.criterion}
-                  </td>
-                  <td className="px-6 py-5 text-ink/80">{row.cad}</td>
-                  <td className="px-6 py-5 text-ink/60">{row.public}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <ul className="mt-10 grid gap-4 md:hidden">
-          {L.compareTable.map((row, i) => (
-            <li
-              key={i}
-              className="rounded-2xl border border-ink/10 bg-paper p-5"
-            >
-              <p className="text-xs uppercase tracking-widest text-ink/50">
-                {row.criterion}
-              </p>
-              <p className="mt-3 text-sm text-ink/80">
-                <span className="font-medium text-accent">CAD · </span>
-                {row.cad}
-              </p>
-              <p className="mt-2 text-sm text-ink/60">
-                <span className="font-medium">
-                  {isFR ? 'Public · ' : 'Public · '}
-                </span>
-                {row.public}
-              </p>
-            </li>
-          ))}
-        </ul>
-
-        <p className="mt-8 max-w-3xl text-ink/70 italic">{L.compareNote}</p>
       </section>
 
       {/* Outcomes by program */}

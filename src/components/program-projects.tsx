@@ -38,7 +38,7 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Une silhouette qui revisite le tablier de cuisine',
         studentName: 'Maya T.',
-        year: 'Bac 3 · 2023',
+        year: '3e année · 2023',
         pedagogyStep: 'Undergraduate 3 · Collection de fin d’études',
         quote:
           "Mon point de départ, c'était un objet du quotidien que personne ne regarde. J'ai voulu en faire le sujet d'une silhouette de défilé.",
@@ -50,7 +50,7 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Une mini-collection en cuir végétal',
         studentName: 'Laure M.',
-        year: 'Bac 2 · 2024',
+        year: '2e année · 2024',
         pedagogyStep: 'Undergraduate 2 · Atelier matières alternatives',
         quote:
           "Je cherchais une matière qu'on n'utilise pas en mode. Pas du cuir animal, pas du synthétique. Le cuir de pomme m'a permis 4 sacs cousus à la main.",
@@ -61,7 +61,7 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Une direction artistique pour un magazine émergent',
         studentName: 'Sofia R.',
-        year: 'Bac 3 · 2024',
+        year: '3e année · 2024',
         pedagogyStep: 'Undergraduate 3 · DA mode · projet client réel',
         quote:
           'Le brief était simple : reconstruire l\'image d\'un magazine indé en perte de vitesse. J\'ai pris ça comme une preuve qu\'on m\'écoute à ce niveau.',
@@ -117,7 +117,7 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Réhabilitation d’une maison de maître à Saint-Gilles',
         studentName: 'Lukas V.',
-        year: 'Bac 3 · 2024',
+        year: '3e année · 2024',
         pedagogyStep: 'Undergraduate 3 · Projet de fin d’études',
         quote:
           "L'enjeu, c'était de garder l'âme du bel-étage 1900 sans en faire un musée. Chaque moulure, chaque cage d'escalier, on a décidé quoi garder.",
@@ -128,7 +128,7 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Un flagship store pour une marque scandinave',
         studentName: 'Mira K.',
-        year: 'Bac 2 · 2024',
+        year: '2e année · 2024',
         pedagogyStep: 'Undergraduate 2 · Atelier retail design',
         quote:
           "80m² pour raconter une marque entière. La contrainte du sourcing local et de la modularité m'a forcée à imaginer chaque détail.",
@@ -139,7 +139,7 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Scénographie pour BOZAR · projet client',
         studentName: 'Jules R.',
-        year: 'Bac 3 · 2023',
+        year: '3e année · 2023',
         pedagogyStep: 'Undergraduate 3 · Workshop BOZAR · projet client réel',
         quote:
           "Présenter sa scénographie devant l'équipe BOZAR en vrai, c'est ce moment où tu comprends que ton projet sert à quelqu'un.",
@@ -193,7 +193,7 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Identité visuelle complète pour un festival de musique',
         studentName: 'Sofia R.',
-        year: 'Bac 3 · 2024',
+        year: '3e année · 2024',
         pedagogyStep: 'Undergraduate 3 · Brief client réel · festival bruxellois',
         quote:
           "Logo, affiches, motion, signalétique sur site. J'ai défendu chaque déclinaison devant le commanditaire. C'est là qu'on apprend.",
@@ -204,7 +204,7 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Refonte UX/UI d’une app de service public',
         studentName: 'Inès D.',
-        year: 'Bac 3 · 2023',
+        year: '3e année · 2023',
         pedagogyStep: 'Undergraduate 3 · Atelier UX/UI · projet design system',
         quote:
           "On part d'une app que personne n'aime utiliser. On finit avec une présentation devant un jury de DA en agence. Le saut est énorme.",
@@ -215,7 +215,7 @@ const PROJECTS_BY_SLUG: Record<
       {
         title: 'Campagne sociale pour une ONG belge',
         studentName: 'Karim B.',
-        year: 'Bac 2 · 2024',
+        year: '2e année · 2024',
         pedagogyStep: 'Undergraduate 2 · Workshop campagne sociale',
         quote:
           "Le sujet était lourd, mais la commande était claire : faire bouger. J'ai travaillé avec deux étudiants de Mode pour le shooting.",

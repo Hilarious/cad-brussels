@@ -122,9 +122,9 @@ export const Applications: CollectionConfig = {
       type: 'select',
       required: true,
       options: [
-        { label: '1ère année (Bac1)', value: 'bac1' },
-        { label: '2ème année (Bac2)', value: 'bac2' },
-        { label: '3ème année (Bac3)', value: 'bac3' },
+        { label: '1ère année', value: 'bac1' },
+        { label: '2ème année', value: 'bac2' },
+        { label: '3ème année', value: 'bac3' },
         { label: 'Postgraduate 1', value: 'm1' },
         { label: 'Postgraduate 2', value: 'm2' },
       ],

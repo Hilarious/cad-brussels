@@ -4,6 +4,7 @@ import { PageCTA } from '@/components/page-cta'
 import { ImagePlaceholder } from '@/components/image-placeholder'
 import { RelatedContent } from '@/components/related-content'
 import { getPayload } from 'payload'
+import { PROFESSEURS_ACTUELS } from '@/lib/professeurs-actuels'
 import config from '@payload-config'
 
 // Contenu venant du CMS (alumni/professeurs) : rafraichir sans exiger
@@ -46,226 +47,25 @@ type FacultyMember = {
   city: string
 }
 
-const facultyFR: FacultyMember[] = [
-  // Undergraduate Architecture d'intérieur
-  {
-    name: 'Charlotte Lemoine',
-    initials: 'CL',
-    subject: "Atelier de projet · Conception spatiale",
-    programs: ['Architecture d’intérieur'],
-    parallelRole: 'Architecte d’intérieur fondatrice',
-    parallelEmployer: 'Studio CL Interiors',
-    city: 'Bruxelles',
-  },
-  {
-    name: 'Pieter Janssens',
-    initials: 'PJ',
-    subject: 'Logiciels professionnels · Rhino · V-Ray',
-    programs: ['Architecture d’intérieur', 'Postgraduate 2 ans'],
-    parallelRole: 'Senior 3D artist',
-    parallelEmployer: 'B+B Studio',
-    city: 'Anvers',
-  },
-  {
-    name: 'Marc Devroe',
-    initials: 'MD',
-    subject: 'Histoire du design & culture visuelle',
-    programs: ['Architecture d’intérieur', 'Communication & Digital'],
-    parallelRole: 'Critique design',
-    parallelEmployer: 'Knack Weekend, Wallpaper',
-    city: 'Bruxelles',
-  },
+const facultyFR: FacultyMember[] = PROFESSEURS_ACTUELS.map((p) => ({
+  name: p.name,
+  initials: p.name
+    .split(' ')
+    .map((mot) => mot[0] ?? '')
+    .slice(0, 2)
+    .join('')
+    .toUpperCase(),
+  subject: '',
+  programs: [],
+  parallelRole: p.parallelRole,
+  parallelEmployer: p.parallelEmployer,
+  city: '',
+}))
 
-  // Undergraduate Communication & Digital
-  {
-    name: 'Sophie Vermeer',
-    initials: 'SV',
-    subject: 'Direction artistique · Identité de marque',
-    programs: ['Communication & Digital'],
-    parallelRole: 'Directrice de création',
-    parallelEmployer: 'Base Design',
-    city: 'Bruxelles',
-  },
-  {
-    name: 'Thomas Renaud',
-    initials: 'TR',
-    subject: 'Motion design · After Effects',
-    programs: ['Communication & Digital', 'Postgraduate Image 3D'],
-    parallelRole: 'Motion designer freelance',
-    parallelEmployer: 'Clients agences belges et NL',
-    city: 'Amsterdam',
-  },
-  {
-    name: 'Julie Marin',
-    initials: 'JM',
-    subject: 'UX/UI · Figma · Recherche utilisateur',
-    programs: ['Communication & Digital', 'Postgraduate Digital Brand'],
-    parallelRole: 'Lead designer',
-    parallelEmployer: 'Decathlon Digital',
-    city: 'Lille',
-  },
-  {
-    name: 'Yann Beaufils',
-    initials: 'YB',
-    subject: 'IA générative · Workflows créatifs',
-    programs: ['Communication & Digital', 'Postgraduate Image 3D'],
-    parallelRole: 'Creative AI Lead',
-    parallelEmployer: 'Studio indépendant',
-    city: 'Bruxelles',
-  },
-
-  // Undergraduate Mode & Accessoires
-  {
-    name: 'Alessandra Conti',
-    initials: 'AC',
-    subject: 'Dessin de mode · Illustration',
-    programs: ['Mode & Accessoires'],
-    parallelRole: 'Illustratrice mode',
-    parallelEmployer: 'Vogue Italia (collaboratrice)',
-    city: 'Milan',
-  },
-  {
-    name: 'Anne Dewit',
-    initials: 'AD',
-    subject: 'Coupe à plat · Moulage · Couture',
-    programs: ['Mode & Accessoires'],
-    parallelRole: 'Modéliste senior',
-    parallelEmployer: 'Maison Margiela (consultante)',
-    city: 'Anvers',
-  },
-  {
-    name: 'Olivier Deschamps',
-    initials: 'OD',
-    subject: 'Direction artistique mode · Lookbook',
-    programs: ['Mode & Accessoires'],
-    parallelRole: 'Photographe & DA',
-    parallelEmployer: 'Magazines indépendants',
-    city: 'Bruxelles',
-  },
-
-  // Postgraduate Furniture & Product Design
-  {
-    name: 'Giulia Ferrari',
-    initials: 'GF',
-    subject: 'Design produit · Mobilier',
-    programs: ['Postgraduate Furniture & Product Design'],
-    parallelRole: 'Designer produit',
-    parallelEmployer: 'Cassina (collabore régulièrement)',
-    city: 'Milan',
-  },
-
-  // Postgraduate Digital Brand Content
-  {
-    name: 'Romain Lefèvre',
-    initials: 'RL',
-    subject: 'Stratégie de contenu · Brand strategy',
-    programs: ['Postgraduate Digital Brand', 'Communication & Digital'],
-    parallelRole: 'Stratégiste senior',
-    parallelEmployer: 'Mortierbrigade',
-    city: 'Bruxelles',
-  },
-
-  // Postgraduate Event Management
-  {
-    name: 'Elise Vanderbeeck',
-    initials: 'EV',
-    subject: 'Scénographie événementielle · Production',
-    programs: ['Postgraduate Event Management'],
-    parallelRole: 'Productrice exécutive',
-    parallelEmployer: 'Indépendante (Brussels Design September)',
-    city: 'Bruxelles',
-  },
-
-  // Spécialisation Fashion Management
-  {
-    name: 'Camille Roussel',
-    initials: 'CR',
-    subject: 'Stratégie & retail mode',
-    programs: ['Fashion Management'],
-    parallelRole: 'Directrice retail',
-    parallelEmployer: 'Maison de luxe (Paris)',
-    city: 'Paris',
-  },
-  {
-    name: 'Karim El Mansouri',
-    initials: 'KE',
-    subject: 'Économie & business de la mode',
-    programs: ['Fashion Management'],
-    parallelRole: 'Consultant M&A mode',
-    parallelEmployer: 'Cabinet international',
-    city: 'Paris',
-  },
-]
-
-const facultyEN: FacultyMember[] = facultyFR.map((m) => {
-  // Translate program labels for EN. Keep names as-is (they are people).
-  const labels: Record<string, string> = {
-    "Architecture d’intérieur": 'Interior Architecture',
-    'Postgraduate 2 ans': 'Postgraduate 2 years',
-    'Communication & Digital': 'Communication & Digital',
-    'Postgraduate Image 3D': 'Postgraduate Image 3D',
-    'Postgraduate Digital Brand': 'Postgraduate Digital Brand',
-    'Mode & Accessoires': 'Fashion & Accessory',
-    'Postgraduate Furniture & Product Design': 'Postgraduate Furniture & Product Design',
-    'Postgraduate Event Management': 'Postgraduate Event Management',
-    'Fashion Management': 'Fashion Management',
-  }
-  // Translate subjects to English
-  const subjectMap: Record<string, string> = {
-    "Atelier de projet · Conception spatiale": 'Project studio · Spatial design',
-    'Logiciels professionnels · Rhino · V-Ray': 'Professional software · Rhino · V-Ray',
-    'Histoire du design & culture visuelle': 'Design history & visual culture',
-    'Direction artistique · Identité de marque': 'Art direction · Brand identity',
-    'Motion design · After Effects': 'Motion design · After Effects',
-    'UX/UI · Figma · Recherche utilisateur': 'UX/UI · Figma · User research',
-    'IA générative · Workflows créatifs': 'Generative AI · Creative workflows',
-    'Dessin de mode · Illustration': 'Fashion drawing · Illustration',
-    'Coupe à plat · Moulage · Couture': 'Flat pattern · Draping · Sewing',
-    'Direction artistique mode · Lookbook': 'Fashion art direction · Lookbook',
-    'Design produit · Mobilier': 'Product design · Furniture',
-    'Stratégie de contenu · Brand strategy': 'Content strategy · Brand strategy',
-    'Scénographie événementielle · Production': 'Event scenography · Production',
-    'Stratégie & retail mode': 'Fashion strategy & retail',
-    'Économie & business de la mode': 'Fashion economics & business',
-  }
-  const roleMap: Record<string, string> = {
-    "Architecte d’intérieur fondatrice": 'Founding interior architect',
-    'Senior 3D artist': 'Senior 3D artist',
-    'Critique design': 'Design critic',
-    'Directrice de création': 'Creative director',
-    'Motion designer freelance': 'Freelance motion designer',
-    'Lead designer': 'Lead designer',
-    'Creative AI Lead': 'Creative AI Lead',
-    'Illustratrice mode': 'Fashion illustrator',
-    'Modéliste senior': 'Senior pattern-maker',
-    'Photographe & DA': 'Photographer & art director',
-    'Designer produit': 'Product designer',
-    'Stratégiste senior': 'Senior strategist',
-    'Productrice exécutive': 'Executive producer',
-    'Directrice retail': 'Retail director',
-    'Consultant M&A mode': 'Fashion M&A consultant',
-  }
-  // Only employers carrying French qualifiers need translation. Pure brand
-  // names (Base Design, Cassina, Mortierbrigade…) stay as-is across locales.
-  const employerMap: Record<string, string> = {
-    'Vogue Italia (collaboratrice)': 'Vogue Italia (contributor)',
-    'Maison Margiela (consultante)': 'Maison Margiela (consultant)',
-    'Magazines indépendants': 'Independent magazines',
-    'Cassina (collabore régulièrement)': 'Cassina (regular collaborator)',
-    'Indépendante (Brussels Design September)': 'Independent (Brussels Design September)',
-    'Maison de luxe (Paris)': 'Luxury house (Paris)',
-    'Cabinet international': 'International consultancy',
-    'Studio indépendant': 'Independent studio',
-    'Clients agences belges et NL': 'Agency clients in Belgium and NL',
-  }
-  return {
-    ...m,
-    programs: m.programs.map((p) => labels[p] ?? p),
-    subject: subjectMap[m.subject] ?? m.subject,
-    parallelRole: roleMap[m.parallelRole] ?? m.parallelRole,
-    parallelEmployer: employerMap[m.parallelEmployer] ?? m.parallelEmployer,
-  }
-})
+// Les rôles viennent de l'ancien site, déjà rédigés en anglais pour la
+// plupart : même liste dans les deux langues tant que l'école n'a pas
+// rempli la collection Faculty.
+const facultyEN: FacultyMember[] = facultyFR
 
 export default async function FacultyPage({
   params,
@@ -408,27 +208,35 @@ export default async function FacultyPage({
                 </div>
 
               <dl className="mt-6 space-y-3 text-sm">
-                <div>
-                  <dt className="text-xs uppercase tracking-widest text-ink/50">
-                    {L.teaches}
-                  </dt>
-                  <dd className="mt-1 text-ink">{m.subject}</dd>
-                </div>
-                <div>
-                  <dt className="text-xs uppercase tracking-widest text-ink/50">
-                    {L.for}
-                  </dt>
-                  <dd className="mt-1 text-ink/70">{m.programs.join(' · ')}</dd>
-                </div>
-                <div>
-                  <dt className="text-xs uppercase tracking-widest text-ink/50">
-                    {L.worksAt}
-                  </dt>
-                  <dd className="mt-1 text-ink/70">
-                    {m.parallelRole}
-                    <span className="text-ink/50">, {m.parallelEmployer}</span>
-                  </dd>
-                </div>
+                {m.subject && (
+                  <div>
+                    <dt className="text-xs uppercase tracking-widest text-ink/50">
+                      {L.teaches}
+                    </dt>
+                    <dd className="mt-1 text-ink">{m.subject}</dd>
+                  </div>
+                )}
+                {m.programs.length > 0 && (
+                  <div>
+                    <dt className="text-xs uppercase tracking-widest text-ink/50">
+                      {L.for}
+                    </dt>
+                    <dd className="mt-1 text-ink/70">{m.programs.join(' · ')}</dd>
+                  </div>
+                )}
+                {m.parallelRole && (
+                  <div>
+                    <dt className="text-xs uppercase tracking-widest text-ink/50">
+                      {L.worksAt}
+                    </dt>
+                    <dd className="mt-1 text-ink/70">
+                      {m.parallelRole}
+                      {m.parallelEmployer && (
+                        <span className="text-ink/50">, {m.parallelEmployer}</span>
+                      )}
+                    </dd>
+                  </div>
+                )}
               </dl>
               </div>
             </li>

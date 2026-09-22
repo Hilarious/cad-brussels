@@ -48,203 +48,27 @@ type Alumni = {
   initials: string
 }
 
+// Anciens étudiants repris de l'ancien site cad.be (page « Nos anciens
+// étudiants »), le 22/09/2026. Les parcours, employeurs et témoignages
+// sont à fournir par l'école dans l'admin, collection Alumni.
 const alumniFR: Alumni[] = [
-  {
-    name: 'Inès Daems',
-    classOf: 'Promo 2022',
-    program: 'Communication & Digital',
-    programSlug: 'communication-digital-design',
-    currentRole: 'Art Director',
-    currentEmployer: 'Mortierbrigade',
-    city: 'Bruxelles',
-    quote:
-      "Au CAD, on m'a appris à défendre une idée devant un jury de pros, pas seulement à la dessiner. Aujourd'hui je dirige des campagnes pour des marques que j'admirais quand j'étais étudiante.",
-    initials: 'ID',
-  },
-  {
-    name: 'Lukas Vandenberghe',
-    classOf: 'Promo 2021',
-    program: 'Architecture d’intérieur',
-    programSlug: 'interior-architecture-design',
-    currentRole: 'Architecte d’intérieur',
-    currentEmployer: 'Studio indépendant',
-    city: 'Anvers',
-    quote:
-      "J'ai monté mon studio 18 mois après le diplôme. Ce qui m'a permis de partir vite : les briefs réels qu'on faisait en 3e année, et le carnet d'adresses que les profs nous transmettent.",
-    initials: 'LV',
-  },
-  {
-    name: 'Maya Tanaka',
-    classOf: 'Promo 2023',
-    program: 'Mode & Accessoires',
-    programSlug: 'fashion-accessory-design',
-    currentRole: 'Junior designer',
-    currentEmployer: 'Maison Margiela',
-    city: 'Paris',
-    quote:
-      'Mon défilé de 3e année m\'a fait repérer par un studio de tendance, qui m\'a recommandée à Margiela. Le défilé public, ce n\'est pas un exercice scolaire, c\'est ton portfolio vivant.',
-    initials: 'MT',
-  },
-  {
-    name: 'Tom Verheyen',
-    classOf: 'Promo 2022',
-    program: 'Image, 3D, Motion, IA',
-    programSlug: 'image-3d-motion-video-ai',
-    currentRole: 'Motion designer',
-    currentEmployer: 'Buck Studios',
-    city: 'Amsterdam',
-    quote:
-      "Le postgraduate m'a forcé à passer de l'esthétique au workflow industriel. C'est là que j'ai compris la différence entre faire de jolies images et livrer un projet qui tient en agence.",
-    initials: 'TV',
-  },
-  {
-    name: 'Léa Moreno',
-    classOf: 'Promo 2021',
-    program: 'Furniture & Product Design',
-    programSlug: 'home-living-design',
-    currentRole: 'Designer produit',
-    currentEmployer: 'Vitra (équipe externe)',
-    city: 'Bâle',
-    quote:
-      'Le workshop Milan en cours d\'année a été un déclic. J\'y ai rencontré l\'éditeur qui m\'a contactée 6 mois après le diplôme pour développer une chaise.',
-    initials: 'LM',
-  },
-  {
-    name: 'Karim Belkacem',
-    classOf: 'Promo 2023',
-    program: 'Digital Brand Content',
-    programSlug: 'digital-brand-content',
-    currentRole: 'Content Strategist',
-    currentEmployer: 'Decathlon',
-    city: 'Lille',
-    quote:
-      'Les briefs en cours étaient apportés par des marques réelles, et le mien sur Decathlon m\'a directement débouché sur un stage puis un poste. Le diplôme arrive après.',
-    initials: 'KB',
-  },
-  {
-    name: 'Sofia Rocha',
-    classOf: 'Promo 2024',
-    program: 'Communication & Digital',
-    programSlug: 'communication-digital-design',
-    currentRole: 'Designer freelance',
-    currentEmployer: 'Studio personnel',
-    city: 'Lisbonne',
-    quote:
-      "Je voulais rentrer au Portugal mais garder un réseau européen. Les workshops à Lisbonne pendant le cursus m'ont fait connaître des studios là-bas, je travaille avec deux d'entre eux maintenant.",
-    initials: 'SR',
-  },
-  {
-    name: 'Antoine Lambert',
-    classOf: 'Promo 2022',
-    program: 'Event Management',
-    programSlug: 'event-management',
-    currentRole: 'Producteur événementiel',
-    currentEmployer: 'Indépendant',
-    city: 'Bruxelles',
-    quote:
-      'Promo de 12 personnes, suivi individuel sur les deux événements de l\'année, stage de 6 mois chez un producteur reconnu. À la sortie, j\'avais un carnet d\'adresses opérationnel.',
-    initials: 'AL',
-  },
+  { name: 'Benedetta Farruggio', classOf: '', program: '', programSlug: '', currentRole: '', currentEmployer: '', city: '', quote: '', initials: 'BF' },
+  { name: 'Thomas de Crombrugghe', classOf: '', program: '', programSlug: '', currentRole: '', currentEmployer: '', city: '', quote: '', initials: 'TD' },
+  { name: 'Marie Touzot', classOf: '', program: '', programSlug: '', currentRole: '', currentEmployer: '', city: '', quote: '', initials: 'MT' },
+  { name: 'Hans Haugaard', classOf: '', program: '', programSlug: '', currentRole: '', currentEmployer: '', city: '', quote: '', initials: 'HH' },
+  { name: 'Raïs de Weirdt', classOf: '', program: '', programSlug: '', currentRole: '', currentEmployer: '', city: '', quote: '', initials: 'RD' },
+  { name: 'Andrea Oerter', classOf: '', program: '', programSlug: '', currentRole: '', currentEmployer: '', city: '', quote: '', initials: 'AO' },
+  { name: 'Sibylle de Meeus', classOf: '', program: '', programSlug: '', currentRole: '', currentEmployer: '', city: '', quote: '', initials: 'SD' },
+  { name: 'Alexandra Grohol', classOf: '', program: '', programSlug: '', currentRole: '', currentEmployer: '', city: '', quote: '', initials: 'AG' },
+  { name: 'Matthieu Van Beneden', classOf: '', program: '', programSlug: '', currentRole: '', currentEmployer: '', city: '', quote: '', initials: 'MV' },
+  { name: 'Karine Szekeres', classOf: '', program: '', programSlug: '', currentRole: '', currentEmployer: '', city: '', quote: '', initials: 'KS' },
+  { name: 'Laurent Couche', classOf: '', program: '', programSlug: '', currentRole: '', currentEmployer: '', city: '', quote: '', initials: 'LC' },
+  { name: 'Elisabeth Schwarz', classOf: '', program: '', programSlug: '', currentRole: '', currentEmployer: '', city: '', quote: '', initials: 'ES' },
+  { name: 'Gauthier Guillaume', classOf: '', program: '', programSlug: '', currentRole: '', currentEmployer: '', city: '', quote: '', initials: 'GG' },
+  { name: 'Zazie Maquet', classOf: '', program: '', programSlug: '', currentRole: '', currentEmployer: '', city: '', quote: '', initials: 'ZM' },
 ]
 
-const alumniEN: Alumni[] = [
-  {
-    name: 'Inès Daems',
-    classOf: 'Class of 2022',
-    program: 'Communication & Digital',
-    programSlug: 'communication-digital-design',
-    currentRole: 'Art Director',
-    currentEmployer: 'Mortierbrigade',
-    city: 'Brussels',
-    quote:
-      "At CAD, I learned to defend an idea in front of a jury of pros, not just draw it. Today I lead campaigns for brands I admired as a student.",
-    initials: 'ID',
-  },
-  {
-    name: 'Lukas Vandenberghe',
-    classOf: 'Class of 2021',
-    program: 'Interior Architecture',
-    programSlug: 'interior-architecture-design',
-    currentRole: 'Interior architect',
-    currentEmployer: 'Independent studio',
-    city: 'Antwerp',
-    quote:
-      'I started my studio 18 months after graduation. What let me go fast: the real briefs we did in year 3, and the network teachers pass on.',
-    initials: 'LV',
-  },
-  {
-    name: 'Maya Tanaka',
-    classOf: 'Class of 2023',
-    program: 'Fashion & Accessory',
-    programSlug: 'fashion-accessory-design',
-    currentRole: 'Junior designer',
-    currentEmployer: 'Maison Margiela',
-    city: 'Paris',
-    quote:
-      "My year-3 runway got me spotted by a trend studio, who recommended me to Margiela. The public show isn’t a school exercise, it’s your living portfolio.",
-    initials: 'MT',
-  },
-  {
-    name: 'Tom Verheyen',
-    classOf: 'Class of 2022',
-    program: 'Image, 3D, Motion, AI',
-    programSlug: 'image-3d-motion-video-ai',
-    currentRole: 'Motion designer',
-    currentEmployer: 'Buck Studios',
-    city: 'Amsterdam',
-    quote:
-      "The postgraduate forced me to move from aesthetics to industrial workflow. That’s when I understood the difference between making nice visuals and shipping a project that holds in agency.",
-    initials: 'TV',
-  },
-  {
-    name: 'Léa Moreno',
-    classOf: 'Class of 2021',
-    program: 'Furniture & Product Design',
-    programSlug: 'home-living-design',
-    currentRole: 'Product designer',
-    currentEmployer: 'Vitra (external team)',
-    city: 'Basel',
-    quote:
-      "The Milan workshop mid-year was a turning point. I met the editor who reached out 6 months after graduation to develop a chair together.",
-    initials: 'LM',
-  },
-  {
-    name: 'Karim Belkacem',
-    classOf: 'Class of 2023',
-    program: 'Digital Brand Content',
-    programSlug: 'digital-brand-content',
-    currentRole: 'Content Strategist',
-    currentEmployer: 'Decathlon',
-    city: 'Lille',
-    quote:
-      'Class briefs were brought by real brands, and mine on Decathlon led straight to an internship then a role. The diploma comes after.',
-    initials: 'KB',
-  },
-  {
-    name: 'Sofia Rocha',
-    classOf: 'Class of 2024',
-    program: 'Communication & Digital',
-    programSlug: 'communication-digital-design',
-    currentRole: 'Freelance designer',
-    currentEmployer: 'Personal studio',
-    city: 'Lisbon',
-    quote:
-      "I wanted to go back to Portugal but keep a European network. The Lisbon workshops during the program got me known by studios there, I work with two of them now.",
-    initials: 'SR',
-  },
-  {
-    name: 'Antoine Lambert',
-    classOf: 'Class of 2022',
-    program: 'Event Management',
-    programSlug: 'event-management',
-    currentRole: 'Event producer',
-    currentEmployer: 'Independent',
-    city: 'Brussels',
-    quote:
-      'Cohort of 12, individual support on the two events of the year, 6-month internship at a recognised producer. At graduation I had an operational address book.',
-    initials: 'AL',
-  },
-]
+const alumniEN: Alumni[] = alumniFR
 
 export default async function AlumniPage({
   params,
@@ -337,9 +161,6 @@ export default async function AlumniPage({
     (_, i) => base[i % Math.max(base.length, 1)],
   ).filter(Boolean)
 
-  // Position de la citation visuelle (Pattern C) : entre la 4ème et la
-  // 5ème carte alumni, comme un point de respiration éditorial.
-  const QUOTE_INSERT_AFTER = 3
 
   return (
     <article className="container py-16">
@@ -416,69 +237,50 @@ export default async function AlumniPage({
                 />
                 <div className="flex flex-1 flex-col p-6 md:p-8">
                   <p className="font-display text-xl">{a.name}</p>
-                  <p className="mt-0.5 text-xs uppercase tracking-widest text-ink/50">
-                    {a.classOf} · {a.program}
-                  </p>
+                  {(a.classOf || a.program) && (
+                    <p className="mt-0.5 text-xs uppercase tracking-widest text-ink/50">
+                      {[a.classOf, a.program].filter(Boolean).join(' · ')}
+                    </p>
+                  )}
 
-                  <blockquote className="mt-6 text-ink/80 italic">
-                    « {a.quote} »
-                  </blockquote>
+                  {a.quote && (
+                    <blockquote className="mt-6 text-ink/80 italic">
+                      « {a.quote} »
+                    </blockquote>
+                  )}
 
-                  <dl className="mt-6 space-y-2 text-sm text-ink/70">
-                    <div className="flex justify-between gap-3 border-t border-ink/10 pt-3">
-                      <dt className="text-ink/50">{L.worksAt}</dt>
-                      <dd className="text-right text-ink">
-                        {a.currentRole}
-                        <span className="text-ink/60">
-                          , {a.currentEmployer}
-                        </span>
-                      </dd>
-                    </div>
-                    <div className="flex justify-between gap-3">
-                      <dt className="text-ink/50">{L.based}</dt>
-                      <dd className="text-right text-ink">{a.city}</dd>
-                    </div>
-                  </dl>
+                  {(a.currentRole || a.city) && (
+                    <dl className="mt-6 space-y-2 text-sm text-ink/70">
+                      {a.currentRole && (
+                        <div className="flex justify-between gap-3 border-t border-ink/10 pt-3">
+                          <dt className="text-ink/50">{L.worksAt}</dt>
+                          <dd className="text-right text-ink">
+                            {a.currentRole}
+                            {a.currentEmployer && (
+                              <span className="text-ink/60">, {a.currentEmployer}</span>
+                            )}
+                          </dd>
+                        </div>
+                      )}
+                      {a.city && (
+                        <div className="flex justify-between gap-3">
+                          <dt className="text-ink/50">{L.based}</dt>
+                          <dd className="text-right text-ink">{a.city}</dd>
+                        </div>
+                      )}
+                    </dl>
+                  )}
 
-                  <Link
-                    href={`/${locale}/${a.programSlug}`}
-                    className="mt-6 tap text-sm text-accent hover:underline"
-                  >
-                    {L.seeProgram}
-                  </Link>
+                  {a.programSlug && (
+                    <Link
+                      href={`/${locale}/${a.programSlug}`}
+                      className="mt-6 tap text-sm text-accent hover:underline"
+                    >
+                      {L.seeProgram}
+                    </Link>
+                  )}
                 </div>
               </li>
-
-              {/* Pattern C — Citation visuelle insérée après la 4ème carte.
-                  Span pleine largeur (col-span-2) pour casser la grille. */}
-              {i === QUOTE_INSERT_AFTER && (
-                <li className="md:col-span-2 relative overflow-hidden rounded-2xl">
-                  <ImagePlaceholder
-                    ratio="21:9"
-                    caption="Scène · alumni en pleine action dans son agence"
-                    className="rounded-none border-0"
-                  />
-                  <div className="absolute inset-0 flex items-end bg-ink/40 p-8 md:p-16">
-                    <div className="max-w-3xl text-paper">
-                      <p className="text-sm uppercase tracking-widest text-paper/70">
-                        {locale === 'fr'
-                          ? 'Témoignage · Promo 2023'
-                          : 'Featured story · Class of 2023'}
-                      </p>
-                      <blockquote className="mt-4 font-display text-2xl leading-snug md:text-4xl">
-                        {locale === 'fr'
-                          ? '« Mon défilé de 3e année m\'a fait repérer par un studio de tendance, qui m\'a recommandée à Margiela. »'
-                          : "« My year-3 runway got me spotted by a trend studio, who recommended me to Margiela. »"}
-                      </blockquote>
-                      <p className="mt-6 text-sm text-paper/80">
-                        {locale === 'fr'
-                          ? 'Maya Tanaka · Junior designer chez Maison Margiela · Paris'
-                          : 'Maya Tanaka · Junior designer at Maison Margiela · Paris'}
-                      </p>
-                    </div>
-                  </div>
-                </li>
-              )}
             </Fragment>
           ))}
         </ul>

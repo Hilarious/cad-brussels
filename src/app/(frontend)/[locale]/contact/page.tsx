@@ -196,22 +196,12 @@ export default async function ContactPage({
         admissions: {
           title: 'Admissions',
           desc: 'Dossier de candidature, entretien, portfolio.',
-          email: 'admissions@cad.be',
+          email: 'admission@cad.be',
         },
-        lifelong: {
-          title: 'Lifelong Learning',
-          desc: 'Formation continue pour professionnels créatifs.',
-          email: 'lifelong@cad.be',
-        },
-        partners: {
-          title: 'Partenariats',
-          desc: 'Workshops, conférences, briefs d’agence.',
-          email: 'partners@cad.be',
-        },
-        press: {
-          title: 'Presse',
-          desc: 'Visuels, demandes d’interview, communiqués.',
-          email: 'press@cad.be',
+        secretariat: {
+          title: 'Secrétariat',
+          desc: 'Toute autre question : formation continue, partenariats, presse, administration.',
+          email: 'secretariat@cad.be',
         },
         // map
         directions: 'Plan d’accès',
@@ -241,22 +231,12 @@ export default async function ContactPage({
         admissions: {
           title: 'Admissions',
           desc: 'Application file, interview, portfolio.',
-          email: 'admissions@cad.be',
+          email: 'admission@cad.be',
         },
-        lifelong: {
-          title: 'Lifelong Learning',
-          desc: 'Continuing education for creative professionals.',
-          email: 'lifelong@cad.be',
-        },
-        partners: {
-          title: 'Partnerships',
-          desc: 'Workshops, lectures, agency briefs.',
-          email: 'partners@cad.be',
-        },
-        press: {
-          title: 'Press',
-          desc: 'Imagery, interviews, press releases.',
-          email: 'press@cad.be',
+        secretariat: {
+          title: 'Secretariat',
+          desc: 'Any other question: continuing education, partnerships, press, administration.',
+          email: 'secretariat@cad.be',
         },
         directions: 'Directions',
         directionsLink: 'Open in Google Maps',
@@ -264,7 +244,7 @@ export default async function ContactPage({
           'Tram 4 and 92 (Vanderkindere stop) · Bus 60 (Cavell). Limited visitor parking, public transport recommended.',
       }
 
-  const services = [L.admissions, L.lifelong, L.partners, L.press]
+  const services = [L.admissions, L.secretariat]
   const social = settings.social ?? []
 
   // Address in lines (from site-settings; with sensible default)

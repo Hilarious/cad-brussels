@@ -93,10 +93,19 @@ export default async function AboutPage({
         quoteRole: "Directeur du CAD",
         quotePhotoCaption: 'Portrait · Eric Vanden Broeck, dans le hall du CAD',
 
+        // Le diplôme et l'agrément : texte validé par le CAD sur l'ancien site,
+        // repris sans broder (décision du 15/07/2026, sujet juridiquement
+        // sensible), réinséré le 22/09/2026 à la demande d'Audry.
+        diplomaTitle: 'Le diplôme et l’agrément',
+        diplomaBody: [
+          "Le CAD est agréé par la Communauté française. En revanche, nos formations et notre diplôme ne sont pas reconnus par la Communauté française de Belgique (Article 14/4, §2).",
+          "En France, en Suisse et en Belgique, les établissements privés ne peuvent pas utiliser les appellations académiques réservées aux établissements reconnus. Nous parlons donc d'Undergraduate, 1er cycle, 3 ans, 180 ECTS, et de Postgraduate, 2e cycle, 2 ans, 120 ECTS.",
+        ],
+
         // Reassurance parents
         parentsTitle: 'Pour les parents qui hésitent',
         parentsBody:
-          "C'est une décision lourde de choisir une école privée. On le sait. On a écrit une page entière pour répondre aux questions qu'on nous pose le plus souvent : frais, débouchés, encadrement, différences avec les écoles publiques.",
+          "C'est une décision lourde de choisir une école privée. On le sait. On a écrit une page entière pour répondre aux questions qu'on nous pose le plus souvent : frais, débouchés, encadrement.",
         parentsCta: 'Lire « Pourquoi le CAD »',
         parentsCtaHref: `/${locale}/pourquoi-le-cad`,
 
@@ -157,9 +166,15 @@ export default async function AboutPage({
         quoteRole: 'Director of CAD',
         quotePhotoCaption: 'Portrait · Eric Vanden Broeck, in the CAD hall',
 
+        diplomaTitle: 'The diploma and accreditation',
+        diplomaBody: [
+          'CAD is accredited by the French Community of Belgium. However, our programs and our diploma are not recognised by the French Community of Belgium (Article 14/4, §2).',
+          'In France, Switzerland and Belgium, private institutions may not use the academic titles reserved for recognised institutions. We therefore speak of Undergraduate, 1st cycle, 3 years, 180 ECTS, and Postgraduate, 2nd cycle, 2 years, 120 ECTS.',
+        ],
+
         parentsTitle: 'For hesitating parents',
         parentsBody:
-          "Choosing a private school is a big decision. We know. We've written a whole page answering the questions parents ask us most often: fees, outcomes, mentoring, differences with public schools.",
+          "Choosing a private school is a big decision. We know. We've written a whole page answering the questions parents ask us most often: fees, outcomes, mentoring.",
         parentsCta: 'Read « Why CAD »',
         parentsCtaHref: `/${locale}/pourquoi-le-cad`,
 
@@ -320,8 +335,19 @@ export default async function AboutPage({
         </div>
       </section>
 
+      {/* Le diplôme et l'agrément : l'information que les parents cherchent
+          en premier, et qui protège l'école juridiquement. */}
+      <section className="mt-24 max-w-3xl">
+        <h2 className="font-display text-3xl md:text-4xl">{L.diplomaTitle}</h2>
+        <div className="mt-6 space-y-4 text-ink/80">
+          {L.diplomaBody.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+        </div>
+      </section>
+
       {/* Bloc parents — lien explicite vers Pourquoi le CAD */}
-      <section className="mt-24 max-w-3xl rounded-2xl border border-ink/10 p-8">
+      <section className="mt-16 max-w-3xl rounded-2xl border border-ink/10 p-8">
         <h2 className="font-display text-xl">{L.parentsTitle}</h2>
         <p className="mt-3 text-ink/70">{L.parentsBody}</p>
         <Link

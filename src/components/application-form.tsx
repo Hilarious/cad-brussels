@@ -122,7 +122,7 @@ export function ApplicationForm({ locale }: { locale: string }) {
         success:
           'Merci, votre candidature est bien reçue. Nous vous écrivons sous 48h pour la suite.',
         error:
-          'Une erreur est survenue. Veuillez réessayer ou nous écrire à admissions@cad.be.',
+          'Une erreur est survenue. Veuillez réessayer ou nous écrire à admission@cad.be.',
         // Selects
         programs: [
           { value: 'bachelor-interior', label: 'Undergraduate · Architecture d’intérieur' },
@@ -135,9 +135,9 @@ export function ApplicationForm({ locale }: { locale: string }) {
           { value: 'master-event', label: 'Postgraduate · Event Management' },
         ],
         levels: [
-          { value: 'bac1', label: '1ère année (Bac1)' },
-          { value: 'bac2', label: '2ème année (Bac2)' },
-          { value: 'bac3', label: '3ème année (Bac3)' },
+          { value: 'bac1', label: '1ère année' },
+          { value: 'bac2', label: '2ème année' },
+          { value: 'bac3', label: '3ème année' },
           { value: 'm1', label: 'Postgraduate 1' },
           { value: 'm2', label: 'Postgraduate 2' },
         ],
@@ -190,7 +190,7 @@ export function ApplicationForm({ locale }: { locale: string }) {
         success:
           'Thank you, your application has been received. We will write back within 48h.',
         error:
-          'Something went wrong. Please try again or write to admissions@cad.be.',
+          'Something went wrong. Please try again or write to admission@cad.be.',
         programs: [
           { value: 'bachelor-interior', label: 'Undergraduate · Interior Architecture' },
           { value: 'bachelor-communication', label: 'Undergraduate · Communication & Digital' },
@@ -202,9 +202,9 @@ export function ApplicationForm({ locale }: { locale: string }) {
           { value: 'master-event', label: 'Postgraduate · Event Management' },
         ],
         levels: [
-          { value: 'bac1', label: 'Year 1 (Bac1)' },
-          { value: 'bac2', label: 'Year 2 (Bac2)' },
-          { value: 'bac3', label: 'Year 3 (Bac3)' },
+          { value: 'bac1', label: 'Year 1' },
+          { value: 'bac2', label: 'Year 2' },
+          { value: 'bac3', label: 'Year 3' },
           { value: 'm1', label: 'Postgraduate 1' },
           { value: 'm2', label: 'Postgraduate 2' },
         ],

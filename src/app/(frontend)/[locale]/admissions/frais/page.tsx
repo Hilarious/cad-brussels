@@ -66,7 +66,7 @@ export default async function TuitionFeesPage({
           },
         ],
         euInstalmentNote:
-          'Un plan de paiement échelonné est possible pour certains résidents, sur acceptation et avec un supplément de 300 €.',
+          'Un plan de paiement échelonné est possible pour certains résidents belges, sur acceptation du dossier et avec un supplément de 300 € : 300 € et un premier tiers à l’admission, un deuxième tiers pour le 15 décembre 2026, un troisième tiers pour le 15 mars 2027.',
 
         // ============================================================
         // Non-EU students
@@ -128,12 +128,32 @@ export default async function TuitionFeesPage({
             body: "Les frais annoncés à votre inscription restent ceux que vous payez pour toute la durée du cursus, sauf en cas de redoublement de la première année si le tarif a augmenté entre-temps. En cas d'inflation supérieure à 5 % par an, les frais sont indexés.",
           },
           {
-            title: 'Désistement',
-            body: "Le nombre de places étant limité chaque année, la totalité des frais reste due en cas de désistement ou d'exclusion en cours d'année.",
+            title: 'Frais d’inscription · 300 €',
+            body: "Ce montant couvre les frais administratifs généraux ainsi qu'une assurance individuelle « frais médicaux » souscrite par le CAD en cas d'accident. Il n'est pas remboursable, même en cas de désistement.",
           },
           {
-            title: 'Frais d’inscription · 300 €',
-            body: "Ce montant couvre les frais administratifs généraux ainsi qu'une assurance individuelle souscrite par le CAD pour tout accident survenu dans les locaux de l'école.",
+            title: 'Abandon en cours d’année',
+            body: "Le nombre de places étant limité chaque année, la totalité des frais de scolarité reste due en cas d'abandon des cours, pour quelque raison que ce soit, en cours d'année académique. Le solde éventuel est payable dans les 8 jours suivant le dernier jour de présence.",
+          },
+          {
+            title: 'Signataires et garant',
+            body: "Les personnes qui signent la fiche d'inscription sont personnellement et solidairement responsables du paiement de l'entièreté des frais de scolarité. Ces conditions valent pour tout le cycle entamé, même si une seule fiche est signée en début de cycle, et restent d'application en cas de changement d'orientation.",
+          },
+          {
+            title: 'Retard de paiement',
+            body: "Tout montant non payé dans les 8 jours de son échéance porte d'office un intérêt de 12 % l'an, majoré de dommages et intérêts fixés à 15 % du montant de la facture, avec un minimum de 125 €. Les cours peuvent être suspendus jusqu'au paiement complet.",
+          },
+          {
+            title: 'Refus de visa',
+            body: "Les étudiants hors UE paient la totalité des frais annuels pour obtenir le certificat scolaire nécessaire à la demande de visa. En cas de refus définitif du visa étudiant, après la procédure d'appel, le CAD rembourse le montant payé d'avance moins 1 300 € de frais administratifs, sur présentation de la lettre originale des autorités diplomatiques belges précisant la raison du refus, et à condition que le candidat ait suivi correctement et dans les délais toutes les instructions des autorités et du CAD.",
+          },
+          {
+            title: 'Certificats',
+            body: "Les certificats d'inscription et de fréquentation, ainsi que les documents pour allocations familiales ou abonnements de transport, ne sont délivrés qu'après paiement du droit d'inscription, et du minerval complet pour les ressortissants hors UE.",
+          },
+          {
+            title: 'Reconnaissance des titres',
+            body: "Le CAD est agréé par la Communauté française, mais ses formations et son diplôme ne sont pas reconnus par la Communauté française de Belgique (Article 14/4, §2). C'est pourquoi nous parlons d'Undergraduate (1er cycle, 3 ans, 180 ECTS) et de Postgraduate (2e cycle, 2 ans, 120 ECTS), et non des appellations réservées aux établissements reconnus.",
           },
         ],
 
@@ -142,7 +162,7 @@ export default async function TuitionFeesPage({
         // ============================================================
         questionsTitle: 'Une question sur les frais ou le financement ?',
         questionsBody:
-          "Modalités de paiement, plan échelonné, allocations d'études belges, FOREM, virement international : ces sujets se discutent en direct avec le secrétariat. Plus efficace que de chercher la réponse seul·e.",
+          "Modalités de paiement, plan échelonné, aides possibles, virement international : ces sujets se discutent en direct avec le secrétariat. Plus efficace que de chercher la réponse seul·e.",
         questionsCta: 'Contacter le secrétariat',
 
         // ============================================================
@@ -197,7 +217,7 @@ export default async function TuitionFeesPage({
           },
         ],
         euInstalmentNote:
-          'A staggered payment plan is possible for some residents, subject to acceptance and a €300 supplement.',
+          'A staggered payment plan is possible for some Belgian residents, subject to file acceptance and a €300 supplement: €300 plus a first third at admission, a second third by 15 December 2026, a third third by 15 March 2027.',
 
         nonEuTitle: 'Undergraduate and postgraduate · Non-EU students',
         nonEuAmount: '€11,000',
@@ -247,18 +267,38 @@ export default async function TuitionFeesPage({
             body: 'Fees announced at registration remain what you pay for the entire program duration, except if you repeat the first year and the price has increased meanwhile. If inflation exceeds 5% per year, fees are indexed.',
           },
           {
-            title: 'Withdrawal',
-            body: 'Since spots are limited each year, the full annual fee remains due in case of withdrawal or exclusion during the year.',
+            title: 'Registration fee · €300',
+            body: 'This amount covers general administrative costs and an individual medical-expenses insurance taken out by CAD in case of accident. It is non-refundable, even in case of withdrawal.',
           },
           {
-            title: 'Registration fee · €300',
-            body: 'This amount covers general administrative costs and an individual insurance taken out by CAD for any accident on the school premises.',
+            title: 'Dropping out during the year',
+            body: 'Since spots are limited each year, the full annual tuition remains due in case of withdrawal from classes, for any reason, during the academic year. Any outstanding balance is payable within 8 days of the last day of attendance.',
+          },
+          {
+            title: 'Signatories and guarantor',
+            body: 'The persons signing the registration form are personally and jointly liable for payment of the full tuition fees. These conditions apply to the whole cycle started, even if only one form is signed at the beginning of the cycle, and remain applicable in case of a change of program.',
+          },
+          {
+            title: 'Late payment',
+            body: 'Any amount unpaid within 8 days of its due date automatically bears interest at 12% per year, plus liquidated damages of 15% of the invoice amount, with a minimum of €125. Classes may be suspended until full payment.',
+          },
+          {
+            title: 'Visa refusal',
+            body: 'Non-EU students pay the full annual fees to obtain the school certificate required for the visa application. In case of a final refusal of the student visa, after the appeal procedure, CAD refunds the amount paid in advance minus €1,300 of administrative costs, upon presentation of the original letter from the Belgian diplomatic authorities stating the reason for refusal, and provided the applicant has correctly and timely followed all instructions from the authorities and from CAD.',
+          },
+          {
+            title: 'Certificates',
+            body: 'Registration and attendance certificates, as well as documents for family allowances or transport passes, are only issued after payment of the registration fee, and of the full tuition for non-EU nationals.',
+          },
+          {
+            title: 'Recognition of titles',
+            body: 'CAD is accredited by the French Community of Belgium, but its programs and diploma are not recognised by the French Community of Belgium (Article 14/4, §2). This is why we speak of Undergraduate (1st cycle, 3 years, 180 ECTS) and Postgraduate (2nd cycle, 2 years, 120 ECTS), and not of the titles reserved for recognised institutions.',
           },
         ],
 
         questionsTitle: 'A question about fees or financing?',
         questionsBody:
-          'Payment terms, staggered plan, Belgian study allowances, FOREM, international wire transfer: these topics are best discussed directly with the secretariat. More efficient than searching alone.',
+          'Payment terms, staggered plan, possible financial support, international wire transfer: these topics are best discussed directly with the secretariat. More efficient than searching alone.',
         questionsCta: 'Contact the secretariat',
 
         crossTitle: 'What next?',

@@ -100,6 +100,10 @@ const nextConfig: NextConfig = {
     }
 
     return [
+      // Prototype « Plus tard » retiré le 22/09/2026 : projet non retenu par
+      // le CAD. Les liens déjà partagés retombent sur l'accueil.
+      { source: '/:locale(fr|en)/myfuture', destination: '/:locale', permanent: true },
+      { source: '/myfuture', destination: '/fr', permanent: true },
       // ======================================================================
       // 1. BACHELORS — anciennes URLs WordPress
       // Audit : /fr/undergraduate-interior-architecture-design/ était en pos 2
