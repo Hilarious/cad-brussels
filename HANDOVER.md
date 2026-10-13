@@ -1,15 +1,105 @@
-# CAD Brussels — Handover technique et design
+# CAD Brussels · Dossier de passation
 
-> Document destiné au développeur mainteneur reprenant le projet.
-> Version mai 2026 · Hilarious Agency × CAD Brussels
->
-> **Voir aussi** : [`SEO-AUDIT-2026.md`](./SEO-AUDIT-2026.md) — audit complet du site actuel cad.be (rapport Digistage janvier 2026) et plan d'action pour la refonte.
+> Pour **Jérôme Canon** (IT Lead) et **Florian Donckers** (développeur), qui reprennent le
+> site le **13 octobre 2026**. À jour à cette date, faits vérifiés le jour même.
+> Les consignes pour les outils de code, et les pièges à ne pas refaire, sont dans
+> [`AGENTS.md`](./AGENTS.md). L'audit SEO de l'ancien site est dans
+> [`SEO-AUDIT-2026.md`](./SEO-AUDIT-2026.md).
 
 ---
 
 ## En deux phrases
 
-Le **CAD Brussels** est une école supérieure d'art et de design fondée en 1961 à Bruxelles, dirigée par **Eric Vanden Broeck** (Dean) et coordonnée par **Fabienne Willaert** (Admin). **Hilarious Agency** refond le site cad.be sur stack Next.js 15 + Payload v3 + Postgres, en parallèle d'un travail de Digital Guidelines pour aligner toutes les communications digitales sur la charte print officielle de **Thomas Durieux** (Finlande Graphic Design, juin 2024).
+Le **CAD Brussels** est une école privée de design fondée en 1961 à Bruxelles, environ 160
+étudiants, dirigée par **Eric Vanden Broeck**. Ce site est le POC construit par Audry avec
+Claude, devenu le vrai site : il est en ligne, le CAD l'a relu deux fois, et il remplace
+`cad.be` dès que le domaine bascule. Ce qu'il reste à faire est surtout technique, d'où la
+passation.
+
+---
+
+## L'état réel au 13 octobre 2026
+
+| | |
+|---|---|
+| Adresse | `cad-brussels.vercel.app`, `noindex` volontaire par un en-tête `X-Robots-Tag` lié à l'hôte Vercel. Il tombe tout seul quand `cad.be` pointe ici |
+| `cad.be` | Sert toujours l'ancien WordPress. Bascule menée par **Eric** avec Infinite-IT, pas par nous |
+| Code | GitHub `Hilarious/cad-brussels`, branche `main`. **Public**, pour avoir pu montrer le POC au client |
+| Base | PostgreSQL chez **Neon**, branchée par l'intégration Vercel |
+| Variables de production | **Seulement la base et `PAYLOAD_SECRET`** (liste Vercel relue le 13/10) |
+| CI | 3 jobs verts sur 4. « Vérification interface » rouge, **53 problèmes** de référence |
+| Contenu | Relecture du CAD (cahier V4 de Fabienne) intégrée le 13/10 **en français**. L'anglais reste à reprendre |
+
+### Ce qui ne marche pas en production
+
+| Manque | Conséquence | Ce qu'il faut |
+|---|---|---|
+| Aucun email (`RESEND_API_KEY` absente) | Une candidature arrive en base et **ne prévient personne**. Le candidat ne reçoit pas d'accusé. La newsletter en double confirmation est cassée | Une clé Resend, un domaine d'envoi authentifié, `ADMISSIONS_EMAIL=secretariat@cad.be` |
+| Aucun stockage d'images (`S3_*` absentes) | Tout envoi d'image depuis l'admin échoue. Les photos ne peuvent pas entrer | Un bucket S3-compatible (R2 prévu) |
+| Aucun anti-robot | Turnstile figure dans `.env.example` mais **n'existe pas dans le code**. Les formulaires publics sont ouverts | Le développer, puis les clés |
+| `NEXT_PUBLIC_SITE_URL` absente | Plan du site et balises de partage incomplets | L'adresse définitive |
+
+Les formulaires écrivent en base **avant** de tenter l'envoi : rien n'est perdu, tout est dans
+l'admin sous `Applications` et `Leads`.
+
+---
+
+## Les accès, et ce qui est à régler en premier
+
+| Brique | Où | Aujourd'hui | À faire |
+|---|---|---|---|
+| GitHub | `Hilarious/cad-brussels` | Compte utilisateur **partagé** « Hilarious », pas une organisation. Les 99 commits sont signés « Hilarious » | Décider public ou privé maintenant que le POC est montré. Comptes nominatifs, idéalement une organisation |
+| Vercel | Projet `cad-brussels`, équipe Hilarious | ⚠️ Membres à vérifier | Jérôme et Florian dans l'équipe |
+| Neon | Via l'intégration Vercel | ⚠️ Compte d'**une seule personne**, à identifier | Le rattacher à l'agence. Exporter une copie de la base hors de Neon |
+| Admin Payload | `/admin` | Audry et Jérôme administrateurs | Un compte par personne. Cindy en éditrice |
+| Clé d'API de production | Dans le `.env.local` d'Audry, sur un compte **admin** | Sert aux écritures par script | La révoquer, en créer une sur un compte `editor` si besoin |
+| Domaine `cad.be` | Registrar OVH, zone DNS chez **Cloudflare** | Chez Infinite-IT, l'IT du CAD | Seuls A et CNAME bougent, **jamais les MX** (messagerie Microsoft 365 de l'école) |
+
+---
+
+## Le backlog, par priorité
+
+| P | Sujet | Pourquoi | Dépend de |
+|---|---|---|---|
+| 1 | Brancher Resend | Aucune candidature n'alerte personne | Une clé et un domaine d'envoi. ⚠️ Authentifier `cad.be` touche au DNS de l'école |
+| 1 | Stockage des images | Les photos du CAD ne peuvent pas entrer | Un bucket |
+| 1 | Bascule de `cad.be` et redirections 301 de l'ancien site | Elle commande le calendrier | Eric, Infinite-IT |
+| 2 | Turnstile sur les formulaires | Formulaire de candidature ouvert aux robots | Clés Cloudflare |
+| 2 | Ajouter **Fashion Business** et **Interior Architecture 1 an** aux formulaires de candidature et d'information | Demandé par le CAD le 13/10. Un `select` est un `enum` : migration | Rien |
+| 2 | Débordement de 55 px sur portable | Visible par tous les candidats, 36 des 53 problèmes de la CI | Rien |
+| 3 | Reporter en anglais les corrections factuelles du 13/10 | L'anglais cite encore des marques partenaires et des workshops à Lisbonne et Tokyo | Validation du français par le CAD |
+| 3 | Adresse `/fashion-management` vers le nom Fashion Business, avec redirection | Le programme a changé de nom | Nom acté par Eric |
+| 3 | Copie de la base hors de Neon, restauration testée une fois | Aucune sauvegarde hors du fournisseur | Accès Neon |
+| 3 | Six langues (IT, ES, DE, PT sur le parcours de recrutement) | Décidé en juillet, reporté | Relecteurs natifs |
+| ⏸ | Fusion de trois masters en un seul (Image 3D Motion AI, Digital Brand Content, Event Management) | Pages, menu, formulaires, thèmes de couleur | **Décision et nom d'Eric** |
+
+---
+
+## Le calendrier
+
+| Date | Jalon |
+|---|---|
+| 16/10/2026 | Textes et photos complets côté CAD (planning de Cindy) |
+| 06/11/2026 | Accès techniques |
+| 17/11/2026 | Tests par le CAD |
+| 19/11/2026 | Mise en ligne prévue |
+| 26 au 28/11/2026 | **SIEP de Bruxelles**, salon de l'orientation : l'échéance réelle d'Eric |
+
+---
+
+## Qui fait quoi désormais
+
+| Domaine | Qui |
+|---|---|
+| Code, base, déploiements, variables, côté technique du domaine | **Jérôme** et **Florian** |
+| Contenu : relecture, saisie dans l'admin, lien quotidien avec le CAD | **Cindy**, cheffe de projet |
+| Décisions client | **Eric Vanden Broeck**, seul décideur. Fabienne Willaert relaie |
+| Mémoire du POC, pourquoi des choix | **Audry** |
+
+**Règle de cohabitation** : à partir du 13/10, rien n'arrive sur `main` en dehors de l'équipe
+technique, et le contenu passe par l'admin. Le journal complet du POC (décisions, incidents,
+leur raison) vit dans le dossier de travail d'Audry, hors du dépôt. Ce qui sert au code est
+repris dans `AGENTS.md`.
 
 ---
 
@@ -24,7 +114,7 @@ Ces décisions ont été validées avec Eric (Dean) et sont **verrouillées**. T
 - **Design tokens Tailwind** — `ink` (texte), `paper` (fond), `accent` (couleur de marque, variable par programme via classes `.theme-*`).
 - **Œil graphique + grille 3×3** — signature visuelle de Thomas, à conserver sur les supports print clés uniquement. Pas d'application systématique en digital.
 - **Grille 12 colonnes** — structure digitale standard (`<Grid>` / `<Col>`), 12 desktop / 8 tablet / 4 mobile, gouttière 24px.
-- **Pas de référence Collège de Paris** — décision Eric mai 2026, le partenariat n'est plus communiqué. Le réseau CUMULUS (200+ écoles d'art) reste le seul argument international.
+- **Pas de référence Collège de Paris** : décision Eric mai 2026, le partenariat n'est plus communiqué. ⚠️ Le réseau CUMULUS, seul argument international jusqu'ici, est contesté par Fabienne le 13/10 (« on ne fait rien avec CUMULUS ») : à faire trancher par Eric avant de le retirer.
 
 ---
 
@@ -168,7 +258,7 @@ Composants partagés dans `src/components/` :
 
 ## Architecture Payload
 
-**Collections (9)** : `pages`, `posts`, `events`, `categories`, `media`, `users`, `subscribers`, `leads`, `applications`
+**Collections (11)** : `pages`, `posts`, `events`, `categories`, `media`, `users`, `subscribers`, `leads`, `applications`, `faculty`, `alumni`
 
 **Globals (3)** : `header`, `footer`, `site-settings`
 
@@ -213,54 +303,6 @@ Chaque bloc est configuré dans `config.ts` (schéma Payload) et rendu dans `<Re
 
 ---
 
-## Décisions ouvertes (à trancher avec Eric)
-
-- **Hébergement** : Vercel (~50 €/mois géré) vs Scaleway (RGPD natif, ~20 €/mois) vs Self-hosted (VPS + Coolify, ~10 €/mois)
-- **Monitoring** : Sentry + Plausible recommandés mais non confirmés
-- **Compression upload Payload** : hook Sharp à mettre en place quand les vraies images arrivent (max 1600px, JPEG q80)
-
----
-
-## État d'avancement (mai 2026)
-
-### Fait
-
-- Audit complet du site cad.be actuel (typographique + visuel + UX)
-- Charte Thomas Durieux 2024 analysée et intégrée
-- 3 logos officiels CAD intégrés via `<Logo>` (monogramme, full, 65 ans)
-- Personas validés (Léa, Hugo, Sofia, Justine)
-- Stack technique documentée et implémentée
-- Sitemap des ~40 pages cartographié
-- Palette 14 couleurs intégrée (Tailwind + CSS variables)
-- Système `.theme-*` par programme déployé (9 thèmes)
-- Grille 12 colonnes structurée (`<Grid>` / `<Col>`)
-- Tous les blocs CTA harmonisés (`<PageCTA>` / `<AdmissionCTA>`)
-- Pages stratégiques créées : Admissions hub + 4 portes, Pourquoi le CAD, Alumni, Professeurs, Breakfast, Apply, Frais, Legal, Privacy
-- Ton « vous » adressé sur 100 % des pages programmes
-- Référence Collège de Paris retirée (nettoyée sur tout le repo)
-- Contenu bilingue FR/EN complet sur toutes les pages livrées
-
-### En cours
-
-- Intégration des vraies photos (alumni, professeurs, projets étudiants, hero images)
-- Wireframes des pages clés (placeholders à remplir avec screenshots)
-- Retouche photo pour cohérence (Phase 1 : 15 images récupérables du site actuel, Phase 2 : shoot pro de 100+ nouvelles photos)
-
-### À faire (roadmap)
-
-1. **Photos** — remplacer les `<ImagePlaceholder>` par les vraies images (via Payload media collection, upload via back-office admin)
-2. **Compression images** — activer le hook Sharp de compression à l'upload dans Payload (max 1600px largeur, JPEG q80, génération auto WebP/AVIF via Next Image)
-3. **Wireframes** — remplir les placeholders des livrables présentation avec les screenshots des vraies pages
-4. **Validation client** — présenter à Eric et Fabienne pour signoff final
-5. **Hébergement** — trancher Vercel / Scaleway / self-hosted
-6. **Monitoring** — configurer Sentry (erreurs) + Plausible (analytics RGPD-friendly)
-7. **Migration WordPress → Next.js** — définir le workflow de bascule (DNS, redirects 301 des anciennes URLs, période de staging)
-8. **Staging** — mettre en place un environnement staging avant le go-live
-9. **Backup DB** — configurer un backup automatique de Postgres en production
-10. **Tests** — étoffer la suite Vitest (unitaires) et Playwright (e2e) sur les parcours critiques (admissions, contact, newsletter)
-
----
-
 ## Migration WordPress → Next.js — notes
 
 Le site actuel `cad.be` est sur WordPress. La bascule doit préserver le SEO existant.
@@ -279,10 +321,10 @@ Le site actuel `cad.be` est sur WordPress. La bascule doit préserver le SEO exi
 - **HTTPS + HSTS** — headers déjà configurés dans `next.config.ts`
 - **CSP** — à ajouter en production (Content-Security-Policy stricte)
 - **Consent cookies** — nécessaire si intégration Google Analytics. Plausible ne nécessite pas de consentement (analytics anonyme sans cookies).
-- **Formulaires** — Turnstile (Cloudflare) pour anti-spam. Clés à configurer dans `.env`.
-- **Emails** — Resend configuré via `RESEND_API_KEY`. Fallback console si non configurée (dev).
+- **Formulaires** : Turnstile (Cloudflare) prévu pour l'anti-spam, **pas encore écrit dans le code**.
+- **Emails** : Resend via `RESEND_API_KEY`, repli silencieux sur la console sans clé. **La clé manque en production** au 13/10.
 - **Payload admin** — accès uniquement via `/admin`, protégé par login. Créer les comptes Eric et Fabienne à la livraison.
-- **Backup DB** — critique en prod. Configurer selon l'hébergeur choisi (snapshot quotidien minimum).
+- **Backup DB** : critique en prod. Neon garde un historique jamais vérifié, et **aucune copie n'existe hors de Neon**.
 
 ---
 
@@ -290,26 +332,25 @@ Le site actuel `cad.be` est sur WordPress. La bascule doit préserver le SEO exi
 
 ### CAD Brussels (client)
 
-- **Eric Vanden Broeck** — Dean — eric.vandenbroeck@cad.be — +32 477 22 43 46
-- **Fabienne Willaert** — Admin — secretariat@cad.be — +32 2 640 40 32
+- **Eric Vanden Broeck** · directeur, seul décideur · eric.vandenbroeck@cad.be · +32 477 22 43 46
+- **Fabienne Willaert** · secrétariat, relaie et relit · secretariat@cad.be · +32 2 640 40 32
 
-### Hilarious Agency
+### Hilarious
 
-- **Audry Van Essche** — Creative Manager / pilote — joker@hilarious.be — +32 478 28 13 33
-- **Jerome Canon** — Technical Lead — freeze@hilarious.be
-- **Yannick Chan** — Intégration / maintenance — yannick@hilarious.be — +32 478 31 00 35
+- **Jérôme Canon** · IT Lead, reprend le site · freeze@hilarious.be
+- **Florian Donckers** · développeur, reprend le site
+- **Cindy** · cheffe de projet du compte, contenu et relation client · cindy@hilarious.be
+- **Audry Van Essche** · CEO, auteur du POC · joker@hilarious.be · +32 478 28 13 33
 
 ### Infrastructure et domaine
 
-- **Bruno De Naeyer** — IT manager du CAD, Infinite-IT SRL — bruno@infinite-it.be — +32 2 897 62 50
-- ⚠️ **Le domaine et l'hébergement quittent Infinite-IT.** C'est **Eric** qui mène cet échange, pas Hilarious : c'est une fin de prestation, pas une demande technique. Nous fournissons les enregistrements et les redirections, quand il les demande.
-- Le domaine est chez le registrar **OVH** mais sa zone DNS est gérée dans **Cloudflare** : la bascule se joue là, pas chez OVH. **Ne modifier que les A et CNAME, les MX portent la messagerie Microsoft 365 de l'école.** Les six questions à poser à Bruno et l'ordre des opérations sont dans `projects/active/CAD/ressources/acces-domaine-cad-be.md`
+- **Bruno De Naeyer** · IT du CAD, Infinite-IT SRL · bruno@infinite-it.be · +32 2 897 62 50
+- ⚠️ **Le domaine et l'hébergement quittent Infinite-IT.** C'est **Eric** qui mène cet échange : c'est une fin de prestation, pas une demande technique. Nous fournissons les enregistrements et les redirections quand il les demande.
+- Le domaine est chez le registrar **OVH**, sa zone DNS est gérée dans **Cloudflare** : la bascule se joue là. **Ne modifier que les A et CNAME, les MX portent la messagerie Microsoft 365 de l'école.** Les six questions à poser à Bruno et l'ordre des opérations sont chez Audry, `CAD/ressources/acces-domaine-cad-be.md`.
 
-### Charte print legacy (référence uniquement)
+### Charte print (référence uniquement)
 
-- **Thomas Durieux** — Finlande Graphic Design — thomas@designbyfinlande.be — +32 477 43 83 67
-
----
+- **Thomas Durieux** · Finlande Graphic Design · thomas@designbyfinlande.be · +32 477 43 83 67
 
 ## Ressources externes
 

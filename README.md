@@ -2,6 +2,7 @@
 
 Site officiel du **College of Art & Design Brussels** ([cad.be](https://cad.be)), reconstruit en 2026 sur une stack moderne.
 
+> **Reprise du projet : lire d'abord [`HANDOVER.md`](./HANDOVER.md)** (état, accès, backlog, calendrier) **puis [`AGENTS.md`](./AGENTS.md)** (règles et pièges).
 > **Décisions design, palette, personas, conventions éditoriales** → [`HANDOVER.md`](./HANDOVER.md)
 > **Audit SEO du site actuel et plan d'action refonte** → [`SEO-AUDIT-2026.md`](./SEO-AUDIT-2026.md)
 
@@ -294,22 +295,18 @@ protège pas de la perte du compte. **Il n'existe aucune copie du contenu hors d
 
 ## CI / GitHub Actions
 
-Un workflow `.github/workflows/ci.yml` est configuré. Il s'exécute automatiquement à chaque push sur `main` et à chaque pull request. Il :
+Un workflow `.github/workflows/ci.yml` tourne à chaque push sur `main` et à chaque pull request, en quatre jobs : lint et typage, tests unitaires, build de production avec une vraie base PostgreSQL, et « Vérification interface », un passage en navigateur réel sur toutes les pages à quatre largeurs (`scripts/verify-ui.mjs`).
 
-1. Installe les dépendances (`pnpm install --frozen-lockfile`)
-2. Vérifie le typage TypeScript (`pnpm typecheck`)
-3. Lint le code (`pnpm lint`)
-4. Build en mode production (`pnpm build`)
-
-Voir le fichier CI pour les détails.
+⚠️ Ce dernier job est rouge depuis août 2026, sur un compte stable de **53 problèmes** au 13/10/2026. Tant qu'il n'est pas nettoyé, comparer à ce chiffre : voir [`AGENTS.md`](./AGENTS.md).
 
 ---
 
 ## Contacts projet
 
-- **Audry Van Essche** — CEO et cofondateur, Hilarious Agency — joker@hilarious.be
-- **Jerome Canon** — Technical Lead Hilarious Agency — freeze@hilarious.be
-- **Yannick Chan** — Intégration & maintenance Hilarious — yannick@hilarious.be
+- **Jérôme Canon**, IT Lead, reprend le site depuis le 13/10/2026 · freeze@hilarious.be
+- **Florian Donckers**, développeur, reprend le site depuis le 13/10/2026
+- **Cindy**, cheffe de projet du compte, contenu et relation client · cindy@hilarious.be
+- **Audry Van Essche**, CEO, auteur du POC · joker@hilarious.be
 
 Client :
 - **Eric Vanden Broeck** — Dean, CAD Brussels
