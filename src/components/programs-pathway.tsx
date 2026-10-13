@@ -372,7 +372,7 @@ export function ProgramsPathway({ locale }: { locale: string }) {
                 <p className="mt-1 text-xs uppercase tracking-wider text-white/70">
                   {fr ? '2 ans · 120 ECTS' : '2 years · 120 ECTS'}
                 </p>
-                <span className="mt-3 inline-block rounded-full border border-white/35 bg-white/10 px-3 py-1 text-[11px] uppercase tracking-wider">
+                <span className="mt-3 inline-block rounded-full border border-white/35 bg-white/10 px-3 py-1 text-xs uppercase tracking-wider">
                   {fr
                     ? 'Double diplôme · L’École de Design Nantes Atlantique'
                     : 'Double degree · L’École de Design Nantes Atlantique'}
@@ -402,7 +402,7 @@ export function ProgramsPathway({ locale }: { locale: string }) {
                   className="absolute inset-y-0 left-0 w-1.5 bg-cad-pink transition-all duration-300 group-hover/card:w-2.5"
                 />
                 <p className="font-display text-lg leading-snug">Fashion Business</p>
-                <span className="mt-2 inline-block rounded-full border border-ink/15 px-3 py-1 text-[11px] uppercase tracking-wider text-ink/70">
+                <span className="mt-2 inline-block rounded-full border border-ink/15 px-3 py-1 text-xs uppercase tracking-wider text-ink/70">
                   {fr ? 'Spécialisation' : 'Specialisation'}
                 </span>
                 <p className="mt-2 text-xs uppercase tracking-wider text-ink/55">

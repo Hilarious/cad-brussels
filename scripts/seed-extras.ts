@@ -355,8 +355,12 @@ const pageDefs: PageDef[] = [
     },
   },
   // ============================================================ INTERIOR ARCHITECTURE (Postgraduate 2 years)
+  // Slug de la production, `-master`. `next.config.ts` redirige
+  // `-postgraduate` vers `-master` : avec `-postgraduate` ici, la CI suivait
+  // la redirection vers une page absente et signalait un 404 qui n'existe pas
+  // en ligne.
   {
-    slug: "interior-architecture-design-postgraduate",
+    slug: "interior-architecture-design-master",
     fr: {
       title: "Architecture d'intérieur · Postgraduate 2 ans",
       hero: {
