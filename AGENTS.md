@@ -102,12 +102,16 @@ grep -rn "la phrase exacte" src/
 - **Deux serveurs de développement sur le même dossier se détruisent** : erreurs 500 sur
   toutes les pages sans que le code soit en cause. Remède : arrêter l'un des deux, vider
   `.next`.
-- **La CI est rouge sur un seul job, « Vérification interface », depuis août.** Référence au
-  13/10/2026 : **53 problèmes**, dont 36 débordements de 55 px sur portable
-  (`<div class="flex items-center gap-4">`), 16 textes à 11 px et 1 faux 404 en CI
-  (`/fr/interior-architecture-design-postgraduate`, qui redirige en 308 en production). Tant
-  que ce n'est pas nettoyé : **comparer au chiffre de 53.** S'il monte, c'est le dernier
-  envoi.
+- **La CI a été rouge d'août au 13/10/2026 sur un seul job, « Vérification interface »,**
+  avec 53 problèmes stables. Leurs trois causes sont corrigées dans la PR #1 : le contenu de
+  démonstration avait un menu à sept entrées alors que la barre est calculée pour six (36
+  débordements de 55 px à 1280 px), il créait la page du master Nantes sous `-postgraduate`
+  alors que `next.config.ts` redirige vers `-master` (1 faux 404), et deux étiquettes étaient
+  à 11 px (16 textes trop petits). ⚠️ À confirmer par la CI de cette PR. **Une fois verte,
+  la garder verte** : un échec signale alors une vraie régression.
+- **Le contenu de démonstration (`scripts/seed*.ts`) doit ressembler à la production.** La
+  CI le charge pour tout vérifier : s'il diverge, elle signale des défauts qui n'existent pas
+  en ligne, ou rate ceux qui existent.
 - Le code accepte `DATABASE_URI` (local), puis `POSTGRES_URL`, puis `DATABASE_URL` (injectés
   par Vercel).
 - Le stockage S3 est activé sans condition : sans identifiants, tout envoi d'image depuis

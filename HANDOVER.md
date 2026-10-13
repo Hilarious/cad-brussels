@@ -27,7 +27,7 @@ passation.
 | Code | GitHub `Hilarious/cad-brussels`, branche `main`. **Public**, pour avoir pu montrer le POC au client |
 | Base | PostgreSQL chez **Neon**, branchée par l'intégration Vercel |
 | Variables de production | **Seulement la base et `PAYLOAD_SECRET`** (liste Vercel relue le 13/10) |
-| CI | 3 jobs verts sur 4. « Vérification interface » rouge, **53 problèmes** de référence |
+| CI | 3 jobs verts sur 4 jusqu'au 13/10. « Vérification interface » rouge sur 53 problèmes, dont les causes sont corrigées dans la PR #1 (⚠️ à confirmer par sa CI) |
 | Contenu | Relecture du CAD (cahier V4 de Fabienne) intégrée le 13/10 **en français**. L'anglais reste à reprendre |
 
 ### Ce qui ne marche pas en production
@@ -70,7 +70,7 @@ vides tant que la matière n'arrive pas.
 | 1 | Bascule de `cad.be` et redirections 301 de l'ancien site | Elle commande le calendrier | Eric, Infinite-IT |
 | 2 | Turnstile sur les formulaires | Formulaire de candidature ouvert aux robots | Clés Cloudflare |
 | 2 | Ajouter **Fashion Business** et **Interior Architecture 1 an** aux formulaires de candidature et d'information | Demandé par le CAD le 13/10. Un `select` est un `enum` : migration | Rien |
-| 2 | Débordement de 55 px sur portable | Visible par tous les candidats, 36 des 53 problèmes de la CI | Rien |
+| 2 | La page du master Nantes est servie sous l'adresse `-master`, alors que le code la reconnaît sous `-postgraduate` | En ligne, elle n'a ni le bloc « Autres programmes », ni ses données structurées pour Google, ni ses projets étudiants (constaté le 13/10) | Choisir l'adresse définitive, puis aligner base, code et redirection |
 | 3 | Reporter en anglais les corrections factuelles du 13/10 | L'anglais cite encore des marques partenaires et des workshops à Lisbonne et Tokyo | Validation du français par le CAD |
 | 3 | Adresse `/fashion-management` vers le nom Fashion Business, avec redirection | Le programme a changé de nom | Nom acté par Eric |
 | 3 | Copie de la base hors de Neon, restauration testée une fois | Aucune sauvegarde hors du fournisseur | Rien |

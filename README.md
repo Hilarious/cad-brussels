@@ -297,7 +297,7 @@ protège pas de la perte du compte. **Il n'existe aucune copie du contenu hors d
 
 Un workflow `.github/workflows/ci.yml` tourne à chaque push sur `main` et à chaque pull request, en quatre jobs : lint et typage, tests unitaires, build de production avec une vraie base PostgreSQL, et « Vérification interface », un passage en navigateur réel sur toutes les pages à quatre largeurs (`scripts/verify-ui.mjs`).
 
-⚠️ Ce dernier job est rouge depuis août 2026, sur un compte stable de **53 problèmes** au 13/10/2026. Tant qu'il n'est pas nettoyé, comparer à ce chiffre : voir [`AGENTS.md`](./AGENTS.md).
+⚠️ Ce dernier job a été rouge d'août au 13/10/2026, sur 53 problèmes stables. Leurs causes sont corrigées dans la PR #1, à confirmer par sa CI : voir [`AGENTS.md`](./AGENTS.md).
 
 ---
 

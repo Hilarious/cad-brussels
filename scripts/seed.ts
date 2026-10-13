@@ -705,6 +705,11 @@ async function seed() {
   // Header: paths are locale-agnostic; the front prepends `/fr` or `/en`.
   // We write the FULL structure in FR first (with paths and labels), then
   // overwrite ONLY the localized labels in EN.
+  //
+  // Six entrées, comme la production (relevé du 13/10/2026). La barre de
+  // `site-header.tsx` est calculée pour six : la septième entrée que portait
+  // ce seed (« Événements ») la faisait déborder de 55px à 1280px, et c'était
+  // l'origine de 36 des 53 problèmes de la CI « Vérification interface ».
   const headerFR = {
     navItems: [
       {
@@ -729,8 +734,7 @@ async function seed() {
           { label: "Fashion Management", path: "/fashion-management" },
         ],
       },
-      { label: "Lifelong Learning", path: "/lifelong-learning" },
-      { label: "Événements", path: "/events" },
+      { label: "Formation Continue", path: "/lifelong-learning" },
       { label: "Actualités", path: "/news" },
       {
         label: "À propos",
@@ -775,7 +779,6 @@ async function seed() {
         ],
       },
       { label: "Lifelong Learning", path: "/lifelong-learning" },
-      { label: "Events", path: "/events" },
       { label: "News", path: "/news" },
       {
         label: "About",
