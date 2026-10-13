@@ -81,7 +81,7 @@ export default async function PracticalPage({
                   { label: isFR ? 'Téléphone et internet' : 'Phone and internet', amount: '20-40 €' },
                   { label: isFR ? 'Sorties, restaurants, loisirs' : 'Going out, restaurants, leisure', amount: '100-200 €' },
                   { label: isFR ? 'Santé et mutuelle' : 'Healthcare and mutuelle', amount: '5-15 €' },
-                  { label: isFR ? 'Imprévus, fournitures, livres' : 'Unforeseen, supplies, books', amount: '50-100 €' },
+                  { label: isFR ? 'Imprévus' : 'Unforeseen', amount: '50-100 €' },
                 ].map((row, i) => (
                   <tr key={i}>
                     <td className="px-4 py-3">{row.label}</td>

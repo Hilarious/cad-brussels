@@ -60,7 +60,7 @@ export default async function BreakfastPage({
           {
             time: '9h40',
             title: 'Visite des ateliers',
-            body: "On vous fait visiter les ateliers en activité. C'est l'été, certains étudiants sont là pour finaliser leur projet de fin d'année. Vous voyez le travail réel.",
+            body: "On vous fait visiter les ateliers, là où le travail se fait pendant l'année.",
           },
           {
             time: '10h10',

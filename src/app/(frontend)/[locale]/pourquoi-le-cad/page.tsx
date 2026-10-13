@@ -46,27 +46,27 @@ export default async function WhyCadPage({
           {
             number: '01',
             title: '160 étudiants au total, 50 professeurs en activité',
-            body: "C'est le rapport le plus intime de Belgique pour une école d'art. Pas d'amphi de 400. Pas de file d'attente pour parler à un prof. Chaque étudiant est connu, suivi, accompagné. C'est la différence entre apprendre dans la masse et apprendre dans une équipe.",
+            body: "C'est le rapport le plus intime de Belgique pour une école de design. Pas d'amphi de 400. Pas de file d'attente pour parler à un prof. Chaque étudiant est connu, suivi, accompagné. C'est la différence entre apprendre dans la masse et apprendre dans une équipe.",
           },
           {
             number: '02',
             title: 'Encadrement par des professionnels en activité',
-            body: "Les profs ne sont pas des académiciens détachés du métier. Ce sont des designers, architectes, directeurs artistiques en agence, en studio, en cabinet, en maison ou en freelance. Ils sont au contact direct des clients, du marché, des contraintes réelles. Et c'est cette expérience-là qu'ils transmettent en cours, le soir même.",
+            body: "Les profs ne sont pas des académiciens détachés du métier. Ce sont des designers, architectes, directeurs artistiques en agence, en studio, en cabinet, en maison ou en freelance. Ils sont au contact direct des clients, du marché, des contraintes réelles. Et c'est cette expérience-là qu'ils transmettent en cours.",
           },
           {
             number: '03',
             title: 'Pédagogie « anglo-saxonne », pratique avant théorique',
-            body: "Au CAD, on dessine, on coud, on prototype, on présente. La théorie sert la pratique, pas l'inverse. Vous passerez l'essentiel de votre temps en atelier-studio sur des briefs réels apportés par des marques partenaires.",
+            body: "Au CAD, on dessine, on coud, on prototype, on présente. La théorie sert la pratique, pas l'inverse. Vous passerez l'essentiel de votre temps en atelier-studio, sur des briefs posés par des professionnels en activité.",
           },
           {
             number: '04',
             title: 'Plus de 90 % d’insertion professionnelle',
-            body: "Plus de 90 % de nos diplômés trouvent un emploi en Belgique ou à l'étranger dans les mois qui suivent leur sortie. Ce n'est pas un hasard : la pédagogie est calibrée pour livrer des profils opérationnels, pas des théoriciens.",
+            body: "Plus de 90 % de nos diplômés trouvent un emploi en Belgique ou à l'étranger dans l'année qui suit leur sortie. Ce n'est pas un hasard : la pédagogie est calibrée pour livrer des profils opérationnels, pas des théoriciens.",
           },
           {
             number: '05',
             title: 'Réseau international actif dès la première année',
-            body: "Workshops à Milan, Shanghai, São Paulo, Lisbonne, Tokyo. 200+ écoles partenaires via le réseau CUMULUS. Stages possibles partout. Vous n'apprenez pas seulement à Bruxelles, vous apprenez avec le monde.",
+            body: "Workshops à Milan, Shanghai, São Paulo, Cotonou, Berlin. 200+ écoles partenaires via le réseau CUMULUS. Stages possibles partout. Vous n'apprenez pas seulement à Bruxelles, vous apprenez avec le monde.",
           },
         ],
 
@@ -86,15 +86,15 @@ export default async function WhyCadPage({
         outcomesByProgram: [
           {
             program: 'Architecture d’intérieur',
-            destinations: 'Agences d’architecture intérieure, studios de scénographie, retail design, agences hôtelières (Vudafieri-Saverino, B+B Studio, Lemay+Escobar, agences indépendantes belges).',
+            destinations: 'Agences d’architecture intérieure, studios de scénographie, retail design, agences hôtelières. Des diplômés travaillent par exemple chez Zoom Architecture.',
           },
           {
-            program: 'Communication & Digital',
-            destinations: 'Agences de pub et de design (Mortierbrigade, BBDO, Wieden+Kennedy, Base Design), studios brand & motion, équipes in-house chez les marques (Decathlon, Carrefour, etc.), freelance international.',
+            program: 'Communication & Digital Design',
+            destinations: 'Agences de pub et de design, studios brand & motion, équipes communication internes des marques, freelance international. Des diplômés travaillent par exemple chez Federate Agency, Rosa ou Egg Hunter.',
           },
           {
             program: 'Mode & Accessoires',
-            destinations: 'Maisons partenaires : Maison Margiela, AF Vandevorst, MM6. Marques bruxelloises émergentes. Studios de tendance. Création de marque indépendante.',
+            destinations: 'Maisons de mode, marques bruxelloises émergentes, studios de tendance, création de marque indépendante. Des diplômés travaillent par exemple chez Céline, Longchamp ou Eres.',
           },
           {
             program: 'Postgraduate Image 3D Motion AI',
@@ -126,7 +126,7 @@ export default async function WhyCadPage({
         // CTA
         ctaTitle: 'Discutons-en directement',
         ctaBody:
-          "La meilleure façon de savoir si le CAD vous convient (ou convient à votre enfant), c'est de venir voir. Open Day, Summer Breakfast, ou entretien individuel avec le directeur, choisissez le format qui vous va.",
+          "La meilleure façon de savoir si le CAD vous convient (ou convient à votre ado), c'est de venir voir. Open Day, Summer Breakfast, ou entretien individuel avec le directeur, choisissez le format qui vous va.",
         ctaPrimary: 'Voir les 4 portes d’admission',
         ctaSecondary: 'Recevoir la brochure',
       }
@@ -181,7 +181,7 @@ export default async function WhyCadPage({
             destinations: 'Interior architecture practices, scenography studios, retail design, hospitality firms (Vudafieri-Saverino, B+B Studio, Lemay+Escobar, independent Belgian practices).',
           },
           {
-            program: 'Communication & Digital',
+            program: 'Communication & Digital Design',
             destinations: 'Advertising and design agencies (Mortierbrigade, BBDO, Wieden+Kennedy, Base Design), brand & motion studios, in-house teams at brands (Decathlon, Carrefour, etc.), international freelance.',
           },
           {

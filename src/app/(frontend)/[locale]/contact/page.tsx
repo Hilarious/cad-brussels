@@ -189,14 +189,14 @@ export default async function ContactPage({
         schoolHours: 'École ouverte',
         schoolHoursValue: 'Du lundi au vendredi, de 9h à 17h30',
         secHoursLabel: 'Secrétariat',
-        secHoursAm: 'Matin : 9h30-12h30',
+        secHoursAm: 'Matin : 9h00-12h30',
         secHoursPm: 'Après-midi : 13h30-17h30',
         secHoursDays: 'Du lundi au vendredi',
         // services
         admissions: {
           title: 'Admissions',
           desc: 'Dossier de candidature, entretien, portfolio.',
-          email: 'admission@cad.be',
+          email: 'secretariat@cad.be',
         },
         secretariat: {
           title: 'Secrétariat',
@@ -225,13 +225,13 @@ export default async function ContactPage({
         schoolHours: 'School open',
         schoolHoursValue: 'Monday to Friday, 9am-5:30pm',
         secHoursLabel: 'Secretariat',
-        secHoursAm: 'Morning: 9:30am-12:30pm',
+        secHoursAm: 'Morning: 9am-12:30pm',
         secHoursPm: 'Afternoon: 1:30pm-5:30pm',
         secHoursDays: 'Monday to Friday',
         admissions: {
           title: 'Admissions',
           desc: 'Application file, interview, portfolio.',
-          email: 'admission@cad.be',
+          email: 'secretariat@cad.be',
         },
         secretariat: {
           title: 'Secretariat',

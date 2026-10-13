@@ -32,7 +32,7 @@ export const PROGRAMS: readonly Program[] = [
   // --------------------------------------------------------------- Undergraduates
   {
     slug: 'interior-architecture-design',
-    labelFR: 'Architecture d’intérieur',
+    labelFR: 'Interior Architecture & Design',
     labelEN: 'Interior Architecture & Design',
     descFR: 'Undergraduate 3 ans',
     descEN: 'Undergraduate 3 years',
@@ -45,7 +45,7 @@ export const PROGRAMS: readonly Program[] = [
   },
   {
     slug: 'communication-digital-design',
-    labelFR: 'Communication & Digital',
+    labelFR: 'Communication & Digital Design',
     labelEN: 'Communication & Digital Design',
     descFR: 'Undergraduate 3 ans',
     descEN: 'Undergraduate 3 years',
@@ -58,7 +58,7 @@ export const PROGRAMS: readonly Program[] = [
   },
   {
     slug: 'fashion-accessory-design',
-    labelFR: 'Mode & Accessoires',
+    labelFR: 'Fashion & Accessory Design',
     labelEN: 'Fashion & Accessory Design',
     descFR: 'Undergraduate 3 ans',
     descEN: 'Undergraduate 3 years',
@@ -73,7 +73,7 @@ export const PROGRAMS: readonly Program[] = [
   // ----------------------------------------------------------------- Masters
   {
     slug: 'interior-architecture-design-postgraduate',
-    labelFR: 'Interior Architecture 2 ans',
+    labelFR: 'Interior Architecture & Design 2 ans',
     labelEN: 'Interior Architecture 2 years',
     descFR: 'Postgraduate 2 ans',
     descEN: 'Postgraduate 2 years',
@@ -95,7 +95,7 @@ export const PROGRAMS: readonly Program[] = [
     taglineEN:
       'Product design, furniture and objects, connected to Belgian and European editors.',
     level: 'master',
-    duration: 'P2Y',
+    duration: 'P1Y',
   },
   {
     slug: 'digital-brand-content',
@@ -108,12 +108,12 @@ export const PROGRAMS: readonly Program[] = [
     taglineEN:
       'Content direction, digital brand strategy, social and editorial ecosystem.',
     level: 'master',
-    duration: 'P2Y',
+    duration: 'P1Y',
   },
   {
     slug: 'image-3d-motion-video-ai',
-    labelFR: 'Image 3D · Motion · AI',
-    labelEN: 'Image 3D · Motion · AI',
+    labelFR: 'Image · 3D, Motion & Video, A.I.',
+    labelEN: 'Image · 3D, Motion & Video, A.I.',
     descFR: 'Postgraduate 2 ans',
     descEN: 'Postgraduate 2 years',
     taglineFR:
@@ -121,7 +121,7 @@ export const PROGRAMS: readonly Program[] = [
     taglineEN:
       '3D rendering, motion design, generative AI, Unreal Engine — new craft of images.',
     level: 'master',
-    duration: 'P2Y',
+    duration: 'P1Y',
   },
   {
     slug: 'event-management',
@@ -134,14 +134,14 @@ export const PROGRAMS: readonly Program[] = [
     taglineEN:
       'Design, produce and operate cultural and corporate events in Brussels and abroad.',
     level: 'master',
-    duration: 'P2Y',
+    duration: 'P1Y',
   },
 
   // ------------------------------------------------------ Spécialisation
   {
     slug: 'fashion-management',
-    labelFR: 'Fashion Management',
-    labelEN: 'Fashion Management',
+    labelFR: 'Fashion Business',
+    labelEN: 'Fashion Business',
     descFR: 'Spécialisation',
     descEN: 'Specialisation',
     taglineFR:

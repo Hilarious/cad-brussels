@@ -5,10 +5,10 @@ import { sendEmail } from '@/lib/email'
 import { applicationSchema as Schema } from '@/lib/validation/application'
 
 const PROGRAM_LABELS: Record<string, string> = {
-  'bachelor-interior': 'Undergraduate · Architecture d’intérieur',
-  'bachelor-communication': 'Undergraduate · Communication & Digital',
+  'bachelor-interior': 'Undergraduate · Architecture d’intérieur & Design',
+  'bachelor-communication': 'Undergraduate · Communication & Digital Design',
   'bachelor-fashion': 'Undergraduate · Mode & Accessoires',
-  'master-interior': 'Postgraduate · Architecture d’intérieur 2 ans',
+  'master-interior': 'Postgraduate · Architecture d’intérieur & Design 2 ans',
   'master-home-living': 'Postgraduate · Furniture & Product Design',
   'master-digital-brand': 'Postgraduate · Digital Brand Content',
   'master-image': 'Postgraduate · Image / 3D / Motion / IA',
@@ -133,7 +133,7 @@ export async function POST(req: Request) {
     `
 
     await sendEmail({
-      to: process.env.ADMISSIONS_EMAIL ?? 'admission@cad.be',
+      to: process.env.ADMISSIONS_EMAIL ?? 'secretariat@cad.be',
       subject: `[CAD] Candidature ${data.firstName} ${data.lastName}, ${program}`,
       html,
       text: `${data.firstName} ${data.lastName} <${data.email}>\nProgramme: ${program}\nNiveau: ${level}\nRentrée: ${data.startYear}\n\n${data.motivation}`,
@@ -154,7 +154,7 @@ export async function POST(req: Request) {
             <li>Sous 5 jours ouvrés, on vous propose un créneau d'entretien (visio ou présentiel, ~45 minutes).</li>
             <li>Sous 7 jours après l'entretien, vous recevez notre réponse.</li>
           </ol>
-          <p>Si vous avez une question d'ici là, écrivez à <a href="mailto:admission@cad.be">admission@cad.be</a>.</p>
+          <p>Si vous avez une question d'ici là, écrivez à <a href="mailto:secretariat@cad.be">secretariat@cad.be</a>.</p>
           <hr style="border:0;border-top:1px solid #e5e5e5;margin:32px 0">
           <p style="font-size:12px;color:#a3a3a3">CAD, College of Art & Design · 25 rue Roberts-Jones, 1180 Bruxelles</p>
         </div>`
@@ -167,7 +167,7 @@ export async function POST(req: Request) {
             <li>Within 5 working days, we propose an interview slot (video call or on site, ~45 minutes).</li>
             <li>Within 7 days after the interview, you receive our answer.</li>
           </ol>
-          <p>Any question in the meantime, write to <a href="mailto:admission@cad.be">admission@cad.be</a>.</p>
+          <p>Any question in the meantime, write to <a href="mailto:secretariat@cad.be">secretariat@cad.be</a>.</p>
           <hr style="border:0;border-top:1px solid #e5e5e5;margin:32px 0">
           <p style="font-size:12px;color:#a3a3a3">CAD, College of Art & Design · 25 rue Roberts-Jones, 1180 Brussels</p>
         </div>`

@@ -70,7 +70,7 @@ export default async function HomePage({
           { value: '1961', label: 'Année de fondation' },
           { value: '160', label: 'Étudiants au total' },
           { value: '50', label: 'Professeurs en activité' },
-          { value: '+90%', label: 'Insertion pro après diplôme' },
+          { value: '+90%', label: 'Insertion pro après diplôme, undergraduate et postgraduate' },
           { value: '200+', label: 'Écoles partenaires CUMULUS' },
         ]
       : [
@@ -100,7 +100,7 @@ export default async function HomePage({
             theme: 'theme-fashion',
             eyebrow: '02 · L’esprit',
             title: 'Vous pensez le design, vous ne le subissez pas.',
-            body: 'Briefs réels apportés par Margiela, Decathlon, Mortierbrigade, des éditeurs de mobilier belges. Soutenances publiques devant des jurys de pros. Théorie, critique, défense de vos choix. L\'esprit créatif se construit par confrontation, pas par démonstration.',
+            body: 'Des briefs posés par des professionnels en activité. Des présentations devant des jurys de pros. Théorie, critique, défense de vos choix. L\'esprit créatif se construit par confrontation, pas par démonstration.',
             linkLabel: 'Découvrir les programmes',
             linkHref: `/${locale}/programmes`,
           },
@@ -108,7 +108,7 @@ export default async function HomePage({
             theme: 'theme-lifelong',
             eyebrow: '03 · La culture',
             title: 'Vous nourrissez votre culture, partout, tout le temps.',
-            body: 'Workshops à Milan, Shanghai, São Paulo, Lisbonne, Tokyo. Conférences mensuelles ouvertes, voyages culturels à Venise, Bâle, Paris. 160 étudiants de 30+ nationalités sur le campus. Le design ne s\'apprend pas en vase clos.',
+            body: 'Workshops à Milan, Shanghai, São Paulo, Cotonou, Berlin. Conférences mensuelles ouvertes, un voyage culturel chaque année. 160 étudiants de 20+ nationalités sur le campus. Le design ne s\'apprend pas en vase clos.',
             linkLabel: 'Ouverture & culture',
             linkHref: `/${locale}/openness-and-culture`,
           },

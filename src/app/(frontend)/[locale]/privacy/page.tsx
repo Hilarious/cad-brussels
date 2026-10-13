@@ -70,7 +70,7 @@ export default async function PrivacyPage({
           {
             heading: 'Durée de conservation',
             body:
-              "Demandes d'information : 12 mois. Inscrits newsletter : tant que vous restez abonné·e (désinscription possible à chaque envoi). Candidatures : 24 mois après dernière interaction. Dossiers étudiants : conservation conforme au décret de la Fédération Wallonie-Bruxelles.",
+              "Demandes d'information : 24 mois. Inscrits newsletter : tant que vous restez abonné·e (désinscription possible à chaque envoi). Candidatures : 24 mois après dernière interaction. Dossiers étudiants : conservation conforme au décret de la Fédération Wallonie-Bruxelles.",
           },
           {
             heading: 'Destinataires',

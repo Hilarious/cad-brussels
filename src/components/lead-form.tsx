@@ -19,28 +19,26 @@ type FormValues = {
 }
 
 const SECTIONS_FR: Array<{ value: string; label: string; group: string }> = [
-  { group: 'Undergraduate', value: 'bachelor-interior', label: 'Architecture d’intérieur' },
-  { group: 'Undergraduate', value: 'bachelor-communication', label: 'Communication & Digital' },
+  { group: 'Undergraduate', value: 'bachelor-interior', label: 'Architecture d’intérieur & Design' },
+  { group: 'Undergraduate', value: 'bachelor-communication', label: 'Communication & Digital Design' },
   { group: 'Undergraduate', value: 'bachelor-fashion', label: 'Mode & Accessoires' },
-  { group: 'Postgraduate', value: 'master-interior', label: 'Architecture d’intérieur (2 ans)' },
+  { group: 'Postgraduate', value: 'master-interior', label: 'Architecture d’intérieur & Design (2 ans)' },
   { group: 'Postgraduate', value: 'master-home-living', label: 'Furniture & Product Design' },
   { group: 'Postgraduate', value: 'master-digital-brand', label: 'Digital Brand Content' },
   { group: 'Postgraduate', value: 'master-image', label: 'Image, 3D, Motion, IA' },
   { group: 'Postgraduate', value: 'master-event', label: 'Event Management' },
-  { group: 'Lifelong Learning', value: 'lifelong-genai', label: 'IA générative pour pros' },
   { group: 'Autre', value: 'undecided', label: 'Pas encore décidé·e' },
 ]
 
 const SECTIONS_EN: Array<{ value: string; label: string; group: string }> = [
-  { group: 'Undergraduate', value: 'bachelor-interior', label: 'Interior Architecture' },
-  { group: 'Undergraduate', value: 'bachelor-communication', label: 'Communication & Digital' },
+  { group: 'Undergraduate', value: 'bachelor-interior', label: 'Interior Architecture & Design' },
+  { group: 'Undergraduate', value: 'bachelor-communication', label: 'Communication & Digital Design' },
   { group: 'Undergraduate', value: 'bachelor-fashion', label: 'Fashion & Accessory' },
-  { group: 'Postgraduate', value: 'master-interior', label: 'Interior Architecture (2 yrs)' },
+  { group: 'Postgraduate', value: 'master-interior', label: 'Interior Architecture & Design (2 yrs)' },
   { group: 'Postgraduate', value: 'master-home-living', label: 'Furniture & Product Design' },
   { group: 'Postgraduate', value: 'master-digital-brand', label: 'Digital Brand Content' },
   { group: 'Postgraduate', value: 'master-image', label: 'Image, 3D, Motion, AI' },
   { group: 'Postgraduate', value: 'master-event', label: 'Event Management' },
-  { group: 'Lifelong Learning', value: 'lifelong-genai', label: 'Generative AI for pros' },
   { group: 'Other', value: 'undecided', label: 'Not decided yet' },
 ]
 

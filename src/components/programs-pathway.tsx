@@ -402,14 +402,14 @@ export function ProgramsPathway({ locale }: { locale: string }) {
                   className="absolute inset-y-0 left-0 w-1.5 bg-cad-pink transition-all duration-300 group-hover/card:w-2.5"
                 />
                 <p className="font-display text-lg leading-snug">Fashion Business</p>
-                <p className="mt-1 text-xs uppercase tracking-wider text-ink/55">
+                <span className="mt-2 inline-block rounded-full border border-ink/15 px-3 py-1 text-[11px] uppercase tracking-wider text-ink/70">
+                  {fr ? 'Spécialisation' : 'Specialisation'}
+                </span>
+                <p className="mt-2 text-xs uppercase tracking-wider text-ink/55">
                   {fr
                     ? '1 an · temps partiel · stage 4 mois'
                     : '1 year · part-time · 4-month internship'}
                 </p>
-                <span className="mt-3 inline-block rounded-full border border-ink/15 px-3 py-1 text-[11px] uppercase tracking-wider text-ink/70">
-                  {fr ? 'Spécialisation' : 'Specialisation'}
-                </span>
               </Link>
             </li>
           </ul>

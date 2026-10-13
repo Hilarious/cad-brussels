@@ -40,7 +40,7 @@ export default async function AboutPage({
         eyebrow: 'Notre école',
         title: 'Une école de design fondée en 1961, à Bruxelles.',
         intro:
-          "Le CAD est l'une des rares écoles d'art en Europe continentale à proposer une pédagogie pratique de très haut niveau, dispensée par des professionnels en activité. Voici notre histoire, notre approche, et ce qui fait notre singularité.",
+          "Le CAD est l'une des rares écoles de design professionnalisantes en Europe continentale, avec une pédagogie pratique de très haut niveau, dispensée par des professionnels en activité. Voici notre histoire, notre approche, et ce qui fait notre singularité.",
 
         // Pattern A — hero full-bleed brief
         heroPhotoCaption:
@@ -59,8 +59,8 @@ export default async function AboutPage({
           { value: '1961', label: 'Année de fondation' },
           { value: '160', label: 'Étudiants au total' },
           { value: '50', label: 'Professeurs en activité' },
-          { value: '+90%', label: 'Insertion pro après diplôme' },
-          { value: '30+', label: 'Nationalités sur le campus' },
+          { value: '+90%', label: 'Insertion pro après diplôme, undergraduate et postgraduate' },
+          { value: '20+', label: 'Nationalités sur le campus' },
           { value: '200+', label: 'Écoles partenaires CUMULUS' },
         ],
 
@@ -68,7 +68,7 @@ export default async function AboutPage({
         pedagogyEyebrow: 'Pédagogie',
         pedagogyTitle: 'La pratique avant la théorie.',
         pedagogyBody: [
-          "Notre approche est dite « anglo-saxonne » : la pratique prime sur la théorie. Vous travaillerez sur des projets réels, encadré·e par des designers en activité dans leur secteur, pour devenir opérationnel·le dès votre sortie.",
+          "Notre approche est dite « anglo-saxonne » : la pratique prime sur la théorie. Vous travaillerez sur des projets réels ou fictifs, encadré·e par des designers en activité dans leur secteur, pour devenir opérationnel·le dès votre sortie.",
           "Les profs ne sont pas des académiciens détachés du métier. Ce sont des designers, architectes, directeurs artistiques en agence, en studio, en cabinet, en maison ou en freelance. Ils corrigent vos projets le mardi soir avec leur expérience du lundi en agence.",
         ],
         pedagogyPhotoCaption: 'Atelier · cours de projet en action',
@@ -77,7 +77,7 @@ export default async function AboutPage({
         internationalEyebrow: 'International',
         internationalTitle: "Ouverte sur le monde depuis l'origine.",
         internationalBody:
-          "Le CAD est membre de l'Association CUMULUS depuis juin 2013, qui réunit environ 200 écoles d'art publiques et privées à travers le monde. Workshops annuels à Milan, Shanghai, São Paulo, Lisbonne et Tokyo. 30+ nationalités sur le campus. Le design ne s'apprend pas en vase clos.",
+          "Le CAD est membre de l'Association CUMULUS depuis juin 2013, qui réunit environ 200 écoles d'art publiques et privées à travers le monde. Workshops à Milan, Shanghai, São Paulo, Cotonou et Berlin. 20+ nationalités sur le campus. Le design ne s'apprend pas en vase clos.",
         intlPhotos: [
           'Workshop Shanghai · étudiants en visite Tongji',
           'Salone del Mobile Milan · Furniture & Product en immersion',

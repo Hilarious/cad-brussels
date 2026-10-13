@@ -42,7 +42,7 @@ export default async function LifelongLearningHub({
           "Designers, directeurs artistiques, architectes, chefs de projet, freelances, équipes en agence : toute personne qui produit ou pilote de la création visuelle et veut intégrer l'IA dans son workflow sans perdre la main sur sa direction artistique. Pas besoin de savoir coder. Pas de discours marketing. On vient pour repartir avec des projets concrets et une méthode claire.",
         formatTitle: 'Le format',
         formatBody:
-          "10 séances de 2h, en soirée, en présentiel à Bruxelles. Chaque module se conclut par un projet personnel mené tout au long du cours, présenté en fin de session. Les groupes restent petits pour garder la qualité de l'accompagnement.",
+          "9 séances de 2h, en soirée, en présentiel à Bruxelles. Les groupes restent petits pour garder la qualité de l'accompagnement.",
         sectionsTitle: 'Les modules disponibles',
         sections: [
           {

@@ -46,7 +46,7 @@ export function ApplicationForm({ locale }: { locale: string }) {
     formState: { errors },
   } = useForm<FormValues>({
     defaultValues: {
-      startYear: '2026',
+      startYear: '2027',
       startLevel: 'bac1',
     },
   })
@@ -122,13 +122,13 @@ export function ApplicationForm({ locale }: { locale: string }) {
         success:
           'Merci, votre candidature est bien reçue. Nous vous écrivons sous 48h pour la suite.',
         error:
-          'Une erreur est survenue. Veuillez réessayer ou nous écrire à admission@cad.be.',
+          'Une erreur est survenue. Veuillez réessayer ou nous écrire à secretariat@cad.be.',
         // Selects
         programs: [
-          { value: 'bachelor-interior', label: 'Undergraduate · Architecture d’intérieur' },
-          { value: 'bachelor-communication', label: 'Undergraduate · Communication & Digital' },
+          { value: 'bachelor-interior', label: 'Undergraduate · Architecture d’intérieur & Design' },
+          { value: 'bachelor-communication', label: 'Undergraduate · Communication & Digital Design' },
           { value: 'bachelor-fashion', label: 'Undergraduate · Mode & Accessoires' },
-          { value: 'master-interior', label: 'Postgraduate · Architecture d’intérieur 2 ans' },
+          { value: 'master-interior', label: 'Postgraduate · Architecture d’intérieur & Design 2 ans' },
           { value: 'master-home-living', label: 'Postgraduate · Furniture & Product Design' },
           { value: 'master-digital-brand', label: 'Postgraduate · Digital Brand Content' },
           { value: 'master-image', label: 'Postgraduate · Image / 3D / Motion / IA' },
@@ -190,12 +190,12 @@ export function ApplicationForm({ locale }: { locale: string }) {
         success:
           'Thank you, your application has been received. We will write back within 48h.',
         error:
-          'Something went wrong. Please try again or write to admission@cad.be.',
+          'Something went wrong. Please try again or write to secretariat@cad.be.',
         programs: [
-          { value: 'bachelor-interior', label: 'Undergraduate · Interior Architecture' },
-          { value: 'bachelor-communication', label: 'Undergraduate · Communication & Digital' },
+          { value: 'bachelor-interior', label: 'Undergraduate · Interior Architecture & Design' },
+          { value: 'bachelor-communication', label: 'Undergraduate · Communication & Digital Design' },
           { value: 'bachelor-fashion', label: 'Undergraduate · Fashion & Accessory' },
-          { value: 'master-interior', label: 'Postgraduate · Interior Architecture 2 years' },
+          { value: 'master-interior', label: 'Postgraduate · Interior Architecture & Design 2 years' },
           { value: 'master-home-living', label: 'Postgraduate · Furniture & Product Design' },
           { value: 'master-digital-brand', label: 'Postgraduate · Digital Brand Content' },
           { value: 'master-image', label: 'Postgraduate · Image / 3D / Motion / AI' },
@@ -354,7 +354,6 @@ export function ApplicationForm({ locale }: { locale: string }) {
           <div className="grid gap-4 md:grid-cols-2">
             <Field label={T.startYear}>
               <select {...register('startYear')} className={INPUT}>
-                <option value="2026">2026-2027</option>
                 <option value="2027">2027-2028</option>
               </select>
             </Field>

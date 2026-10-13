@@ -96,11 +96,11 @@ export const Applications: CollectionConfig = {
       required: true,
       options: [
         // Undergraduate
-        { label: 'Undergraduate · Architecture d’intérieur', value: 'bachelor-interior' },
-        { label: 'Undergraduate · Communication & Digital', value: 'bachelor-communication' },
+        { label: 'Undergraduate · Architecture d’intérieur & Design', value: 'bachelor-interior' },
+        { label: 'Undergraduate · Communication & Digital Design', value: 'bachelor-communication' },
         { label: 'Undergraduate · Mode & Accessoires', value: 'bachelor-fashion' },
         // Master
-        { label: 'Postgraduate · Architecture d’intérieur 2 ans', value: 'master-interior' },
+        { label: 'Postgraduate · Architecture d’intérieur & Design 2 ans', value: 'master-interior' },
         { label: 'Postgraduate · Furniture & Product Design', value: 'master-home-living' },
         { label: 'Postgraduate · Digital Brand Content', value: 'master-digital-brand' },
         { label: 'Postgraduate · Image / 3D / Motion / IA', value: 'master-image' },

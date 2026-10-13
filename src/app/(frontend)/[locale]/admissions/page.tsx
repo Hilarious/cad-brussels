@@ -54,7 +54,7 @@ export default async function AdmissionsPage({
           },
           {
             title: 'Le parcours scolaire',
-            body: "Secondaire, baccalauréat européen, équivalence : on accepte beaucoup de formats. Si vous doutez, on en parle. Personne n'est recalé sur un dossier scolaire.",
+            body: "Un diplôme de l'enseignement secondaire est requis : baccalauréat européen et équivalences sont acceptés. La sélection se fait sur entretien. Si vous doutez, on en parle.",
           },
           {
             title: 'L’hésitation',
@@ -111,18 +111,18 @@ export default async function AdmissionsPage({
           {
             n: '3',
             label: 'Réponse',
-            body: "Sous 7 jours après l'entretien. Acceptation, demande d'éléments complémentaires, ou orientation vers un autre cursus si pertinent.",
+            body: "À la fin de l'entretien : vous savez tout de suite si vous êtes accepté·e.",
           },
           {
             n: '4',
             label: 'Inscription',
-            body: 'Confirmation de votre place et démarches administratives (visa, logement, frais de scolarité).',
+            body: 'Les inscriptions pour l’année académique suivante ouvrent le 1er février. Confirmation de votre place et démarches administratives (visa, logement, frais de scolarité).',
           },
         ],
         // Secondary CTA at the bottom
         ctaTitle: 'Vous préférez recevoir la brochure et y réfléchir ?',
         ctaBody:
-          "On envoie un info-pack complet (programmes, frais, témoignages, journée type) sans engagement. Vous nous écrivez ensuite si vous voulez avancer.",
+          "On vous envoie la brochure, avec des témoignages d'étudiants, sans engagement. Vous nous écrivez ensuite si vous voulez avancer.",
         ctaButton: 'Recevoir la brochure',
       }
     : {

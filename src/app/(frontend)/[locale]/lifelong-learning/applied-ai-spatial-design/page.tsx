@@ -14,7 +14,7 @@ export async function generateMetadata({
     ? {
         title: "IA pour Architecture et Design d'espace · CAD Brussels",
         description:
-          "Module IA pour architectes, designers d’espace et de produit. Du concept à la visualisation, ambiances et matériaux maîtrisés. 10 séances de 2h à Bruxelles.",
+          "Module IA pour architectes, designers d’espace et de produit. Du concept à la visualisation, ambiances et matériaux maîtrisés. 9 séances de 2h à Bruxelles.",
       }
     : {
         title: 'Applied AI for Architecture & Spatial Design · CAD Brussels',
@@ -65,11 +65,12 @@ export default async function AppliedAISpatial({
         ],
         formatTitle: 'Format',
         format: [
-          { label: 'Durée', value: '10 séances de 2h, en soirée' },
+          { label: 'Durée', value: '9 séances de 2h, en soirée' },
           { label: 'Lieu', value: 'CAD Brussels, Uccle' },
-          { label: 'Langue', value: 'Français' },
+          { label: 'Langue', value: 'Anglais' },
           { label: 'Niveau', value: 'Pro en activité, pas besoin de coder' },
-          { label: 'Évaluation', value: 'Projet personnel filé, présenté en fin de module' },
+          { label: 'Tarif', value: '1 500 € HTVA' },
+          { label: 'Formateur', value: 'Alexandre Grilletta' },
         ],
         approachTitle: 'L’approche pédagogique',
         approach:

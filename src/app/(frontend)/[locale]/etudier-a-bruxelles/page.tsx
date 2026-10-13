@@ -64,7 +64,7 @@ export default async function HubPage({
         ],
         statsTitle: 'Bruxelles en chiffres',
         stats: [
-          { value: '~750€', label: 'Loyer mensuel pour un studio meublé' },
+          { value: '~900€', label: 'Loyer mensuel pour un studio meublé' },
           { value: '~1 100€', label: 'Budget mensuel total recommandé' },
           { value: '12€', label: 'Abonnement transport mensuel jeune (STIB)' },
           { value: '1h25', label: 'Train direct Bruxelles-Paris' },
@@ -110,7 +110,7 @@ export default async function HubPage({
         ],
         statsTitle: 'Brussels in numbers',
         stats: [
-          { value: '~€750', label: 'Monthly rent for a furnished studio' },
+          { value: '~€900', label: 'Monthly rent for a furnished studio' },
           { value: '~€1,100', label: 'Recommended total monthly budget' },
           { value: '€12', label: 'Monthly youth transport pass (STIB)' },
           { value: '1h25', label: 'Direct train Brussels to Paris' },

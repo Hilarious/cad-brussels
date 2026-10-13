@@ -14,7 +14,7 @@ export async function generateMetadata({
     ? {
         title: "Formation IA générative pour pros · CAD Brussels",
         description:
-          "10 séances de 2h pour reprendre le contrôle créatif sur l'IA générative. Pour agences, designers et pros de la communication. Cours du soir à Bruxelles.",
+          "9 séances de 2h pour reprendre le contrôle créatif sur l'IA générative. Pour agences, designers et pros de la communication. Cours du soir à Bruxelles.",
       }
     : {
         title: 'Generative AI training for creative pros · CAD Brussels',
@@ -58,11 +58,12 @@ export default async function GenAICreative({
         ],
         formatTitle: 'Format',
         format: [
-          { label: 'Durée', value: '10 séances de 2h, en soirée' },
+          { label: 'Durée', value: '9 séances de 2h, en soirée' },
           { label: 'Lieu', value: 'CAD Brussels, Uccle' },
-          { label: 'Langue', value: 'Français' },
+          { label: 'Langue', value: 'Anglais' },
           { label: 'Niveau', value: 'Pro en activité, pas besoin de coder' },
-          { label: 'Évaluation', value: 'Projet personnel filé, présenté en fin de module' },
+          { label: 'Tarif', value: '1 500 € HTVA' },
+          { label: 'Formateur', value: 'Alexandre Grilletta' },
         ],
         approachTitle: 'L’approche pédagogique',
         approach:

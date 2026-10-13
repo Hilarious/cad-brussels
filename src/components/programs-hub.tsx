@@ -48,7 +48,7 @@ const BACHELORS: Program[] = [
   {
     slug: 'interior-architecture-design',
     index: '01',
-    title: { fr: 'Architecture d’intérieur & Design', en: 'Interior Architecture & Design' },
+    title: { fr: 'Interior Architecture & Design', en: 'Interior Architecture & Design' },
     degree: { fr: 'Undergraduate · 3 ans', en: 'Undergraduate · 3 years' },
     tagline: {
       fr: "Concevoir des lieux où la vie se passe. Pensée spatiale, matériaux, lumière, scénographie du quotidien.",
@@ -68,7 +68,7 @@ const BACHELORS: Program[] = [
     title: { fr: 'Communication & Digital Design', en: 'Communication & Digital Design' },
     degree: { fr: 'Undergraduate · 3 ans', en: 'Undergraduate · 3 years' },
     tagline: {
-      fr: "Raconter, signer, déployer une identité sur tous les supports. Direction artistique, branding, motion, expérience numérique.",
+      fr: "Raconter, déployer une identité sur tous les supports. Direction artistique, branding, motion, vidéo et digital.",
       en: 'Telling, signing, deploying an identity across all media. Art direction, branding, motion, digital experience.',
     },
     keywords: {
@@ -82,14 +82,14 @@ const BACHELORS: Program[] = [
   {
     slug: 'fashion-accessory-design',
     index: '03',
-    title: { fr: 'Mode & Accessoires', en: 'Fashion & Accessory Design' },
+    title: { fr: 'Fashion & Accessory Design', en: 'Fashion & Accessory Design' },
     degree: { fr: 'Undergraduate · 3 ans', en: 'Undergraduate · 3 years' },
     tagline: {
       fr: "Dessiner, couper, monter, présenter une collection. De l'idée au défilé, du croquis au stylisme.",
       en: 'Drawing, cutting, assembling, presenting a collection. From the idea to the runway, from the sketch to styling.',
     },
     keywords: {
-      fr: ['Patronage', 'Stylisme', 'Défilé'],
+      fr: ['Fitting sur buste', 'Stylisme', 'Défilé'],
       en: ['Pattern-making', 'Styling', 'Runway'],
     },
     bgClass: 'bg-cad-pink',
@@ -120,7 +120,7 @@ const MASTERS: Program[] = [
     slug: 'home-living-design',
     index: '02',
     title: { fr: 'Furniture & Product Design', en: 'Furniture & Product Design' },
-    degree: { fr: 'Postgraduate · 2 ans', en: 'Postgraduate · 2 years' },
+    degree: { fr: 'Postgraduate · 1 an', en: 'Postgraduate · 1 year' },
     tagline: {
       fr: "Penser l'habitat, le mobilier, l'objet domestique. Du brief industriel au prototype.",
       en: 'Thinking the home, the furniture, the domestic object. From the industrial brief to the prototype.',
@@ -137,7 +137,7 @@ const MASTERS: Program[] = [
     slug: 'digital-brand-content',
     index: '03',
     title: { fr: 'Digital Brand Content', en: 'Digital Brand Content' },
-    degree: { fr: 'Postgraduate · 2 ans', en: 'Postgraduate · 2 years' },
+    degree: { fr: 'Postgraduate · 1 an', en: 'Postgraduate · 1 year' },
     tagline: {
       fr: "Stratégie de marque, contenu social, direction de campagne. Là où la création rencontre l'audience.",
       en: 'Brand strategy, social content, campaign direction. Where creation meets the audience.',
@@ -153,8 +153,8 @@ const MASTERS: Program[] = [
   {
     slug: 'image-3d-motion-video-ai',
     index: '04',
-    title: { fr: 'Image 3D, Motion, Vidéo & AI', en: 'Image 3D, Motion, Video & AI' },
-    degree: { fr: 'Postgraduate · 2 ans', en: 'Postgraduate · 2 years' },
+    title: { fr: 'Image · 3D, Motion & Video, A.I.', en: 'Image · 3D, Motion & Video, A.I.' },
+    degree: { fr: 'Postgraduate · 1 an', en: 'Postgraduate · 1 year' },
     tagline: {
       fr: "L'image en mouvement, du shoot au rendu 3D, des outils génératifs à la post-production. L'œil avant l'outil.",
       en: 'The moving image, from shoot to 3D render, from generative tools to post-production. The eye before the tool.',
@@ -171,7 +171,7 @@ const MASTERS: Program[] = [
     slug: 'event-management',
     index: '05',
     title: { fr: 'Event Management', en: 'Event Management' },
-    degree: { fr: 'Postgraduate · 2 ans', en: 'Postgraduate · 2 years' },
+    degree: { fr: 'Postgraduate · 1 an', en: 'Postgraduate · 1 year' },
     tagline: {
       fr: "Concevoir et produire des événements : scénographie, production, hospitality, communication.",
       en: 'Conceiving and producing events: scenography, production, hospitality, communication.',
@@ -187,7 +187,7 @@ const MASTERS: Program[] = [
   {
     slug: 'fashion-management',
     index: '06',
-    title: { fr: 'Fashion Management', en: 'Fashion Management' },
+    title: { fr: 'Fashion Business', en: 'Fashion Business' },
     degree: { fr: 'Spécialisation · 1 an', en: 'Specialisation · 1 year' },
     tagline: {
       fr: "Le management des maisons de mode : production, retail, communication, e-commerce, durabilité.",
@@ -199,7 +199,7 @@ const MASTERS: Program[] = [
     },
     bgClass: 'bg-cad-pink',
     textClass: 'text-paper',
-    imageCaption: 'Atelier showroom Fashion Management · planche merchandising / retail',
+    imageCaption: 'Atelier showroom Fashion Business · planche merchandising / retail',
   },
 ]
 

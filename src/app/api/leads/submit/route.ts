@@ -5,10 +5,10 @@ import { sendEmail } from '@/lib/email'
 import { leadSchema as Schema } from '@/lib/validation/lead'
 
 const SECTION_LABELS: Record<string, string> = {
-  'bachelor-interior': "Undergraduate, Architecture d’intérieur",
-  'bachelor-communication': 'Undergraduate, Communication & Digital',
+  'bachelor-interior': "Undergraduate, Architecture d’intérieur & Design",
+  'bachelor-communication': 'Undergraduate, Communication & Digital Design',
   'bachelor-fashion': 'Undergraduate, Mode & Accessoires',
-  'master-interior': "Postgraduate, Architecture d’intérieur 2 ans",
+  'master-interior': "Postgraduate, Architecture d’intérieur & Design 2 ans",
   'master-home-living': 'Postgraduate, Furniture & Product Design',
   'master-digital-brand': 'Postgraduate, Digital Brand Content',
   'master-image': 'Postgraduate, Image / 3D / Motion / IA',
