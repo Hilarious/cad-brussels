@@ -304,7 +304,7 @@ Un workflow `.github/workflows/ci.yml` tourne à chaque push sur `main` et à ch
 ## Contacts projet
 
 - **Jérôme Canon**, IT Lead, reprend le site depuis le 13/10/2026 · freeze@hilarious.be
-- **Florian Donckers**, développeur, reprend le site depuis le 13/10/2026
+- **Florian Donckers**, développeur, reprend le site depuis le 13/10/2026 · florian@hilarious.be
 - **Cindy**, cheffe de projet du compte, contenu et relation client · cindy@hilarious.be
 - **Audry Van Essche**, CEO, auteur du POC · joker@hilarious.be
 

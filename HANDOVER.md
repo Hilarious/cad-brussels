@@ -35,12 +35,16 @@ passation.
 | Manque | Conséquence | Ce qu'il faut |
 |---|---|---|
 | Aucun email (`RESEND_API_KEY` absente) | Une candidature arrive en base et **ne prévient personne**. Le candidat ne reçoit pas d'accusé. La newsletter en double confirmation est cassée | Une clé Resend, un domaine d'envoi authentifié, `ADMISSIONS_EMAIL=secretariat@cad.be` |
-| Aucun stockage d'images (`S3_*` absentes) | Tout envoi d'image depuis l'admin échoue. Les photos ne peuvent pas entrer | Un bucket S3-compatible (R2 prévu) |
+| Aucun stockage d'images (`S3_*` absentes) | Tout envoi d'image depuis l'admin échoue | Un bucket S3-compatible (R2 prévu), prêt avant que les images arrivent |
 | Aucun anti-robot | Turnstile figure dans `.env.example` mais **n'existe pas dans le code**. Les formulaires publics sont ouverts | Le développer, puis les clés |
 | `NEXT_PUBLIC_SITE_URL` absente | Plan du site et balises de partage incomplets | L'adresse définitive |
 
 Les formulaires écrivent en base **avant** de tenter l'envoi : rien n'est perdu, tout est dans
 l'admin sous `Applications` et `Leads`.
+
+**Le CAD n'a transmis aucune image ni aucune vidéo.** Ce n'est pas un oubli technique, c'est
+un sujet de gestion de projet à mener avec Eric. Les emplacements d'images du site restent
+vides tant que la matière n'arrive pas.
 
 ---
 
@@ -49,8 +53,8 @@ l'admin sous `Applications` et `Leads`.
 | Brique | Où | Aujourd'hui | À faire |
 |---|---|---|---|
 | GitHub | `Hilarious/cad-brussels` | Compte utilisateur **partagé** « Hilarious », pas une organisation. Les 99 commits sont signés « Hilarious » | Décider public ou privé maintenant que le POC est montré. Comptes nominatifs, idéalement une organisation |
-| Vercel | Projet `cad-brussels`, équipe Hilarious | ⚠️ Membres à vérifier | Jérôme et Florian dans l'équipe |
-| Neon | Via l'intégration Vercel | ⚠️ Compte d'**une seule personne**, à identifier | Le rattacher à l'agence. Exporter une copie de la base hors de Neon |
+| Vercel | Projet `cad-brussels`, équipe « Hilarious » (`freezehilariousbes-projects`) | Jérôme et Florian déjà membres | Rien |
+| Neon | Base `CAD_DB_2026`, ressource de l'intégration Neon de l'équipe Vercel « Hilarious » (vérifié le 13/10) | Liée à l'agence, pas à une personne. Florian l'a configurée | Exporter une copie hors de Neon et tester une restauration une fois |
 | Admin Payload | `/admin` | Audry et Jérôme administrateurs | Un compte par personne. Cindy en éditrice |
 | Clé d'API de production | Dans le `.env.local` d'Audry, sur un compte **admin** | Sert aux écritures par script | La révoquer, en créer une sur un compte `editor` si besoin |
 | Domaine `cad.be` | Registrar OVH, zone DNS chez **Cloudflare** | Chez Infinite-IT, l'IT du CAD | Seuls A et CNAME bougent, **jamais les MX** (messagerie Microsoft 365 de l'école) |
@@ -62,14 +66,14 @@ l'admin sous `Applications` et `Leads`.
 | P | Sujet | Pourquoi | Dépend de |
 |---|---|---|---|
 | 1 | Brancher Resend | Aucune candidature n'alerte personne | Une clé et un domaine d'envoi. ⚠️ Authentifier `cad.be` touche au DNS de l'école |
-| 1 | Stockage des images | Les photos du CAD ne peuvent pas entrer | Un bucket |
+| 1 | Stockage des images | Rien ne pourra entrer le jour où le CAD envoie ses images | Un bucket. Les images elles-mêmes : aucune transmise, à obtenir d'Eric |
 | 1 | Bascule de `cad.be` et redirections 301 de l'ancien site | Elle commande le calendrier | Eric, Infinite-IT |
 | 2 | Turnstile sur les formulaires | Formulaire de candidature ouvert aux robots | Clés Cloudflare |
 | 2 | Ajouter **Fashion Business** et **Interior Architecture 1 an** aux formulaires de candidature et d'information | Demandé par le CAD le 13/10. Un `select` est un `enum` : migration | Rien |
 | 2 | Débordement de 55 px sur portable | Visible par tous les candidats, 36 des 53 problèmes de la CI | Rien |
 | 3 | Reporter en anglais les corrections factuelles du 13/10 | L'anglais cite encore des marques partenaires et des workshops à Lisbonne et Tokyo | Validation du français par le CAD |
 | 3 | Adresse `/fashion-management` vers le nom Fashion Business, avec redirection | Le programme a changé de nom | Nom acté par Eric |
-| 3 | Copie de la base hors de Neon, restauration testée une fois | Aucune sauvegarde hors du fournisseur | Accès Neon |
+| 3 | Copie de la base hors de Neon, restauration testée une fois | Aucune sauvegarde hors du fournisseur | Rien |
 | 3 | Six langues (IT, ES, DE, PT sur le parcours de recrutement) | Décidé en juillet, reporté | Relecteurs natifs |
 | ⏸ | Fusion de trois masters en un seul (Image 3D Motion AI, Digital Brand Content, Event Management) | Pages, menu, formulaires, thèmes de couleur | **Décision et nom d'Eric** |
 
@@ -92,7 +96,7 @@ l'admin sous `Applications` et `Leads`.
 | Domaine | Qui |
 |---|---|
 | Code, base, déploiements, variables, côté technique du domaine | **Jérôme** et **Florian** |
-| Contenu : relecture, saisie dans l'admin, lien quotidien avec le CAD | **Cindy**, cheffe de projet |
+| Contenu : relecture, saisie dans l'admin, lien quotidien avec le CAD, obtention des images et vidéos | **Cindy**, cheffe de projet |
 | Décisions client | **Eric Vanden Broeck**, seul décideur. Fabienne Willaert relaie |
 | Mémoire du POC, pourquoi des choix | **Audry** |
 
@@ -338,7 +342,7 @@ Le site actuel `cad.be` est sur WordPress. La bascule doit préserver le SEO exi
 ### Hilarious
 
 - **Jérôme Canon** · IT Lead, reprend le site · freeze@hilarious.be
-- **Florian Donckers** · développeur, reprend le site
+- **Florian Donckers** · développeur, reprend le site · florian@hilarious.be
 - **Cindy** · cheffe de projet du compte, contenu et relation client · cindy@hilarious.be
 - **Audry Van Essche** · CEO, auteur du POC · joker@hilarious.be · +32 478 28 13 33
 
