@@ -364,17 +364,6 @@ const PROJECTS_BY_SLUG: Record<
         processCaption: 'Atelier verrier · Anna S. · soufflage en collaboration',
         resultCaption: 'Collection · Anna S. · 6 pièces de verre soufflé',
       },
-      {
-        title: 'Workshop Milan · briefs d’éditeurs italiens',
-        studentName: 'Giulia F.',
-        year: 'Postgraduate · 2024',
-        pedagogyStep: 'Postgraduate Furniture & Product Design · Workshop Salone del Mobile',
-        quote:
-          "Présenter ma chaise devant un éditeur Cassina, c'est ce que personne ne vous prépare à vivre. Sauf au CAD.",
-        sketchCaption: 'Croquis · Giulia F. · chaise pour briefe Cassina',
-        processCaption: 'Maquette 1/5 · Giulia F. · ajustements assise',
-        resultCaption: 'Prototype final · Giulia F. · chaise grandeur réelle',
-      },
     ],
     en: [
       {
@@ -398,17 +387,6 @@ const PROJECTS_BY_SLUG: Record<
         sketchCaption: 'Sketch · Anna S. · 8 glass and carafe forms',
         processCaption: 'Glassworks · Anna S. · blowing in collaboration',
         resultCaption: 'Collection · Anna S. · 6 blown-glass pieces',
-      },
-      {
-        title: 'Milan workshop · briefs from Italian editors',
-        studentName: 'Giulia F.',
-        year: 'Postgraduate · 2024',
-        pedagogyStep: 'Furniture & Product postgraduate · Salone del Mobile workshop',
-        quote:
-          "Presenting my chair to a Cassina editor is what nobody prepares you for. Except at CAD.",
-        sketchCaption: 'Sketch · Giulia F. · chair for Cassina brief',
-        processCaption: '1/5 model · Giulia F. · seat adjustments',
-        resultCaption: 'Final prototype · Giulia F. · full-scale chair',
       },
     ],
   },
